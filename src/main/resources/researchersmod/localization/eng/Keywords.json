@@ -1,0 +1,48 @@
+[
+  {
+    "PROPER_NAME": "Phase",
+    "NAMES": [
+      "phase",
+      "Phase",
+      "Phased"
+    ],
+    "DESCRIPTION": "This card plays when exhausted."
+  },
+  {
+  "PROPER_NAME": "Experiment",
+  "NAMES": [
+  "experiment",
+  "Experiments"
+  ],
+  "DESCRIPTION": "This card will remain in play. Upon meeting its conditions, it will activate the effects, and can be activated up to the amount of uses it has. After all uses, it will return to play."
+  },
+  {
+    "PROPER_NAME": "Terminate",
+    "NAMES": [
+      "terminate",
+      "Termination",
+      "termination",
+      "terminated",
+      "Terminated"
+    ],
+    "DESCRIPTION": "When an #yExperiment card is used up and discards itself."
+  },
+  {
+    "PROPER_NAME": "Complete",
+    "NAMES": [
+      "complete",
+      "Completed",
+      "completed"
+    ],
+    "DESCRIPTION": "When an #yExperiment card triggers its conditions and activates its effects."
+  },
+  {
+    "PROPER_NAME": "Trial",
+    "NAMES": [
+      "trail",
+      "Trials",
+      "trails"
+    ],
+    "DESCRIPTION": "The amount of uses an #yExperiment card has."
+  }
+]

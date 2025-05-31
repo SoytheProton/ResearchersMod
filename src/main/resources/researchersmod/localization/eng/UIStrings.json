@@ -1,0 +1,44 @@
+{
+  "${modID}:addPhaseAndEthereal": {
+    "TEXT": [
+      "apply Phase and Ethereal to.",
+      "#yPhase. #yEthereal."
+    ]
+  },
+  "${modID}:PhaseCardModifier": {
+    "TEXT": [
+      "${modID}:Phase. NL %s",
+      "${modID}:Phase. %s",
+      "%s ${modID}:Phase. %s",
+      "%s NL ${modID}:Phase. NL %s",
+      "%s NL ${modID}:Phase. %s",
+      "%s NL ${modID}:Phase.",
+      "%s${modID}:Phase %s"
+    ]
+  },
+  "${modID}:EtherealCardModifier": {
+    "TEXT": [
+      "Ethereal. NL %s",
+      "Ethereal. %s",
+      "%s Ethereal. %s",
+      "%s NL Ethereal. NL %s",
+      "%s NL Ethereal. %s",
+      "%s NL Ethereal.",
+      "%sEthereal %s"
+    ]
+  },
+  "${modID}:CurrentExperimentsTopPanelItem": {
+    "TEXT": [
+      "Your current Experiment cards in play.",
+      "How are you seeing this."
+    ]
+  },
+  "${modID}:ExperimentPanel": {
+    "TEXT": [
+      "Experiment Pile",
+      "These cards activate effects after meeting certain conditions, then go in your discard.",
+      "These cards are currently Active.",
+      "These cards activate effects after meeting certain conditions, then go in your discard. NL Click to view cards."
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "${modID}:RelicID": {
+    "NAME": "Good Relic",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. [E] is an energy icon."
+    ]
+  },
+  "${modID}:DatabaseTablet": {
+    "NAME": "Database Tablet",
+    "FLAVOR": "A holographic tablet for all your research needs.",
+    "DESCRIPTIONS": [
+      "At the start of combat, choose #b1 card in your hand to #yExhaust. If you do, draw #b1 card.",
+      "to Exhaust to draw a card."
+    ]
+  }
+}

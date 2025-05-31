@@ -1,0 +1,205 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  "${modID}:Strike_Researchers": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Defend_Researchers": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${modID}:Research": {
+    "NAME": "Research",
+    "DESCRIPTION": "Choose one: NL Gain !M! Strength or !M! Dexterity.",
+    "UPGRADE_DESCRIPTION": "Gain !M! Strength and !M! Dexterity."
+  },
+  "${modID}:gainstrength": {
+    "NAME": "Increase Power",
+    "DESCRIPTION": "Gain !M! Strength."
+  },
+  "${modID}:gaindexterity": {
+    "NAME": "Increase Agility",
+    "DESCRIPTION": "Gain !M! Dexterity."
+  },
+  "${modID}:OldDevelopment": {
+    "NAME": "Development",
+    "DESCRIPTION": "The first time each turn you play two cards of the same type, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "The first time each turn you play two cards of the same type, draw !M! cards."
+  },
+  "${modID}:Development": {
+    "NAME": "Development",
+    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment 1 - Power: Upgrade a random Basic card in your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment 1 - Power: Upgrade a random card in your draw pile.",
+    "EXTENDED_DESCRIPTION": [
+      "Power: Upgrade a random Basic card in your draw pile.",
+      "Power: Upgrade a random card in your draw pile."
+    ]
+  },
+  "${modID}:BurntDocument": {
+    "NAME": "Burnt Document",
+    "DESCRIPTION": "Exhaust.",
+    "UPGRADE_DESCRIPTION": "Draw !M! card. NL Exhaust."
+  },
+  "${modID}:OpeningStatement": {
+    "NAME": "Opening Statement",
+    "DESCRIPTION": "Innate. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. ${modID}:Phase. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand."
+  },
+  "${modID}:Confidence": {
+    "NAME": "Confidence",
+    "DESCRIPTION": "${modID}:Phase. NL Gain !B! Block."
+  },
+  "${modID}:EnergySlash": {
+    "NAME": "Energy Slash",
+    "DESCRIPTION": "${modID}:Phase. NL Deal !D! damage. If you did not play a Skill this turn, Exhaust."
+  },
+  "${modID}:GravityParry": {
+    "NAME": "Gravity Parry",
+    "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, gain !B! Block."
+  },
+  "${modID}:Olderpower": {
+    "NAME": "Overpower",
+    "DESCRIPTION": "Deal !D! damage. If you played a Power card this turn, draw !M! cards."
+  },
+  "${modID}:Assist": {
+    "NAME": "Assist",
+    "DESCRIPTION": "If the next card you play is an Attack, gain !B! Block and draw a card."
+  },
+  "${modID}:IonSurge": {
+    "NAME": "Ion Surge",
+    "DESCRIPTION": "Unplayable. NL ${modID}:Phase. Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random.",
+    "UPGRADE_DESCRIPTION": "${modID}:Phase. Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random."
+  },
+  "${modID}:O5Command": {
+    "NAME": "O5 Command",
+    "DESCRIPTION": "Deal !D! damage. Add ${modID}:Phase and Ethereal to all cards in your hand, and !M! *Dazes onto the top of your draw pile."
+  },
+  "${modID}:OwnTempo": {
+    "NAME": "Own Tempo",
+    "DESCRIPTION": "Choose one: Attacks, Skills, or Powers. NL All cards of that type in your hand cost 0 this turn. NL Exhaust."
+  },
+  "${modID}:freeattacks": {
+    "NAME": "Attacks",
+    "DESCRIPTION": "All Attacks in your hand cost 0 this turn."
+  },
+  "${modID}:freeskills": {
+    "NAME": "Skills",
+    "DESCRIPTION": "All Skills in your hand cost 0 this turn."
+  },
+  "${modID}:freepowers": {
+    "NAME": "Powers",
+    "DESCRIPTION": "All Powers in your hand cost 0 this turn."
+  },
+  "${modID}:InfluxPower": {
+    "NAME": "Influx Power",
+    "DESCRIPTION": "Whenever a card is ${modID}:Phased, gain !M! Block."
+  },
+  "${modID}:Older": {
+    "NAME": "Folder",
+    "DESCRIPTION": "If you've played !M! unique card types this turn, gain [E].",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Played ",
+      " unique card types this turn.)"
+    ]
+  },
+  "${modID}:RigelPunch": {
+    "NAME": "Rigel Punch",
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Burnt *Document into your draw pile."
+  },
+  "${modID}:OldDatamining": {
+    "NAME": "Datamining",
+    "DESCRIPTION": "Draw a card for every unique card type you've played this turn.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Played ",
+      " unique card types this turn.)"
+    ]
+  },
+  "${modID}:QuickJab": {
+    "NAME": "Quick Jab",
+    "DESCRIPTION": "Deal !D! damage. NL The next card you play Exhausts."
+  },
+  "${modID}:RSquare": {
+    "NAME": "R-Square",
+    "DESCRIPTION": "Gain !B! Block. NL Increases by 1 for every Status in your exhaust pile."
+  },
+  "${modID}:Adapt": {
+    "NAME": "Adapt",
+    "DESCRIPTION": "If you have 3 or less cards in your hand, draw 2 cards. NL Otherwise, Exhaust a card in your hand.",
+    "EXTENDED_DESCRIPTION": [
+      "[#808080]If [#808080]you [#808080]have [#808080]3 [#808080]or [#808080]less [#808080]cards [#808080]in [#808080]your [#808080]hand[#808080], [#808080]draw [#808080]2 [#808080]cards[#808080].[]",
+      "If you have 3 or less cards in your hand, draw 2 cards.",
+      "[#808080]Otherwise[#808080], [#808080]Exhaust [#808080]a [#808080]card [#808080]in [#808080]your [#808080]hand[#808080].[]",
+      "Otherwise, Exhaust a card in your hand."
+    ]
+  },
+  "${modID}:Headstrong": {
+    "NAME": "Headstrong",
+    "DESCRIPTION": "Can only be played if you have not played a Power this combat. NL Deal !D! damage and gain !B! Block.",
+    "EXTENDED_DESCRIPTION": [
+      "I have played a Power this combat."
+    ]
+  },
+  "${modID}:RagingBlade": {
+    "NAME": "Raging Blade",
+    "DESCRIPTION": "Deal !D! damage. Do !M! damage to all other enemies. Add a *Burn to your hand."
+  },
+  "${modID}:ShelvedProject": {
+    "NAME": "Shelved Project",
+    "DESCRIPTION": "Deal !D! damage. Exhaust a card in your hand."
+  },
+  "${modID}:OldCleanUpDuty": {
+    "NAME": "Clean-Up Duty",
+    "DESCRIPTION": "Draw !M! cards. NL Add a *Slimed to your hand."
+  },
+  "${modID}:ConcealedCarry": {
+    "NAME": "Concealed Carry",
+    "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, apply !M! Weak. NL Otherwise, apply !M! Vulnerable."
+  },
+  "${modID}:ShuttleKick": {
+    "NAME": "Shuttle Kick",
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Wound into your hand."
+  },
+  "${modID}:OldLaserStrike": {
+    "NAME": "Laser Strike",
+    "DESCRIPTION": "Deal !D! damage. Deals !M! more damage for each Skill you played this turn."
+  },
+  "${modID}:EncryptData": {
+    "NAME": "Encrypt Data",
+    "DESCRIPTION": "Gain !B! Block. NL Add a *Burnt *Document into your draw pile."
+  },
+  "${modID}:ClipboardSlap": {
+    "NAME": "Clipboard Slap",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust the top card of your draw pile."
+  },
+  "${modID}:Documentation": {
+    "NAME": "Documentation",
+    "DESCRIPTION": "Whenever you play a Power card, gain !M! Block."
+  },
+  "${modID}:ServerHash": {
+    "NAME": "Server Hash",
+    "DESCRIPTION": "Gain !B! Block. NL ${modID}:Experiment 2 - Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card.",
+    "EXTENDED_DESCRIPTION": [
+      "Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card."
+    ]
+  },
+  "${modID}:dummyattack": {
+    "NAME": "Dummy!",
+    "DESCRIPTION": "Does absolutely nothing! NL Classified as an attack."
+  },
+  "${modID}:Overpower": {
+  "NAME": "Overpower",
+  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment 1 - Power. ${modID}:Terminate: Draw !M! cards.",
+  "EXTENDED_DESCRIPTION": [
+    "Power. ${modID}:Terminate: Draw !M! cards."
+  ]
+}
+}

@@ -1,0 +1,63 @@
+{
+  "${modID}:PowerID": {
+    "NAME": "Ultimate Power",
+    "DESCRIPTIONS": [
+      "You are Very Cool and Strong."
+    ]
+  },
+  "${modID}:DevelopmentPower": {
+    "NAME": "Development",
+    "DESCRIPTIONS": [
+      "The first time each turn you play two cards of the same type, draw #b",
+      " card.",
+      " cards.",
+      "\n (Played an ",
+      "\n (Played a ",
+      " last.)"
+    ]
+  },
+  "${modID}:BDNextTurn": {
+    "NAME": "Opening Statement",
+    "DESCRIPTIONS": [
+      "Next turn, add #b",
+      " #yBurnt #yDocument into your hand.",
+      " #yBurnt #yDocuments into your hand."
+    ]
+  },
+  "${modID}:ComboPower": {
+    "NAME": "Assist",
+    "DESCRIPTIONS": [
+      "If the next card you play is an Attack, gain #b",
+      " #yBlock and draw #b",
+      " card."
+    ]
+  },
+  "${modID}:IonSurgePower": {
+    "NAME": "Ion Surge",
+    "DESCRIPTIONS": [
+      "Whenever you play a Power card, add #yPhase and #yEthereal to #b",
+      " card in your hand.",
+      " cards in your hand."
+    ]
+  },
+  "${modID}:InfluxPowerPower": {
+    "NAME": "Influx Power",
+    "DESCRIPTIONS": [
+      "Whenever a card is #yPhased, gain #b",
+      " #yBlock."
+    ]
+  },
+  "${modID}:ExhaustNextPower": {
+    "NAME": "Quick Jab",
+    "DESCRIPTIONS": [
+      "The next card you play #yExhausts."
+    ]
+  },
+  "${modID}:DocumentationPower": {
+    "NAME": "Documentation",
+    "DESCRIPTIONS": [
+      "Whenever you play a Power, gain #b",
+      " #yBlock."
+    ]
+  }
+}
