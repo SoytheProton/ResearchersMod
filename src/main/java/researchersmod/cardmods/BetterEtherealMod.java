@@ -27,7 +27,7 @@ public class BetterEtherealMod extends AbstractCardModifier {
         if (rawDescription.contains("Phase. ")) {
             int i = rawDescription.lastIndexOf("Phase. ");
             String[] cardDescription = {rawDescription.substring(0, i),rawDescription.substring(i+1)};
-            return String.format(uiStrings.TEXT[2], cardDescription[0] + "Phase.", cardDescription[1]);
+            return String.format(uiStrings.TEXT[2], cardDescription[0] + "${researchersmod}Phase.", cardDescription[1]);
         }
         if (rawDescription.contains("Innate. ") && card.isInnate) {
             String[] cardDescription = rawDescription.split("Innate. ", 2);

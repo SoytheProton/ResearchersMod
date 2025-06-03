@@ -3,17 +3,21 @@ package researchersmod.cards.basic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.DevelopmentExperiment;
 import researchersmod.util.CardStats;
 import researchersmod.util.ExperimentUtil;
 import researchersmod.util.Wiz;
 
-public class Development extends BaseCard {
+import java.util.ArrayList;
+
+public class Development extends ExperimentCard {
 
     public static final String ID = makeID(Development.class.getSimpleName());
     private static final CardStats info = new CardStats(
@@ -31,15 +35,13 @@ public class Development extends BaseCard {
         super(ID, info);
         setBlock(BLOCK, UPG_BLOCK);
         this.tags.add(Researchers.EXPERIMENT);
+        shouldUpgradeDescription = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
         Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, 1,this)));
-        ExperimentUtil.ExperimentDescription(this,1,upgraded);
-        System.out.println("Card Played (shocker)");
-        System.out.println(this);
-        System.out.println("");
+        ExperimentUtil.ExperimentDescription(this,1);
     }
 }

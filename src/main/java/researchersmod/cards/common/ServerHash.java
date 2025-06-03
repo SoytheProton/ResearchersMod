@@ -6,11 +6,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.ServerHashExperiment;
 import researchersmod.util.CardStats;
 
-public class ServerHash extends BaseCard {
+public class ServerHash extends ExperimentCard {
     public static final String ID = makeID(ServerHash.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
@@ -29,6 +30,7 @@ public class ServerHash extends BaseCard {
         setBlock(BLOCK, UPG_BLOCK);
         this.tags.add(Researchers.EXPERIMENT);
         setCustomVar("Blocc", VariableType.BLOCK, 4, 2);
+        Trial = 2;
     }
 
     @Override

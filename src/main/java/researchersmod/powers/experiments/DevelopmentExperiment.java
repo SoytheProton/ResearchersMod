@@ -29,19 +29,18 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
         c = card;
         Wiz.atb(new triggerExperiment(this));
-        ExperimentUtil.ExperimentDescription(c,amount,c.upgraded);
     }
 
     public void terminateEffect(){
         Wiz.atb(new triggerTerminate(this));
-        Wiz.atb(new killExperiment(c, c.upgraded));
+        Wiz.atb(new killExperiment(c));
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
         Wiz.atb(new DevelopmentAction(1, c.upgraded));
         this.amount = this.amount - 1;
-        ExperimentUtil.ExperimentDescription(c,amount,c.upgraded);
+        ExperimentUtil.ExperimentDescription(c,amount);
         Wiz.atb(new triggerCompletion(this));
     }
 

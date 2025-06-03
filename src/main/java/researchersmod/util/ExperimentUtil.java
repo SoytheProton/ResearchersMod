@@ -1,14 +1,19 @@
 package researchersmod.util;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import researchersmod.cardmods.ExperimentMod;
+import researchersmod.cards.ExperimentCard;
 
 public class ExperimentUtil {
     public interface onExperimentInterface {
         void onExperiment(AbstractPower power);
     }
+
     public interface onCompletionInterface {
         void onCompletion(AbstractPower power);
     }
@@ -18,20 +23,15 @@ public class ExperimentUtil {
     }
 
 
-    public static void ExperimentDescription (AbstractCard card, int amount, boolean upgraded) {
-        System.out.println("amazing it ran");
-        System.out.println(card);
-        System.out.println(amount);
-        System.out.println(upgraded);
-        CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
-        card.rawDescription = "${modID}:Experiment " + amount + " - " + cardStrings.EXTENDED_DESCRIPTION[0];
-        if (upgraded) card.rawDescription = "${modID}:Experiment " + amount + " - " + cardStrings.EXTENDED_DESCRIPTION[1];
-        System.out.println(card.rawDescription);
-        card.initializeDescription();
-
-    }
-    public static void ExperimentDescription (AbstractCard card, int amount) {
-        ExperimentDescription(card,amount,false);
+    public static void ExperimentDescription(AbstractCard card, int amount) {
+        if(card instanceof ExperimentCard) {
+            ((ExperimentCard) card).Trial = amount;
+        }
+        if (!CardModifierManager.hasModifier(card, "researchersmod:ExperimentModifier")) {
+            CardModifierManager.addModifier(card, new ExperimentMod());
+        }
+        AbstractCardModifier Mod = CardModifierManager.getModifiers(card, "researchersmod:ExperimentModifier").get(0);
+        Mod.modifyDescription(card.rawDescription,card);
     }
 
 }

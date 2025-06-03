@@ -40,5 +40,11 @@
       "These cards are currently Active.",
       "These cards activate effects after meeting certain conditions, then go in your discard. NL Click to view cards."
     ]
+  },
+  "${modID}:ExperimentModifier": {
+    "TEXT": [
+      "${modID}:Experiment ",
+      " - "
+    ]
   }
 }
