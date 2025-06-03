@@ -27,6 +27,7 @@ public class ExperimentMod extends AbstractCardModifier {
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
+        System.out.println("Cardmod:" + trial);
         if (upgraded) return(uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
         return (uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
     }

@@ -26,6 +26,7 @@ public class ExperimentUtil {
     public static void ExperimentDescription(AbstractCard card, int amount) {
         if(card instanceof ExperimentCard) {
             ((ExperimentCard) card).Trial = amount;
+            System.out.println("Trial:" + ((ExperimentCard) card).Trial);
         }
         if (!CardModifierManager.hasModifier(card, "researchersmod:ExperimentModifier")) {
             CardModifierManager.addModifier(card, new ExperimentMod());
