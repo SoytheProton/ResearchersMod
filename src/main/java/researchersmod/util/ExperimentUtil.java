@@ -22,17 +22,5 @@ public class ExperimentUtil {
         void onTerminate(AbstractPower power);
     }
 
-
-    public static void ExperimentDescription(AbstractCard card, int amount) {
-        if(card instanceof ExperimentCard) {
-            ((ExperimentCard) card).Trial = amount;
-            System.out.println("Trial:" + ((ExperimentCard) card).Trial);
-        }
-        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
-        CardModifierManager.addModifier(card, new ExperimentMod());
-//        AbstractCardModifier Mod = CardModifierManager.getModifiers(card, "researchersmod:ExperimentModifier").get(0);
-//        Mod.modifyDescription(card.rawDescription,card);
-    }
-
 }
 

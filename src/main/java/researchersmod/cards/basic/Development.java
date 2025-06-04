@@ -36,12 +36,12 @@ public class Development extends ExperimentCard {
         setBlock(BLOCK, UPG_BLOCK);
         this.tags.add(Researchers.EXPERIMENT);
         shouldUpgradeDescription = true;
+        Trial = 1;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, 1,this)));
-        ExperimentUtil.ExperimentDescription(this,1);
+        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, this.Trial,this)));
     }
 }

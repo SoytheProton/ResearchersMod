@@ -27,7 +27,7 @@
     <version>0.0.1</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
-    <description>The Gang\n:3c\n\n\n Major Thanks to:\n The Modding Discord \n AutumnMooncat (For letting me "borrow" Snowpunk's patches</description>
+    <description>The Gang\n:3c\n\n\n Major Thanks to:\n AutumnMooncat (For letting me "borrow" Snowpunk's patches \n Vex (For letting me legally steal code for another patch) \n Ellie (For a lot of things tbh) \n  modding-technical in the StS Discord as whole. </description>
 
     <!--You shouldn't need to change anything below this point, but feel free to look at it.-->
     <!--You'll get a warning regarding these when you package your mod, but don't worry, it's just set up like this for convenience.-->

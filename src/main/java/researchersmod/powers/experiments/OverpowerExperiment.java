@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.actions.*;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.IonSurgePower;
 import researchersmod.util.ExperimentPower;
@@ -32,7 +33,7 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
         M = magic;
         c = card;
         Wiz.atb(new triggerExperiment(this));
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
     }
 
     public void terminateEffect(){
@@ -44,7 +45,7 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
 
     public void completionEffect(){
         this.amount = this.amount - 1;
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
         Wiz.atb(new triggerCompletion(this));
     }
 

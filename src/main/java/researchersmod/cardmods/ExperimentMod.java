@@ -1,15 +1,18 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.util.ExperimentUtil;
 
-public class ExperimentMod extends AbstractCardModifier {
+import java.util.UUID;
+
+public class ExperimentMod extends AbstractCardModifier implements DynamicProvider {
     public static String ID = "researchersmod:ExperimentModifier";
+    public final UUID uuid = UUID.randomUUID();
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 
     @Override
@@ -19,16 +22,34 @@ public class ExperimentMod extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        int trial = 1;
+        String key = "!" + DynamicProvider.generateKey(card, this) + "!";
         boolean upgraded = false;
         if (card instanceof ExperimentCard){
-            trial = ((ExperimentCard) card).Trial;
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
-            System.out.println("Cardmod:" + trial);
-        if (upgraded) return(uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
-        return (uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
+        if (upgraded) return(uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
+        return (uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
+    }
+
+    @Override
+    public int baseValue(AbstractCard card) {
+        return ((ExperimentCard) card).Trial;
+    }
+
+    @Override
+    public int value(AbstractCard card) {
+        return ((ExperimentCard) card).Trial;
+    }
+
+    @Override
+    public boolean isModified(AbstractCard card) {
+        return false;
+    }
+
+    @Override
+    public UUID getDynamicUUID() {
+        return uuid;
     }
 
     @Override

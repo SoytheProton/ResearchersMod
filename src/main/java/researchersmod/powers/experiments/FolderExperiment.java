@@ -14,6 +14,7 @@ import researchersmod.actions.killExperiment;
 import researchersmod.actions.triggerCompletion;
 import researchersmod.actions.triggerExperiment;
 import researchersmod.actions.triggerTerminate;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.IonSurgePower;
 import researchersmod.util.ExperimentPower;
@@ -37,7 +38,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
         }
         c = card;
         Wiz.atb(new triggerExperiment(this));
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
     }
 
     public void terminateEffect(){
@@ -50,7 +51,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     public void completionEffect(){
         Wiz.atb(new GainBlockAction(owner, B));
         this.amount = this.amount - 1;
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
         Wiz.atb(new triggerCompletion(this));
     }
 

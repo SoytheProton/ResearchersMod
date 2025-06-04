@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.actions.*;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.IonSurgePower;
 import researchersmod.util.ExperimentPower;
@@ -35,7 +36,7 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
         B = block;
         c = card;
         Wiz.atb(new triggerExperiment(this));
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
     }
 
     public void terminateEffect(){
@@ -48,7 +49,7 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
     public void completionEffect(){
         Wiz.atb(new GainBlockAction(owner, B));
         this.amount = this.amount - 1;
-        ExperimentUtil.ExperimentDescription(c,amount);
+        ((ExperimentCard) c).Trial = amount;
         Wiz.atb(new triggerCompletion(this));
     }
 
