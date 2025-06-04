@@ -28,11 +28,10 @@ public class ExperimentUtil {
             ((ExperimentCard) card).Trial = amount;
             System.out.println("Trial:" + ((ExperimentCard) card).Trial);
         }
-        if (!CardModifierManager.hasModifier(card, "researchersmod:ExperimentModifier")) {
-            CardModifierManager.addModifier(card, new ExperimentMod());
-        }
-        AbstractCardModifier Mod = CardModifierManager.getModifiers(card, "researchersmod:ExperimentModifier").get(0);
-        Mod.modifyDescription(card.rawDescription,card);
+        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
+        CardModifierManager.addModifier(card, new ExperimentMod());
+//        AbstractCardModifier Mod = CardModifierManager.getModifiers(card, "researchersmod:ExperimentModifier").get(0);
+//        Mod.modifyDescription(card.rawDescription,card);
     }
 
 }

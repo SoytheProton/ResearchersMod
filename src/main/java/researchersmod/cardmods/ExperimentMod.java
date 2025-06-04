@@ -17,17 +17,16 @@ public class ExperimentMod extends AbstractCardModifier {
         return new ExperimentMod();
     }
 
-    private int trial = 0;
-    private boolean upgraded = false;
-
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
+        int trial = 1;
+        boolean upgraded = false;
         if (card instanceof ExperimentCard){
             trial = ((ExperimentCard) card).Trial;
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
-        System.out.println("Cardmod:" + trial);
+            System.out.println("Cardmod:" + trial);
         if (upgraded) return(uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
         return (uiStrings.TEXT[0] + trial + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
     }
