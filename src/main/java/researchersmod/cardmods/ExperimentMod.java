@@ -1,6 +1,7 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -50,6 +51,11 @@ public class ExperimentMod extends AbstractCardModifier implements DynamicProvid
     @Override
     public UUID getDynamicUUID() {
         return uuid;
+    }
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        DynamicDynamicVariable.registerVariable(card, this);
     }
 
     @Override
