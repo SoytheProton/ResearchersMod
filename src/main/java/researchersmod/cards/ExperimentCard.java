@@ -30,6 +30,15 @@ public abstract class ExperimentCard extends BaseCard{
 
     public int Trial = 1;
 
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard retVal = super.makeStatEquivalentCopy();
+        System.out.println("Original:" + ((ExperimentCard)retVal).Trial);
+        ((ExperimentCard)retVal).Trial = this.Trial;
+        System.out.println("Copy:" + this.Trial);
+        return retVal;
+    }
+
     public boolean shouldUpgradeDescription = false;
 
 }

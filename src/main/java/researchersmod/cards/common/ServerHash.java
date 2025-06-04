@@ -30,12 +30,12 @@ public class ServerHash extends ExperimentCard {
         setBlock(BLOCK, UPG_BLOCK);
         this.tags.add(Researchers.EXPERIMENT);
         setCustomVar("Blocc", VariableType.BLOCK, 4, 2);
-        Trial = 2;
+        Trial = 3;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, 2, this, customVar("Blocc")),1));
+        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.Trial, this, customVar("Blocc")),1));
     }
 }
