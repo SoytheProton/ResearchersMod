@@ -1,5 +1,6 @@
 package researchersmod.powers.experiments;
 
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -14,6 +15,7 @@ import researchersmod.actions.killExperiment;
 import researchersmod.actions.triggerCompletion;
 import researchersmod.actions.triggerExperiment;
 import researchersmod.actions.triggerTerminate;
+import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.IonSurgePower;
@@ -39,6 +41,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
         c = card;
         Wiz.atb(new triggerExperiment(this));
         ((ExperimentCard) c).Trial = amount;
+        CardModifierManager.addModifier(card, new ExperimentMod());
     }
 
     public void terminateEffect(){

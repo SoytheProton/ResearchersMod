@@ -1,5 +1,6 @@
 package researchersmod.powers.experiments;
 
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.actions.*;
+import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.IonSurgePower;
@@ -37,6 +39,7 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
         c = card;
         Wiz.atb(new triggerExperiment(this));
         ((ExperimentCard) c).Trial = amount;
+        CardModifierManager.addModifier(card, new ExperimentMod());
     }
 
     public void terminateEffect(){
