@@ -204,9 +204,9 @@
   },
   "${modID}:Folder": {
     "NAME": "Folder",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Experiment ${modID}:Completed: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust.",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Any ${modID}:Completion: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust.",
     "EXTENDED_DESCRIPTION": [
-      "${modID}:Experiment ${modID}:Completed: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust."
+      "Any ${modID}:Completion: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust."
     ]
   }
 }

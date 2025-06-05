@@ -31,7 +31,6 @@ import researchersmod.util.TextureLoader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import researchersmod.character.ResearchersCharacter;
-
 @SpireInitializer
 public class Researchers implements
         EditCharactersSubscriber,
@@ -57,6 +56,7 @@ public class Researchers implements
         new Researchers();
         ResearchersCharacter.Meta.registerColor();
     }
+
 
     @SpireEnum
     public static AbstractCard.CardTags PHASE;

@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.cards.ExperimentCard;
@@ -29,8 +30,8 @@ public class ExperimentMod extends AbstractCardModifier implements DynamicProvid
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
-        if (upgraded) return(uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
-        return (uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
+        if (upgraded) return(uiStrings.TEXT[0] + "[#87ceebff]" + key + "[]" + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
+        return (uiStrings.TEXT[0] + "[#87ceebff]" + key + "[]"+ uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
     }
 
     @Override

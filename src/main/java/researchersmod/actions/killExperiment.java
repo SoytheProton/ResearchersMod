@@ -2,6 +2,8 @@ package researchersmod.actions;
 
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -29,15 +31,14 @@ public class killExperiment extends AbstractGameAction {
     }
 
     public void update(){
-        ExperimentsPanel.experimentsPile.group.remove(c);
         CardModifierManager.removeModifiersById(c, "researchersmod:ExperimentModifier",true);
         c.unhover();
         c.untip();
         c.stopGlowing();
         if (Exhaust) {
-            Wiz.adp().exhaustPile.addToTop(c);
+            Wiz.atb(new ExhaustSpecificCardAction(c,ExperimentsPanel.experimentsPile));
         } else {
-            Wiz.adp().discardPile.addToTop(c);
+            Wiz.atb(new DiscardSpecificCardAction(c,ExperimentsPanel.experimentsPile));
         } isDone = true;
     }
 }

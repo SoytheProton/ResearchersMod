@@ -34,12 +34,12 @@
       "Completed",
       "completed"
     ],
-    "DESCRIPTION": "When an #yExperiment card triggers its conditions and activates its effects."
+    "DESCRIPTION": "When an #yExperiment card meets its conditions and activates its effects."
   },
   {
     "PROPER_NAME": "Trial",
     "NAMES": [
-      "trail",
+      "trial",
       "Trials",
       "trails"
     ],

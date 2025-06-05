@@ -11,16 +11,19 @@ public abstract class ExperimentCard extends BaseCard{
     public ExperimentCard(String ID, CardStats info) {
         super(ID, info);
         tags.add(Researchers.EXPERIMENT);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, CardStats info, String cardImage) {
         super(ID, info, cardImage);
         tags.add(Researchers.EXPERIMENT);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color) {
         super(ID, cost, cardType, target, rarity, color);
         tags.add(Researchers.EXPERIMENT);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage) {
