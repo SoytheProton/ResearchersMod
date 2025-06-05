@@ -2,7 +2,7 @@ package researchersmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import researchersmod.util.ExperimentUtil;
+import researchersmod.util.ExpUtil;
 import researchersmod.util.Wiz;
 
 public class triggerExperiment extends AbstractGameAction {
@@ -15,8 +15,8 @@ public class triggerExperiment extends AbstractGameAction {
 
     public void update(){
         for(AbstractPower p : Wiz.adp().powers){
-            if(p instanceof ExperimentUtil.onExperimentInterface){
-                ((ExperimentUtil.onExperimentInterface) p).onExperiment(power);
+            if(p instanceof ExpUtil.onExperimentInterface){
+                ((ExpUtil.onExperimentInterface) p).onExperiment(power);
             }
         }
         isDone = true;

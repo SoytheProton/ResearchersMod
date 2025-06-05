@@ -86,5 +86,6 @@ public abstract class BasePower extends AbstractPower {
         }
     }
 
-    public AbstractCard c;
+    public AbstractCard k;
+    public Boolean PriorityActivation = false;
 }

@@ -26,9 +26,19 @@ public abstract class ExperimentCard extends BaseCard{
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage) {
         super(ID, cost, cardType, target, rarity, color, cardImage);
         tags.add(Researchers.EXPERIMENT);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public int Trial = 1;
+    public int UpgradedTrial = 0;
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        if (!this.upgraded) {
+            this.Trial = this.Trial + this.UpgradedTrial;
+        }
+    }
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {

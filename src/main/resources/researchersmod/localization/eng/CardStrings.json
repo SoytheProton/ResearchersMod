@@ -37,8 +37,8 @@
   },
   "${modID}:Development": {
     "NAME": "Development",
-    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment 1 - Power: Upgrade a random Basic card in your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment 1 - Power: Upgrade a random card in your draw pile.",
+    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade a random Basic card in your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade a random card in your draw pile.",
     "EXTENDED_DESCRIPTION": [
       "Power: Upgrade a random Basic card in your draw pile.",
       "Power: Upgrade a random card in your draw pile."
@@ -186,7 +186,7 @@
   },
   "${modID}:ServerHash": {
     "NAME": "Server Hash",
-    "DESCRIPTION": "Gain !B! Block. NL ${modID}:Experiment 2 - Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card.",
+    "DESCRIPTION": "Gain !B! Block. NL ${modID}:Experiment !${modID}:Trial! - Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card.",
     "EXTENDED_DESCRIPTION": [
       "Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card."
     ]
@@ -197,9 +197,16 @@
   },
   "${modID}:Overpower": {
   "NAME": "Overpower",
-  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment 1 - Power. ${modID}:Terminate: Draw !M! cards.",
+  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Power. ${modID}:Terminate: Draw !M! cards.",
   "EXTENDED_DESCRIPTION": [
     "Power. ${modID}:Terminate: Draw !M! cards."
   ]
-}
+  },
+  "${modID}:Folder": {
+    "NAME": "Folder",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Experiment ${modID}:Completed: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "${modID}:Experiment ${modID}:Completed: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust."
+    ]
+  }
 }
