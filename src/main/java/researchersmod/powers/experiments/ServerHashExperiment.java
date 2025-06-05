@@ -31,7 +31,6 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
 
 
     private int B;
-    private AbstractCard c;
 
     public ServerHashExperiment (AbstractCreature owner, int amount, AbstractCard card, int block) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.actions.killExperiment;
 import researchersmod.actions.triggerCompletion;
@@ -23,21 +24,17 @@ import researchersmod.util.ExperimentPower;
 import researchersmod.util.ExperimentUtil;
 import researchersmod.util.Wiz;
 
-public class FolderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
+import java.util.Objects;
+
+public class FolderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentUtil.onCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private int B = 4;
 
-    private AbstractCard c;
-
-    public FolderExperiment(AbstractCreature owner, int amount, boolean upgraded, AbstractCard card) {
+    public FolderExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
-        if(upgraded) {
-           B = 6;
-        }
         c = card;
         Wiz.atb(new triggerExperiment(this));
         ((ExperimentCard) c).Trial = amount;
@@ -45,14 +42,12 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     }
 
     public void terminateEffect(){
-        Wiz.atb(new DrawCardAction(1));
         Wiz.atb(new triggerTerminate(this));
-        Wiz.atb(new killExperiment(c));
+        Wiz.atb(new killExperiment(c,true));
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner, B));
         this.amount = this.amount - 1;
         ((ExperimentCard) c).Trial = amount;
         Wiz.atb(new triggerCompletion(this));
@@ -67,4 +62,12 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
         }
     }
 
+    @Override
+    public void onCompletion(AbstractPower power) {
+        if(!Objects.equals(power.ID, POWER_ID)) {
+            power.amount = power.amount + 1;
+            AbstractCard card = ((BasePower) power).c;
+            ((ExperimentCard) card).Trial = power.amount;
+        }
+    }
 }

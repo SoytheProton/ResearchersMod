@@ -1,5 +1,6 @@
 package researchersmod.powers;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
@@ -84,4 +85,6 @@ public abstract class BasePower extends AbstractPower {
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
         }
     }
+
+    public AbstractCard c;
 }

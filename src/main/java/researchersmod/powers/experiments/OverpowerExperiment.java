@@ -28,8 +28,6 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
 
     private int M = 4;
 
-    private AbstractCard c;
-
     public OverpowerExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
         M = magic;

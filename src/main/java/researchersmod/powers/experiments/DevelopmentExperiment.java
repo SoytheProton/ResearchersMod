@@ -25,9 +25,6 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-
-    private AbstractCard c;
-
     public DevelopmentExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
         c = card;

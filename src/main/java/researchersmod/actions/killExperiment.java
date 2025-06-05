@@ -16,10 +16,16 @@ import static researchersmod.Researchers.makeID;
 public class killExperiment extends AbstractGameAction {
 
     private AbstractCard c;
+    private boolean Exhaust = false;
 
-    public killExperiment(AbstractCard card){
+    public killExperiment(AbstractCard card,boolean shouldExhaust){
         this.actionType = ActionType.CARD_MANIPULATION;
         c = card;
+        Exhaust = shouldExhaust;
+    }
+
+    public killExperiment(AbstractCard card){
+        this(card,false);
     }
 
     public void update(){
@@ -28,8 +34,10 @@ public class killExperiment extends AbstractGameAction {
         c.unhover();
         c.untip();
         c.stopGlowing();
-        Wiz.adp().discardPile.addToTop(c);
-        isDone = true;
+        if (Exhaust) {
+            Wiz.adp().exhaustPile.addToTop(c);
+        } else {
+            Wiz.adp().discardPile.addToTop(c);
+        } isDone = true;
     }
-
 }
