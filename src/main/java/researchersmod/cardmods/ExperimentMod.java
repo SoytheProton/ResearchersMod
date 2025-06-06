@@ -31,8 +31,8 @@ public class ExperimentMod extends AbstractCardModifier implements DynamicProvid
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
-        if (upgraded) return(uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[1]);
-        return (uiStrings.TEXT[0] + key + uiStrings.TEXT[1] + cardStrings.EXTENDED_DESCRIPTION[0]);
+        if (upgraded) return(uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[1]);
+        return (uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[0]);
     }
 
     @Override

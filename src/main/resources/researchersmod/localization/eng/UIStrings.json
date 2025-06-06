@@ -43,8 +43,7 @@
   },
   "${modID}:ExperimentModifier": {
     "TEXT": [
-      "${modID}:Experiment ",
-      " - "
+      "${modID}:Experiment !${modID}:Trial! - "
     ]
   }
 }

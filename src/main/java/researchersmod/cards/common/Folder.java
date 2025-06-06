@@ -24,8 +24,7 @@ public class Folder extends ExperimentCard {
             0
     );
     public Folder() {
-        super(ID, info);
-        this.Trial = 2;
+        super(ID, info,2);
     }
 
     public void upgrade() {

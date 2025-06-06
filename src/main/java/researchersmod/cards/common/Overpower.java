@@ -10,12 +10,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.OverpowerExperiment;
 import researchersmod.powers.experiments.ServerHashExperiment;
 import researchersmod.util.CardStats;
 
-public class Overpower extends BaseCard {
+public class Overpower extends ExperimentCard {
     public static final String ID = makeID(Overpower.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
@@ -29,10 +30,9 @@ public class Overpower extends BaseCard {
     private static final int MAGIC = 2;
     private static final int UPG_MAGIC = 1;
     public Overpower() {
-        super(ID, info);
+        super(ID, info,1);
         setDamage(DAMAGE,UPG_DAMAGE);
         setMagic(MAGIC,UPG_MAGIC);
-        this.tags.add(Researchers.EXPERIMENT);
     }
 
     @Override

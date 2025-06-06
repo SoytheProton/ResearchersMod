@@ -27,11 +27,9 @@ public class Development extends ExperimentCard {
     private static final int UPG_BLOCK = 3;
 
     public Development() {
-        super(ID, info);
+        super(ID, info,1);
         setBlock(BLOCK, UPG_BLOCK);
-        this.tags.add(Researchers.EXPERIMENT);
         shouldUpgradeDescription = true;
-        Trial = 1;
     }
 
     @Override

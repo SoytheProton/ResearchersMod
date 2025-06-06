@@ -26,11 +26,9 @@ public class ServerHash extends ExperimentCard {
 
 
     public ServerHash() {
-        super(ID, info);
+        super(ID, info,2);
         setBlock(BLOCK, UPG_BLOCK);
-        this.tags.add(Researchers.EXPERIMENT);
         setCustomVar("Blocc", VariableType.BLOCK, 4, 2);
-        Trial = 2;
     }
 
     @Override

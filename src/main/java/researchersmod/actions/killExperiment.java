@@ -1,6 +1,8 @@
 package researchersmod.actions;
 
+import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.cardmods.ExperimentMod;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.common.ClipboardSlap;
 import researchersmod.ui.ExperimentsPanel;
 import researchersmod.util.Wiz;
@@ -31,7 +34,8 @@ public class killExperiment extends AbstractGameAction {
     }
 
     public void update(){
-        CardModifierManager.removeModifiersById(c, "researchersmod:ExperimentModifier",true);
+        CardModifierManager.removeModifiersById(c, ExperimentMod.ID,true);
+        ((ExperimentCard) c).Trial = ((ExperimentCard) c).BaseTrial;
         c.unhover();
         c.untip();
         c.stopGlowing();
