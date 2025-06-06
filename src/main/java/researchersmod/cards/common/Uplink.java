@@ -1,4 +1,4 @@
-package researchersmod.deprecated.cards;
+package researchersmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,8 +11,8 @@ import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.ExhaustNextPower;
 import researchersmod.util.CardStats;
 
-public class QuickJab extends BaseCard {
-    public static final String ID = makeID(QuickJab.class.getSimpleName());
+public class Uplink extends BaseCard {
+    public static final String ID = makeID(Uplink.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
@@ -24,7 +24,7 @@ public class QuickJab extends BaseCard {
     private static final int DAMAGE = 4;
     private static final int UPG_DAMAGE = 3;
 
-    public QuickJab() {
+    public Uplink() {
         super(ID, info);
 
         setDamage(DAMAGE, UPG_DAMAGE);

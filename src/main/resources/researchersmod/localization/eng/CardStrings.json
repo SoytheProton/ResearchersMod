@@ -123,8 +123,8 @@
       " unique card types this turn.)"
     ]
   },
-  "${modID}:QuickJab": {
-    "NAME": "Quick Jab",
+  "${modID}:Uplink": {
+    "NAME": "Uplink",
     "DESCRIPTION": "Deal !D! damage. NL The next card you play Exhausts."
   },
   "${modID}:RSquare": {
@@ -204,9 +204,9 @@
   },
   "${modID}:Folder": {
     "NAME": "Folder",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Any ${modID}:Completion: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust.",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust.",
     "EXTENDED_DESCRIPTION": [
-      "Any ${modID}:Completion: Add 1 ${modID}:Trial to that ${modID}:Experiment. ${modID}:Terminate: Exhaust."
+      "${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust."
     ]
   }
 }
