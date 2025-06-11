@@ -56,8 +56,6 @@ public abstract class BaseCard extends CustomCard {
     protected boolean baseRetain = false;
     protected boolean upgRetain = false;
 
-    public boolean experiment = false;
-
     final protected Map<String, LocalVarInfo> cardVariables = new HashMap<>();
 
     public BaseCard(String ID, CardStats info) {
