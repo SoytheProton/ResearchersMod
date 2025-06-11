@@ -28,7 +28,7 @@ public abstract class ExperimentCard extends BaseCard{
         tags.add(Researchers.EXPERIMENT);
         BaseTrial = basetrial;
         Trial = basetrial;
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial,(card, m, base) -> { return Trial; });
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
     }
 
     public int Trial = 1;
