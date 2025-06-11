@@ -11,39 +11,39 @@ public abstract class ExperimentCard extends BaseCard{
     public ExperimentCard(String ID, CardStats info, int basetrial) {
         super(ID, info);
         tags.add(Researchers.EXPERIMENT);
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
         BaseTrial = basetrial;
         Trial = basetrial;
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, CardStats info, String cardImage, int basetrial) {
         super(ID, info, cardImage);
         tags.add(Researchers.EXPERIMENT);
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
         BaseTrial = basetrial;
         Trial = basetrial;
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial) {
         super(ID, cost, cardType, target, rarity, color);
         tags.add(Researchers.EXPERIMENT);
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
         BaseTrial = basetrial;
         Trial = basetrial;
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, String cardImage, int basetrial) {
         super(ID, cost, cardType, target, rarity, color, cardImage);
         tags.add(Researchers.EXPERIMENT);
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
         BaseTrial = basetrial;
         Trial = basetrial;
+        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial);
     }
 
     public int Trial = 1;
-    public int UpgradedTrial = 0;
+    public int UpgradedTrial;
 
-    public int BaseTrial;
+    public int BaseTrial = 1;
 
     @Override
     public void upgrade() {

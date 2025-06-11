@@ -51,7 +51,6 @@ public class ExperimentCardManager {
         int i = 0;
         int j = 0;
         hovered = null;
-        boolean toRemove = false;
         for (AbstractCard card : experiments.group) {
             card.target_y = Wiz.adp().hb.cY + Wiz.adp().hb.height/2f + Y_OFFSET*(j+1) + bob.y;
             card.target_x = Wiz.adp().hb.cX + X_OFFSET * Math.min(9, (experiments.size()-1-10*j)) / 2f - X_OFFSET * i;
@@ -64,21 +63,12 @@ public class ExperimentCardManager {
             } else {
                 card.targetDrawScale = 0.2f;
             }
+            card.initializeDescription();
             card.applyPowers();
             i++;
             if (i == 10) {
                 i = 0;
                 j++;
-            }
-        }
-        if (toRemove) {
-            if (Wiz.adp().hand.size() < BaseMod.MAX_HAND_SIZE) {
-                experiments.group.remove(hovered);
-                AbstractDungeon.player.hand.addToTop(hovered);
-                AbstractDungeon.player.hand.refreshHandLayout();
-                AbstractDungeon.player.hand.applyPowers();
-            } else {
-                Wiz.adp().createHandIsFullDialog();
             }
         }
     }
@@ -127,7 +117,6 @@ public class ExperimentCardManager {
     }
 
     public static void remExp(AbstractCard card, boolean shouldExhaust) {
-        experiments.group.remove(card);
         for (AbstractPower p : Wiz.adp().powers) {
             if(p instanceof ExpUtil.onTerminateInterface){
                 ((ExpUtil.onTerminateInterface) p).onTerminate();

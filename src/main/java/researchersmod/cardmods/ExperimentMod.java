@@ -13,9 +13,8 @@ import researchersmod.cards.ExperimentCard;
 
 import java.util.UUID;
 
-public class ExperimentMod extends AbstractCardModifier implements DynamicProvider {
+public class ExperimentMod extends AbstractCardModifier {
     public static String ID = "researchersmod:ExperimentModifier";
-    public final UUID uuid = UUID.randomUUID();
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 
     @Override
@@ -25,7 +24,6 @@ public class ExperimentMod extends AbstractCardModifier implements DynamicProvid
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        String key = "!" + DynamicProvider.generateKey(card, this) + "!";
         boolean upgraded = false;
         if (card instanceof ExperimentCard){
             upgraded = ((ExperimentCard) card).shouldUpgradeDescription;
@@ -33,36 +31,6 @@ public class ExperimentMod extends AbstractCardModifier implements DynamicProvid
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
         if (upgraded) return(uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[1]);
         return (uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[0]);
-    }
-
-    @Override
-    public Color getNormalColor() {
-        return Settings.BLUE_TEXT_COLOR;
-    }
-
-    @Override
-    public int baseValue(AbstractCard card) {
-        return ((ExperimentCard) card).Trial;
-    }
-
-    @Override
-    public int value(AbstractCard card) {
-        return ((ExperimentCard) card).Trial;
-    }
-
-    @Override
-    public boolean isModified(AbstractCard card) {
-        return false;
-    }
-
-    @Override
-    public UUID getDynamicUUID() {
-        return uuid;
-    }
-
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        DynamicDynamicVariable.registerVariable(card, this);
     }
 
     @Override
