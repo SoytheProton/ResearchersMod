@@ -17,6 +17,7 @@ import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.util.CalcUtil;
 import researchersmod.util.ExpUtil;
 import researchersmod.util.ExperimentPower;
 import researchersmod.util.Wiz;
@@ -42,7 +43,7 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner, B));
+        Wiz.atb(new GainBlockAction(owner, (int)CalcUtil.CalcBlock(B)));
         ExperimentCardManager.tickExperiment(this);
     }
 

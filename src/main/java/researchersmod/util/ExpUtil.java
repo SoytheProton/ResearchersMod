@@ -17,7 +17,7 @@ public class ExpUtil {
     }
 
     public interface onTerminateInterface {
-        void onTerminate(AbstractPower power);
+        void onTerminate();
     }
 
 }

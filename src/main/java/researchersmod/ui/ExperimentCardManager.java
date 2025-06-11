@@ -130,7 +130,7 @@ public class ExperimentCardManager {
         experiments.group.remove(card);
         for (AbstractPower p : Wiz.adp().powers) {
             if(p instanceof ExpUtil.onTerminateInterface){
-                ((ExpUtil.onTerminateInterface) p).onTerminate(p);
+                ((ExpUtil.onTerminateInterface) p).onTerminate();
             }
         }
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
