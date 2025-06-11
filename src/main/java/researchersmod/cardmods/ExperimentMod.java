@@ -30,7 +30,6 @@ public class ExperimentMod extends AbstractCardModifier {
         }
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(card.cardID);
         if (upgraded) return(uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[1]);
-        System.out.println(((ExperimentCard)card).Trial);
         return (uiStrings.TEXT[0] + cardStrings.EXTENDED_DESCRIPTION[0]);
     }
 
