@@ -9,7 +9,7 @@ import researchersmod.powers.BasePower;
 
 public class ExpUtil {
     public interface onExperimentInterface {
-        void onExperiment(AbstractPower power);
+        void onExperiment();
     }
 
     public interface onCompletionInterface {
@@ -18,19 +18,6 @@ public class ExpUtil {
 
     public interface onTerminateInterface {
         void onTerminate(AbstractPower power);
-    }
-
-    public static void tickExperiment(int amt, AbstractPower p) {
-        AbstractCard c = ((BasePower) p).k;
-        if(!CardModifierManager.hasModifier(c, ExperimentMod.ID)) {
-            CardModifierManager.addModifier(c, new ExperimentMod());
-        }
-        p.amount = p.amount - amt;
-        ((ExperimentCard) c).Trial = p.amount;
-    }
-
-    public static void tickExperiment(AbstractPower p) {
-        tickExperiment(0,p);
     }
 
 }

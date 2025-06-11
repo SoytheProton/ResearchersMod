@@ -1,6 +1,5 @@
 package researchersmod.patches;
 
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -11,7 +10,7 @@ import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import researchersmod.Researchers;
-import researchersmod.ui.ExperimentsPanel;
+import researchersmod.ui.ExperimentCardManager;
 
 @SpirePatch(
         clz = UseCardAction.class,
@@ -41,7 +40,7 @@ public class ExperimentCardsPatch {
                 @Override
                 public void update() {
                     isDone = true;
-                    ExperimentsPanel.experimentsPile.group.add(card);
+                    ExperimentCardManager.addExp(card,true);
                 }
             });
             return false;

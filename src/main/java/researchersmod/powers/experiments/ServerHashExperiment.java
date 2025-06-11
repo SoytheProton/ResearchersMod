@@ -16,6 +16,7 @@ import researchersmod.actions.*;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.ExpUtil;
 import researchersmod.util.ExperimentPower;
 import researchersmod.util.Wiz;
@@ -30,24 +31,19 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
     private int B;
 
     public ServerHashExperiment (AbstractCreature owner, int amount, AbstractCard card, int block) {
-        super(POWER_ID, TYPE, TURNBASED, owner, amount);
+        super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
         B = block;
-        k = card;
-        Wiz.atb(new triggerExperiment(this));
-        ExpUtil.tickExperiment(this);
     }
 
     public void terminateEffect(){
         Wiz.atb(new DrawCardAction(1));
-        Wiz.atb(new triggerTerminate(this));
-        Wiz.atb(new killExperiment(k));
+        ExperimentCardManager.remExp(k);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
         Wiz.atb(new GainBlockAction(owner, B));
-        ExpUtil.tickExperiment(1,this);
-        Wiz.atb(new triggerCompletion(this));
+        ExperimentCardManager.tickExperiment(this);
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {

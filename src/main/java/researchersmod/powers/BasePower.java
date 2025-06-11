@@ -31,6 +31,11 @@ public abstract class BasePower extends AbstractPower {
     public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         this(id, powerType, isTurnBased, owner, null, amount);
     }
+
+    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount,AbstractCard card) {
+        this(id, powerType, isTurnBased, owner, null, amount);
+        k = card;
+    }
     public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount) {
         this(id, powerType, isTurnBased, owner, source, amount, true);
     }
@@ -87,5 +92,4 @@ public abstract class BasePower extends AbstractPower {
     }
 
     public AbstractCard k;
-    public Boolean PriorityActivation = false;
 }
