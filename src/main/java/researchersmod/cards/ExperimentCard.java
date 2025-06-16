@@ -1,7 +1,9 @@
 package researchersmod.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
+import com.megacrit.cardcrawl.core.Settings;
 import researchersmod.Researchers;
 import researchersmod.util.CardStats;
 
@@ -29,6 +31,7 @@ public abstract class ExperimentCard extends BaseCard{
         BaseTrial = basetrial;
         Trial = basetrial;
         setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
+        colorCustomVar("Trial", Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR);
     }
 
     public int Trial = 1;
