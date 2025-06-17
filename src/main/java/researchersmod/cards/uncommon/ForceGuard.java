@@ -1,36 +1,37 @@
-package researchersmod.cards.common;
+package researchersmod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.status.BurntDocument;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.experiments.FolderExperiment;
-import researchersmod.powers.experiments.ServerHashExperiment;
+import researchersmod.powers.BDNextTurn;
 import researchersmod.util.CardStats;
 
-public class Folder extends ExperimentCard {
-    public static final String ID = makeID(Folder.class.getSimpleName());
+public class ForceGuard extends BaseCard {
+    public static final String ID = makeID(ForceGuard.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.COMMON,
+            CardRarity.UNCOMMON,
             CardTarget.SELF,
-            0
+            1
     );
-    public Folder() {
-        super(ID, info,2);
-        this.upgradedTrial = 1;
+
+    public ForceGuard() {
+        super(ID, info);
+        setBlock(12,4);
+        this.isEthereal = true;
+        addPhase();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new FolderExperiment(p, this.Trial, this)));
+        addToBot(new GainBlockAction(p, p, this.block));
+        addToBot(new ApplyPowerAction(p, p, new BDNextTurn(p,1),1));
     }
 }
-

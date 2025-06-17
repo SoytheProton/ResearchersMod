@@ -15,7 +15,7 @@ public class BurntDocument extends BaseCard {
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
             AbstractCard.CardType.STATUS,
-            AbstractCard.CardRarity.COMMON,
+            CardRarity.SPECIAL,
             AbstractCard.CardTarget.SELF,
             0
     );

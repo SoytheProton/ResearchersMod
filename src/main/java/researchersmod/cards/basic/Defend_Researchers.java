@@ -24,7 +24,6 @@ public class Defend_Researchers extends BaseCard {
     public Defend_Researchers() {
         super(ID, info);
         setBlock(BLOCK, UPG_BLOCK);
-
         this.tags.add(AbstractCard.CardTags.STARTER_DEFEND);
     }
 

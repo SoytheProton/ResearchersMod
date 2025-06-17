@@ -1,13 +1,13 @@
-package researchersmod.powers;
+package researchersmod.deprecated.powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.powers.BasePower;
 
 public class DocumentationPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(DocumentationPower.class.getSimpleName());

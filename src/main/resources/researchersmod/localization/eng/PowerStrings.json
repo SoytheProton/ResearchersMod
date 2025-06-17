@@ -59,5 +59,16 @@
       "Whenever you play a Power, gain #b",
       " #yBlock."
     ]
+  },
+  "${modID}:WingbeatPower": {
+    "NAME": "Wingbeat",
+    "DESCRIPTIONS": [
+      "Draw #b",
+      " card next turn for each card you #yExhaust this turn.",
+      " cards next turn for each card you #yExhaust this turn.",
+      "\n (Draws ",
+      " card.)",
+      " cards.)"
+    ]
   }
 }

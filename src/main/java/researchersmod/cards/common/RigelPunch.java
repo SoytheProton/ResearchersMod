@@ -24,17 +24,14 @@ public class RigelPunch extends BaseCard {
             AbstractCard.CardTarget.ENEMY,
             1
     );
-    private static final int DAMAGE = 11;
-    private static final int UPG_DAMAGE = 5;
     public RigelPunch() {
         super(ID, info);
-        setDamage(DAMAGE,UPG_DAMAGE);
-        cardsToPreview = new BurntDocument();
+        setDamage(9,3);
+        addPhase();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot((AbstractGameAction)new MakeTempCardInDrawPileAction((AbstractCard)new BurntDocument(), 1, true, true));
     }
 }

@@ -5,9 +5,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
+import researchersmod.util.ExperimentPower;
+import researchersmod.util.Wiz;
 
 public class RSquare extends BaseCard {
     public static final String ID = makeID(RSquare.class.getSimpleName());
@@ -23,11 +26,11 @@ public class RSquare extends BaseCard {
     private static final int UPG_BLOCK = 3;
     private int realBaseBlock;
 
-    private int StatusesinDiscard() {
+    private int ExperimentTrialCount() {
         int i = 0;
-        for (AbstractCard card : AbstractDungeon.player.exhaustPile.group) {
-            if (card.type == CardType.STATUS) {
-                i++;
+        for (AbstractPower power : Wiz.adp().powers) {
+            if (power instanceof ExperimentPower) {
+                i += power.amount;
             }
         }
         return i;
@@ -42,7 +45,7 @@ public class RSquare extends BaseCard {
 
     public void applyPowers() {
         this.realBaseBlock = this.baseBlock;
-        this.baseMagicNumber = StatusesinDiscard();
+        this.baseMagicNumber = ExperimentTrialCount();
         this.baseBlock += baseMagicNumber;
         super.applyPowers();
         this.baseBlock = realBaseBlock;
@@ -51,7 +54,7 @@ public class RSquare extends BaseCard {
 
     public void calculateCardDamage(AbstractMonster mo) {
         this.realBaseBlock = this.baseBlock;
-        this.baseMagicNumber = StatusesinDiscard();
+        this.baseMagicNumber = ExperimentTrialCount();
         this.baseBlock += baseMagicNumber;
         super.calculateCardDamage(mo);
         this.baseBlock = realBaseBlock;

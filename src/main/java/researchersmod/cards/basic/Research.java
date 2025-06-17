@@ -23,11 +23,10 @@ public class Research extends BaseCard {
             AbstractCard.CardType.POWER,
             AbstractCard.CardRarity.BASIC,
             AbstractCard.CardTarget.SELF,
-            1
+            0
     );
 
     private static final int MAGIC = 1;
-    private static final int UPG_MAGIC = 1;
 
     public Research() {
         super(ID, info);

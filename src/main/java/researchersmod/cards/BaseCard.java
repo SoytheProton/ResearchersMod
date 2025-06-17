@@ -3,6 +3,7 @@ package researchersmod.cards;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
+import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.CardStats;
 import researchersmod.util.TriFunction;
 
@@ -422,6 +424,12 @@ public abstract class BaseCard extends CustomCard {
         this.selfRetain = baseRetain;
     }
 
+    protected final void addPhase() {
+        CardModifierManager.addModifier(this, new PhaseMod());
+    }
+
+    protected boolean upgPhase = false;
+
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {
@@ -523,6 +531,8 @@ public abstract class BaseCard extends CustomCard {
             if (baseRetain ^ upgRetain)
                 this.selfRetain = upgRetain;
 
+            if (upgPhase)
+                CardModifierManager.addModifier(this, new PhaseMod());
 
             this.initializeDescription();
         }

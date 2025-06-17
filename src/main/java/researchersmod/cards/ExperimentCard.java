@@ -30,19 +30,19 @@ public abstract class ExperimentCard extends BaseCard{
         tags.add(Researchers.EXPERIMENT);
         BaseTrial = basetrial;
         Trial = basetrial;
-        setCustomVar("Trial",VariableType.MAGIC,Trial,UpgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,upgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
         colorCustomVar("Trial", Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR);
     }
 
     public int Trial = 1;
-    public int UpgradedTrial;
+    public int upgradedTrial;
     public int BaseTrial = 1;
 
     @Override
     public void upgrade() {
         super.upgrade();
         if (!this.upgraded) {
-            this.Trial = this.Trial + this.UpgradedTrial;
+            this.Trial = this.Trial + this.upgradedTrial;
         }
     }
 

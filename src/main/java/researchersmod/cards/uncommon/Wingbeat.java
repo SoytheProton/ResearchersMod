@@ -6,30 +6,28 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.DocumentationPower;
+import researchersmod.deprecated.powers.DocumentationPower;
+import researchersmod.powers.WingbeatPower;
 import researchersmod.util.CardStats;
 
-public class Documentation extends BaseCard {
-    public static final String ID = makeID(Documentation.class.getSimpleName());
+public class Wingbeat extends BaseCard {
+    public static final String ID = makeID(Wingbeat.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             AbstractCard.CardType.POWER,
-            CardRarity.UNCOMMON,
+            AbstractCard.CardRarity.UNCOMMON,
             AbstractCard.CardTarget.SELF,
-            1
+            2
     );
 
-    private static final int M = 5;
-    private static final int UM = 3;
-
-    public Documentation() {
+    public Wingbeat() {
         super(ID, info);
-        setMagic(M, UM);
+        setMagic(1);
+        setEthereal(true,false);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DocumentationPower(p, this.block)));
+        addToBot(new ApplyPowerAction(p, p, new WingbeatPower(p),magicNumber));
     }
 }
-

@@ -23,18 +23,16 @@ public class Development extends ExperimentCard {
             1
     );
 
-    private static final int BLOCK = 6;
-    private static final int UPG_BLOCK = 3;
-
     public Development() {
         super(ID, info,1);
-        setBlock(BLOCK, UPG_BLOCK);
+        setBlock(6, 3);
+        setMagic(1,1);
         shouldUpgradeDescription = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, this.Trial,this)));
+        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, this.Trial,this,this.magicNumber)));
     }
 }

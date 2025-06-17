@@ -37,12 +37,8 @@
   },
   "${modID}:Development": {
     "NAME": "Development",
-    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade a random Basic card in your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade a random card in your draw pile.",
-    "EXTENDED_DESCRIPTION": [
-      "Power: Upgrade a random Basic card in your draw pile.",
-      "Power: Upgrade a random card in your draw pile."
-    ]
+    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade !M! random card in your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Power: Upgrade !M! random cards in your draw pile."
   },
   "${modID}:BurntDocument": {
     "NAME": "Burnt Document",
@@ -54,13 +50,13 @@
     "DESCRIPTION": "Innate. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand.",
     "UPGRADE_DESCRIPTION": "Innate. ${modID}:Phase. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand."
   },
-  "${modID}:Confidence": {
-    "NAME": "Confidence",
-    "DESCRIPTION": "${modID}:Phase. NL Gain !B! Block."
+  "${modID}:HolographicShield": {
+    "NAME": "Holographic Shield",
+    "DESCRIPTION": "Gain !B! Block."
   },
   "${modID}:EnergySlash": {
     "NAME": "Energy Slash",
-    "DESCRIPTION": "${modID}:Phase. NL Deal !D! damage. If you did not play a Skill this turn, Exhaust."
+    "DESCRIPTION": "Deal !D! damage. If you did not play a Skill this turn, Exhaust."
   },
   "${modID}:GravityParry": {
     "NAME": "Gravity Parry",
@@ -113,7 +109,7 @@
   },
   "${modID}:RigelPunch": {
     "NAME": "Rigel Punch",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Burnt *Document into your draw pile."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "${modID}:OldDatamining": {
     "NAME": "Datamining",
@@ -129,7 +125,7 @@
   },
   "${modID}:RSquare": {
     "NAME": "R-Square",
-    "DESCRIPTION": "Gain !B! Block. NL Increases by 1 for every Status in your exhaust pile."
+    "DESCRIPTION": "Gain !B! Block. NL Increases by 1 for every ${modID}:Trial on your active ${modID}:Experiments."
   },
   "${modID}:Adapt": {
     "NAME": "Adapt",
@@ -150,11 +146,11 @@
   },
   "${modID}:RagingBlade": {
     "NAME": "Raging Blade",
-    "DESCRIPTION": "Deal !D! damage. Do !M! damage to all other enemies. Add a *Burn to your hand."
+    "DESCRIPTION": "Deal !D! damage. Do !${modID}:Subdamage! damage to all other enemies. Add a *Burn to your hand."
   },
   "${modID}:ShelvedProject": {
     "NAME": "Shelved Project",
-    "DESCRIPTION": "Deal !D! damage. Exhaust a card in your hand."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - End Turn: Deal !D! damage to all enemies."
   },
   "${modID}:OldCleanUpDuty": {
     "NAME": "Clean-Up Duty",
@@ -186,10 +182,7 @@
   },
   "${modID}:ServerHash": {
     "NAME": "Server Hash",
-    "DESCRIPTION": "Gain !B! Block. NL ${modID}:Experiment !${modID}:Trial! - Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card.",
-    "EXTENDED_DESCRIPTION": [
-      "Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card."
-    ]
+    "DESCRIPTION": "Gain !B! Block. NL ${modID}:Experiment !${modID}:Trial! - Attack: Gain !${modID}:Blocc! Block. NL ${modID}:Terminate: Draw a card."
   },
   "${modID}:dummyattack": {
     "NAME": "Dummy!",
@@ -197,16 +190,36 @@
   },
   "${modID}:Overpower": {
   "NAME": "Overpower",
-  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Power. ${modID}:Terminate: Draw !M! cards.",
-  "EXTENDED_DESCRIPTION": [
-    "Power. ${modID}:Terminate: Draw !M! cards."
-  ]
+  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Power. ${modID}:Terminate: Draw !M! cards."
   },
   "${modID}:Folder": {
     "NAME": "Folder",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust.",
-    "EXTENDED_DESCRIPTION": [
-      "${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust."
-    ]
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:Datamining": {
+    "NAME": "Datamining",
+    "DESCRIPTION": "Draw !M! cards at the start of your next turn."
+  },
+  "${modID}:TrialRun": {
+    "NAME": "Trial Run",
+    "DESCRIPTION": "Draw a card. NL If this card is Exhausted, draw a card for every time it was played this combat."
+  },
+  "${modID}:CleanUpDuty": {
+    "NAME": "Clean Up Duty",
+    "DESCRIPTION": "Gain [E][E]. Add a *Slimed to the top of your deck.",
+    "UPGRADE_DESCRIPTION": "Gain [E][E][E]. Add a *Slimed to the top of your deck."
+  },
+  "${modID}:Wingbeat": {
+    "NAME": "Wingbeat",
+    "DESCRIPTION": "Ethereal. At the start of your turn, draw 1 card for every card you Exhausted the previous turn.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, draw 1 card for every card you Exhausted the previous turn."
+  },
+  "${modID}:ShortCircuit": {
+    "NAME": "Short Circuit",
+    "DESCRIPTION": "Plays when drawn. NL ${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Lose [E]. ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:LaserStrike": {
+    "NAME": "Laser Strike",
+    "DESCRIPTION": "Deals !D! damage. Increase this card's damage by !${modID}:Scaling! for each ${modID}:Termination this combat."
   }
 }

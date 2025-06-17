@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.defect.DamageAllButOneEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -24,14 +25,10 @@ public class RagingBlade extends BaseCard {
             1
     );
 
-    private static final int DAMAGE = 12;
-    private static final int UPG_DAMAGE = 4;
-    private static final int SUBDAMAGE = 6;
-    private static final int UPG_SUBDAMAGE = 2;
     public RagingBlade() {
         super(ID, info);
-        setDamage(DAMAGE, UPG_DAMAGE);
-        setMagic(SUBDAMAGE,UPG_SUBDAMAGE);
+        setDamage(10, 4);
+        setCustomVar("Subdamage",VariableType.DAMAGE,6,4);
         cardsToPreview = new Burn();
     }
 
@@ -40,7 +37,7 @@ public class RagingBlade extends BaseCard {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
           if (mo != m) {
-              addToBot(new DamageAction(mo, new DamageInfo(p, magicNumber, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+              addToBot(new DamageAction(mo, new DamageInfo(p, customVar("Subdamage"), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
           }
         }
         addToBot(new MakeTempCardInHandAction(new Burn(), 1));

@@ -3,6 +3,7 @@ package researchersmod.ui;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
@@ -132,6 +133,7 @@ public class ExperimentCardManager {
         } else {
             Wiz.atb(new DiscardSpecificCardAction(card,experiments));
         }
+        Researchers.expsTerminatedThisCombat++;
     }
 
     public static void tickExp(AbstractPower p) {

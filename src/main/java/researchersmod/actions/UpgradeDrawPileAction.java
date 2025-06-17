@@ -2,7 +2,6 @@ package researchersmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -11,23 +10,29 @@ import researchersmod.util.Wiz;
 
 import java.util.ArrayList;
 
-public class DevelopmentAction extends AbstractGameAction {
+public class UpgradeDrawPileAction extends AbstractGameAction {
 
     private ArrayList<AbstractCard> Upgradable = new ArrayList<>();
     private AbstractCard Card;
     private int amt;
-    private boolean u;
+    private boolean SpecificCardType = false;
+    private AbstractCard.CardRarity rarity;
+
+    public UpgradeDrawPileAction(int amount) {
+        this(amount,false,null);
+    }
 
 
-    public DevelopmentAction(int amount, boolean upgraded) {
+    public UpgradeDrawPileAction(int amount, boolean shouldCheckRarity, AbstractCard.CardRarity Rarity) {
         this.duration = 1.5F;
-        u = upgraded;
+        SpecificCardType = shouldCheckRarity;
+        rarity = Rarity;
         amt = amount;
     }
 
     public void update() {
         for(AbstractCard c : Wiz.adp().drawPile.group) {
-            if(c.canUpgrade() && (u || c.rarity == AbstractCard.CardRarity.BASIC)) {
+            if(c.canUpgrade() && (!SpecificCardType || c.rarity == rarity)) {
                 Upgradable.add(c);
             }
         }

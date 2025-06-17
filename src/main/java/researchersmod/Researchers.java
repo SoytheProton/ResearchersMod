@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,7 +39,10 @@ public class Researchers implements
         EditCardsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostExhaustSubscriber,
+        OnPlayerTurnStartSubscriber,
+        PostBattleSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -56,6 +60,8 @@ public class Researchers implements
         new Researchers();
         ResearchersCharacter.Meta.registerColor();
     }
+
+    public static int expsTerminatedThisCombat;
 
 
     @SpireEnum
@@ -262,5 +268,21 @@ public class Researchers implements
                     if (info.seen)
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                 });
+    }
+
+    public static int CardsExhaustedThisTurn = 0;
+    @Override
+    public void receivePostExhaust(AbstractCard abstractCard) {
+        CardsExhaustedThisTurn++;
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStart() {
+        CardsExhaustedThisTurn = 0;
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        expsTerminatedThisCombat = 0;
     }
 }
