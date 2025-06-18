@@ -26,6 +26,7 @@ public class LaserStrike extends BaseCard {
         super(ID, info);
         setDamage(4,2);
         setCustomVar("Scaling",VariableType.MAGIC,3,1);
+        tags.add(CardTags.STRIKE);
     }
 
     public void applyPowers() {

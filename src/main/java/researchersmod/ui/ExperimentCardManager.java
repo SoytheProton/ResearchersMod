@@ -74,20 +74,20 @@ public class ExperimentCardManager {
         }
     }
 
-    public static void addExperiment(AbstractCard card) {
-        addExp(card);
-    }
-
-    public static void addExperiment(AbstractCard card, boolean playSFX) {
-        addExp(card, playSFX);
-    }
-
-
     public static void addExp(AbstractCard card) {
-        addExp(card, true);
+        addExperiment(card);
     }
 
     public static void addExp(AbstractCard card, boolean playSFX) {
+        addExperiment(card, playSFX);
+    }
+
+
+    public static void addExperiment(AbstractCard card) {
+        addExp(card, true);
+    }
+
+    public static void addExperiment(AbstractCard card, boolean playSFX) {
         card.targetAngle = 0f;
         card.beginGlowing();
         if(!CardModifierManager.hasModifier(card, ExperimentMod.ID)) {
@@ -104,24 +104,24 @@ public class ExperimentCardManager {
         }
     }
 
-    public static void removeExperiment(AbstractCard card) {
-        remExp(card);
-    }
-
-    public static void removeExperiment(AbstractCard card, boolean shouldExhaust) {
-        remExp(card, shouldExhaust);
-    }
-
-
     public static void remExp(AbstractCard card) {
-        remExp(card, false);
+        removeExperiment(card);
+    }
+    public static void remExp(AbstractCard card, boolean shouldExhaust) {
+        removeExperiment(card, shouldExhaust);
     }
 
-    public static void remExp(AbstractCard card,boolean shouldExhaust) {
-        remExp(card, shouldExhaust,false);
+    public static void remExp(AbstractCard card,  boolean shouldExhaust, boolean shouldPurge) {
+        removeExperiment(card, shouldExhaust, shouldPurge);
+    }
+    public static void removeExperiment(AbstractCard card) {
+        removeExperiment(card, false);
+    }
+    public static void removeExperiment(AbstractCard card,boolean shouldExhaust) {
+        removeExperiment(card, shouldExhaust,false);
     }
 
-    public static void remExp(AbstractCard card, boolean shouldExhaust,boolean shouldPurge) {
+    public static void removeExperiment(AbstractCard card, boolean shouldExhaust,boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
             if(p instanceof ExpUtil.onTerminateInterface){
                 ((ExpUtil.onTerminateInterface) p).onTerminate();
@@ -157,7 +157,7 @@ public class ExperimentCardManager {
         tickExperiment(p,1);
     }
     public static void tickExperiment(AbstractPower p, int amt) {
-        tickExperiment(p,1,true);
+        tickExperiment(p,amt,true);
     }
 
     public static void tickExperiment(AbstractPower p, int amt, boolean shouldComplete) {

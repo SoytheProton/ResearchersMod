@@ -27,8 +27,8 @@ public class ForceGuard extends ExperimentCard {
 
     public ForceGuard() {
         super(ID, info,3);
-        setBlock(12,4);
-        setMagic(12,4);
+        setBlock(5,3);
+        setMagic(baseBlock,blockUpgrade);
         this.isEthereal = true;
         addPhase();
     }

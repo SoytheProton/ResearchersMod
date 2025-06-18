@@ -14,7 +14,7 @@
   "experiment",
   "Experiments"
   ],
-  "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be discarded."
+  "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be returned."
   },
   {
     "PROPER_NAME": "Terminate",
