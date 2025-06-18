@@ -117,7 +117,11 @@ public class ExperimentCardManager {
         remExp(card, false);
     }
 
-    public static void remExp(AbstractCard card, boolean shouldExhaust) {
+    public static void remExp(AbstractCard card,boolean shouldExhaust) {
+        remExp(card, shouldExhaust,false);
+    }
+
+    public static void remExp(AbstractCard card, boolean shouldExhaust,boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
             if(p instanceof ExpUtil.onTerminateInterface){
                 ((ExpUtil.onTerminateInterface) p).onTerminate();
@@ -128,11 +132,12 @@ public class ExperimentCardManager {
         card.unhover();
         card.untip();
         card.stopGlowing();
-        if (shouldExhaust) {
+        if (shouldExhaust)
             Wiz.atb(new ExhaustSpecificCardAction(card,experiments));
-        } else {
+        else if (!shouldPurge && !card.hasTag(Researchers.PURGE))
             Wiz.atb(new DiscardSpecificCardAction(card,experiments));
-        }
+        else
+            experiments.removeCard(card);
         Researchers.expsTerminatedThisCombat++;
     }
 

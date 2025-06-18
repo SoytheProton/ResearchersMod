@@ -170,11 +170,14 @@
   },
   "${modID}:EncryptData": {
     "NAME": "Encrypt Data",
-    "DESCRIPTION": "Gain !B! Block. NL Add a *Burnt *Document into your draw pile."
+    "DESCRIPTION": "Exhaust up to !M! cards in your hand. Gain a *Burnt *Document for each card Exhausted.",
+    "EXTENDED_DESCRIPTION": [
+      "Exhaust."
+    ]
   },
   "${modID}:ClipboardSlap": {
     "NAME": "Clipboard Slap",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust the top card of your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust the top card of your discard pile."
   },
   "${modID}:Documentation": {
     "NAME": "Documentation",
@@ -206,12 +209,12 @@
   },
   "${modID}:CleanUpDuty": {
     "NAME": "Clean Up Duty",
-    "DESCRIPTION": "Gain [E][E]. Add a *Slimed to the top of your deck.",
-    "UPGRADE_DESCRIPTION": "Gain [E][E][E]. Add a *Slimed to the top of your deck."
+    "DESCRIPTION": "Gain [E] [E]. Add a *Slimed to the top of your deck.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. Add a *Slimed to the top of your deck."
   },
   "${modID}:Wingbeat": {
     "NAME": "Wingbeat",
-    "DESCRIPTION": "Ethereal. At the start of your turn, draw 1 card for every card you Exhausted the previous turn.",
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, draw 1 card for every card you Exhausted the previous turn.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, draw 1 card for every card you Exhausted the previous turn."
   },
   "${modID}:ShortCircuit": {
@@ -220,6 +223,10 @@
   },
   "${modID}:LaserStrike": {
     "NAME": "Laser Strike",
-    "DESCRIPTION": "Deals !D! damage. Increase this card's damage by !${modID}:Scaling! for each ${modID}:Termination this combat."
+    "DESCRIPTION": "Deal !D! damage. Increase this card's damage by !${modID}:Scaling! for each ${modID}:Termination this combat."
+  },
+  "${modID}:ForceGuard": {
+    "NAME": "Force Guard",
+    "DESCRIPTION": "Ethereal. NL ${modID}:Experiment !${modID}:Trial! - 1 Skill: Gain !B! Block."
   }
 }

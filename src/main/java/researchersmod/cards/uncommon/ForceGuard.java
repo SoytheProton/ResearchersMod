@@ -7,12 +7,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.status.BurntDocument;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.BDNextTurn;
+import researchersmod.powers.experiments.ForceGuardExperiment;
+import researchersmod.powers.experiments.ServerHashExperiment;
 import researchersmod.util.CardStats;
 
-public class ForceGuard extends BaseCard {
+public class ForceGuard extends ExperimentCard {
     public static final String ID = makeID(ForceGuard.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
@@ -23,15 +26,15 @@ public class ForceGuard extends BaseCard {
     );
 
     public ForceGuard() {
-        super(ID, info);
+        super(ID, info,3);
         setBlock(12,4);
+        setMagic(12,4);
         this.isEthereal = true;
         addPhase();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new ApplyPowerAction(p, p, new BDNextTurn(p,1),1));
+        addToBot(new ApplyPowerAction(p, p, new ForceGuardExperiment(p, this.Trial, this, this.magicNumber)));
     }
 }

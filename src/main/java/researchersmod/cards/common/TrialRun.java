@@ -22,7 +22,7 @@ public class TrialRun extends BaseCard {
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.SELF,
-            1
+            0
     );
     public TrialRun() {
         super(ID, info);

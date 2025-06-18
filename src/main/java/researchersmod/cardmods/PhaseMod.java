@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.cards.ExperimentCard;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -89,10 +90,12 @@ public class PhaseMod extends AbstractCardModifier {
                 tmp.target_x = Settings.WIDTH / 2.0F + 200.0F * Settings.xScale;
                 tmp.target_y = Settings.HEIGHT / 2.0F;
                 tmp.targetAngle = 0.0F;
-                tmp.purgeOnUse = true;
+                if(card instanceof ExperimentCard)
+                    tmp.tags.add(Researchers.PURGE);
+                else
+                    tmp.purgeOnUse = true;
                 tmp.applyPowers();
-                addToTop((AbstractGameAction)new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true));
-                // tmp.use(AbstractDungeon.player, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
+                addToTop((new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
                 for (AbstractPower p : AbstractDungeon.player.powers)
                     if (p instanceof onPhaseInterface)
                         ((onPhaseInterface) p).onPhase();

@@ -14,7 +14,7 @@
   "experiment",
   "Experiments"
   ],
-  "DESCRIPTION": "This card will remain in play. Upon meeting its conditions, it will activate the effects, and can be activated up to the amount of uses it has. After all uses, it will return to play."
+  "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be discarded."
   },
   {
     "PROPER_NAME": "Terminate",
@@ -25,7 +25,7 @@
       "terminated",
       "Terminated"
     ],
-    "DESCRIPTION": "When an #yExperiment card is used up and discards itself."
+    "DESCRIPTION": "When an #yExperiment card is used up and removes itself from play."
   },
   {
     "PROPER_NAME": "Complete",
@@ -45,6 +45,6 @@
       "Trials",
       "trails"
     ],
-    "DESCRIPTION": "The amount of uses an #yExperiment card has."
+    "DESCRIPTION": "The amount of uses an #yExperiment card has left."
   }
 ]
