@@ -39,7 +39,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     @Override
     public void onCompletion(AbstractPower power) {
         if(!Objects.equals(power.ID, POWER_ID)) {
-            ExperimentCardManager.tickExperiment(this,-1);
+            ExperimentCardManager.tickExperiment(power,-1);
             completionEffect();
             if (this.amount <= 0) {
                 terminateEffect();

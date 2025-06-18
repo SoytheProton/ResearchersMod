@@ -168,8 +168,8 @@ public class ExperimentCardManager {
             for(int i = amt; i>0; i--) {
                 c.flash();
                 for(AbstractPower power : Wiz.adp().powers){
-                    if(p instanceof ExpUtil.onCompletionInterface){
-                        ((ExpUtil.onCompletionInterface) power).onCompletion(power);
+                    if(power instanceof ExpUtil.onCompletionInterface){
+                        ((ExpUtil.onCompletionInterface) power).onCompletion(p);
                     }
                 }
             }

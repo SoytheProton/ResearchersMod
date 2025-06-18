@@ -24,13 +24,14 @@ public class Folder extends ExperimentCard {
             0
     );
     public Folder() {
-        super(ID, info,2);
-        this.upgradedTrial = 1;
+        super(ID, info,2,1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new FolderExperiment(p, this.Trial, this)));
     }
+
+
 }
 

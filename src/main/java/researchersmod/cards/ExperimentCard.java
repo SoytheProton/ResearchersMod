@@ -14,23 +14,28 @@ import static researchersmod.util.TextureLoader.getCardTextureString;
 
 public abstract class ExperimentCard extends BaseCard{
     public ExperimentCard(String ID, CardStats info, int basetrial) {
-        this(ID, info, basetrial, getCardTextureString(removePrefix(ID), info.cardType));
+        this(ID, info, basetrial, 0, getCardTextureString(removePrefix(ID), info.cardType));
     }
 
-    public ExperimentCard(String ID, CardStats info, int basetrial, String cardImage) {
-        this(ID, info.baseCost, info.cardType, info.cardTarget, info.cardRarity, info.cardColor, basetrial, cardImage);
+    public ExperimentCard(String ID, CardStats info, int basetrial, int upgradedTrial) {
+        this(ID, info, basetrial, upgradedTrial, getCardTextureString(removePrefix(ID), info.cardType));
     }
 
-    public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial) {
-        this(ID, cost, cardType, target, rarity, color, basetrial, getCardTextureString(removePrefix(ID), cardType));
+    public ExperimentCard(String ID, CardStats info, int basetrial, int upgradedTrial, String cardImage) {
+        this(ID, info.baseCost, info.cardType, info.cardTarget, info.cardRarity, info.cardColor, basetrial, upgradedTrial, cardImage);
     }
 
-    public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial, String cardImage) {
+    public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial, int upgradedTrial) {
+        this(ID, cost, cardType, target, rarity, color, basetrial, upgradedTrial, getCardTextureString(removePrefix(ID), cardType));
+    }
+
+    public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial, int upgradedtrial, String cardImage) {
         super(ID, cost, cardType, target, rarity, color, cardImage);
         tags.add(Researchers.EXPERIMENT);
         BaseTrial = basetrial;
         Trial = basetrial;
-        setCustomVar("Trial",VariableType.MAGIC,Trial,upgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
+        upgradedTrial = upgradedtrial;
+        setCustomVar("Trial",VariableType.MAGIC,Trial,(card, m, base) -> ((ExperimentCard)card).Trial);
         colorCustomVar("Trial", Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR);
     }
 
@@ -40,10 +45,11 @@ public abstract class ExperimentCard extends BaseCard{
 
     @Override
     public void upgrade() {
-        super.upgrade();
-        if (!this.upgraded) {
-            this.Trial = this.Trial + this.upgradedTrial;
+        if (!upgraded && upgradedTrial != 0) {
+            this.Trial = this.BaseTrial + this.upgradedTrial;
+            this.BaseTrial = this.BaseTrial + this.upgradedTrial;
         }
+        super.upgrade();
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
 
 import java.util.UUID;
@@ -32,6 +33,12 @@ public class ExperimentMod extends AbstractCardModifier {
         String cutOff = desc.substring(desc.indexOf(" - ") + 1);
         if (upgraded) return(uiStrings.TEXT[0] + cutOff);
         return (uiStrings.TEXT[0] + cutOff);
+    }
+
+    @Override
+    public void onInitialApplication(AbstractCard card) {
+        card.cost = -2; // note: track this cost and reset it on removal later
+        this.identifier(card);
     }
 
     @Override
