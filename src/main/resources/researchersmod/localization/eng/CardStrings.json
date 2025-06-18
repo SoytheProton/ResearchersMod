@@ -228,5 +228,9 @@
   "${modID}:ForceGuard": {
     "NAME": "Force Guard",
     "DESCRIPTION": "Ethereal. NL ${modID}:Experiment !${modID}:Trial! - 1 Skill: Gain !B! Block."
+  },
+  "${modID}:Analyze": {
+    "NAME": "Analyze",
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 3 ${modID}:Completions: Permanently increase this card's damage by !M!. ${modID}:Terminate: Exhaust."
   }
 }

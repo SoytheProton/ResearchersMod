@@ -34,7 +34,9 @@
       "Completed",
       "completed",
       "Completion",
-      "completion"
+      "completion",
+      "Completions",
+      "completions"
     ],
     "DESCRIPTION": "When an #yExperiment card meets its conditions and activates its effects."
   },

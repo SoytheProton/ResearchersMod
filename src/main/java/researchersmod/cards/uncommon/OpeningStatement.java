@@ -32,18 +32,12 @@ public class OpeningStatement extends BaseCard {
         this.isInnate = true;
         this.isEthereal = true;
         this.cardsToPreview = new BurntDocument();
+        this.upgPhase = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
         addToBot(new ApplyPowerAction(p, p, new BDNextTurn(p,1),1));
-    }
-
-    public void upgrade() {
-        if (!this.upgraded) {
-            super.upgrade();
-            CardModifierManager.addModifier(this, new PhaseMod());
-        }
     }
 }
