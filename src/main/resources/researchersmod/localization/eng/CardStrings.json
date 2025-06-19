@@ -56,7 +56,7 @@
   },
   "${modID}:EnergySlash": {
     "NAME": "Energy Slash",
-    "DESCRIPTION": "Deal !D! damage. If you did not play a Skill this turn, Exhaust."
+    "DESCRIPTION": "Deal !D! damage. If you did not play a card this turn, Exhaust."
   },
   "${modID}:GravityParry": {
     "NAME": "Gravity Parry",

@@ -25,7 +25,7 @@ public class EnergySlash extends BaseCard {
 
 
     private static final int DAMAGE = 9;
-    private boolean skillcheck = true;
+
     public EnergySlash() {
         super(ID, info);
         setDamage(DAMAGE);
@@ -34,15 +34,11 @@ public class EnergySlash extends BaseCard {
     }
 
     public void triggerOnGlowCheck() {
-        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty() || ((AbstractCard)AbstractDungeon.actionManager.cardsPlayedThisTurn
-                .get(AbstractDungeon.actionManager.cardsPlayedThisTurn
-                        .size() - 1)).type != AbstractCard.CardType.SKILL && skillcheck) {
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-            skillcheck = true;
             this.exhaust = true;
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            skillcheck = false;
             this.exhaust = false;
         }
     }

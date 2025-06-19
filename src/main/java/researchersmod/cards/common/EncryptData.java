@@ -25,7 +25,7 @@ public class EncryptData extends BaseCard {
     );
     public EncryptData() {
         super(ID, info);
-        setMagic(2);
+        setMagic(2,1);
         // This card is pissing me off...
         // I'm the original
         //                                                      EncryptData

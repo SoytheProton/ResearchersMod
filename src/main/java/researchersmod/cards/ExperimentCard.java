@@ -35,7 +35,7 @@ public abstract class ExperimentCard extends BaseCard{
         BaseTrial = basetrial;
         Trial = basetrial;
         upgradedTrial = upgradedtrial;
-        setCustomVar("Trial",VariableType.MAGIC,Trial,(card, m, base) -> ((ExperimentCard)card).Trial);
+        setCustomVar("Trial",VariableType.MAGIC,Trial,upgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
         colorCustomVar("Trial", Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR);
     }
 

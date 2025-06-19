@@ -18,6 +18,8 @@ public class ExperimentMod extends AbstractCardModifier {
     public static String ID = "researchersmod:ExperimentModifier";
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 
+    private int OriginalCost = -2;
+
     @Override
     public AbstractCardModifier makeCopy() {
         return new ExperimentMod();
@@ -37,8 +39,14 @@ public class ExperimentMod extends AbstractCardModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.cost = -2; // note: track this cost and reset it on removal later
+        OriginalCost = card.cost;
+        card.cost = -2; // Unplayable so it looks cool or smth
         this.identifier(card);
+    }
+
+    @Override
+    public void onRemove(AbstractCard card) {
+        card.cost = OriginalCost;
     }
 
     @Override
