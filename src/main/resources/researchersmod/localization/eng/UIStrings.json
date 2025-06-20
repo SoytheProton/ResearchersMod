@@ -45,5 +45,16 @@
     "TEXT": [
       "${modID}:Experiment [#87ceebff]!${modID}:Trial![] "
     ]
+  },
+  "${modID}:EthericCardModifier": {
+    "TEXT": [
+      "${modID}:Etheric NL %s",
+      "${modID}:Etheric %s",
+      "%s ${modID}:Etheric %s",
+      "%s NL ${modID}:Etheric NL %s",
+      "%s NL ${modID}:Etheric %s",
+      "%s NL ${modID}:Etheric",
+      "%s${modID}:Etheric %s"
+    ]
   }
 }

@@ -1,11 +1,14 @@
 package researchersmod.cards.basic;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
+import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -30,6 +33,9 @@ public class Strike_Researchers extends BaseCard {
 
         tags.add(CardTags.STARTER_STRIKE);
         tags.add(CardTags.STRIKE);
+        EthericMod etheric = new EthericMod();
+        etheric.editEtheric(3);
+        CardModifierManager.addModifier(this,etheric);
     }
 
     @Override

@@ -48,5 +48,12 @@
       "trails"
     ],
     "DESCRIPTION": "The amount of uses an #yExperiment card has left."
+  },
+  {
+    "PROPER_NAME": "Etheric",
+    "NAMES": [
+      "etheric"
+    ],
+    "DESCRIPTION": "If this card is in your hand at the end of the turn, this count goes down by #b1. At #b0, it is exhausted."
   }
 ]
