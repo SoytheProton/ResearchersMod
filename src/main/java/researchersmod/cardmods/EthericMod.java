@@ -34,7 +34,7 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
-        int addNL = 0;
+        /* int addNL = 0;
         if (card.retain) addNL = 1;
         if (rawDescription.contains("Ethereal. ") && card.isEthereal) {
             String cardDescription = rawDescription.replaceFirst("Ethereal.", getReturnString(2,key));
@@ -53,7 +53,8 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
             return String.format(getReturnString(3+addNL,key), cardDescription[0] + "Unplayable.", cardDescription[1]);
         } else if (card.cost == -2) {
             return String.format(getReturnString(5,key), rawDescription);
-        } else return String.format(getReturnString(addNL,key), rawDescription);
+        } else return String.format(getReturnString(addNL,key), rawDescription); */
+        return String.format("Etheric " + key + " " + rawDescription);
     }
 
     private String getReturnString(int index, String key) {
