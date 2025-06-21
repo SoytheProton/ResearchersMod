@@ -59,8 +59,8 @@
   },
   "${modID}:ExhaustiveCardModifier": {
     "TEXT": [
-      "%s  NL ${modID}:Exhaustive",
-      "%s ${modID}:Exhaustive"
+      "  NL Exhaustive !stslib:ex!.",
+      "Exhaustive !stslib:ex!."
     ]
   }
 }

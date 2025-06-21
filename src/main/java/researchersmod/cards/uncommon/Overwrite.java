@@ -1,21 +1,18 @@
 package researchersmod.cards.uncommon;
 
-import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.ExhaustiveMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.status.BurntDocument;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 
 public class Overwrite extends BaseCard {
     public static final String ID = makeID(Overwrite.class.getSimpleName());
@@ -43,15 +40,18 @@ public class Overwrite extends BaseCard {
         }));
     }
 
+
     @Override
     public void upgrade() {
-        super.upgrade();
         if(!this.upgraded) {
+            super.upgrade();
             this.exhaust = false; // just to make sure
+            // ExhaustiveVariable.setBaseValue(this,2);
             ExhaustiveMod mod = new ExhaustiveMod();
             mod.editExhaustive(2);
             CardModifierManager.addModifier(this, mod);
         }
+
     }
 }
 

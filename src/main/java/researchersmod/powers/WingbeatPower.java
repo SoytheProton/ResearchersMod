@@ -24,6 +24,7 @@ public class WingbeatPower extends BasePower {
     @Override
     public void atEndOfRound() {
         ExhaustedPreviousTurn = Researchers.CardsExhaustedThisTurn * this.amount;
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
     @Override
@@ -39,19 +40,19 @@ public class WingbeatPower extends BasePower {
 
     public void updateDescription() {
         if(amount == 1) {
-            if(ExhaustedPreviousTurn == 0)
+            if(Researchers.CardsExhaustedThisTurn == 0)
                 this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-            else if (ExhaustedPreviousTurn == 1)
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + ExhaustedPreviousTurn + DESCRIPTIONS[4];
+            else if (Researchers.CardsExhaustedThisTurn == 1)
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[4];
             else
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + ExhaustedPreviousTurn + DESCRIPTIONS[5];
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[5];
         } else {
-            if(ExhaustedPreviousTurn == 0)
+            if(Researchers.CardsExhaustedThisTurn == 0)
                 this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
-            else if (ExhaustedPreviousTurn == 1)
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + ExhaustedPreviousTurn + DESCRIPTIONS[4];
+            else if (Researchers.CardsExhaustedThisTurn == 1)
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[4];
             else
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + ExhaustedPreviousTurn + DESCRIPTIONS[5];
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[5];
         }
     }
 }

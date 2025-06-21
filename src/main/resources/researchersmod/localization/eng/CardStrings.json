@@ -156,9 +156,13 @@
     "NAME": "Clean-Up Duty",
     "DESCRIPTION": "Draw !M! cards. NL Add a *Slimed to your hand."
   },
-  "${modID}:ConcealedCarry": {
+  "${modID}:OldConcealedCarry": {
     "NAME": "Concealed Carry",
     "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, apply !M! Weak. NL Otherwise, apply !M! Vulnerable."
+  },
+  "${modID}:ConcealedCarry": {
+    "NAME": "Concealed Carry",
+    "DESCRIPTION": "Deal !D! damage. NL If this card is Exhausted, gain !M! Strength."
   },
   "${modID}:ShuttleKick": {
     "NAME": "Shuttle Kick",
@@ -205,7 +209,11 @@
   },
   "${modID}:TrialRun": {
     "NAME": "Trial Run",
-    "DESCRIPTION": "Draw a card. NL If this card is Exhausted, draw a card for every time it was played this combat."
+    "DESCRIPTION": "Draw a card. NL If this card is Exhausted, draw a card for every time it was played this combat.",
+    "EXTENDED_DESCRIPTION":[
+      "(Played !M! time.)",
+      "(Played !M! times.)"
+    ]
   },
   "${modID}:CleanUpDuty": {
     "NAME": "Clean Up Duty",
@@ -252,5 +260,9 @@
     "EXTENDED_DESCRIPTION": [
       "add Phase to."
     ]
+  },
+  "${modID}:RemnantResearch": {
+    "NAME": "Remnant Research",
+    "DESCRIPTION": "Add 2 *Burnt *Documents to your hand. At the end of your turn, gain !B! Block for each card Exhausted this turn. NL Exhaust."
   }
 }

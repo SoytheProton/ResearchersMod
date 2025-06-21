@@ -70,5 +70,13 @@
       " card.)",
       " cards.)"
     ]
+  },
+  "${modID}:RemnantResearchPower": {
+    "NAME": "Remnant Research",
+    "DESCRIPTIONS": [
+      "Gain #b%d #yBlock for every card #yExhausted this turn.",
+      "\n (%d cards #yExhausted this turn.)",
+      "\n (%d card #yExhausted this turn.)"
+    ]
   }
 }

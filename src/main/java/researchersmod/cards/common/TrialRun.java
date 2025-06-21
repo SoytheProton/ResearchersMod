@@ -26,8 +26,18 @@ public class TrialRun extends BaseCard {
     );
     public TrialRun() {
         super(ID, info);
-        setMagic(1);
+        setMagic(0);
         this.upgPhase = true;
+    }
+
+    private int timesPlayedThisCombat() {
+        int i = 0;
+        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisCombat) {
+            if(c == this) {
+                i++;
+            }
+        }
+        return i;
     }
 
     @Override
@@ -35,14 +45,28 @@ public class TrialRun extends BaseCard {
         addToBot(new DrawCardAction(p, 1));
     }
 
+    public void applyPowers() {
+        if (timesPlayedThisCombat() > 1)
+            this.rawDescription =  cardStrings.DESCRIPTION + " NL " + cardStrings.EXTENDED_DESCRIPTION[1];
+        else if (timesPlayedThisCombat() == 1)
+            this.rawDescription =  cardStrings.DESCRIPTION + " NL " + cardStrings.EXTENDED_DESCRIPTION[0];
+        else
+            this.rawDescription = cardStrings.DESCRIPTION;
+        this.baseMagicNumber = timesPlayedThisCombat();
+        initializeDescription();
+        super.applyPowers();
+    }
+
+    public void onMoveToDiscard() {
+        applyPowers();
+    }
+
+    public void triggerOnEndOfPlayerTurn() {
+        applyPowers();
+    }
+
     @Override
     public void triggerOnExhaust() {
-        int i = 0;
-        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisCombat) {
-            if(c == this) {
-                i++;
-            }
-        }
-        addToBot(new DrawCardAction(Wiz.adp(),i));
+        addToBot(new DrawCardAction(Wiz.adp(),timesPlayedThisCombat()));
     }
 }
