@@ -1,6 +1,7 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.Researchers;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class BetterEtherealMod extends AbstractCardModifier {
     public static String ID = "researchersmod:EtherealCardModifier";
@@ -18,12 +20,18 @@ public class BetterEtherealMod extends AbstractCardModifier {
 
     @Override
     public boolean shouldApply(AbstractCard card) {
-        return !card.isEthereal;
+        return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         int addNL = 0;
+        if(rawDescription.contains("Ethereal. ") || CardModifierManager.getModifiers(card,BetterEtherealMod.ID).size() > 1)
+            return rawDescription;
+        if(CardModifierManager.hasModifier(card,EthericMod.ID)) {
+            CardModifierManager.removeModifiersById(card,EthericMod.ID,true);
+            card.isEthereal = true;
+        }
         if (card.retain) addNL = 1;
         if (rawDescription.contains("Phase. ") && card.hasTag(Researchers.PHASE)) {
             int i = rawDescription.indexOf("Phase. ");

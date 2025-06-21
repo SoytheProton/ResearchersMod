@@ -56,5 +56,11 @@
       "%s NL ${modID}:Etheric",
       "%s${modID}:Etheric %s"
     ]
+  },
+  "${modID}:ExhaustiveCardModifier": {
+    "TEXT": [
+      "%s  NL ${modID}:Exhaustive",
+      "%s ${modID}:Exhaustive"
+    ]
   }
 }

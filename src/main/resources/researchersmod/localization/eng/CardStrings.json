@@ -48,7 +48,7 @@
   "${modID}:OpeningStatement": {
     "NAME": "Opening Statement",
     "DESCRIPTION": "Innate. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. ${modID}:Phase. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand."
+    "UPGRADE_DESCRIPTION": "Innate. Ethereal. NL Gain !B! Block. Next turn, add a *Burnt *Document into your hand."
   },
   "${modID}:HolographicShield": {
     "NAME": "Holographic Shield",
@@ -72,8 +72,8 @@
   },
   "${modID}:IonSurge": {
     "NAME": "Ion Surge",
-    "DESCRIPTION": "Unplayable. NL ${modID}:Phase. Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random.",
-    "UPGRADE_DESCRIPTION": "${modID}:Phase. Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random."
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random.",
+    "UPGRADE_DESCRIPTION": "Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random."
   },
   "${modID}:O5Command": {
     "NAME": "O5 Command",
@@ -232,5 +232,25 @@
   "${modID}:Analyze": {
     "NAME": "Analyze",
     "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 3 ${modID}:Completions: Permanently increase this card's damage by !M!. ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:PlasmicEnergy": {
+    "NAME": "Plasmic Energy",
+    "DESCRIPTION": "Unplayable. Gain [E] next turn."
+  },
+  "${modID}:CutThroughLight": {
+    "NAME": "Cut Through Light",
+    "DESCRIPTION": "Ethereal. Deal !D! damage, then add ${modID}:Phase to this card."
+  },
+  "${modID}:FerrousBlade": {
+    "NAME": "Ferrous Blade",
+    "DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade that costs an additional [E] this turn.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade+ that costs an additional [E] this turn."
+  },
+  "${modID}:Overwrite": {
+    "NAME": "Overwrite",
+    "DESCRIPTION": "Choose a card in your hand to add ${modID}:Phase to. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "add Phase to."
+    ]
   }
 }

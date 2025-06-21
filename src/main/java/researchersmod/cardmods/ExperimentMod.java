@@ -1,6 +1,7 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
@@ -42,6 +43,10 @@ public class ExperimentMod extends AbstractCardModifier {
         OriginalCost = card.cost;
         card.cost = -2; // Unplayable so it looks cool or smth
         this.identifier(card);
+    }
+
+    public boolean shouldApply(AbstractCard card) {
+        return (!CardModifierManager.hasModifier(card,ExperimentMod.ID));
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
+import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.Researchers;
 import researchersmod.util.Wiz;
@@ -28,18 +28,18 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
 
     @Override
     public boolean shouldApply(AbstractCard card) {
-        return !card.isEthereal;
+        return (!card.isEthereal || !CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
-        /* int addNL = 0;
+        int addNL = 0;
         if (card.retain) addNL = 1;
-        if (rawDescription.contains("Ethereal. ") && card.isEthereal) {
+        /* if (rawDescription.contains("Ethereal. ") && card.isEthereal) {
             String cardDescription = rawDescription.replaceFirst("Ethereal.", getReturnString(2,key));
             return String.format(cardDescription);
-        }
+        } */
         if (rawDescription.contains("Phase. ") && card.hasTag(Researchers.PHASE)) {
             int i = rawDescription.indexOf("Phase. ");
             String[] cardDescription = {rawDescription.substring(0, i),rawDescription.substring(i+1)};
@@ -53,37 +53,43 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
             return String.format(getReturnString(3+addNL,key), cardDescription[0] + "Unplayable.", cardDescription[1]);
         } else if (card.cost == -2) {
             return String.format(getReturnString(5,key), rawDescription);
-        } else return String.format(getReturnString(addNL,key), rawDescription); */
-        return String.format("Etheric " + key + " " + rawDescription);
+        } else return String.format(getReturnString(addNL,key), rawDescription);
     }
 
     private String getReturnString(int index, String key) {
         String uistring = uiStrings.TEXT[index];
-        String returnString = uistring.substring(0,uistring.indexOf("Etheric") + 7) + " " + ethericValue + ".";
+        String returnString = uistring.substring(0,uistring.indexOf("Etheric") + 7) + " " + key + ".";
         return returnString + uistring.substring(uistring.indexOf("Etheric") + 7);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.identifier(card);
+        DynamicDynamicVariable.registerVariable(card,this);
     }
 
     public void atEndOfTurn(AbstractCard card, CardGroup group) {
-        this.ethericValue = ethericValue - 1;
-        if(ethericValue == 0) {
-            card.isEthereal = true;
+        if(group == Wiz.adp().hand) {
+            this.ethericValue = ethericValue - 1;
+            if (ethericValue == 0) {
+                card.isEthereal = true;
+            }
         }
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new EthericMod();
+        EthericMod cardMod = new EthericMod();
+        cardMod.baseEthericValue = baseEthericValue;
+        cardMod.ethericValue = ethericValue;
+        return cardMod;
     }
 
     @Override
     public void onRemove(AbstractCard card) {
         card.isEthereal = false;
     }
+
 
 
     @Override
@@ -98,7 +104,7 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
 
     @Override
     public boolean isModified(AbstractCard abstractCard) {
-        return false;
+        return ethericValue != baseEthericValue;
     }
 
     @Override

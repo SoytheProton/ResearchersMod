@@ -22,6 +22,7 @@ import static java.util.regex.Pattern.compile;
 public class PhaseMod extends AbstractCardModifier {
     public static String ID = "researchersmod:PhaseCardModifier";
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    private boolean isFirstApplication = false;
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
@@ -30,7 +31,7 @@ public class PhaseMod extends AbstractCardModifier {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         int addNL = 0;
-        if (rawDescription.contains("Phase. ") || pat.matcher(rawDescription).find()) {
+        if ((rawDescription.contains("Phase. ") || pat.matcher(rawDescription).find()) && !isFirstApplication) {
             /* int PhaseCounter = CardModifierManager.getModifiers(card, ID).size();
             String a = "a b";
             String[] cardDescriptions = a.split(" ");
@@ -46,10 +47,7 @@ public class PhaseMod extends AbstractCardModifier {
             } */
             addNL = 1;
         }
-        if (rawDescription.contains("Phase. ") && CardModifierManager.getModifiers(card, ID).get(0) == this) {
-            return rawDescription;
-        }
-        if (card.isEthereal || card.retain) addNL = 1;
+        if (card.isEthereal || card.retain || CardModifierManager.hasModifier(card, EthericMod.ID)) addNL = 1;
         if (rawDescription.contains("Innate. ") && card.isInnate) {
             String[] cardDescription = rawDescription.split("Innate. ", 2);
             return String.format(uiStrings.TEXT[2], cardDescription[0] + "Innate.", cardDescription[1]);
@@ -63,6 +61,8 @@ public class PhaseMod extends AbstractCardModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        if(CardModifierManager.getModifiers(card,PhaseMod.ID).size() == 1)
+            isFirstApplication = true;
         card.tags.add(Researchers.PHASE);
         this.identifier(card);
     }
