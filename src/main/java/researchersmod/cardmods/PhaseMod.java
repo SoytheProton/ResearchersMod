@@ -91,7 +91,7 @@ public class PhaseMod extends AbstractCardModifier {
                 tmp.target_y = Settings.HEIGHT / 2.0F;
                 tmp.targetAngle = 0.0F;
                 if(card instanceof ExperimentCard)
-                    tmp.tags.add(Researchers.PURGE);
+                    tmp.tags.add(Researchers.PURGEEXP);
                 else
                     tmp.purgeOnUse = true;
                 tmp.applyPowers();

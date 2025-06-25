@@ -60,6 +60,4 @@ public abstract class ExperimentCard extends BaseCard{
         return retVal;
     }
 
-    public boolean shouldUpgradeDescription = false;
-
 }

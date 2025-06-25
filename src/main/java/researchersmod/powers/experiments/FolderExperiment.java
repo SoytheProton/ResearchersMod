@@ -10,13 +10,13 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.ExperimentPower;
-import researchersmod.util.ExpUtil;
+import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.util.Wiz;
 
 import java.util.Objects;
 
-public class FolderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExpUtil.onCompletionInterface {
+public class FolderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.onCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(FolderExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
@@ -28,7 +28,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,true);
+        ExperimentCardManager.remExp(k,this,true);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 

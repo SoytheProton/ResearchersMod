@@ -27,7 +27,6 @@ public class Development extends ExperimentCard {
         super(ID, info,1);
         setBlock(6, 3);
         setMagic(1,1);
-        shouldUpgradeDescription = true;
     }
 
     @Override

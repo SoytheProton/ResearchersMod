@@ -38,7 +38,7 @@
       "Completions",
       "completions"
     ],
-    "DESCRIPTION": "When an #yExperiment card meets its conditions and activates its effects."
+    "DESCRIPTION": "When #b1 or more #yExperiment card meets its conditions and activates its effects."
   },
   {
     "PROPER_NAME": "Trial",

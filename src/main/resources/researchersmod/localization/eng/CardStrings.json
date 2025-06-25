@@ -264,5 +264,25 @@
   "${modID}:RemnantResearch": {
     "NAME": "Remnant Research",
     "DESCRIPTION": "Add 2 *Burnt *Documents to your hand. At the end of your turn, gain !B! Block for each card Exhausted this turn. NL Exhaust."
+  },
+  "${modID}:Hypothesis": {
+    "NAME": "Hypothesis",
+    "DESCRIPTION": "Ethereal. NL The first a card is Exhausted each turn, gain !M! Strength."
+  },
+  "${modID}:Organization": {
+    "NAME": "Organization",
+    "DESCRIPTION": "Choose an Active ${modID}:Experiment to gain \"Draw 2 cards\" and ${modID}:Terminate: Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose an Active ${modID}:Experiment to gain \"Draw 2 cards.\"",
+    "EXTENDED_DESCRIPTION": [
+      "I have no Active Experiments."
+    ]
+  },
+  "${modID}:AppliedInformation": {
+    "NAME": "Applied Information",
+    "DESCRIPTION": "Draw !M! cards. NL On ${modID}:Termination, lower its cost by 1 this combat."
+  },
+  "${modID}:Dematerialize": {
+    "NAME": "Dematerialize",
+    "DESCRIPTION": "Deal !D! damage. If there is a Status in your hand, gain [E] and draw a card."
   }
 }

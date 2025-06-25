@@ -9,6 +9,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglFileHandle;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.ModInfo;
 import com.evacipated.cardcrawl.modthespire.Patcher;
@@ -24,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.targeting.CardTargeting;
 import researchersmod.relics.BaseRelic;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.KeywordInfo;
@@ -62,15 +64,18 @@ public class Researchers implements
     }
 
     public static int expsTerminatedThisCombat;
+    public static int expsCompletedThisCombat;
 
 
     @SpireEnum
     public static AbstractCard.CardTags PHASE;
     @SpireEnum
     public static AbstractCard.CardTags EXPERIMENT;
+    @SpireEnum
+    public static AbstractCard.CardTags PURGEEXP;
 
     @SpireEnum
-    public static AbstractCard.CardTags PURGE;
+    public static AbstractCard.CardTags EXHAUSTEXP;
 
     public Researchers() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
@@ -87,6 +92,8 @@ public class Researchers implements
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+
+        CustomTargeting.registerCustomTargeting(CardTargeting.EXPERIMENT, new CardTargeting());
     }
 
     /*----------Localization----------*/
@@ -287,5 +294,6 @@ public class Researchers implements
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         expsTerminatedThisCombat = 0;
+        expsCompletedThisCombat = 0;
     }
 }

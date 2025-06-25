@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public class UpgradeDrawPileAction extends AbstractGameAction {
 
-    private ArrayList<AbstractCard> Upgradable = new ArrayList<>();
-    private AbstractCard Card;
+    private ArrayList<AbstractCard> upgradable = new ArrayList<>();
+    private AbstractCard card;
     private int amt;
-    private boolean SpecificCardType = false;
+    private boolean specificCardType = false;
     private AbstractCard.CardRarity rarity;
 
     public UpgradeDrawPileAction(int amount) {
@@ -25,26 +25,27 @@ public class UpgradeDrawPileAction extends AbstractGameAction {
 
     public UpgradeDrawPileAction(int amount, boolean shouldCheckRarity, AbstractCard.CardRarity Rarity) {
         this.duration = 1.5F;
-        SpecificCardType = shouldCheckRarity;
+        specificCardType = shouldCheckRarity;
         rarity = Rarity;
         amt = amount;
     }
 
     public void update() {
         for(AbstractCard c : Wiz.adp().drawPile.group) {
-            if(c.canUpgrade() && (!SpecificCardType || c.rarity == rarity)) {
-                Upgradable.add(c);
+            if(c.canUpgrade() && (!specificCardType || c.rarity == rarity)) {
+                upgradable.add(c);
             }
         }
-        int y = Upgradable.size();
+        int y = upgradable.size();
         for (int i = amt; i > 0;i--) {
-            if (Upgradable.isEmpty()) break;
-            Card = Upgradable.get(AbstractDungeon.cardRandomRng.random(Upgradable.size()-1));
-            Upgradable.remove(Card);
-            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(Card));
-            Card.upgrade();
-            Card.applyPowers();
-            Card.superFlash();
+            if (upgradable.isEmpty()) break;
+            card = upgradable.get(AbstractDungeon.cardRandomRng.random(upgradable.size()-1));
+            upgradable.remove(card);
+            card.upgrade();
+            card.applyPowers();
+            AbstractCard copy = card.makeStatEquivalentCopy();
+            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(copy));
+            copy.superFlash();
         }
         if (y > 0) AbstractDungeon.effectsQueue.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
         this.isDone = true;

@@ -9,11 +9,10 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.UpgradeDrawPileAction;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.CalcUtil;
-import researchersmod.util.ExperimentPower;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
 public class ForceGuardExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -28,7 +27,7 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k);
+        ExperimentCardManager.remExp(k,this);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 

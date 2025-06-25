@@ -29,6 +29,9 @@ public class Wiz {
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
     }
+    public static AbstractPlayer p() {
+        return AbstractDungeon.player;
+    }
 
     public static void forAllCardsInList(Consumer<AbstractCard> consumer, ArrayList<AbstractCard> cardsList) {
         for (AbstractCard c : cardsList) {

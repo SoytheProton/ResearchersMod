@@ -59,8 +59,14 @@
   },
   "${modID}:ExhaustiveCardModifier": {
     "TEXT": [
-      "  NL Exhaustive !stslib:ex!.",
+      "   NL Exhaustive !stslib:ex!.",
       "Exhaustive !stslib:ex!."
+    ]
+  },
+  "${modID}:ExpDescriptionHelper": {
+    "TEXT": [
+      "${modID}:Completion: ",
+      "${modID}:Terminate: "
     ]
   }
 }

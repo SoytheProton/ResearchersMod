@@ -1,6 +1,5 @@
 package researchersmod.powers.experiments;
 
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -10,12 +9,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.actions.*;
-import researchersmod.cardmods.ExperimentMod;
-import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.ExpUtil;
-import researchersmod.util.ExperimentPower;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
 public class DevelopmentExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -30,7 +26,7 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k);
+        ExperimentCardManager.remExp(k,this);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 

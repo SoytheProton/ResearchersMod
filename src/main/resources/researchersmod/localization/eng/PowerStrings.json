@@ -78,5 +78,30 @@
       "\n (%d cards #yExhausted this turn.)",
       "\n (%d card #yExhausted this turn.)"
     ]
+  },
+  "${modID}:HypothesisPower": {
+    "NAME": "Hypothesis",
+    "DESCRIPTIONS": [
+      "The first time you #yExhaust a card each turn, gain #b%d #yStrength."
+    ]
+  },
+  "${modID}:OrganizationExpAttachment": {
+    "NAME": "Organization",
+    "DESCRIPTIONS": [
+      "Draw 2 cards.",
+      "Exhaust."
+    ]
+  },
+  "${modID}:ResearchGrants": {
+    "NAME": "Research Grants",
+    "DESCRIPTIONS": [
+      "Reduce #yExperiment cards' costs to 0 for the next #b%d turn%s."
+    ]
+  },
+  "${modID}:FreeExperiments": {
+    "NAME": "Free Experiments",
+    "DESCRIPTIONS": [
+      "#yExperiment cards' costs are reduced to 0 for #b%d turn%s."
+    ]
   }
 }

@@ -1,14 +1,9 @@
 package researchersmod.powers;
 
-import basemod.devcommands.draw.Draw;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.util.ExperimentPower;
 import researchersmod.util.Wiz;
 
 public class WingbeatPower extends BasePower {
@@ -16,6 +11,7 @@ public class WingbeatPower extends BasePower {
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
     private int ExhaustedPreviousTurn = 0;
+    private boolean firstCardExhaustedThisTurn = false;
 
     public WingbeatPower(AbstractCreature owner) {
         super(POWER_ID, TYPE, TURNBASED, owner, 1);
@@ -25,6 +21,7 @@ public class WingbeatPower extends BasePower {
     public void atEndOfRound() {
         ExhaustedPreviousTurn = Researchers.CardsExhaustedThisTurn * this.amount;
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        firstCardExhaustedThisTurn = false;
     }
 
     @Override
@@ -35,24 +32,28 @@ public class WingbeatPower extends BasePower {
 
     @Override
     public void onExhaust(AbstractCard card) {
+        firstCardExhaustedThisTurn = true;
         updateDescription();
     }
 
     public void updateDescription() {
+        int i = Researchers.CardsExhaustedThisTurn;
+        if(firstCardExhaustedThisTurn)
+            i++;
         if(amount == 1) {
-            if(Researchers.CardsExhaustedThisTurn == 0)
+            if(i == 0)
                 this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-            else if (Researchers.CardsExhaustedThisTurn == 1)
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[4];
+            else if (i == 1)
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + i + DESCRIPTIONS[4];
             else
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[5];
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + i + DESCRIPTIONS[5];
         } else {
-            if(Researchers.CardsExhaustedThisTurn == 0)
+            if(i == 0)
                 this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
-            else if (Researchers.CardsExhaustedThisTurn == 1)
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[4];
+            else if (i == 1)
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + i + DESCRIPTIONS[4];
             else
-                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + Researchers.CardsExhaustedThisTurn + DESCRIPTIONS[5];
+                this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + i + DESCRIPTIONS[5];
         }
     }
 }

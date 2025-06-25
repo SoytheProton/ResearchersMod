@@ -1,4 +1,4 @@
-package researchersmod.util;
+package researchersmod.powers.interfaces;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 

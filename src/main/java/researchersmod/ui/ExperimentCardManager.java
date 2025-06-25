@@ -7,12 +7,10 @@ import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
-import researchersmod.util.ExpUtil;
+import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.util.Wiz;
-import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -95,8 +93,8 @@ public class ExperimentCardManager {
         }
         experiments.addToTop(card);
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof ExpUtil.onExperimentInterface){
-                ((ExpUtil.onExperimentInterface) p).onExperiment();
+            if(p instanceof ExperimentInterfaces.onExperimentInterface){
+                ((ExperimentInterfaces.onExperimentInterface) p).onExperiment();
             }
         }
         if (playSFX) {
@@ -104,27 +102,27 @@ public class ExperimentCardManager {
         }
     }
 
-    public static void remExp(AbstractCard card) {
-        removeExperiment(card);
+    public static void remExp(AbstractCard card, AbstractPower power) {
+        removeExperiment(card,power);
     }
-    public static void remExp(AbstractCard card, boolean shouldExhaust) {
-        removeExperiment(card, shouldExhaust);
-    }
-
-    public static void remExp(AbstractCard card,  boolean shouldExhaust, boolean shouldPurge) {
-        removeExperiment(card, shouldExhaust, shouldPurge);
-    }
-    public static void removeExperiment(AbstractCard card) {
-        removeExperiment(card, false);
-    }
-    public static void removeExperiment(AbstractCard card,boolean shouldExhaust) {
-        removeExperiment(card, shouldExhaust,false);
+    public static void remExp(AbstractCard card, AbstractPower power, boolean shouldExhaust) {
+        removeExperiment(card, power,shouldExhaust);
     }
 
-    public static void removeExperiment(AbstractCard card, boolean shouldExhaust,boolean shouldPurge) {
+    public static void remExp(AbstractCard card, AbstractPower power,  boolean shouldExhaust, boolean shouldPurge) {
+        removeExperiment(card, power,shouldExhaust, shouldPurge);
+    }
+    public static void removeExperiment(AbstractCard card, AbstractPower power) {
+        removeExperiment(card,power, false);
+    }
+    public static void removeExperiment(AbstractCard card, AbstractPower power,boolean shouldExhaust) {
+        removeExperiment(card, power, shouldExhaust,false);
+    }
+
+    public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust,boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof ExpUtil.onTerminateInterface){
-                ((ExpUtil.onTerminateInterface) p).onTerminate();
+            if(p instanceof ExperimentInterfaces.onTerminateInterface){
+                ((ExperimentInterfaces.onTerminateInterface) p).onTerminate(power);
             }
         }
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
@@ -132,12 +130,14 @@ public class ExperimentCardManager {
         card.unhover();
         card.untip();
         card.stopGlowing();
-        if (shouldExhaust)
-            Wiz.atb(new ExhaustSpecificCardAction(card,experiments));
-        else if (!shouldPurge && !card.hasTag(Researchers.PURGE))
-            Wiz.atb(new DiscardSpecificCardAction(card,experiments));
-        else
+        if(shouldPurge || card.hasTag(Researchers.PURGEEXP))
             experiments.removeCard(card);
+        else if(experiments.group.contains(card)) {
+            if (shouldExhaust || card.hasTag(Researchers.EXHAUSTEXP))
+                Wiz.atb(new ExhaustSpecificCardAction(card, experiments));
+            else
+                Wiz.atb(new DiscardSpecificCardAction(card, experiments));
+        }
         Researchers.expsTerminatedThisCombat++;
     }
 
@@ -167,9 +167,10 @@ public class ExperimentCardManager {
         if(shouldComplete && amt > 0) {
             for(int i = amt; i>0; i--) {
                 c.flash();
+                Researchers.expsCompletedThisCombat++;
                 for(AbstractPower power : Wiz.adp().powers){
-                    if(power instanceof ExpUtil.onCompletionInterface){
-                        ((ExpUtil.onCompletionInterface) power).onCompletion(p);
+                    if(power instanceof ExperimentInterfaces.onCompletionInterface){
+                        ((ExperimentInterfaces.onCompletionInterface) power).onCompletion(p);
                     }
                 }
             }

@@ -4,19 +4,16 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.UpgradeDrawPileAction;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.ExperimentPower;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
 public class ShelvedProjectExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -31,7 +28,7 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k);
+        ExperimentCardManager.remExp(k,this);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 

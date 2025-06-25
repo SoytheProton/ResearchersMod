@@ -92,4 +92,5 @@ public abstract class BasePower extends AbstractPower {
     }
 
     public AbstractCard k;
+    public AbstractPower attachedPower = null;
 }

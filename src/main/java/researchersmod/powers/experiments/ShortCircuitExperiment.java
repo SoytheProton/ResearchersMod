@@ -3,25 +3,19 @@ package researchersmod.powers.experiments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.ExpUtil;
-import researchersmod.util.ExperimentPower;
+import researchersmod.powers.interfaces.ExperimentInterfaces;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
-import java.util.Objects;
-
-public class ShortCircuitExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExpUtil.onCompletionInterface {
+public class ShortCircuitExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.onCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(ShortCircuitExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
@@ -31,7 +25,7 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,true);
+        ExperimentCardManager.remExp(k,this,true);
         Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
