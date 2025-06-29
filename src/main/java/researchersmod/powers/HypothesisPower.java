@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
 import researchersmod.util.Wiz;
 
@@ -27,12 +28,14 @@ public class HypothesisPower extends BasePower {
     @Override
     public void onExhaust(AbstractCard card) {
         if(!triggeredThisTurn) {
-            Wiz.atb(new ApplyPowerAction(this.owner,this.owner, new GainStrengthPower(this.owner,this.amount)));
+            flash();
+            Wiz.atb(new ApplyPowerAction(this.owner,this.owner, new StrengthPower(this.owner,this.amount),this.amount));
+            triggeredThisTurn = true;
         }
     }
 
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0],this.amount) + String.format(DESCRIPTIONS[1],this.amount);
+        this.description = String.format(DESCRIPTIONS[0],this.amount);
     }
     // possibly dynamically change icon depending on if it has triggered or not
 }

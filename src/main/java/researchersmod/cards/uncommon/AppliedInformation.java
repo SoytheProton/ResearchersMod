@@ -25,16 +25,10 @@ public class AppliedInformation extends BaseCard {
 
     public AppliedInformation() {
         super(ID, info);
-        setMagic(3);
+        setMagic(3,1);
     }
-
-    public void applyPowers() {
-        int cost = 4 - Researchers.expsTerminatedThisCombat;
-        if (cost < 0)
-            cost = 0;
-        this.cost = cost;
-        if(this.cost != 4)
-            this.isCostModified = true;
+    public void configureCostsOnNewCard() {
+        updateCost(--Researchers.expsTerminatedThisCombat);
     }
 
     @Override

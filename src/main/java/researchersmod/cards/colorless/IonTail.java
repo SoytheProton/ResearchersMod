@@ -13,9 +13,9 @@ import researchersmod.util.CardStats;
 public class IonTail extends BaseCard {
     public static final String ID = makeID(IonTail.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            ResearchersCharacter.Meta.CARD_COLOR,
+            CardColor.COLORLESS,
             CardType.POWER,
-            CardRarity.UNCOMMON,
+            CardRarity.SPECIAL,
             CardTarget.SELF,
             1
     );

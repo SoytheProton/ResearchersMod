@@ -38,6 +38,6 @@ public class Overpower extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new ApplyPowerAction(p, p, new OverpowerExperiment(p, 2, this,this.magicNumber),1));
+        addToBot(new ApplyPowerAction(p, p, new OverpowerExperiment(p, this.Trial, this,this.magicNumber),1));
     }
 }

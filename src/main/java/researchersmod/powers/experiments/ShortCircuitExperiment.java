@@ -15,6 +15,8 @@ import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
+import java.util.Objects;
+
 public class ShortCircuitExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.onCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(ShortCircuitExperiment.class.getSimpleName());
@@ -29,13 +31,15 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
     }
 
     public void completionEffect(){
-        ExperimentCardManager.tickExperiment(this);
         Wiz.atb(new LoseEnergyAction(1));
+        ExperimentCardManager.tickExperiment(this);
     }
 
     @Override
     public void onCompletion(AbstractPower power) {
+        if(!Objects.equals(power.ID, POWER_ID)) {
             completionEffect();
+        }
     }
 
 }

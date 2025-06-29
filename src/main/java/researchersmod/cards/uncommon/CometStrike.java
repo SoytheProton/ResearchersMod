@@ -25,7 +25,7 @@ public class CometStrike extends BaseCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            0
+            2
     );
 
     public CometStrike() {

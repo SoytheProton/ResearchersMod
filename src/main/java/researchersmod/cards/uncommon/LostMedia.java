@@ -19,7 +19,7 @@ public class LostMedia extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            0
     );
 
     public LostMedia() {

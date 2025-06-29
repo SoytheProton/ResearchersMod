@@ -10,9 +10,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.OccultFields;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -84,7 +86,6 @@ public class PhaseMod extends AbstractCardModifier {
         addToTop(new AbstractGameAction() {
             @Override
             public void update() {
-                card.flash();
                 AbstractCard tmp = card.makeSameInstanceOf();
                 tmp.current_y = -200.0F * Settings.scale;
                 tmp.target_x = Settings.WIDTH / 2.0F + 200.0F * Settings.xScale;
@@ -94,6 +95,7 @@ public class PhaseMod extends AbstractCardModifier {
                     tmp.tags.add(Researchers.PURGEEXP);
                 else
                     tmp.purgeOnUse = true;
+                OccultFields.isOccult.set(tmp,true);
                 tmp.applyPowers();
                 addToTop((new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
                 for (AbstractPower p : AbstractDungeon.player.powers)

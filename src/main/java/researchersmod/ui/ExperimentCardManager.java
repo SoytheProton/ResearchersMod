@@ -176,12 +176,12 @@ public class ExperimentCardManager {
         AbstractCard c = ((BasePower) p).k;
         p.amount = p.amount - amt;
         ((ExperimentCard) c).Trial = p.amount;
-        if(shouldComplete && amt > 0) {
-            for(int i = amt; i>0; i--) {
+        if(shouldComplete && amt > 0 && p.amount >= 0) {
+            for (int i = amt; i > 0; i--) {
                 c.flash();
                 Researchers.expsCompletedThisCombat++;
-                for(AbstractPower power : Wiz.adp().powers){
-                    if(power instanceof ExperimentInterfaces.onCompletionInterface){
+                for (AbstractPower power : Wiz.adp().powers) {
+                    if (power instanceof ExperimentInterfaces.onCompletionInterface) {
                         ((ExperimentInterfaces.onCompletionInterface) power).onCompletion(p);
                     }
                 }

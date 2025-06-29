@@ -48,7 +48,7 @@
     ]
   },
   "${modID}:ExhaustNextPower": {
-    "NAME": "Quick Jab",
+    "NAME": "Uplink",
     "DESCRIPTIONS": [
       "The next card you play #yExhausts."
     ]
@@ -121,7 +121,7 @@
   "${modID}:VolcanicResearchPower": {
     "NAME": "Volcanic Research",
     "DESCRIPTIONS": [
-      "At the start of your turn, add #b%d #yBurn%s to your draw pile. \n Whenever you draw a #yStatus, draw #b%d card%s and gain #b%d Strength."
+      "Whenever you draw a #yStatus, draw #b%d card%s and gain #b%d Strength."
     ]
   },
   "${modID}:PhaseDrawPower": {

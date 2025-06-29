@@ -22,7 +22,6 @@ public class Hypothesis extends BaseCard {
     public Hypothesis() {
         super(ID, info);
         setMagic(1,1);
-        setEthereal(true);
     }
 
     @Override

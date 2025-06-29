@@ -2,8 +2,10 @@ package researchersmod.cards.colorless;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
@@ -26,6 +28,7 @@ public class SubspaceStrike extends BaseCard {
         tags.add(CardTags.STRIKE);
         this.retain = true;
         this.exhaust = true;
+        cardsToPreview = new Burn();
     }
 
     public void applyPowers() {
@@ -44,6 +47,10 @@ public class SubspaceStrike extends BaseCard {
     public void onMoveToDiscard() {
         this.rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
+    }
+
+    public void triggerOnExhaust() {
+        Wiz.atb(new MakeTempCardInDiscardAction(new Burn(),1));
     }
 
 

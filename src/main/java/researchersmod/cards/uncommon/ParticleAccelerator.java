@@ -33,4 +33,8 @@ public class ParticleAccelerator extends BaseCard {
         if(upgraded)
             Wiz.atb(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber),magicNumber));
     }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return false;
+    }
 }

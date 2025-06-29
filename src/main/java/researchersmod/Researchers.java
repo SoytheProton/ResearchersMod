@@ -27,6 +27,7 @@ import org.scannotation.AnnotationDB;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.targeting.CardTargeting;
 import researchersmod.relics.BaseRelic;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.KeywordInfo;
 import researchersmod.util.TextureLoader;
@@ -44,7 +45,8 @@ public class Researchers implements
         PostInitializeSubscriber,
         PostExhaustSubscriber,
         OnPlayerTurnStartSubscriber,
-        PostBattleSubscriber {
+        PostBattleSubscriber,
+        PostDeathSubscriber{
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -67,16 +69,11 @@ public class Researchers implements
     public static int expsCompletedThisCombat;
 
 
-    @SpireEnum
     public static AbstractCard.CardTags PHASE;
-    @SpireEnum
     public static AbstractCard.CardTags EXPERIMENT;
-    @SpireEnum
     public static AbstractCard.CardTags PURGEEXP;
-
-    @SpireEnum
     public static AbstractCard.CardTags EXHAUSTEXP;
-
+    public static AbstractCard.CardTags ISPHASING;
     public Researchers() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");
@@ -296,5 +293,10 @@ public class Researchers implements
     public void receivePostBattle(AbstractRoom abstractRoom) {
         expsTerminatedThisCombat = 0;
         expsCompletedThisCombat = 0;
+    }
+
+    @Override
+    public void receivePostDeath() {
+        ExperimentCardManager.experiments.group.clear();
     }
 }

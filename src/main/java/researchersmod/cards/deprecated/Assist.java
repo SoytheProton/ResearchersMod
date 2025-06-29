@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.ComboPower;
+import researchersmod.powers.deprecated.ComboPower;
 import researchersmod.util.CardStats;
 
 public class Assist extends BaseCard {

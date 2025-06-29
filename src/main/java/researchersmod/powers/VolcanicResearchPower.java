@@ -33,11 +33,6 @@ public class VolcanicResearchPower extends BasePower {
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
-        Wiz.atb(new MakeTempCardInDrawPileAction(new Burn(),this.amount2,true,true));
-    }
-
-    @Override
     public void onCardDraw(AbstractCard card) {
         if(card.type == AbstractCard.CardType.STATUS) {
             Wiz.atb(new ApplyPowerAction(owner,owner, new StrengthPower(owner,this.amount)));
@@ -49,6 +44,6 @@ public class VolcanicResearchPower extends BasePower {
         String plural = "s";
         if(this.amount2 == 1)
             plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount2,plural,this.amount2,plural,this.amount);
+        this.description = String.format(plural,this.amount2,plural,this.amount);
     }
 }

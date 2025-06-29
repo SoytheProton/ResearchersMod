@@ -63,7 +63,7 @@ public class Enthalpy extends BaseCard {
         }
         if (!hasPhaseCard()) {
             canUse = false;
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
+            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         }
         return canUse;
     }

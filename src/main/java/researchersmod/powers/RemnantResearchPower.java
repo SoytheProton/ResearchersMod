@@ -19,7 +19,8 @@ public class RemnantResearchPower extends BasePower {
         firstCardExhaustedThisTurn = true;
     }
     @Override
-    public void atEndOfRound() {
+    public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
+        flash();
         Wiz.atb(new GainBlockAction(this.owner,Researchers.CardsExhaustedThisTurn * this.amount));
         Wiz.atb(new RemoveSpecificPowerAction(this.owner, this.owner,this));
         firstCardExhaustedThisTurn = false;

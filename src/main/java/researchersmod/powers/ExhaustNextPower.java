@@ -25,7 +25,8 @@ public class ExhaustNextPower extends BasePower {
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         this.flash();
-        action.exhaustCard = true;
+        if(!card.exhaust)
+            action.exhaustCard = true;
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 

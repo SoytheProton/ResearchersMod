@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
+import researchersmod.util.Wiz;
 
 public class ClipboardSlap extends BaseCard {
     public static final String ID = makeID(ClipboardSlap.class.getSimpleName());
@@ -33,6 +34,7 @@ public class ClipboardSlap extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToBot(new ExhaustSpecificCardAction(AbstractDungeon.player.discardPile.getTopCard(), AbstractDungeon.player.discardPile));
+        if(!Wiz.p().discardPile.isEmpty())
+            addToBot(new ExhaustSpecificCardAction(p.discardPile.getTopCard(), p.discardPile));
     }
 }
