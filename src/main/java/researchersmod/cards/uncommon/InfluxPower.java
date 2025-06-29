@@ -19,12 +19,9 @@ public class InfluxPower extends BaseCard {
             1
     );
 
-    private static final int MAGIC = 3;
-    private static final int UPG_MAGIC = 1;
-
     public InfluxPower() {
         super(ID, info);
-        setMagic(MAGIC,UPG_MAGIC);
+        setMagic(2,1);
     }
 
     @Override

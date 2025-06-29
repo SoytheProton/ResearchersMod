@@ -12,7 +12,7 @@ import researchersmod.util.Wiz;
 public class FreeExperimentsPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(FreeExperimentsPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
-    private static final boolean TURNBASED = false;
+    private static final boolean TURNBASED = true;
 
     public FreeExperimentsPower(AbstractCreature owner, int amt) {
         super(POWER_ID, TYPE, TURNBASED, owner, amt);

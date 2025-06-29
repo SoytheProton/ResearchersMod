@@ -424,8 +424,14 @@ public abstract class BaseCard extends CustomCard {
         this.selfRetain = baseRetain;
     }
 
-    protected final void addPhase() {
-        CardModifierManager.addModifier(this, new PhaseMod());
+    protected final void setPhase(boolean basePhase) {
+        setPhase(basePhase,false);
+    }
+
+    protected final void setPhase(boolean basePhase, boolean upgPhase) {
+        if(basePhase)
+            CardModifierManager.addModifier(this, new PhaseMod());
+        this.upgPhase = upgPhase;
     }
 
     protected boolean upgPhase = false;

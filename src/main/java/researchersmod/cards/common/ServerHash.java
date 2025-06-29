@@ -20,21 +20,16 @@ public class ServerHash extends ExperimentCard {
             CardTarget.SELF,
             1
     );
-    private static final int BLOCK = 4;
-    private static final int UPG_BLOCK = 2;
-
-
 
     public ServerHash() {
         super(ID, info,2);
-        setBlock(2);
-        setCustomVar("Blocc", VariableType.BLOCK, BLOCK, UPG_BLOCK);
-        setMagic(BLOCK,UPG_BLOCK);
+        setBlock(4,2);
+        setCustomVar("Blocc", VariableType.BLOCK, 2);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.Trial, this, this.magicNumber),1));
+        addToBot(new GainBlockAction(p, p, customVar("Blocc")));
+        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.Trial, this, this.baseBlock)));
     }
 }

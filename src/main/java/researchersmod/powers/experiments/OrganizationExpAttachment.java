@@ -50,14 +50,14 @@ public class OrganizationExpAttachment extends BasePower implements InvisiblePow
         if(power == attachedPower) {
             if(!upgraded)
                 ((BasePower) power).k.tags.add(Researchers.EXHAUSTEXP);
-            addToBot(new RemoveSpecificPowerAction(Wiz.adp(),Wiz.adp(),this));
+            addToBot(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         }
     }
 
     @Override
     public String ModifyDescription(String rawDescription) {
         String returnString = ExpDescriptionHelper.completionEffect(rawDescription,DESCRIPTIONS[0]);
-        if(!upgraded && !returnString.contains("Exhaust."))
+        if(!upgraded && !returnString.contains(": Exhaust."))
             returnString = ExpDescriptionHelper.terminationEffect(returnString,DESCRIPTIONS[1]);
         return returnString;
     }

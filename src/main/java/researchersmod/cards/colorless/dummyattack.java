@@ -27,9 +27,6 @@ public class dummyattack extends BaseCard {
         super(ID, info);
 
         setDamage(DAMAGE, UPG_DAMAGE);
-
-        tags.add(AbstractCard.CardTags.STARTER_STRIKE);
-        tags.add(AbstractCard.CardTags.STRIKE);
     }
 
     @Override

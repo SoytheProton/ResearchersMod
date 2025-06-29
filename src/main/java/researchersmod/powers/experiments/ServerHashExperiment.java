@@ -34,7 +34,6 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
     public void terminateEffect(){
         Wiz.atb(new DrawCardAction(1));
         ExperimentCardManager.remExp(k,this);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -43,12 +42,8 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK) {
+        if (card.type == AbstractCard.CardType.ATTACK)
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
-        }
     }
 
 }

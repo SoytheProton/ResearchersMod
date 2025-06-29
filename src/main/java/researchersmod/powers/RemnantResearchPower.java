@@ -20,8 +20,8 @@ public class RemnantResearchPower extends BasePower {
     }
     @Override
     public void atEndOfRound() {
-        Wiz.atb(new GainBlockAction(Wiz.adp(),Researchers.CardsExhaustedThisTurn * this.amount));
-        Wiz.atb(new RemoveSpecificPowerAction(Wiz.adp(), Wiz.adp(),this));
+        Wiz.atb(new GainBlockAction(this.owner,Researchers.CardsExhaustedThisTurn * this.amount));
+        Wiz.atb(new RemoveSpecificPowerAction(this.owner, this.owner,this));
         firstCardExhaustedThisTurn = false;
     }
 

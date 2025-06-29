@@ -18,12 +18,12 @@ public class RemnantResearch extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            2
+            1
     );
 
     public RemnantResearch() {
         super(ID, info);
-        setBlock(4,2);
+        setBlock(2,1);
         this.cardsToPreview = new BurntDocument();
         this.exhaust = true;
     }
@@ -31,6 +31,6 @@ public class RemnantResearch extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new MakeTempCardInHandAction(new BurntDocument(), 2));
-        addToBot(new ApplyPowerAction(p, p, new RemnantResearchPower(p,this.block)));
+        addToBot(new ApplyPowerAction(p, p, new RemnantResearchPower(p,this.block),this.block));
     }
 }

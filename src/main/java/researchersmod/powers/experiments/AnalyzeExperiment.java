@@ -33,7 +33,6 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this,true);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -47,9 +46,6 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
         if(ExperimentTracker == 0) {
             ExperimentTracker = 3;
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
         }
     }
 

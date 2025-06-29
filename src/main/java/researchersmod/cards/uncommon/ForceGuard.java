@@ -22,19 +22,17 @@ public class ForceGuard extends ExperimentCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            1
+            2
     );
 
     public ForceGuard() {
         super(ID, info,3);
         setBlock(5,3);
-        setMagic(baseBlock,blockUpgrade);
-        this.isEthereal = true;
-        addPhase();
+        setPhase(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ForceGuardExperiment(p, this.Trial, this, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ForceGuardExperiment(p, this.Trial, this, this.baseBlock)));
     }
 }

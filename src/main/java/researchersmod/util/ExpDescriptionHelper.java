@@ -33,8 +33,10 @@ public class ExpDescriptionHelper {
             String[] description = {rawDescription.substring(0,index),rawDescription.substring(index +1)};
             description[0] = description[0] + ": " + addedEffect;
             returnString = description[0] + description[1];
-        } else if (colonInstance <= 1) { // Completion or no effect
+        } else if (colonInstance == 1) { // Completion
             returnString = rawDescription + " " + addedEffect;
+        } else if (colonInstance == 0) { // No effect
+            returnString = rawDescription.substring(0,rawDescription.lastIndexOf(".")) + ": " + addedEffect;
         } return returnString;
     }
 

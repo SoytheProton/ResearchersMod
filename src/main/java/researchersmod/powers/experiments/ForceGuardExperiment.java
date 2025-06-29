@@ -28,7 +28,6 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -39,9 +38,6 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.SKILL) {
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
         }
     }
 

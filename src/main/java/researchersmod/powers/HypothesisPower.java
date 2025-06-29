@@ -27,7 +27,7 @@ public class HypothesisPower extends BasePower {
     @Override
     public void onExhaust(AbstractCard card) {
         if(!triggeredThisTurn) {
-            Wiz.atb(new ApplyPowerAction(Wiz.adp(),Wiz.adp(), new GainStrengthPower(Wiz.adp(),this.amount)));
+            Wiz.atb(new ApplyPowerAction(this.owner,this.owner, new GainStrengthPower(this.owner,this.amount)));
         }
     }
 

@@ -27,7 +27,7 @@ public class RigelPunch extends BaseCard {
     public RigelPunch() {
         super(ID, info);
         setDamage(9,3);
-        addPhase();
+        setPhase(true);
     }
 
     @Override

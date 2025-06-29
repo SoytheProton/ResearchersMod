@@ -29,7 +29,6 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this,true);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -41,9 +40,6 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
         if(!Objects.equals(power.ID, POWER_ID)) {
             ExperimentCardManager.tickExperiment(power,-1);
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
         }
     }
 }

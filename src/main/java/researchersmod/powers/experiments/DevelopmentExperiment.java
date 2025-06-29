@@ -27,7 +27,6 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -38,9 +37,6 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.POWER) {
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
         }
     }
 

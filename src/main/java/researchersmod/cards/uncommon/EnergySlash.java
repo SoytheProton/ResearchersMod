@@ -20,15 +20,13 @@ public class EnergySlash extends BaseCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            2
+            1
     );
 
 
-    private static final int DAMAGE = 9;
-
     public EnergySlash() {
         super(ID, info);
-        setDamage(DAMAGE);
+        setDamage(6);
         CardModifierManager.addModifier(this, new PhaseMod());
         this.exhaust = true;
     }

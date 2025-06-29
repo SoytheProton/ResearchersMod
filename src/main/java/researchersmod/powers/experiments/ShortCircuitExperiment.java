@@ -26,7 +26,6 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this,true);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
@@ -37,9 +36,6 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
     @Override
     public void onCompletion(AbstractPower power) {
             completionEffect();
-            if (this.amount <= 0) {
-                terminateEffect();
-            }
     }
 
 }

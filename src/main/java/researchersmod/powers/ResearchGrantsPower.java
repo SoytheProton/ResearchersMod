@@ -21,8 +21,8 @@ public class ResearchGrantsPower extends BasePower {
     @Override
     public void atStartOfTurn() {
         flash();
-        Wiz.atb(new ApplyPowerAction(Wiz.adp(),Wiz.adp(),new FreeExperimentsPower(Wiz.p(),1)));
-        Wiz.atb(new ReducePowerAction(Wiz.p(),Wiz.p(),POWER_ID,1));
+        Wiz.atb(new ApplyPowerAction(this.owner,this.owner,new FreeExperimentsPower(this.owner,1)));
+        Wiz.atb(new ReducePowerAction(this.owner,this.owner,POWER_ID,1));
     }
 
     public void updateDescription() {

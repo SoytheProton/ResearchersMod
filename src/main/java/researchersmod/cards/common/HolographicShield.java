@@ -24,7 +24,7 @@ public class HolographicShield extends BaseCard {
     public HolographicShield() {
         super(ID, info);
         setBlock(BLOCK, UPG_BLOCK);
-        addPhase();
+        setPhase(true);
     }
 
     @Override

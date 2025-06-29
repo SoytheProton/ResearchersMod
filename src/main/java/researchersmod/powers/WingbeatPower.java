@@ -13,8 +13,8 @@ public class WingbeatPower extends BasePower {
     private int ExhaustedPreviousTurn = 0;
     private boolean firstCardExhaustedThisTurn = false;
 
-    public WingbeatPower(AbstractCreature owner) {
-        super(POWER_ID, TYPE, TURNBASED, owner, 1);
+    public WingbeatPower(AbstractCreature owner,int amt) {
+        super(POWER_ID, TYPE, TURNBASED, owner, amt);
         updateDescription();
     }
     @Override
@@ -26,7 +26,7 @@ public class WingbeatPower extends BasePower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new DrawCardAction(Wiz.adp(),ExhaustedPreviousTurn));
+        addToBot(new DrawCardAction(this.owner,ExhaustedPreviousTurn));
         ExhaustedPreviousTurn = 0;
     }
 

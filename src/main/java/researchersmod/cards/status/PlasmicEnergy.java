@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import researchersmod.Researchers;
@@ -35,8 +36,7 @@ public class PlasmicEnergy extends BaseCard {
         super(ID, info);
         this.exhaust = true;
         setMagic(1);
-        addPhase();
-        this.retain = true;
+        setPhase(true);
     }
     @Override
     protected List<AbstractCardModifier> getInitialModifiers() {
@@ -49,7 +49,8 @@ public class PlasmicEnergy extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new ApplyPowerAction(p, p, new EnergizedBluePower(p,magicNumber)));
+        Wiz.atb(new ApplyPowerAction(p, p, new EnergizedBluePower(p,1)));
+        Wiz.atb(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber)));
     }
 
     @Override

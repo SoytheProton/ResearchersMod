@@ -103,5 +103,49 @@
     "DESCRIPTIONS": [
       "#yExperiment cards' costs are reduced to 0 for #b%d turn%s."
     ]
+  },
+  "${modID}:EntropyPower": {
+    "NAME": "Entropy",
+    "DESCRIPTIONS": [
+      "#At the start of your turn, add #b%d random card%s to your hand and give it #yEthereal%s.",
+      " and #yPhase"
+    ]
+  },
+  "${modID}:Enthalpy": {
+    "NAME": "Enthalpy",
+    "DESCRIPTIONS": [
+      "#At the start of your turn, add a #y%s to your hand with #yEthereal%s.",
+      " and no #yPhase"
+    ]
+  },
+  "${modID}:VolcanicResearchPower": {
+    "NAME": "Volcanic Research",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b%d #yBurn%s to your draw pile. \n Whenever you draw a #yStatus, draw #b%d card%s and gain #b%d Strength."
+    ]
+  },
+  "${modID}:PhaseDrawPower": {
+    "NAME": "Phase Draws",
+    "DESCRIPTIONS": [
+      "Add #yPhase to all drawn cards for #b%d turn%s."
+    ]
+  },
+  "${modID}:ParticleAcceleratorPower": {
+    "NAME": "Particle Accelerator",
+    "DESCRIPTIONS": [
+      "Add #yPhase to all drawn cards for the next #b%d turn%s."
+    ]
+  },
+  "${modID}:ExtensiveTestingPower": {
+    "NAME": "Extensive Testing",
+    "DESCRIPTIONS": [
+      "Whenever you activate an Experiment, add #b%d Trial%s."
+    ]
+  },
+  "${modID}:EclipsedFormPower": {
+    "NAME": "Eclipsed Form",
+    "DESCRIPTIONS": [
+      "Whenever a card is Exhausted, put #b%d card%s from your exhaust pile into your draw pile."
+    ]
   }
 }

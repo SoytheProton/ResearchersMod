@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.optioncards.gaindexterity;
-import researchersmod.cards.optioncards.freepowers;
 import researchersmod.cards.optioncards.gainstrength;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;

@@ -43,7 +43,7 @@
   },
   "${modID}:ExperimentModifier": {
     "TEXT": [
-      "${modID}:Experiment [#87ceebff]!${modID}:Trial![] "
+      "${modID}:Experiment !${modID}:Trial! "
     ]
   },
   "${modID}:EthericCardModifier": {

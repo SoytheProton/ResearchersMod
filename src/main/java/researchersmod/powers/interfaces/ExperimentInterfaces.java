@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class ExperimentInterfaces {
     public interface onExperimentInterface {
-        void onExperiment();
+        void onExperiment(AbstractPower power);
     }
 
     public interface onCompletionInterface {

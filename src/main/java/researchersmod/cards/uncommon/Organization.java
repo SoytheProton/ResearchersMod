@@ -25,7 +25,7 @@ public class Organization extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTargeting.EXPERIMENT,
-            0
+            1
     );
     public Organization() {
         super(ID, info);
@@ -40,18 +40,6 @@ public class Organization extends BaseCard {
             Wiz.atb(new ApplyPowerAction(p, p, new OrganizationExpAttachment(p,target,upgraded)));
         }
 
-    }
-
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if (ExperimentCardManager.experiments.group.isEmpty()) {
-            canUse = false;
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-        }
-        if (!ExperimentCardManager.experiments.group.isEmpty()) {
-            canUse = true;
-        }
-        return canUse;
     }
 }
 

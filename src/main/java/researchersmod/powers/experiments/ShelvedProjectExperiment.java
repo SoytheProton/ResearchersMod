@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
@@ -29,20 +30,16 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
 
     public void terminateEffect(){
         ExperimentCardManager.remExp(k,this);
-        Wiz.att(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_HEAVY"));
-        Wiz.atb(new DamageAllEnemiesAction(Wiz.adp(),damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.tickExperiment(this);
     }
 
     public void atEndOfRound() {
         completionEffect();
-        if (this.amount <= 0) {
-            terminateEffect();
-        }
     }
 
 }

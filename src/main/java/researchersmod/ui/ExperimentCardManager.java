@@ -3,11 +3,13 @@ package researchersmod.ui;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -92,9 +94,17 @@ public class ExperimentCardManager {
             CardModifierManager.addModifier(card, new ExperimentMod());
         }
         experiments.addToTop(card);
+        AbstractPower expPower = null;
+        for (AbstractPower p : Wiz.adp().powers) {
+            if(p instanceof BasePower) {
+                if (((BasePower)p).k == card) {
+                    expPower = p;
+                }
+            }
+        }
         for (AbstractPower p : Wiz.adp().powers) {
             if(p instanceof ExperimentInterfaces.onExperimentInterface){
-                ((ExperimentInterfaces.onExperimentInterface) p).onExperiment();
+                ((ExperimentInterfaces.onExperimentInterface) p).onExperiment(expPower);
             }
         }
         if (playSFX) {
@@ -130,6 +140,7 @@ public class ExperimentCardManager {
         card.unhover();
         card.untip();
         card.stopGlowing();
+        card.flash(Color.RED);
         if(shouldPurge || card.hasTag(Researchers.PURGEEXP))
             experiments.removeCard(card);
         else if(experiments.group.contains(card)) {
@@ -139,6 +150,7 @@ public class ExperimentCardManager {
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
         }
         Researchers.expsTerminatedThisCombat++;
+        Wiz.att(new RemoveSpecificPowerAction(power.owner, power.owner, power));
     }
 
     public static void tickExp(AbstractPower p) {
@@ -174,6 +186,9 @@ public class ExperimentCardManager {
                     }
                 }
             }
+        }
+        if (p.amount <= 0) {
+            ((ExperimentPower)p).terminateEffect();
         }
     }
 

@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import researchersmod.cards.basic.Defend_Researchers;
-import researchersmod.deprecated.cards.OldDevelopment;
+import researchersmod.cards.basic.Development;
 import researchersmod.cards.basic.Research;
 import researchersmod.cards.basic.Strike_Researchers;
 import researchersmod.relics.DatabaseTablet;
@@ -149,7 +149,7 @@ public class ResearchersCharacter extends CustomPlayer {
         retVal.add(Defend_Researchers.ID);
         retVal.add(Defend_Researchers.ID);
         retVal.add(Research.ID);
-        retVal.add(OldDevelopment.ID);
+        retVal.add(Development.ID);
 
         return retVal;
     }

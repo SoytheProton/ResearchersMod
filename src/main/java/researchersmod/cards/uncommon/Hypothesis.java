@@ -16,7 +16,7 @@ public class Hypothesis extends BaseCard {
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            2
+            1
     );
 
     public Hypothesis() {
