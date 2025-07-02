@@ -26,9 +26,6 @@ public class NeutralyzerSerumExperiment extends BasePower implements InvisiblePo
     public NeutralyzerSerumExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
         magicNumber = magic;
-        if(this.amount == 0) {
-            terminateEffect();
-        }
     }
 
     public void terminateEffect(){

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import researchersmod.cards.BaseCard;
@@ -43,6 +44,6 @@ public class ConcealedCarry extends BaseCard {
 
     @Override
     public void triggerOnExhaust() {
-        Wiz.atb(new ApplyPowerAction(Wiz.adp(), Wiz.adp(), new GainStrengthPower(Wiz.adp(),magicNumber)));
+        Wiz.atb(new ApplyPowerAction(Wiz.adp(), Wiz.adp(), new StrengthPower(Wiz.adp(),magicNumber)));
     }
 }

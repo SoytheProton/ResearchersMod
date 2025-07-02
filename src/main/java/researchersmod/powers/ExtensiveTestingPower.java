@@ -17,10 +17,13 @@ public class ExtensiveTestingPower extends BasePower implements ExperimentInterf
     }
 
     public void onExperiment(AbstractPower power) {
+        flash();
         ExperimentCardManager.tickExp(power,-this.amount);
     }
 
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0],this.amount) + String.format(DESCRIPTIONS[1],this.amount);
+        String plural = "s";
+        if(this.amount == 1) plural = "";
+        this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
     }
 }

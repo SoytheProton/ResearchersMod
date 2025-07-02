@@ -38,8 +38,10 @@ public class Enthalpy extends BaseCard {
             CardModifierManager.hasModifier(c, PhaseMod.ID)
         ),(cards) -> {
             for (AbstractCard c : cards) {
-                Wiz.adp().hand.moveToExhaustPile(c);
-                addToBot(new ApplyPowerAction(p, p, new EnthalpyPower(p,this.upgraded,c.makeStatEquivalentCopy())));
+                if (c != null) {
+                    Wiz.atb(new ExhaustSpecificCardAction(c, Wiz.p().hand));
+                    addToBot(new ApplyPowerAction(p, p, new EnthalpyPower(p, this.upgraded, c.makeStatEquivalentCopy())));
+                }
             }
         }));
 
@@ -63,7 +65,7 @@ public class Enthalpy extends BaseCard {
         }
         if (!hasPhaseCard()) {
             canUse = false;
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
         }
         return canUse;
     }

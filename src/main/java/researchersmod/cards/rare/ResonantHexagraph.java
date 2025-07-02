@@ -35,8 +35,10 @@ public class ResonantHexagraph extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new GainBlockAction(p, block));
         this.baseBlock -= 2;
-        if(this.baseBlock <= 0) this.baseBlock = 0;
-        Wiz.atb(new MakeTempCardInHandAction(this.makeStatEquivalentCopy()));
+        if(this.block <= 0)
+            this.block = 0;
+        else
+            Wiz.atb(new MakeTempCardInHandAction(this.makeStatEquivalentCopy()));
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {

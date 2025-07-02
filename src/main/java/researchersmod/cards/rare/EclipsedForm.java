@@ -21,11 +21,12 @@ public class EclipsedForm extends BaseCard {
 
     public EclipsedForm() {
         super(ID, info);
+        setMagic(1);
         setEthereal(true,false);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new EclipsedFormPower(p),1));
+        addToBot(new ApplyPowerAction(p, p, new EclipsedFormPower(p),magicNumber));
     }
 }

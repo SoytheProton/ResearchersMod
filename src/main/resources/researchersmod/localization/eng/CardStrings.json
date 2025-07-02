@@ -121,7 +121,7 @@
   },
   "${modID}:Uplink": {
     "NAME": "Uplink",
-    "DESCRIPTION": "Deal !D! damage. NL The next card you play Exhausts."
+    "DESCRIPTION": "Deal !D! damage. NL If the next card you play has ${modID}:Phase, Exhaust a copy of it."
   },
   "${modID}:RSquare": {
     "NAME": "R-Square",
@@ -238,7 +238,7 @@
   },
   "${modID}:Analyze": {
     "NAME": "Analyze",
-    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 3 ${modID}:Completions: Permanently increase this card's damage by !M!. ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 2 ${modID}:Completions: Permanently increase this card's damage by !M!. ${modID}:Terminate: Exhaust."
   },
   "${modID}:PlasmicEnergy": {
     "NAME": "Plasmic Energy",
@@ -246,7 +246,7 @@
   },
   "${modID}:CutThroughLight": {
     "NAME": "Cut Through Light",
-    "DESCRIPTION": "Ethereal. Deal !D! damage, then add ${modID}:Phase to this card."
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage, then add ${modID}:Phase to this card."
   },
   "${modID}:FerrousBlade": {
     "NAME": "Ferrous Blade",
@@ -295,7 +295,8 @@
     "DESCRIPTION": "Exhaust a card in your hand with ${modID}:Phase. NL At the start of your turn, add a copy of that card to your hand with Ethereal and no ${modID}:Phase.",
     "UPGRADE_DESCRIPTION": "Exhaust a card in your hand with ${modID}:Phase. NL At the start of your turn, add a copy of that card to your hand with Ethereal.",
     "EXTENDED_DESCRIPTION": [
-      "Exhaust."
+      "Exhaust.",
+      "I have no cards with Phase in my hand."
     ]
   },
   "${modID}:ShieldCrash": {
@@ -332,7 +333,7 @@
   },
   "${modID}:SubspaceStrike": {
     "NAME": "Subspace Strike",
-    "DESCRIPTION": "Retain. NL Deal !D! damage for each Status in your hand.",
+    "DESCRIPTION": "Retain. NL Deal !D! damage for each Status in your hand. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
       " NL (You have %d Status%s.)",
       "es"
@@ -370,21 +371,29 @@
     "NAME": "Ion Tail",
     "DESCRIPTION": "Gain !M! Plated Armor. NL Gain !M! Metalicize."
   },
-  "${modID}:Extensive Testing": {
+  "${modID}:ExtensiveTesting": {
     "NAME": "Extensive Testing",
     "DESCRIPTION": "${modID}:Experiments are activated with !M! more ${modID}:Trial.",
     "UPGRADE_DESCRIPTION": "${modID}:Experiments are activated with !M! more ${modID}:Trials."
   },
   "${modID}:ResonantHexagraph": {
     "NAME": "Resonant Hexagraph",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block and add a copy to your hand with 2 less Block."
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block and add a copy to your hand with 2 less Block until it reaches 0."
   },
   "${modID}:EclipsedForm": {
     "NAME": "Eclipsed Form",
-    "DESCRIPTION": "Ethereal. NL Whenever a card is Exhausted, put 1 card from your exhaust pile into your draw pile."
+    "DESCRIPTION": "Ethereal. NL Whenever a card is Exhausted, gain !M! Artifact."
   },
   "${modID}:MagmaBurn": {
     "NAME": "Magma Burn",
     "DESCRIPTION": "Unplayable. NL At the end of your turn, take !M! damage for every Status in your hand. When this card is Exhausted, add a *Burn to your discard pile."
+  },
+  "${modID}:SulfurPod": {
+    "NAME": "Sulfur Pod",
+    "DESCRIPTION": "Retain. NL At the end of your turn, take !M! damage for every Status in your hand. When this card is Exhausted, add a *Burn to your discard pile."
+  },
+  "${modID}:dummyethereal": {
+    "NAME": "Etheral Mod",
+    "DESCRIPTION": "Adds Better Ethereal Mod to all cards in hand."
   }
 }

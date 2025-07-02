@@ -30,7 +30,7 @@ public class Analyze extends ExperimentCard {
     public Analyze() {
         super(ID, info,1);
         this.misc = 1;
-        setMagic(5,2);
+        setMagic(3,1);
         setDamage(misc);
     }
 

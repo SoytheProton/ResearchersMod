@@ -4,6 +4,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.ShowCardAndPoofAction;
 import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
@@ -131,18 +132,20 @@ public class ExperimentCardManager {
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust,boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof ExperimentInterfaces.onTerminateInterface){
+            if (p instanceof ExperimentInterfaces.onTerminateInterface) {
                 ((ExperimentInterfaces.onTerminateInterface) p).onTerminate(power);
             }
         }
-        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
+        CardModifierManager.removeModifiersById(card, ExperimentMod.ID, true);
         ((ExperimentCard) card).Trial = ((ExperimentCard) card).BaseTrial;
         card.unhover();
         card.untip();
         card.stopGlowing();
-        card.flash(Color.RED);
-        if(shouldPurge || card.hasTag(Researchers.PURGEEXP))
+        card.flash(Color.RED.cpy());
+        if (shouldPurge || card.hasTag(Researchers.PURGEEXP)) {
             experiments.removeCard(card);
+            Wiz.att(new ShowCardAndPoofAction(card));
+        }
         else if(experiments.group.contains(card)) {
             if (shouldExhaust || card.hasTag(Researchers.EXHAUSTEXP))
                 Wiz.atb(new ExhaustSpecificCardAction(card, experiments));

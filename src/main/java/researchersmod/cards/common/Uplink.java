@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.ExhaustNextPower;
+import researchersmod.powers.UplinkPower;
 import researchersmod.util.CardStats;
 
 public class Uplink extends BaseCard {
@@ -33,6 +33,6 @@ public class Uplink extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToBot(new ApplyPowerAction(p, p, new ExhaustNextPower(p, this.upgraded),1));
+        addToBot(new ApplyPowerAction(p, p, new UplinkPower(p, this.upgraded),1));
     }
 }

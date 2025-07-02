@@ -14,11 +14,13 @@ import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import researchersmod.Researchers;
+import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
+import javax.smartcardio.Card;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class PlasmicEnergy extends BaseCard {
     protected List<AbstractCardModifier> getInitialModifiers() {
         ArrayList<AbstractCardModifier> retVal = new ArrayList<>();
         EthericMod etheric = new EthericMod();
-        etheric.editEtheric(3);
+        etheric.editEtheric(2);
         retVal.add(etheric);
         return retVal;
     }
@@ -57,8 +59,8 @@ public class PlasmicEnergy extends BaseCard {
     public void upgrade() {
         super.upgrade();
         if(!this.upgraded) {
-            AbstractCardModifier mod = CardModifierManager.getModifiers(this, EthericMod.ID).get(0);
-            ((EthericMod)mod).editEtheric(2);
+            CardModifierManager.removeModifiersById(this,EthericMod.ID,true);
+            CardModifierManager.addModifier(this,new BetterEtherealMod());
         }
     }
 }

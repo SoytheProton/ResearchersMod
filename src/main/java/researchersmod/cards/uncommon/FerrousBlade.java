@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
@@ -32,7 +33,7 @@ public class FerrousBlade extends BaseCard {
     public FerrousBlade() {
         super(ID, info);
         setDamage(6);
-        upgPhase = true;
+        setPhase(true);
     }
 
     @Override
@@ -52,5 +53,13 @@ public class FerrousBlade extends BaseCard {
         if(upgraded)
             Blade.upgrade();
         Wiz.atb(new MakeTempCardInHandAction(Blade));
+    }
+
+    public void upgrade() {
+        if(!upgraded) {
+            super.upgrade();
+            CardModifierManager.removeModifiersById(this,EthericMod.ID,true);
+            CardModifierManager.addModifier(this, new BetterEtherealMod());
+        }
     }
 }

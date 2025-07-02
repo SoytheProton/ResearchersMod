@@ -25,7 +25,8 @@ public class WingbeatPower extends BasePower {
     }
 
     @Override
-    public void atStartOfTurn() {
+    public void atStartOfTurnPostDraw() {
+        flash();
         addToBot(new DrawCardAction(this.owner,ExhaustedPreviousTurn));
         ExhaustedPreviousTurn = 0;
     }

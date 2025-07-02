@@ -19,10 +19,7 @@ public class EnthalpyPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(EnthalpyPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
-    private boolean upgraded = false;
-    public static CardGroup srcCommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
-    public static CardGroup srcUncommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
-    public static CardGroup srcRareCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+    private boolean upgraded;
 
     public EnthalpyPower(AbstractCreature owner, boolean upg, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, 1);
@@ -42,7 +39,9 @@ public class EnthalpyPower extends BasePower implements NonStackablePower {
     }
 
     public void updateDescription() {
-        String card = k.name;
+        String card = "NULL";
+        if(k != null) card = k.name;
+        card = card.replace(" "," #y");
         String upgrade = "";
         if(!upgraded)
             upgrade = DESCRIPTIONS[1];

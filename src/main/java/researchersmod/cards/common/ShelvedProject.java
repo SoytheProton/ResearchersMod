@@ -22,7 +22,7 @@ public class ShelvedProject extends ExperimentCard {
             ResearchersCharacter.Meta.CARD_COLOR,
             AbstractCard.CardType.ATTACK,
             AbstractCard.CardRarity.COMMON,
-            AbstractCard.CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             2
     );
 
@@ -33,6 +33,6 @@ public class ShelvedProject extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ShelvedProjectExperiment(p, this.Trial, this,damage)));
+        addToBot(new ApplyPowerAction(p, p, new ShelvedProjectExperiment(p, this.Trial, this,baseDamage)));
     }
 }

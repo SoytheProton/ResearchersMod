@@ -24,11 +24,10 @@ public class SubspaceStrike extends BaseCard {
 
     public SubspaceStrike() {
         super(ID, info);
-        setDamage(4,2);
+        setDamage(2,1);
         tags.add(CardTags.STRIKE);
         this.retain = true;
         this.exhaust = true;
-        cardsToPreview = new Burn();
     }
 
     public void applyPowers() {
@@ -47,10 +46,6 @@ public class SubspaceStrike extends BaseCard {
     public void onMoveToDiscard() {
         this.rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
-    }
-
-    public void triggerOnExhaust() {
-        Wiz.atb(new MakeTempCardInDiscardAction(new Burn(),1));
     }
 
 

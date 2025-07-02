@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.PhaseMod;
@@ -34,32 +35,13 @@ public class EntropyPower extends BasePower {
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        AbstractCard card = returnTrulyRandomCardInCombat();
+        AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat();
         CardModifierManager.addModifier(card,new BetterEtherealMod());
         if(upgraded)
             CardModifierManager.addModifier(card,new PhaseMod());
         Wiz.atb(new MakeTempCardInHandAction(card));
     }
 
-    public static AbstractCard returnTrulyRandomCardInCombat() {
-        ArrayList<AbstractCard> list = new ArrayList<>();
-        for (AbstractCard c : srcCommonCardPool.group) {
-            if (!c.hasTag(AbstractCard.CardTags.HEALING)) {
-                list.add(c);
-            }
-        }
-        for (AbstractCard c : srcUncommonCardPool.group) {
-            if (!c.hasTag(AbstractCard.CardTags.HEALING)) {
-                list.add(c);
-            }
-        }
-        for (AbstractCard c : srcRareCardPool.group) {
-            if (!c.hasTag(AbstractCard.CardTags.HEALING)) {
-                list.add(c);
-            }
-        }
-        return list.get(cardRandomRng.random(list.size() - 1));
-    }
 
     public void updateDescription() {
         String plural = "s";

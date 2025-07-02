@@ -40,7 +40,6 @@ public class ExperimentCardsPatch {
                 @Override
                 public void update() {
                     isDone = true;
-                    System.out.println(card.tags);
                     ExperimentCardManager.addExp(card,true);
                 }
             });

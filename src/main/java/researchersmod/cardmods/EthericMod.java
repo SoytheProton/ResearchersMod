@@ -8,8 +8,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.Researchers;
+import researchersmod.util.KH;
 import researchersmod.util.Wiz;
 
 import java.util.ArrayList;
@@ -34,32 +36,20 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
-        int addNL = 0;
-        if (card.retain) addNL = 1;
-        /* if (rawDescription.contains("Ethereal. ") && card.isEthereal) {
-            String cardDescription = rawDescription.replaceFirst("Ethereal.", getReturnString(2,key));
-            return String.format(cardDescription);
-        } */
-        if (rawDescription.contains("Phase. ") && card.hasTag(Researchers.PHASE)) {
-            int i = rawDescription.indexOf("Phase. ");
-            String[] cardDescription = {rawDescription.substring(0, i),rawDescription.substring(i+1)};
-            return String.format(getReturnString(2,key), cardDescription[0] + "${researchersmod}Phase.", cardDescription[1]);
-        }
-        if (rawDescription.contains("Innate. ") && card.isInnate) {
-            String[] cardDescription = rawDescription.split("Innate. ", 2);
-            return String.format(getReturnString(2,key), cardDescription[0] + "Innate.", cardDescription[1]);
-        } else if (rawDescription.contains("Unplayable. NL ") && card.cost == -2) {
-            String[] cardDescription = rawDescription.split("(Unplayable\\..*?) NL ", 2);
-            return String.format(getReturnString(3+addNL,key), cardDescription[0] + "Unplayable.", cardDescription[1]);
-        } else if (card.cost == -2) {
-            return String.format(getReturnString(5,key), rawDescription);
-        } else return String.format(getReturnString(addNL,key), rawDescription);
-    }
-
-    private String getReturnString(int index, String key) {
-        String uistring = uiStrings.TEXT[index];
-        String returnString = uistring.substring(0,uistring.indexOf("Etheric") + 7) + " " + key + ".";
-        return returnString + uistring.substring(uistring.indexOf("Etheric") + 7);
+        String p = LocalizedStrings.PERIOD;
+        String[] cardDescription = KH.autoString( KH.hasPhase(card,rawDescription) ? " NL " :
+                        KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
+                                KH.hasUnplayable(card,rawDescription) ? " " : "" ,
+                KH.hasPhase(card, rawDescription) ? uiStrings.TEXT[1] :
+                        KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
+                                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
+                                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
+                rawDescription);
+        return cardDescription[0] +
+                (KH.hasUnplayableNL(card,rawDescription) ? " NL " : " ")
+                + uiStrings.TEXT[5] + " " + key + p +
+                (KH.hasInnate(card, rawDescription) || KH.hasPhase(card, rawDescription) || KH.hasRetain(card, rawDescription) ? " " : " NL ")
+                + cardDescription[1];
     }
 
     @Override

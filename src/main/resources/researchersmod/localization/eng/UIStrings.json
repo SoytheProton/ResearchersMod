@@ -16,29 +16,14 @@
       "%s${modID}:Phase %s"
     ]
   },
-  "${modID}:EtherealCardModifier": {
+  "${modID}:Keywords": {
     "TEXT": [
-      "Ethereal. NL %s",
-      "Ethereal. %s",
-      "%s Ethereal. %s",
-      "%s NL Ethereal. NL %s",
-      "%s NL Ethereal. %s",
-      "%s NL Ethereal.",
-      "%sEthereal %s"
-    ]
-  },
-  "${modID}:CurrentExperimentsTopPanelItem": {
-    "TEXT": [
-      "Your current Experiment cards in play.",
-      "How are you seeing this."
-    ]
-  },
-  "${modID}:ExperimentPanel": {
-    "TEXT": [
-      "Experiment Pile",
-      "These cards activate effects after meeting certain conditions, then go in your discard.",
-      "These cards are currently Active.",
-      "These cards activate effects after meeting certain conditions, then go in your discard. NL Click to view cards."
+      "Unplayable",
+      "${modID}:Phase",
+      "Ethereal",
+      "Retain",
+      "Innate",
+      "${modID}:Etheric"
     ]
   },
   "${modID}:ExperimentModifier": {

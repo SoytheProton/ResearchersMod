@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.Researchers;
 import researchersmod.actions.NeutralyzerSerumAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
@@ -17,9 +18,9 @@ public class NeutralyzerSerum extends ExperimentCard {
     public static final String ID = makeID(NeutralyzerSerum.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
-            CardType.ATTACK,
+            CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             -1
     );
 
@@ -30,7 +31,11 @@ public class NeutralyzerSerum extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new NeutralyzerSerumAction(p,this,this.freeToPlayOnce,this.energyOnUse));
+        if(this.energyOnUse == 0 && !upgraded)
+            this.tags.remove(Researchers.EXPERIMENT);
+        else if(!this.hasTag(Researchers.EXPERIMENT))
+            tags.add(Researchers.EXPERIMENT);
         addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.Trial, this,magicNumber)));
+        addToBot(new NeutralyzerSerumAction(p,this,this.freeToPlayOnce,this.energyOnUse));
     }
 }

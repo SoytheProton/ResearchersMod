@@ -68,12 +68,14 @@ public class Researchers implements
     public static int expsTerminatedThisCombat;
     public static int expsCompletedThisCombat;
 
-
+    @SpireEnum
     public static AbstractCard.CardTags PHASE;
+    @SpireEnum
     public static AbstractCard.CardTags EXPERIMENT;
+    @SpireEnum
     public static AbstractCard.CardTags PURGEEXP;
+    @SpireEnum
     public static AbstractCard.CardTags EXHAUSTEXP;
-    public static AbstractCard.CardTags ISPHASING;
     public Researchers() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");

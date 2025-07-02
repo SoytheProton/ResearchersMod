@@ -5,15 +5,16 @@ import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.Researchers;
+import researchersmod.util.KH;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class BetterEtherealMod extends AbstractCardModifier {
     public static String ID = "researchersmod:EtherealCardModifier";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
@@ -25,28 +26,24 @@ public class BetterEtherealMod extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        int addNL = 0;
-        if(rawDescription.contains("Ethereal. ") || CardModifierManager.getModifiers(card,BetterEtherealMod.ID).size() > 1)
-            return rawDescription;
-        if(CardModifierManager.hasModifier(card,EthericMod.ID)) {
+        String p = LocalizedStrings.PERIOD;
+        if(KH.hasEtheric(card,rawDescription)) {
             CardModifierManager.removeModifiersById(card,EthericMod.ID,true);
             card.isEthereal = true;
         }
-        if (card.retain) addNL = 1;
-        if (rawDescription.contains("Phase. ") && card.hasTag(Researchers.PHASE)) {
-            int i = rawDescription.indexOf("Phase. ");
-            String[] cardDescription = {rawDescription.substring(0, i),rawDescription.substring(i+1)};
-            return String.format(uiStrings.TEXT[2], cardDescription[0] + "${researchersmod}Phase.", cardDescription[1]);
-        }
-        if (rawDescription.contains("Innate. ") && card.isInnate) {
-            String[] cardDescription = rawDescription.split("Innate. ", 2);
-            return String.format(uiStrings.TEXT[2], cardDescription[0] + "Innate.", cardDescription[1]);
-        } else if (rawDescription.contains("Unplayable. NL ") && card.cost == -2) {
-            String[] cardDescription = rawDescription.split("(Unplayable\\..*?) NL ", 2);
-            return String.format(uiStrings.TEXT[3 + addNL], cardDescription[0] + "Unplayable.", cardDescription[1]);
-        } else if (card.cost == -2) {
-            return String.format(uiStrings.TEXT[5], rawDescription);
-        } else return String.format(uiStrings.TEXT[addNL], rawDescription);
+        String[] cardDescription = KH.autoString( KH.hasPhase(card,rawDescription) ? " NL " :
+                        KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
+                                 KH.hasUnplayable(card,rawDescription) ? " " : "" ,
+                KH.hasPhase(card, rawDescription) ? uiStrings.TEXT[1] :
+                        KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
+                                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
+                                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
+                rawDescription);
+        return cardDescription[0] +
+                (KH.hasUnplayableNL(card,rawDescription) ? " NL " : " ")
+                + uiStrings.TEXT[2] + p +
+                (KH.hasInnate(card, rawDescription) || KH.hasPhase(card, rawDescription) || KH.hasRetain(card, rawDescription) ? " " : " NL ")
+                + cardDescription[1];
     }
 
     @Override

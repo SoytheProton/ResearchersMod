@@ -21,6 +21,7 @@ public class InfluxPowerPower extends BasePower implements ExperimentInterfaces.
     }
     @Override
     public void onCompletion(AbstractPower p) {
+        flash();
         addToBot(new GainBlockAction(this.owner, this.owner, this.amount));
     }
 

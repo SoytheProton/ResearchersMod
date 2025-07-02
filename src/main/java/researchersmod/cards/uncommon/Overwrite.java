@@ -34,7 +34,7 @@ public class Overwrite extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[0],false,false,(c -> true),(cards) -> {
             for (AbstractCard c : cards) {
-                c.flash(Color.BLUE);
+                c.flash(Color.BLUE.cpy());
                 CardModifierManager.addModifier(c,new PhaseMod());
             }
         }));

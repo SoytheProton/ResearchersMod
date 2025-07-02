@@ -32,8 +32,9 @@ public class PhaseDrawPower extends BasePower {
     public void onCardDraw(AbstractCard card) {
         flash();
         CardModifierManager.addModifier(card,new PhaseMod());
-        card.flash(Color.BLUE);
+        card.flash(Color.BLUE.cpy());
     }
+
     public void updateDescription() {
         String plural = "s";
         if(this.amount == 1)

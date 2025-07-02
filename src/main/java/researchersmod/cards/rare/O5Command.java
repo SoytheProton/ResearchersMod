@@ -22,15 +22,11 @@ public class O5Command extends BaseCard {
             3
     );
 
-    private static final int D = 39;
-    private static final int M = 5;
-    private static final int UM = -2;
 
     public O5Command() {
         super(ID, info);
-
-        setDamage(D);
-        setMagic(M,UM);
+        setDamage(26,5);
+        setMagic(5);
         this.cardsToPreview = new Dazed();
     }
 

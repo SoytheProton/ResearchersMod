@@ -24,7 +24,7 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
 
 
     private int M;
-    private int ExperimentTracker = 3;
+    private int ExperimentTracker = 2;
 
     public AnalyzeExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount, card);
@@ -44,7 +44,7 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
     public void onCompletion(AbstractPower power) {
         ExperimentTracker--;
         if(ExperimentTracker == 0) {
-            ExperimentTracker = 3;
+            ExperimentTracker = 2;
             completionEffect();
         }
     }

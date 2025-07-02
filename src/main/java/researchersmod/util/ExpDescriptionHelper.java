@@ -29,8 +29,8 @@ public class ExpDescriptionHelper {
             description[0] = description[0] + " " + addedEffect;
             returnString = description[0] + description[1];
         } else if (terminateInstance && colonInstance == 1) { //Terminate: effect but no Completion
-            int index = rawDescription.indexOf("{researchersmod}:Terminate: ") - 2;
-            String[] description = {rawDescription.substring(0,index),rawDescription.substring(index +1)};
+            int index = rawDescription.indexOf(".",rawDescription.indexOf(" - "));
+            String[] description = {rawDescription.substring(0,index),rawDescription.substring(index + 1)};
             description[0] = description[0] + ": " + addedEffect;
             returnString = description[0] + description[1];
         } else if (colonInstance == 1) { // Completion

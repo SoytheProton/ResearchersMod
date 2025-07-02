@@ -35,6 +35,7 @@ public class VolcanicResearchPower extends BasePower {
     @Override
     public void onCardDraw(AbstractCard card) {
         if(card.type == AbstractCard.CardType.STATUS) {
+            flash();
             Wiz.atb(new ApplyPowerAction(owner,owner, new StrengthPower(owner,this.amount)));
             Wiz.atb(new DrawCardAction(this.amount2));
         }

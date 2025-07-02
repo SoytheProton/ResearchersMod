@@ -23,7 +23,7 @@ public class RemnantResearch extends BaseCard {
 
     public RemnantResearch() {
         super(ID, info);
-        setBlock(2,1);
+        setBlock(3,1);
         this.cardsToPreview = new BurntDocument();
         this.exhaust = true;
     }

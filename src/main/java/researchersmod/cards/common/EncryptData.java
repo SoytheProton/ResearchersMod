@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.status.BurntDocument;
@@ -36,7 +37,7 @@ public class EncryptData extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[0],true,true,(c -> true),(cards) -> {
             for (AbstractCard c : cards) {
-                Wiz.adp().hand.moveToExhaustPile(c);
+                Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().hand,true));
                 addToBot(new MakeTempCardInHandAction(new BurntDocument()));
             }
         }));

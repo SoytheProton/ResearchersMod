@@ -92,13 +92,13 @@
       "Exhaust."
     ]
   },
-  "${modID}:ResearchGrants": {
+  "${modID}:ResearchGrantsPower": {
     "NAME": "Research Grants",
     "DESCRIPTIONS": [
       "Reduce #yExperiment cards' costs to 0 for the next #b%d turn%s."
     ]
   },
-  "${modID}:FreeExperiments": {
+  "${modID}:FreeExperimentsPower": {
     "NAME": "Free Experiments",
     "DESCRIPTIONS": [
       "#yExperiment cards' costs are reduced to 0 for #b%d turn%s."
@@ -107,14 +107,14 @@
   "${modID}:EntropyPower": {
     "NAME": "Entropy",
     "DESCRIPTIONS": [
-      "#At the start of your turn, add #b%d random card%s to your hand and give it #yEthereal%s.",
+      "At the start of your turn, add #b%d random card%s to your hand and give it #yEthereal%s.",
       " and #yPhase"
     ]
   },
-  "${modID}:Enthalpy": {
+  "${modID}:EnthalpyPower": {
     "NAME": "Enthalpy",
     "DESCRIPTIONS": [
-      "#At the start of your turn, add a #y%s to your hand with #yEthereal%s.",
+      "At the start of your turn, add a #y%s to your hand with #yEthereal%s.",
       " and no #yPhase"
     ]
   },
@@ -145,7 +145,7 @@
   "${modID}:EclipsedFormPower": {
     "NAME": "Eclipsed Form",
     "DESCRIPTIONS": [
-      "Whenever a card is Exhausted, put #b%d card%s from your exhaust pile into your draw pile."
+      "At the start of your turn, draw #b%d card%s, then increase this gain and your maximum hand size by #b%d."
     ]
   }
 }
