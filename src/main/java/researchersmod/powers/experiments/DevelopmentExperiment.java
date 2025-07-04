@@ -35,7 +35,7 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.POWER) {
+        if (card.type == AbstractCard.CardType.SKILL) {
             completionEffect();
         }
     }

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.InfluxPowerPower;
+import researchersmod.powers.deprecated.InfluxPowerPower;
 import researchersmod.util.CardStats;
 
 public class IonSurge extends BaseCard {

@@ -6,7 +6,7 @@ import researchersmod.Researchers;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.ui.ExperimentCardManager;
 
-public class ExtensiveTestingPower extends BasePower implements ExperimentInterfaces.onExperimentInterface {
+public class ExtensiveTestingPower extends BasePower implements ExperimentInterfaces.OnExperimentInterface {
     public static final String POWER_ID = Researchers.makeID(ExtensiveTestingPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;

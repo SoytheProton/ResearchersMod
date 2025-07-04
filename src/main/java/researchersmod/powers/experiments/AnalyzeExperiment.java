@@ -3,7 +3,6 @@ package researchersmod.powers.experiments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -15,7 +14,7 @@ import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
-public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.onCompletionInterface
+public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnCompletionInterface
 {
 
     public static final String POWER_ID = Researchers.makeID(AnalyzeExperiment.class.getSimpleName());

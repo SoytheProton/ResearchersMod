@@ -18,10 +18,17 @@ import researchersmod.Researchers;
         }
 )
 public class ExperimentPurgePatch {
-    public static void Prefix(UseCardAction __instance, AbstractCard __card, AbstractCreature __target) {
-        if(__card.hasTag(Researchers.EXPERIMENT) && __card.purgeOnUse) {
-        __card.tags.add(Researchers.PURGEEXP);
-        __card.purgeOnUse = false;
+    public static void Postfix(UseCardAction __instance, AbstractCard __card) {
+        if(__card.hasTag(Researchers.EXPERIMENT)) {
+            if (__card.purgeOnUse) {
+                __card.tags.add(Researchers.PURGEEXP);
+                __card.purgeOnUse = false;
+            } else if (__card.exhaust || __card.exhaustOnUseOnce) {
+                __card.tags.add(Researchers.EXHAUSTEXP);
+                __card.exhaust = false;
+                __card.exhaustOnUseOnce = false;
+                __instance.exhaustCard = false;
+            }
         }
     }
 }

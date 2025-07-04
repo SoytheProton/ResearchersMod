@@ -26,7 +26,7 @@ public class SubspaceStrike extends BaseCard {
         super(ID, info);
         setDamage(2,1);
         tags.add(CardTags.STRIKE);
-        this.retain = true;
+        this.selfRetain = true;
         this.exhaust = true;
     }
 

@@ -34,16 +34,9 @@ public class FerrousBlade extends BaseCard {
         super(ID, info);
         setDamage(6);
         setPhase(true);
+        setEtheric(2);
     }
 
-    @Override
-    protected List<AbstractCardModifier> getInitialModifiers() {
-        ArrayList<AbstractCardModifier> retVal = new ArrayList<>();
-        EthericMod etheric = new EthericMod();
-        etheric.editEtheric(2);
-        retVal.add(etheric);
-        return retVal;
-    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));

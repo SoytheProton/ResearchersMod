@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public class EthericMod extends AbstractCardModifier implements DynamicProvider {
     public static String ID = "researchersmod:EthericCardModifier";
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
     public final UUID uuid = UUID.randomUUID();
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
@@ -27,10 +27,26 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
 
     public int ethericValue = 1;
     public int baseEthericValue = 1;
+    private boolean inherent;
 
     @Override
     public boolean shouldApply(AbstractCard card) {
         return (!card.isEthereal || !CardModifierManager.hasModifier(card,EthericMod.ID));
+    }
+
+    public EthericMod(boolean isInherent,int value) {
+        inherent = isInherent;
+        editEtheric(value);
+    }
+    public EthericMod(boolean isInherent) {
+        inherent = isInherent;
+    }
+    public EthericMod() {
+        inherent = false;
+    }
+
+    public boolean isInherent(AbstractCard card) {
+        return inherent;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package researchersmod.cards;
 
 import basemod.BaseMod;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.CardModifierManager;
@@ -12,14 +13,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
+import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.CardStats;
+import researchersmod.util.KH;
 import researchersmod.util.TriFunction;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static researchersmod.util.GeneralUtils.removePrefix;
 import static researchersmod.util.TextureLoader.getCardTextureString;
@@ -429,12 +429,26 @@ public abstract class BaseCard extends CustomCard {
     }
 
     protected final void setPhase(boolean basePhase, boolean upgPhase) {
-        if(basePhase)
-            CardModifierManager.addModifier(this, new PhaseMod());
-        this.upgPhase = upgPhase;
+        if(basePhase) {
+            PhaseMod mod = new PhaseMod(true);
+            CardModifierManager.addModifier(this, mod);
+        } this.upgPhase = upgPhase;
+    }
+
+    protected final void setEtheric(int ethericValue) {
+        setEtheric(ethericValue,0);
+    }
+
+    protected final void setEtheric(int ethericValue, int upgEthericValue) {
+        if(ethericValue > 0) {
+            EthericMod mod = new EthericMod(true,ethericValue);
+            CardModifierManager.addModifier(this, mod);
+        }
+        this.upgEthericValue = upgEthericValue;
     }
 
     protected boolean upgPhase = false;
+    protected int upgEthericValue = 0;
 
 
     @Override
@@ -537,8 +551,21 @@ public abstract class BaseCard extends CustomCard {
             if (baseRetain ^ upgRetain)
                 this.selfRetain = upgRetain;
 
-            if (upgPhase)
-                CardModifierManager.addModifier(this, new PhaseMod());
+            if (upgPhase) {
+                AbstractCardModifier mod = new PhaseMod(true);
+                CardModifierManager.addModifier(this, mod);
+            }
+
+            if (upgEthericValue != 0) {
+                EthericMod mod;
+                if(CardModifierManager.hasModifier(this,EthericMod.ID)) {
+                    mod = (EthericMod) CardModifierManager.getModifiers(this, EthericMod.ID).get(0);
+                    mod.editEtheric(mod.baseEthericValue + upgEthericValue);
+                } else {
+                    mod = new EthericMod(true,upgEthericValue);
+                    CardModifierManager.addModifier(this,mod);
+                }
+            }
 
             this.initializeDescription();
         }

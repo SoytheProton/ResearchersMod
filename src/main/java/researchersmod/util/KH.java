@@ -73,6 +73,7 @@ public class KH {
         int i = rawDescription.indexOf(index,rawDescription.indexOf(indexStart) + indexStart.length());
         if(index.equals(LocalizedStrings.PERIOD)) i++;
         if (i == -1) i = 0;
+        // System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
         return new String[]{rawDescription.substring(0, i), rawDescription.substring(i)};
     }
 

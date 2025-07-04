@@ -38,6 +38,7 @@ public class MagmaBurn extends BaseCard {
         super(ID, info);
         this.exhaust = true;
         setMagic(2);
+        setEtheric(2,1);
         cardsToPreview = new Burn();
     }
 
@@ -55,25 +56,8 @@ public class MagmaBurn extends BaseCard {
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
     }
 
-    @Override
-    protected List<AbstractCardModifier> getInitialModifiers() {
-        ArrayList<AbstractCardModifier> retVal = new ArrayList<>();
-        EthericMod etheric = new EthericMod();
-        etheric.editEtheric(2);
-        retVal.add(etheric);
-        return retVal;
-    }
-
     public void triggerOnExhaust() {
         Wiz.atb(new MakeTempCardInDiscardAction(new Burn(),1));
     }
 
-    @Override
-    public void upgrade() {
-        super.upgrade();
-        if(!this.upgraded) {
-            AbstractCardModifier mod = CardModifierManager.getModifiers(this, EthericMod.ID).get(0);
-            ((EthericMod)mod).editEtheric(3);
-        }
-    }
 }

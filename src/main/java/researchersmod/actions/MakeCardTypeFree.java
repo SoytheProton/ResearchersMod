@@ -4,12 +4,12 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class makeCardTypeFree extends AbstractGameAction {
+public class MakeCardTypeFree extends AbstractGameAction {
     private static AbstractCard.CardType cardType;
 
-    public makeCardTypeFree (AbstractCard.CardType cardType){
+    public MakeCardTypeFree(AbstractCard.CardType cardType){
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
-        makeCardTypeFree.cardType = cardType;
+        MakeCardTypeFree.cardType = cardType;
 
     }
     public void update() {

@@ -20,9 +20,6 @@ public class RSquare extends BaseCard {
             AbstractCard.CardTarget.SELF,
             1
     );
-
-    private static final int BLOCK = 4;
-    private static final int UPG_BLOCK = 3;
     private int realBaseBlock;
 
     private int ExperimentTrialCount() {
@@ -37,7 +34,7 @@ public class RSquare extends BaseCard {
 
     public RSquare() {
         super(ID, info);
-        setBlock(BLOCK, UPG_BLOCK);
+        setBlock(6, 3);
         this.baseMagicNumber = 0;
         this.magicNumber = this.baseMagicNumber;
     }

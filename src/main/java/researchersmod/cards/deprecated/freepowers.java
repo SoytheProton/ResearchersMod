@@ -3,7 +3,7 @@ package researchersmod.cards.deprecated;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
-import researchersmod.actions.makeCardTypeFree;
+import researchersmod.actions.MakeCardTypeFree;
 import researchersmod.util.CardStats;
 
 public class freepowers extends BaseCard {
@@ -23,6 +23,6 @@ public class freepowers extends BaseCard {
         onChoseThisOption();
     }
     public void onChoseThisOption() {
-        addToBot(new makeCardTypeFree(CardType.POWER));
+        addToBot(new MakeCardTypeFree(CardType.POWER));
     }
 }

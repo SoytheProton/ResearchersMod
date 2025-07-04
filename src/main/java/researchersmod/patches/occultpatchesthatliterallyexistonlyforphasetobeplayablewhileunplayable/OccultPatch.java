@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-//hooray for dynamic patching
+// I stole this from Packmaster
 public class OccultPatch {
     public static void patch(ClassFinder finder, ClassPool pool) throws NotFoundException {
         //System.out.println("- Occult patch:");
@@ -146,18 +146,18 @@ public class OccultPatch {
 
     public static boolean checkUsability(AbstractCard c, boolean normallyUsable)
     {
-        if (OccultFields.isOccult.get(c))
+        if (PhasingFields.isPhasing.get(c))
         {
-            OccultFields.isOccultPlayable.set(c, !normallyUsable || OccultFields.notEnoughEnergy.get(c));
+            PhasingFields.isOccultPlayable.set(c, !normallyUsable || PhasingFields.notEnoughEnergy.get(c));
             return true;
         }
         return normallyUsable;
     }
     public static boolean checkEnergy(AbstractCard c, boolean normallyEnoughEnergy)
     {
-        if (OccultFields.isOccult.get(c))
+        if (PhasingFields.isPhasing.get(c))
         {
-            OccultFields.notEnoughEnergy.set(c, !normallyEnoughEnergy);
+            PhasingFields.notEnoughEnergy.set(c, !normallyEnoughEnergy);
             return true;
         }
         return normallyEnoughEnergy;
@@ -172,7 +172,7 @@ public class OccultPatch {
     public static class ExhaustOnUseIfOccult {
         @SpirePrefixPatch
         public static void yesaaaashsahssshshshgghgdgdf(UseCardAction __instance, AbstractCard card, AbstractCreature target) {
-            if (card != null && OccultFields.isOccultPlayable.get(card)) {
+            if (card != null && PhasingFields.isOccultPlayable.get(card)) {
                 __instance.exhaustCard = true;
             }
         }
@@ -333,7 +333,7 @@ public class OccultPatch {
             return true;
 
         if (sometimesUnplayable.contains(c.getClass().getName()) && c.cost == -2 && c.costForTurn == -2 && //might be unplayable, cost says it is
-                (!c.canUse(p, null) || OccultFields.isOccultPlayable.get(c))) //it's not playable or only playable because occult
+                (!c.canUse(p, null) || PhasingFields.isOccultPlayable.get(c))) //it's not playable or only playable because occult
             return true;
 
         return false;

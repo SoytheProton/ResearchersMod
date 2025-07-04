@@ -1,5 +1,7 @@
 package researchersmod.cards.status;
 
+import com.evacipated.cardcrawl.mod.stslib.StSLib;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -27,16 +29,11 @@ public class ShortCircuit extends ExperimentCard {
 
     public ShortCircuit() {
         super(ID, info, 1);
+        AutoplayField.autoplay.set(this,true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new ShortCircuitExperiment(p, this.Trial,this)));
-    }
-
-    public void triggerWhenDrawn() {
-        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
-        //ExperimentCardManager.addExperiment(this);
-        //Wiz.p().hand.removeCard(this);
     }
 }

@@ -2,58 +2,75 @@
   {
     "PROPER_NAME": "Phase",
     "NAMES": [
-      "phase",
       "Phase",
-      "Phased"
+      "Phased",
+      "Phases",
+      "Phasing"
     ],
     "DESCRIPTION": "This card plays when exhausted."
   },
   {
   "PROPER_NAME": "Experiment",
   "NAMES": [
-  "experiment",
-  "Experiments"
+    "Experiment",
+    "Experiments"
   ],
   "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be returned."
   },
   {
     "PROPER_NAME": "Terminate",
     "NAMES": [
-      "terminate",
+      "Terminate",
       "Termination",
-      "termination",
-      "terminated",
       "Terminated"
     ],
-    "DESCRIPTION": "When an #yExperiment card is used up and removes itself from play."
+    "DESCRIPTION": "When an #yExperiment card is used up and returns itself."
   },
   {
     "PROPER_NAME": "Complete",
     "NAMES": [
-      "complete",
+      "Complete",
       "Completed",
-      "completed",
       "Completion",
-      "completion",
-      "Completions",
-      "completions"
+      "Completions"
     ],
     "DESCRIPTION": "When #b1 or more #yExperiment card meets its conditions and activates its effects."
   },
   {
     "PROPER_NAME": "Trial",
     "NAMES": [
-      "trial",
-      "Trials",
-      "trails"
+      "Trial",
+      "Trials"
     ],
     "DESCRIPTION": "The amount of uses an #yExperiment card has left."
   },
   {
     "PROPER_NAME": "Etheric",
     "NAMES": [
-      "etheric"
+      "Etheric"
     ],
-    "DESCRIPTION": "If this card will *Exhaust if it is in your hand at the end of the turn a certain number of times."
+    "DESCRIPTION": "If this card will #yExhaust if it is in your hand at the end of the turn a certain number of times."
+  },
+  {
+    "PROPER_NAME": "Plated Armor",
+    "NAMES": [
+      "Plated",
+      "Plated Armor"
+    ],
+    "DESCRIPTION": "At the end of your turn, gain #yBlock. Receiving unblocked attack damage reduces this by #b1."
+  },
+  {
+    "PROPER_NAME": "Metallicize",
+    "NAMES": [
+      "Metallicize"
+    ],
+    "DESCRIPTION": "At the end of your turn, gain #yBlock."
+  },
+  {
+    "PROPER_NAME": "Manipulation",
+    "NAMES": [
+      "Manipulation"
+    ],
+    "DESCRIPTION": "Increases the amount of damage dealt and #yBlock given by #yPhasing cards."
   }
 ]

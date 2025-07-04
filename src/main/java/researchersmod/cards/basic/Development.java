@@ -20,12 +20,12 @@ public class Development extends ExperimentCard {
             AbstractCard.CardType.SKILL,
             AbstractCard.CardRarity.BASIC,
             AbstractCard.CardTarget.SELF,
-            1
+            2
     );
 
     public Development() {
         super(ID, info,1);
-        setBlock(6, 3);
+        setBlock(8, 3);
         setMagic(1,1);
     }
 

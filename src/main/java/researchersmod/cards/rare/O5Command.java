@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
-import researchersmod.actions.addPhaseAndEthereal;
+import researchersmod.actions.AddPhaseAndEthereal;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
@@ -33,7 +33,7 @@ public class O5Command extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        addToBot(new addPhaseAndEthereal(99, false));
+        addToBot(new AddPhaseAndEthereal(99, false));
         addToBot(new MakeTempCardInDrawPileAction(new Dazed(), this.magicNumber, false, true));
     }
 }

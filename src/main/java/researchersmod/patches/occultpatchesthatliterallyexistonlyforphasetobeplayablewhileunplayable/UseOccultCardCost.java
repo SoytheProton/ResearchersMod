@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import javassist.CtBehavior;
-import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.OccultFields;
 
 @SpirePatch(
         clz = AbstractPlayer.class,
@@ -22,7 +21,7 @@ public class UseOccultCardCost {
     )
     public static void h(AbstractPlayer __instance, AbstractCard c, AbstractMonster m, int energyOnUse)
     {
-        if (OccultFields.isOccult.get(c) && c.costForTurn > EnergyPanel.totalCount)
+        if (PhasingFields.isPhasing.get(c) && c.costForTurn > EnergyPanel.totalCount)
         {
             //occult card played with more cost than current energy
             temp = c.costForTurn;

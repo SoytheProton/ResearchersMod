@@ -3,15 +3,15 @@ package researchersmod.powers.interfaces;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class ExperimentInterfaces {
-    public interface onExperimentInterface {
+    public interface OnExperimentInterface {
         void onExperiment(AbstractPower power);
     }
 
-    public interface onCompletionInterface {
+    public interface OnCompletionInterface {
         void onCompletion(AbstractPower power);
     }
 
-    public interface onTerminateInterface {
+    public interface OnTerminateInterface {
         void onTerminate(AbstractPower power);
     }
 

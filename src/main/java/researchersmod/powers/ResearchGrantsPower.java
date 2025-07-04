@@ -27,8 +27,7 @@ public class ResearchGrantsPower extends BasePower {
 
     public void updateDescription() {
         String plural = "s";
-        if(this.amount == 1)
-            plural = "";
+        if(this.amount == 1) plural = "";
         this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
     }
 }

@@ -20,16 +20,7 @@ public class VolcanicResearchPower extends BasePower {
 
     public VolcanicResearchPower(AbstractCreature owner, int amt) {
         super(POWER_ID, TYPE, TURNBASED, owner, amt);
-        this.amount2 = 1;
         updateDescription();
-    }
-
-    public void stackPower(int stackAmount) {
-        this.amount += stackAmount;
-        this.amount2 += 1;
-        if (this.amount == 0) {
-            addToTop((AbstractGameAction)new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-        }
     }
 
     @Override
@@ -37,14 +28,10 @@ public class VolcanicResearchPower extends BasePower {
         if(card.type == AbstractCard.CardType.STATUS) {
             flash();
             Wiz.atb(new ApplyPowerAction(owner,owner, new StrengthPower(owner,this.amount)));
-            Wiz.atb(new DrawCardAction(this.amount2));
         }
     }
 
     public void updateDescription() {
-        String plural = "s";
-        if(this.amount2 == 1)
-            plural = "";
-        this.description = String.format(plural,this.amount2,plural,this.amount);
+        this.description = String.format(DESCRIPTIONS[0],this.amount);
     }
 }

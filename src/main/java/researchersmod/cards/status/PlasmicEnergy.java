@@ -39,14 +39,7 @@ public class PlasmicEnergy extends BaseCard {
         this.exhaust = true;
         setMagic(1);
         setPhase(true);
-    }
-    @Override
-    protected List<AbstractCardModifier> getInitialModifiers() {
-        ArrayList<AbstractCardModifier> retVal = new ArrayList<>();
-        EthericMod etheric = new EthericMod();
-        etheric.editEtheric(2);
-        retVal.add(etheric);
-        return retVal;
+        setEtheric(2);
     }
 
     @Override

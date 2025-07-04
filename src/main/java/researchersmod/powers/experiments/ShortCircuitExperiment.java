@@ -3,7 +3,6 @@ package researchersmod.powers.experiments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -17,7 +16,7 @@ import researchersmod.util.Wiz;
 
 import java.util.Objects;
 
-public class ShortCircuitExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.onCompletionInterface {
+public class ShortCircuitExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(ShortCircuitExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;

@@ -6,7 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.InfluxPowerPower;
+import researchersmod.powers.ManipulationPower;
+import researchersmod.powers.deprecated.InfluxPowerPower;
 import researchersmod.util.CardStats;
 
 public class InfluxPower extends BaseCard {
@@ -26,7 +27,7 @@ public class InfluxPower extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new InfluxPowerPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new ManipulationPower(p, this.magicNumber), this.magicNumber));
     }
 
 }

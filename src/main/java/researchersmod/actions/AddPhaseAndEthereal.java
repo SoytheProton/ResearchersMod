@@ -9,12 +9,12 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.PhaseMod;
 
-public class addPhaseAndEthereal extends AbstractGameAction {
+public class AddPhaseAndEthereal extends AbstractGameAction {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:addPhaseAndEthereal");
     public static final String[] TEXT = uiStrings.TEXT;
     private final boolean isRandom;
 
-    public addPhaseAndEthereal (int amount, boolean isRandom){
+    public AddPhaseAndEthereal(int amount, boolean isRandom){
         this.actionType = ActionType.CARD_MANIPULATION;
         this.amount = amount;
         this.isRandom = isRandom;

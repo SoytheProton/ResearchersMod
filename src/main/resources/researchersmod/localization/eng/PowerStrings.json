@@ -47,7 +47,7 @@
       " #yBlock."
     ]
   },
-  "${modID}:ExhaustNextPower": {
+  "${modID}:UplinkPower": {
     "NAME": "Uplink",
     "DESCRIPTIONS": [
       "The next card you play #yExhausts."
@@ -121,7 +121,7 @@
   "${modID}:VolcanicResearchPower": {
     "NAME": "Volcanic Research",
     "DESCRIPTIONS": [
-      "Whenever you draw a #yStatus, draw #b%d card%s and gain #b%d Strength."
+      "Whenever you draw a #yStatus, gain #b%d Strength."
     ]
   },
   "${modID}:PhaseDrawPower": {
@@ -146,6 +146,18 @@
     "NAME": "Eclipsed Form",
     "DESCRIPTIONS": [
       "At the start of your turn, draw #b%d card%s, then increase this gain and your maximum hand size by #b%d."
+    ]
+  },
+  "${modID}:SystemErrorPower": {
+    "NAME": "System Error",
+    "DESCRIPTIONS": [
+      "The next #b%d time%s a card ${modID}:Phases, draw 2 cards."
+    ]
+  },
+  "${modID}:ManipulationPower": {
+    "NAME": "Manipulation",
+    "DESCRIPTIONS": [
+      "Increase attack damage and #yBlock gained from #yPhased cards by #b%d."
     ]
   }
 }

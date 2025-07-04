@@ -37,8 +37,8 @@
   },
   "${modID}:Development": {
     "NAME": "Development",
-    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Power: Upgrade !M! random card in your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Power: Upgrade !M! random cards in your draw pile."
+    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Skill: Upgrade !M! random card in your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Skill: Upgrade !M! random cards in your draw pile."
   },
   "${modID}:BurntDocument": {
     "NAME": "Burnt Document",
@@ -60,7 +60,7 @@
   },
   "${modID}:GravityParry": {
     "NAME": "Gravity Parry",
-    "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, gain !B! Block."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL When ${modID}:Phasing, double these values."
   },
   "${modID}:Olderpower": {
     "NAME": "Overpower",
@@ -97,7 +97,7 @@
   },
   "${modID}:InfluxPower": {
     "NAME": "Influx Power",
-    "DESCRIPTION": "On ${modID}:Completion, gain !M! Block."
+    "DESCRIPTION": "Gain !M! ${modID}:Manipulation."
   },
   "${modID}:Older": {
     "NAME": "Folder",
@@ -209,11 +209,7 @@
   },
   "${modID}:TrialRun": {
     "NAME": "Trial Run",
-    "DESCRIPTION": "Draw a card. NL If this card is Exhausted, draw a card for every time it was played this combat.",
-    "EXTENDED_DESCRIPTION":[
-      "(Played !M! time.)",
-      "(Played !M! times.)"
-    ]
+    "DESCRIPTION": "Draw !M! cards. NL If you have ${modID}:Phased a card this turn, gain [E]."
   },
   "${modID}:CleanUpDuty": {
     "NAME": "Clean Up Duty",
@@ -343,14 +339,14 @@
     "NAME": "Wave Particle",
     "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Exhaust 1 Status: Add a *Subspace *Strike to your hand."
   },
-  "${modID}:SystemError": {
+  "${modID}:OldSystemError": {
     "NAME": "System Error",
     "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Draw 1 Status: Add a *Burnt *Document to your hand.",
     "UPGRADE_DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Draw 1 Status: Add a *Burnt *Document to your hand. ${modID}:Terminate: Upgrade all *Burnt *Documents in your hand."
   },
   "${modID}:VolcanicResearch": {
     "NAME": "Volcanic Research",
-    "DESCRIPTION": "Shuffle 3 *Magma *Burns into your draw pile. Whenever you draw a Status card, draw 1 card and gain !M! Strength."
+    "DESCRIPTION": "Shuffle 3 *Magma *Burns into your draw pile. Whenever you draw a Status card, gain !M! Strength."
   },
   "${modID}:NeutralyzerSerum": {
     "NAME": "Neutralyzer Serum",
@@ -369,7 +365,7 @@
   },
   "${modID}:IonTail": {
     "NAME": "Ion Tail",
-    "DESCRIPTION": "Gain !M! Plated Armor. NL Gain !M! Metalicize."
+    "DESCRIPTION": "Gain !M! ${modID}:Plated *Armor. NL Gain !M! ${modID}:Metallicize."
   },
   "${modID}:ExtensiveTesting": {
     "NAME": "Extensive Testing",
@@ -378,11 +374,11 @@
   },
   "${modID}:ResonantHexagraph": {
     "NAME": "Resonant Hexagraph",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block and add a copy to your hand with 2 less Block until it reaches 0."
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block and, once per turn, add a copy to your hand with 2 less Block until it reaches 0."
   },
   "${modID}:EclipsedForm": {
     "NAME": "Eclipsed Form",
-    "DESCRIPTION": "Ethereal. NL Whenever a card is Exhausted, gain !M! Artifact."
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, draw 1 card. Then, increase this gain and your maximum hand size by !M!."
   },
   "${modID}:MagmaBurn": {
     "NAME": "Magma Burn",
@@ -395,5 +391,9 @@
   "${modID}:dummyethereal": {
     "NAME": "Etheral Mod",
     "DESCRIPTION": "Adds Better Ethereal Mod to all cards in hand."
+  },
+  "${modID}:SystemError": {
+    "NAME": "System Error",
+    "DESCRIPTION": "The next !M! times a card ${modID}:Phases, draw 2 cards."
   }
 }

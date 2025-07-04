@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.cards.BaseCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.DescriptionModifier;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
@@ -17,7 +16,7 @@ import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.ExpDescriptionHelper;
 import researchersmod.util.Wiz;
 
-public class OrganizationExpAttachment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentInterfaces.onCompletionInterface, ExperimentInterfaces.onTerminateInterface, DescriptionModifier {
+public class OrganizationExpAttachment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentInterfaces.OnCompletionInterface, ExperimentInterfaces.OnTerminateInterface, DescriptionModifier {
 
     public static final String POWER_ID = Researchers.makeID(OrganizationExpAttachment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;

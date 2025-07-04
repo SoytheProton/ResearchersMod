@@ -67,7 +67,7 @@ public class Researchers implements
 
     public static int expsTerminatedThisCombat;
     public static int expsCompletedThisCombat;
-
+    public static int cardsPhasedThisTurn;
     @SpireEnum
     public static AbstractCard.CardTags PHASE;
     @SpireEnum
@@ -289,12 +289,15 @@ public class Researchers implements
     @Override
     public void receiveOnPlayerTurnStart() {
         CardsExhaustedThisTurn = 0;
+        cardsPhasedThisTurn = 0;
     }
 
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         expsTerminatedThisCombat = 0;
         expsCompletedThisCombat = 0;
+        CardsExhaustedThisTurn = 0;
+        cardsPhasedThisTurn = 0;
     }
 
     @Override

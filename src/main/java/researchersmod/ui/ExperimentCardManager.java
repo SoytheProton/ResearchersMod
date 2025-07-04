@@ -89,7 +89,16 @@ public class ExperimentCardManager {
     }
 
     public static void addExperiment(AbstractCard card, boolean playSFX) {
+        AbstractCard tmp = card.makeStatEquivalentCopy();
         card.targetAngle = 0f;
+        if (card.hasTag(Researchers.EXHAUSTEXP) || card.hasTag(Researchers.PURGEEXP)) {
+            if(card.hasTag(Researchers.PHASE)) card.glowColor = Color.BLUE.cpy();
+            tmp.current_x = Settings.WIDTH / 2.0F * Settings.xScale;
+            tmp.current_y = Settings.HEIGHT / 2.0F;
+            Wiz.att(new ShowCardAndPoofAction(tmp));
+            card.targetTransparency = 0.6F;
+        }
+        card.stopGlowing();
         card.beginGlowing();
         if(!CardModifierManager.hasModifier(card, ExperimentMod.ID)) {
             CardModifierManager.addModifier(card, new ExperimentMod());
@@ -104,8 +113,8 @@ public class ExperimentCardManager {
             }
         }
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof ExperimentInterfaces.onExperimentInterface){
-                ((ExperimentInterfaces.onExperimentInterface) p).onExperiment(expPower);
+            if(p instanceof ExperimentInterfaces.OnExperimentInterface){
+                ((ExperimentInterfaces.OnExperimentInterface) p).onExperiment(expPower);
             }
         }
         if (playSFX) {
@@ -132,8 +141,8 @@ public class ExperimentCardManager {
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust,boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
-            if (p instanceof ExperimentInterfaces.onTerminateInterface) {
-                ((ExperimentInterfaces.onTerminateInterface) p).onTerminate(power);
+            if (p instanceof ExperimentInterfaces.OnTerminateInterface) {
+                ((ExperimentInterfaces.OnTerminateInterface) p).onTerminate(power);
             }
         }
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID, true);
@@ -153,6 +162,15 @@ public class ExperimentCardManager {
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
         }
         Researchers.expsTerminatedThisCombat++;
+        for(AbstractCard c : Wiz.p().hand.group)
+            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
+                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
+        for(AbstractCard c : Wiz.p().discardPile.group)
+            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
+                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
+        for(AbstractCard c : Wiz.p().drawPile.group)
+            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
+                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
         Wiz.att(new RemoveSpecificPowerAction(power.owner, power.owner, power));
     }
 
@@ -184,8 +202,8 @@ public class ExperimentCardManager {
                 c.flash();
                 Researchers.expsCompletedThisCombat++;
                 for (AbstractPower power : Wiz.adp().powers) {
-                    if (power instanceof ExperimentInterfaces.onCompletionInterface) {
-                        ((ExperimentInterfaces.onCompletionInterface) power).onCompletion(p);
+                    if (power instanceof ExperimentInterfaces.OnCompletionInterface) {
+                        ((ExperimentInterfaces.OnCompletionInterface) power).onCompletion(p);
                     }
                 }
             }
