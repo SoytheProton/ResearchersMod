@@ -4,15 +4,13 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
-import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.CalcUtil;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 public class ForceGuardExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -31,7 +29,7 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner, (int) CalcUtil.CalcBlock(B)));
+        Wiz.atb(new GainBlockAction(owner, B));
         ExperimentCardManager.tickExperiment(this);
     }
 

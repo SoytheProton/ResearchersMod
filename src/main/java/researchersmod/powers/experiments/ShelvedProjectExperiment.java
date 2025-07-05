@@ -32,8 +32,8 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     }
 
     public void completionEffect(){
-        Wiz.atb(new SFXAction("ATTACK_LIGHT"));
-        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        Wiz.atb(new SFXAction("ATTACK_HEAVY"));
+        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,(int) damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.tickExperiment(this);
     }
 

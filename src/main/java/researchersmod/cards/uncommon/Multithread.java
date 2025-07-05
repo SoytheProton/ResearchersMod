@@ -14,7 +14,7 @@ public class Multithread extends ExperimentCard {
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
             CardRarity.UNCOMMON,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             1
     );
 
@@ -25,6 +25,6 @@ public class Multithread extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.Trial, this, damage)));
+        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.Trial, this, baseDamage)));
     }
 }

@@ -1,5 +1,6 @@
 package researchersmod.powers.experiments;
 
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
+import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -41,6 +43,8 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
         AbstractCard card = k.makeStatEquivalentCopy();
         ((ExperimentCard) card).BaseTrial = ((ExperimentCard)k).BaseTrial + 1;
         ((ExperimentCard) card).Trial = ((ExperimentCard)k).BaseTrial + 1;
+        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
+        card.initializeDescription();
         Wiz.att(new MakeTempCardInDrawPileAction(card,1,true,true));
         ExperimentCardManager.tickExperiment(this);
     }
