@@ -5,11 +5,14 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 public class ResonantHexagraph extends BaseCard {
     public static final String ID = makeID(ResonantHexagraph.class.getSimpleName());
@@ -21,7 +24,7 @@ public class ResonantHexagraph extends BaseCard {
             -2
     );
 
-    private boolean hasMadeCopyThisTurn;
+    public static Set<UUID> copiedThisTurn = new HashSet<>();
 
 
     public ResonantHexagraph() {
@@ -35,8 +38,8 @@ public class ResonantHexagraph extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new GainBlockAction(p, block));
-        if (!hasMadeCopyThisTurn && this.baseBlock > 2) {
-            hasMadeCopyThisTurn = true;
+        if (!copiedThisTurn.contains(uuid) && this.baseBlock > 2) {
+            copiedThisTurn.add(uuid);
             AbstractCard card = this.makeStatEquivalentCopy();
             card.baseBlock -= 2;
             if(card.baseBlock <= 0)

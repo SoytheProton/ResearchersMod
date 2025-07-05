@@ -10,7 +10,7 @@ import researchersmod.cards.status.BurntDocument;
 public class BDNextTurn extends BasePower {
     public static final String POWER_ID = Researchers.makeID(BDNextTurn.class.getSimpleName());
     public static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
-    private static final boolean TURNBASED = false;
+    private static final boolean TURNBASED = true;
 
     public BDNextTurn(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);

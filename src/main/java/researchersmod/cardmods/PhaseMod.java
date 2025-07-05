@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.ManipulationPower;
+import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class PhaseMod extends AbstractCardModifier {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
     private boolean isFirstApplication = false;
     private boolean inherent;
+    private boolean phaseNumbers = ModConfig.enablePhaseNumbers;
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
@@ -45,26 +47,36 @@ public class PhaseMod extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
+        if(!phaseNumbers || isFirstApplication) {
         String p = LocalizedStrings.PERIOD;
-        String[] cardDescription = KH.autoString(KH.hasUnplayableNL(card,rawDescription) ? "." :
-                                        KH.hasUnplayable(card,rawDescription) ? " " : "",
-                                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
-                                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
+        String[] cardDescription = KH.autoString(KH.hasUnplayableNL(card, rawDescription) ? "." :
+                        KH.hasUnplayable(card, rawDescription) ? " " : "",
+                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
+                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
                 rawDescription);
         return cardDescription[0] +
-                (KH.hasUnplayableNL(card,rawDescription) ? " NL " : " ")
-                + uiStrings.TEXT[1] + p +
+                (KH.hasUnplayableNL(card, rawDescription) ? " NL " : " ")
+                + phaseString(card) + p +
                 (KH.hasInnate(card, rawDescription) ||
-                        (KH.hasEther(card,rawDescription) && !CardModifierManager.hasModifier(card,BetterEtherealMod.ID) && !CardModifierManager.hasModifier(card,EthericMod.ID)) ||
+                        (KH.hasEther(card, rawDescription) && !CardModifierManager.hasModifier(card, BetterEtherealMod.ID) && !CardModifierManager.hasModifier(card, EthericMod.ID)) ||
                         KH.hasPhase(card, rawDescription) && !isFirstApplication ||
                         KH.hasRetain(card, rawDescription) ? " " : " NL ")
                 + cardDescription[1];
+        }
+        return rawDescription;
+    }
+
+    private String phaseString(AbstractCard card) {
+        if(phaseNumbers && CardModifierManager.getModifiers(card, PhaseMod.ID).size() > 1) {
+            return uiStrings.TEXT[1]+ " " + CardModifierManager.getModifiers(card, PhaseMod.ID).size();
+        }
+        return uiStrings.TEXT[1];
     }
 
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if(CardModifierManager.getModifiers(card,PhaseMod.ID).size() == 1)
+        if(CardModifierManager.getModifiers(card,PhaseMod.ID).get(0) == this)
             isFirstApplication = true;
         card.tags.add(Researchers.PHASE);
         this.identifier(card);
@@ -115,7 +127,6 @@ public class PhaseMod extends AbstractCardModifier {
 
     public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if(PhasingFields.isPhasing.get(card) && type == DamageInfo.DamageType.NORMAL) {
-            System.out.println("Phasing");
             if (card instanceof WhilePhaseInterface)
                 damage = ((WhilePhaseInterface) card).whilePhase("DAMAGE", damage);
             for (AbstractPower p : AbstractDungeon.player.powers)

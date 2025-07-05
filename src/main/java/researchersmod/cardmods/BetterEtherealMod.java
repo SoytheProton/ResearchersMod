@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import researchersmod.Researchers;
 import researchersmod.util.KH;
 
 import java.util.ArrayList;
@@ -18,11 +17,25 @@ public class BetterEtherealMod extends AbstractCardModifier {
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
+    private boolean inherent;
 
     @Override
     public boolean shouldApply(AbstractCard card) {
         return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
     }
+
+    public boolean isInherent(AbstractCard card) {
+        return inherent;
+    }
+
+    public BetterEtherealMod(boolean isInherent) {
+        inherent = isInherent;
+    }
+
+    public BetterEtherealMod() {
+        inherent = false;
+    }
+
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {

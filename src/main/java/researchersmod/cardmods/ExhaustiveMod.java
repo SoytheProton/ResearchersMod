@@ -1,10 +1,10 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class ExhaustiveMod extends AbstractCardModifier {
@@ -14,28 +14,42 @@ public class ExhaustiveMod extends AbstractCardModifier {
     public int exhaustiveValue = 1;
     public int baseExhaustiveValue = 1;
 
+    private boolean inherent;
+
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if(rawDescription.contains(" NL Exhaust.")){
-            return rawDescription.replaceFirst(" NL Exhaust.", getReturnString(0));
+            return rawDescription.replaceFirst(" NL Exhaust.", uiStrings.TEXT[0]);
         }
-        else return rawDescription + getReturnString(0);
+        else return rawDescription + uiStrings.TEXT[0];
     }
 
-    private String getReturnString(int index) {
-        return uiStrings.TEXT[index];
+    public boolean isInherent(AbstractCard card) {
+        return inherent;
+    }
+
+    public ExhaustiveMod() {
+        this(false);
+    }
+
+    public ExhaustiveMod(boolean isInherent) {
+        this(isInherent,1);
+    }
+
+    public ExhaustiveMod(boolean isInherent,int exhaustiveValue) {
+        this.inherent = isInherent;
+        editExhaustive(exhaustiveValue);
     }
 
     @Override
     public boolean shouldApply(AbstractCard card) {
-        return true; //!card.exhaust || !CardModifierManager.hasModifier(card,ExhaustiveMod.ID)
+        return !card.exhaust || !CardModifierManager.hasModifier(card,ExhaustiveMod.ID);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
         this.identifier(card);
         ExhaustiveVariable.setBaseValue(card,baseExhaustiveValue);
-        System.out.println("Did this do the thing");
     }
 
     @Override

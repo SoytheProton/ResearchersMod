@@ -5,17 +5,6 @@
       "#yPhase. #yEthereal."
     ]
   },
-  "${modID}:PhaseCardModifier": {
-    "TEXT": [
-      "${modID}:Phase. NL %s",
-      "${modID}:Phase. %s",
-      "%s ${modID}:Phase. %s",
-      "%s NL ${modID}:Phase. NL %s",
-      "%s NL ${modID}:Phase. %s",
-      "%s NL ${modID}:Phase.",
-      "%s${modID}:Phase %s"
-    ]
-  },
   "${modID}:Keywords": {
     "TEXT": [
       "Unplayable",
@@ -31,17 +20,6 @@
       "${modID}:Experiment !${modID}:Trial! "
     ]
   },
-  "${modID}:EthericCardModifier": {
-    "TEXT": [
-      "${modID}:Etheric NL %s",
-      "${modID}:Etheric %s",
-      "%s ${modID}:Etheric %s",
-      "%s NL ${modID}:Etheric NL %s",
-      "%s NL ${modID}:Etheric %s",
-      "%s NL ${modID}:Etheric",
-      "%s${modID}:Etheric %s"
-    ]
-  },
   "${modID}:ExhaustiveCardModifier": {
     "TEXT": [
       "   NL Exhaustive !stslib:ex!.",
@@ -53,5 +31,10 @@
       "${modID}:Completion: ",
       "${modID}:Terminate: "
     ]
+  },
+  "${modID}:ModConfig": {
+    "TEXT_DICT": {
+      "enablePhaseNumbers": " \nPhase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)"
+    }
   }
 }

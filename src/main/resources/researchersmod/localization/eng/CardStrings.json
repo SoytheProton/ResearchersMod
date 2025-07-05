@@ -37,8 +37,8 @@
   },
   "${modID}:Development": {
     "NAME": "Development",
-    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Skill: Upgrade !M! random card in your draw pile.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - 1 Skill: Upgrade !M! random cards in your draw pile."
+    "DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Upgrade !M! random card in your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. ${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Upgrade !M! random cards in your draw pile."
   },
   "${modID}:BurntDocument": {
     "NAME": "Burnt Document",
@@ -56,7 +56,7 @@
   },
   "${modID}:EnergySlash": {
     "NAME": "Energy Slash",
-    "DESCRIPTION": "Deal !D! damage. If this is the first card you played this turn, Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Can be upgraded any number of times. NL Exhaust."
   },
   "${modID}:GravityParry": {
     "NAME": "Gravity Parry",
@@ -189,7 +189,7 @@
   },
   "${modID}:ServerHash": {
     "NAME": "Server Hash",
-    "DESCRIPTION": "Gain !${modID}:Blocc! Block. NL ${modID}:Experiment !${modID}:Trial! - 1 Attack: Gain !B! Block. NL ${modID}:Terminate: Draw a card."
+    "DESCRIPTION": "Gain !${modID}:Blocc! Block. NL ${modID}:Experiment !${modID}:Trial! - Play 1 Attack: Gain !B! Block. NL ${modID}:Terminate: Draw a card."
   },
   "${modID}:dummyattack": {
     "NAME": "Dummy!",
@@ -197,11 +197,11 @@
   },
   "${modID}:Overpower": {
   "NAME": "Overpower",
-  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 1 Power. ${modID}:Terminate: Draw !M! cards."
+  "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Play 1 Power. NL ${modID}:Terminate: Draw !M! cards."
   },
   "${modID}:Folder": {
     "NAME": "Folder",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Add an additional ${modID}:Trial. ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Add an additional ${modID}:Trial. NL ${modID}:Terminate: Exhaust."
   },
   "${modID}:Datamining": {
     "NAME": "Datamining",
@@ -222,7 +222,7 @@
   },
   "${modID}:ShortCircuit": {
     "NAME": "Short Circuit",
-    "DESCRIPTION": "Plays when drawn. NL ${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Lose [E]. ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "Plays when drawn. NL ${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Lose [E]. NL ${modID}:Terminate: Exhaust."
   },
   "${modID}:LaserStrike": {
     "NAME": "Laser Strike",
@@ -230,11 +230,11 @@
   },
   "${modID}:ForceGuard": {
     "NAME": "Force Guard",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 Skill: Gain !B! Block."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Gain !B! Block."
   },
   "${modID}:Analyze": {
     "NAME": "Analyze",
-    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 2 ${modID}:Completions: Permanently increase this card's damage by !M!. ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 2 ${modID}:Completions: Permanently increase this card's damage by !M!. NL ${modID}:Terminate: Exhaust."
   },
   "${modID}:PlasmicEnergy": {
     "NAME": "Plasmic Energy",
@@ -309,7 +309,7 @@
   },
   "${modID}:PlasmaPulse": {
     "NAME": "Plasma Pulse",
-    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 1 Attack: Add a *Plasmic *Energy to your hand."
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Play 1 Attack: Add a *Plasmic *Energy to your hand."
   },
   "${modID}:Hyperfocus": {
     "NAME": "Hyperfocus",
@@ -350,8 +350,8 @@
   },
   "${modID}:NeutralyzerSerum": {
     "NAME": "Neutralyzer Serum",
-    "DESCRIPTION": "${modID}:Experiment X - 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy.",
-    "UPGRADE_DESCRIPTION": "${modID}:Experiment X+1 - 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy."
+    "DESCRIPTION": "${modID}:Experiment X - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy.",
+    "UPGRADE_DESCRIPTION": "${modID}:Experiment X+1 - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy."
   },
   "${modID}:ParticleAccelerator": {
     "NAME": "Particle Accelerator",
@@ -386,7 +386,7 @@
   },
   "${modID}:SulfurPod": {
     "NAME": "Sulfur Pod",
-    "DESCRIPTION": "Retain. NL At the end of your turn, take !M! damage for every Status in your hand. When this card is Exhausted, add a *Burn to your discard pile."
+    "DESCRIPTION": "Retain. NL Deal !D! damage to all enemies, then Exhaust all other *Sulfur *Pods in your hand. Exhaust. "
   },
   "${modID}:dummyethereal": {
     "NAME": "Etheral Mod",
@@ -395,5 +395,47 @@
   "${modID}:SystemError": {
     "NAME": "System Error",
     "DESCRIPTION": "The next !M! times a card ${modID}:Phases, draw 2 cards."
+  },
+  "${modID}:HadalJetsuit": {
+    "NAME": "Hadal Jetsuit",
+    "DESCRIPTION": "Whenever a card ${modID}:Phases, gain !M! temporary Manipulation. Every 3 cards ${modID}:Phased, gain 1 Manipulation."
+  },
+  "${modID}:SulfuricOxidation": {
+    "NAME": "Sulfuric Oxidation",
+    "DESCRIPTION": "Deal !D! damage !M! times, then add a *Sulfur *Pod to your hand for every time this dealt unblocked damage."
+  },
+  "${modID}:Digithunder": {
+    "NAME": "Digithunder",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Termination: Gain !M! Strength. NL ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:MedicalRecords": {
+    "NAME": "Medical Records",
+    "DESCRIPTION": "Ethereal. NL Heal 1 HP for every Status in your discard pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Ethereal. NL Heal 1 HP for every Status in your discard or exhaust pile. NL Exhaust."
+  },
+  "${modID}:TeslaCoil": {
+    "NAME": "Tesla Coil",
+    "DESCRIPTION": "At the start of each turn, gain 1 less [E] and add !M! *Plasmic *Energies into your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of each turn, gain 1 less [E]  and add !M! *Plasmic *Energies into your hand."
+  },
+  "${modID}:LetVandDocumenting": {
+    "NAME": "Let-Vand Documenting",
+    "DESCRIPTION": "Gain 1 temporary Strength and temporary Dexterity for every *Burnt *Document in your hand."
+  },
+  "${modID}:Livewire": {
+    "NAME": "Livewire",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Card: Gain [E] [E]  and add a *Short *Circuit into your discard pile."
+  },
+  "${modID}:HeavyContainment": {
+    "NAME": "Heavy Containment",
+    "DESCRIPTION": "Exhaust all cards in your hand. NL Gain !B! Block for each card Exhausted. NL Next turn, gain half as much Block."
+  },
+  "${modID}:Incinerate": {
+    "NAME": "Incinerate",
+    "DESCRIPTION": "Deal !D! damage. Draw 1 card. If you draw a ${modID}:Phase card, Exhaust it and increase this card's draw by 1. NL If 3 or more cards were Exhausted, Exhaust."
+  },
+  "${modID}:Multithread": {
+    "NAME": "Multithread",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Deal !D! damage, then shuffle a copy of this card in your draw pile with 1 more ${modID}:Trial. NL ${modID}:Terminate: Exhaust."
   }
 }

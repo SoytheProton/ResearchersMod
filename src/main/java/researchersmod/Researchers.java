@@ -25,16 +25,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.rare.ResonantHexagraph;
 import researchersmod.cards.targeting.CardTargeting;
+import researchersmod.character.ResearchersCharacter;
 import researchersmod.relics.BaseRelic;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ModConfig;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.KeywordInfo;
 import researchersmod.util.TextureLoader;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import researchersmod.character.ResearchersCharacter;
 @SpireInitializer
 public class Researchers implements
         EditCharactersSubscriber,
@@ -90,7 +92,7 @@ public class Researchers implements
 
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
-        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, new ModConfig());
 
         CustomTargeting.registerCustomTargeting(CardTargeting.EXPERIMENT, new CardTargeting());
     }
@@ -290,6 +292,7 @@ public class Researchers implements
     public void receiveOnPlayerTurnStart() {
         CardsExhaustedThisTurn = 0;
         cardsPhasedThisTurn = 0;
+        ResonantHexagraph.copiedThisTurn.clear();
     }
 
     @Override

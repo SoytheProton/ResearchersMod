@@ -14,12 +14,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.cardmods.EthericMod;
+import researchersmod.cardmods.ExhaustiveMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.CardStats;
-import researchersmod.util.KH;
 import researchersmod.util.TriFunction;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static researchersmod.util.GeneralUtils.removePrefix;
 import static researchersmod.util.TextureLoader.getCardTextureString;
@@ -447,8 +449,21 @@ public abstract class BaseCard extends CustomCard {
         this.upgEthericValue = upgEthericValue;
     }
 
+    protected final void setExhaustive(int exhaustiveValue) {
+        setExhaustive(exhaustiveValue,0);
+    }
+
+    protected final void setExhaustive(int exhaustiveValue, int upgExhaustiveValue) {
+        if(exhaustiveValue > 0) {
+            ExhaustiveMod mod = new ExhaustiveMod(true,exhaustiveValue);
+            CardModifierManager.addModifier(this, mod);
+        }
+        this.upgEthericValue = upgExhaustiveValue;
+    }
+
     protected boolean upgPhase = false;
     protected int upgEthericValue = 0;
+    protected int upgExhaustiveValue = 0;
 
 
     @Override
@@ -563,6 +578,17 @@ public abstract class BaseCard extends CustomCard {
                     mod.editEtheric(mod.baseEthericValue + upgEthericValue);
                 } else {
                     mod = new EthericMod(true,upgEthericValue);
+                    CardModifierManager.addModifier(this,mod);
+                }
+            }
+
+            if (upgExhaustiveValue != 0) {
+                ExhaustiveMod mod;
+                if(CardModifierManager.hasModifier(this,ExhaustiveMod.ID)) {
+                    mod = (ExhaustiveMod) CardModifierManager.getModifiers(this, ExhaustiveMod.ID).get(0);
+                    mod.editExhaustive(mod.baseExhaustiveValue + upgExhaustiveValue);
+                } else {
+                    mod = new ExhaustiveMod(true,upgExhaustiveValue);
                     CardModifierManager.addModifier(this,mod);
                 }
             }

@@ -6,10 +6,9 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cards.BaseCard;
 import researchersmod.cardmods.PhaseMod;
+import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
@@ -25,30 +24,35 @@ public class EnergySlash extends BaseCard {
 
 
     public EnergySlash() {
+        this(0);
+    }
+    public EnergySlash(int upgrades) {
         super(ID, info);
         setDamage(6);
-        CardModifierManager.addModifier(this, new PhaseMod());
+        setPhase(true,true);
         this.exhaust = true;
+        this.timesUpgraded = upgrades;
     }
 
-    public void triggerOnGlowCheck() {
-        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
-            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-            this.exhaust = true;
-        } else {
-            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-            this.exhaust = false;
-        }
-    }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     public void upgrade() {
-        if (!this.upgraded) {
-            super.upgrade();
-            CardModifierManager.addModifier(this, new PhaseMod());
+        if(upgraded) {
+            CardModifierManager.addModifier(this, new PhaseMod(true));
+            this.timesUpgraded++;
         }
+        super.upgrade();
+        this.upgraded = true;
+        this.name = cardStrings.NAME + "+" + this.timesUpgraded;
+        initializeTitle();
+    }
+
+    public AbstractCard makeCopy() {
+        AbstractCard card = super.makeCopy();
+        card.timesUpgraded = this.timesUpgraded;
+        return card;
     }
 }

@@ -159,5 +159,17 @@
     "DESCRIPTIONS": [
       "Increase attack damage and #yBlock gained from #yPhased cards by #b%d."
     ]
+  },
+  "${modID}:LoseManipulationPower": {
+    "NAME": "Manipulation Down",
+    "DESCRIPTIONS": [
+      "At the end of this turn, lose #b%d #yManipulation."
+    ]
+  },
+  "${modID}:TeslaCoilPower": {
+    "NAME": "Tesla Coil",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b%d #yPlasmic Energ%s into your hand."
+    ]
   }
 }

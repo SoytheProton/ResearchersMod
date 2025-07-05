@@ -9,11 +9,11 @@ import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
 
-import java.util.Arrays;
-
 /* Keyword Order
 Unplayable.
-Phase. Innate.
+Phase. Innate. Ethereal. Retain/Ethereal.
+DESCRIPTION.
+Exhaust.
  */
 
 public class KH {
