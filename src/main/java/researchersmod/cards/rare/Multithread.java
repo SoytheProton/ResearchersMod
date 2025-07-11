@@ -1,4 +1,4 @@
-package researchersmod.cards.uncommon;
+package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,14 +13,14 @@ public class Multithread extends ExperimentCard {
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.ALL_ENEMY,
-            1
+            0
     );
 
     public Multithread() {
         super(ID, info,1);
-        setDamage(2,1);
+        setDamage(4,2);
     }
 
     @Override

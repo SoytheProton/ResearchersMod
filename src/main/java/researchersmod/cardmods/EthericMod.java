@@ -3,14 +3,13 @@ package researchersmod.cardmods;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
+import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
 import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import researchersmod.Researchers;
 import researchersmod.util.KH;
 import researchersmod.util.Wiz;
 
@@ -43,10 +42,6 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     }
     public EthericMod() {
         inherent = false;
-    }
-
-    public boolean isInherent(AbstractCard card) {
-        return inherent;
     }
 
     @Override

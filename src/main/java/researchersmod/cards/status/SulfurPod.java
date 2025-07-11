@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
@@ -27,15 +28,18 @@ public class SulfurPod extends BaseCard {
         super(ID, info);
         this.exhaust = true;
         this.selfRetain = true;
-        setDamage(3, 1);
-        this.isMultiDamage = true;
+        setMagic(3, 1);
         setPhase(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        int[] damage = new int[AbstractDungeon.getMonsters().monsters.size()];
+        for(int i = damage.length; i > 0; i--) {
+            damage[i-1] = magicNumber;
+        }
         addToBot(new SFXAction("ATTACK_POISON"));
-        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON));
+        addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
         for(AbstractCard c : p.hand.group)
             if(Objects.equals(c.cardID, ID))
                 Wiz.atb(new ExhaustSpecificCardAction(c,p.hand));

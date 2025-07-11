@@ -2,10 +2,8 @@ package researchersmod.cards.colorless;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
@@ -40,7 +38,7 @@ public class SubspaceStrike extends BaseCard {
         String plural = cardStrings.EXTENDED_DESCRIPTION[1];
         if(i == 1)
             plural = "";
-        this.rawDescription += String.format(cardStrings.EXTENDED_DESCRIPTION[0],i,plural);
+        this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0],i,plural);
     }
 
     public void onMoveToDiscard() {
@@ -51,9 +49,11 @@ public class SubspaceStrike extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        int i = 0;
         for (AbstractCard c : p.hand.group) {
             if(c.type == CardType.STATUS)
-                addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+                i++;
         }
+        addToBot(new DamageAction(m, new DamageInfo(p, damage * i, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 }

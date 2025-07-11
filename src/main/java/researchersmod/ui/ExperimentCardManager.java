@@ -1,20 +1,13 @@
 package researchersmod.ui;
 
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.ShowCardAndPoofAction;
-import researchersmod.Researchers;
-import researchersmod.cardmods.ExperimentMod;
-import researchersmod.cards.ExperimentCard;
-import researchersmod.powers.BasePower;
-import researchersmod.powers.interfaces.ExperimentInterfaces;
-import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.util.Wiz;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.red.PerfectedStrike;
@@ -28,6 +21,13 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
+import researchersmod.Researchers;
+import researchersmod.cardmods.ExperimentMod;
+import researchersmod.cards.ExperimentCard;
+import researchersmod.powers.BasePower;
+import researchersmod.powers.interfaces.ExperimentInterfaces;
+import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.util.Wiz;
 
 public class ExperimentCardManager {
     public static final float Y_OFFSET = 70f * Settings.scale;
@@ -217,16 +217,6 @@ public class ExperimentCardManager {
     public static class ProjectedCardFields {
         public static SpireField<Boolean> projectedField = new SpireField<>(() -> false);
     }
-
-    /*@SpirePatch2(clz = AbstractPlayer.class, method = "applyStartOfTurnCards")
-    public static class GrowCards {
-        @SpirePrefixPatch
-        public static void growCards() {
-            for (AbstractCard c : cards.group) {
-                ApplyGrowthAction.applyGrowth(c, 1);
-            }
-        }
-    }*/
 
     @SpirePatch2(clz = OverlayMenu.class, method = "render")
     public static class RenderPanel {

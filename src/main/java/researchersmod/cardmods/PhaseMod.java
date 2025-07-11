@@ -33,12 +33,9 @@ public class PhaseMod extends AbstractCardModifier {
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
-    public boolean isInherent(AbstractCard card) {
-        return inherent;
-    }
 
     public PhaseMod(boolean isInherent) {
-        inherent = isInherent;
+        inherent = false; // Returning true causes issues when Saving and Quiting.
     }
 
     public PhaseMod() {

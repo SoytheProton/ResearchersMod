@@ -432,7 +432,7 @@ public abstract class BaseCard extends CustomCard {
 
     protected final void setPhase(boolean basePhase, boolean upgPhase) {
         if(basePhase) {
-            PhaseMod mod = new PhaseMod(true);
+            PhaseMod mod = new PhaseMod(/*true*/);
             CardModifierManager.addModifier(this, mod);
         } this.upgPhase = upgPhase;
     }
@@ -458,7 +458,7 @@ public abstract class BaseCard extends CustomCard {
             ExhaustiveMod mod = new ExhaustiveMod(true,exhaustiveValue);
             CardModifierManager.addModifier(this, mod);
         }
-        this.upgEthericValue = upgExhaustiveValue;
+        this.upgExhaustiveValue = upgExhaustiveValue;
     }
 
     protected boolean upgPhase = false;

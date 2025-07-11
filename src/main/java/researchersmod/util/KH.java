@@ -8,6 +8,10 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
+import researchersmod.ui.ModConfig;
+
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 /* Keyword Order
 Unplayable.
@@ -48,6 +52,7 @@ public class KH {
         if(CardModifierManager.hasModifier(card, PhaseMod.ID)) return true;
         if(rawDescription.contains("Phase. NL ")) return true;
         if(rawDescription.contains("Phase.")) return true;
+        if(Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).find()) return true;
         return false;
     }
 
@@ -70,7 +75,9 @@ public class KH {
     }
 
     public static String[] autoString(String index, String indexStart,String rawDescription) {
-        int i = rawDescription.indexOf(index,rawDescription.indexOf(indexStart) + indexStart.length());
+        int y = rawDescription.indexOf(indexStart) + indexStart.length();
+        if(Objects.equals(index, "${modID}:Phase") && ModConfig.enablePhaseNumbers && Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).find()) y = Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).end();
+        int i = rawDescription.indexOf(index,y);
         if(index.equals(LocalizedStrings.PERIOD)) i++;
         if (i == -1) i = 0;
         // System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));

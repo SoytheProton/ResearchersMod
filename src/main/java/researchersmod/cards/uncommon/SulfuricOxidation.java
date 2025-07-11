@@ -1,7 +1,7 @@
 package researchersmod.cards.uncommon;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -25,19 +25,21 @@ public class SulfuricOxidation extends BaseCard {
 
     public SulfuricOxidation() {
         super(ID, info);
-        setDamage(3);
+        setDamage(9);
         setMagic(3,1);
         this.cardsToPreview = new SulfurPod();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        Wiz.atb(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
         for(int i = magicNumber; i > 0; i--) {
-            addToBot(new DamageCallbackAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON,(damageDealt) -> {
+            /* addToBot(new DamageCallbackAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON,(damageDealt) -> {
                 if(damageDealt > 0) {
                     Wiz.atb(new MakeTempCardInHandAction(new SulfurPod()));
                 }
-            }));
+            })); */
+            Wiz.atb(new MakeTempCardInHandAction(new SulfurPod()));
         }
     }
 }

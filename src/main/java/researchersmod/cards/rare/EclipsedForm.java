@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.EclipsedFormPower;
-import researchersmod.powers.WingbeatPower;
 import researchersmod.util.CardStats;
 
 public class EclipsedForm extends BaseCard {
@@ -22,11 +21,18 @@ public class EclipsedForm extends BaseCard {
     public EclipsedForm() {
         super(ID, info);
         setMagic(1);
-        setEthereal(true,false);
+        this.isEthereal = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new EclipsedFormPower(p),magicNumber));
+    }
+
+    public void upgrade() {
+        if(!upgraded) {
+            super.upgrade();
+            this.isEthereal = false;
+        }
     }
 }

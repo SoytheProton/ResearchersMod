@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import researchersmod.actions.RemoveEthericAction;
 import researchersmod.util.KH;
+import researchersmod.util.Wiz;
 
 import java.util.ArrayList;
 
@@ -24,10 +26,6 @@ public class BetterEtherealMod extends AbstractCardModifier {
         return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
-    public boolean isInherent(AbstractCard card) {
-        return inherent;
-    }
-
     public BetterEtherealMod(boolean isInherent) {
         inherent = isInherent;
     }
@@ -41,8 +39,7 @@ public class BetterEtherealMod extends AbstractCardModifier {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String p = LocalizedStrings.PERIOD;
         if(KH.hasEtheric(card,rawDescription)) {
-            CardModifierManager.removeModifiersById(card,EthericMod.ID,true);
-            card.isEthereal = true;
+            Wiz.att(new RemoveEthericAction(card, rawDescription));
         }
         String[] cardDescription = KH.autoString( KH.hasPhase(card,rawDescription) ? " NL " :
                         KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :

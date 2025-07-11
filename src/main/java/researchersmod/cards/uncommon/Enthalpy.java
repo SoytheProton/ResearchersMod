@@ -4,17 +4,14 @@ import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.Researchers;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.status.BurntDocument;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.EnthalpyPower;
-import researchersmod.powers.EntropyPower;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
@@ -36,18 +33,21 @@ public class Enthalpy extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(1,cardStrings.EXTENDED_DESCRIPTION[0],false,false,(c ->
-            CardModifierManager.hasModifier(c, PhaseMod.ID) && !Objects.equals(c.cardID, this.cardID)
-        ),(cards) -> {
-            if(hasPhaseCard()) {
-            for (AbstractCard c : cards) {
-                if (c != null) {
-                    Wiz.atb(new ExhaustSpecificCardAction(c, Wiz.p().hand));
-                    addToBot(new ApplyPowerAction(p, p, new EnthalpyPower(p, this.upgraded, c.makeStatEquivalentCopy())));
+        if(hasPhaseCard()) {
+            addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], false, false, (c ->
+                    CardModifierManager.hasModifier(c, PhaseMod.ID) && !Objects.equals(c.cardID, this.cardID)
+            ), (cards) -> {
+                for (AbstractCard c : cards) {
+                    if (c != null) {
+                        Wiz.atb(new ExhaustSpecificCardAction(c, Wiz.p().hand));
+                        addToBot(new ApplyPowerAction(p, p, new EnthalpyPower(p, this.upgraded, c.makeStatEquivalentCopy())));
+                    } else {
+                        Researchers.logger.warn("Card was null.");
+                    }
                 }
-            }
-        }}));
-
+                if (cards.isEmpty()) Researchers.logger.warn("No cards selected.");
+            }));
+        }
     }
 
     boolean hasPhaseCard() {

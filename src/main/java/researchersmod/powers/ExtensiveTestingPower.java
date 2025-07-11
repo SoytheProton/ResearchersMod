@@ -1,29 +1,47 @@
 package researchersmod.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.powers.interfaces.ExperimentInterfaces;
-import researchersmod.ui.ExperimentCardManager;
+import researchersmod.cards.colorless.FieldTest;
 
-public class ExtensiveTestingPower extends BasePower implements ExperimentInterfaces.OnExperimentInterface {
+public class ExtensiveTestingPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(ExtensiveTestingPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
+    private boolean upgraded;
 
-    public ExtensiveTestingPower(AbstractCreature owner, int amt) {
-        super(POWER_ID, TYPE, TURNBASED, owner, amt);
+    public ExtensiveTestingPower(AbstractCreature owner, boolean upgraded) {
+        super(POWER_ID, TYPE, TURNBASED, owner, 1);
         updateDescription();
+        this.upgraded = upgraded;
     }
 
-    public void onExperiment(AbstractPower power) {
-        flash();
-        ExperimentCardManager.tickExp(power,-this.amount);
+    public boolean isStackable(AbstractPower po) {
+        if(po instanceof ExtensiveTestingPower) {
+            return ((ExtensiveTestingPower) po).upgraded == this.upgraded;
+        }
+        return false;
     }
+
+    @Override
+    public void atStartOfTurnPostDraw() {
+        flash();
+        AbstractCard card = new FieldTest();
+        if(upgraded) card.upgrade();
+        addToTop((new NewQueueCardAction(card, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
+    }
+
 
     public void updateDescription() {
         String plural = "s";
         if(this.amount == 1) plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
+        String plus = "";
+        if(upgraded) plus = "+";
+        this.description = String.format(DESCRIPTIONS[0],this.amount,plural,plus);
     }
 }

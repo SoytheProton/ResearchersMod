@@ -1,12 +1,11 @@
-package researchersmod.cards.uncommon;
+package researchersmod.cards.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.HypothesisPower;
-import researchersmod.powers.WingbeatPower;
+import researchersmod.powers.deprecated.HypothesisPower;
 import researchersmod.util.CardStats;
 
 public class Hypothesis extends BaseCard {

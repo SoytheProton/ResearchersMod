@@ -1,21 +1,17 @@
 package researchersmod.cards.uncommon;
 
-import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import researchersmod.Researchers;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.targeting.CardTargeting;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.BasePower;
-import researchersmod.powers.experiments.OrganizationExpAttachment;
 import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.CardStats;
-import researchersmod.util.Wiz;
 
 public class Hyperfocus extends BaseCard {
     public static final String ID = makeID(Hyperfocus.class.getSimpleName());
@@ -49,7 +45,10 @@ public class Hyperfocus extends BaseCard {
                     ((ExperimentPower) power).terminateEffect();
                 }
             }
-            targetPower.amount += i;
+            if(targetPower != null)
+                targetPower.amount += i;
+            else
+                Researchers.logger.warn("Target Power is null.");
             ((ExperimentCard) target).Trial += i;
             target.superFlash();
         }

@@ -1,10 +1,7 @@
 package researchersmod.cards.status;
 
-import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -14,13 +11,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MagmaBurn extends BaseCard {
     public static final String ID = makeID(MagmaBurn.class.getSimpleName());
@@ -44,15 +37,30 @@ public class MagmaBurn extends BaseCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.dontTriggerOnUseCard) {
-            for(AbstractCard c : Wiz.p().hand.group) {
-                if(c.type == CardType.STATUS)
-                    addToBot((AbstractGameAction)new DamageAction((AbstractCreature) AbstractDungeon.player, new DamageInfo((AbstractCreature)AbstractDungeon.player, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-            }
+                addToBot((AbstractGameAction)new DamageAction((AbstractCreature) AbstractDungeon.player, new DamageInfo((AbstractCreature)AbstractDungeon.player, this.magicNumber * damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+                damage = 0;
         }
+    }
+
+    public void applyPowers() {
+        super.applyPowers();
+        int i = 0;
+        for(AbstractCard c : Wiz.p().hand.group) {
+            if(c.type == CardType.STATUS)
+                i++;
+        }
+        String plural = cardStrings.EXTENDED_DESCRIPTION[1];
+        if(i == 1)
+            plural = "";
+        this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0],i,plural);
     }
 
     public void triggerOnEndOfTurnForPlayingCard() {
         this.dontTriggerOnUseCard = true;
+        for(AbstractCard c : Wiz.p().hand.group) {
+            if(c.type == CardType.STATUS)
+                damage++;
+        }
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
     }
 

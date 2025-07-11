@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.cards.targeting.TargetingHandler;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.ui.ExperimentCardManager;
 
@@ -15,7 +16,9 @@ public class CardTargeting extends TargetingHandler<AbstractCard> {
     private AbstractCard hovered = null;
 
     public static AbstractCard getTarget(AbstractCard card) {
-        return CustomTargeting.getCardTarget(card);
+        AbstractCard target = CustomTargeting.getCardTarget(card);
+        if(target == null && !ExperimentCardManager.experiments.isEmpty()) return ExperimentCardManager.experiments.group.get(AbstractDungeon.cardRandomRng.random(ExperimentCardManager.experiments.group.size() - 1));
+        else return target;
     }
     @Override
     public void updateHovered() {

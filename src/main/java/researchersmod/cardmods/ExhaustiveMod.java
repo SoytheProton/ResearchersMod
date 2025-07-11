@@ -24,10 +24,6 @@ public class ExhaustiveMod extends AbstractCardModifier {
         else return rawDescription + uiStrings.TEXT[0];
     }
 
-    public boolean isInherent(AbstractCard card) {
-        return inherent;
-    }
-
     public ExhaustiveMod() {
         this(false);
     }

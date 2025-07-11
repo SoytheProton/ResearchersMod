@@ -1,11 +1,9 @@
-package researchersmod.cards.uncommon;
+package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.status.BurntDocument;
@@ -18,7 +16,7 @@ public class LetVandDocumenting extends BaseCard {
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.SELF,
             1
     );
@@ -37,7 +35,5 @@ public class LetVandDocumenting extends BaseCard {
                 i++;
         Wiz.applyToSelf(new StrengthPower(p, i));
         Wiz.applyToSelf(new DexterityPower(p, i));
-        Wiz.applyToSelf(new LoseDexterityPower(p, i));
-        Wiz.applyToSelf(new LoseStrengthPower(p, i));
     }
 }

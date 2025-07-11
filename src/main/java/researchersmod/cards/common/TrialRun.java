@@ -1,17 +1,11 @@
 package researchersmod.cards.common;
 
-import basemod.devcommands.draw.Draw;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import researchersmod.Researchers;
-import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -28,7 +22,7 @@ public class TrialRun extends BaseCard{
     );
     public TrialRun() {
         super(ID, info);
-        setMagic(2);
+        setMagic(2,1);
     }
 
     public void triggerOnGlowCheck() {

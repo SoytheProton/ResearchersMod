@@ -1,4 +1,4 @@
-package researchersmod.cards.uncommon;
+package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +13,7 @@ public class HadalJetsuit extends BaseCard {
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.POWER,
-            CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.SELF,
             1
     );

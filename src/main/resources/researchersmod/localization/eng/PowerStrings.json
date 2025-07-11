@@ -139,7 +139,7 @@
   "${modID}:ExtensiveTestingPower": {
     "NAME": "Extensive Testing",
     "DESCRIPTIONS": [
-      "Whenever you activate an Experiment, add #b%d Trial%s."
+      "At the start of your turn, play #b%d #yField #Test%s%s."
     ]
   },
   "${modID}:EclipsedFormPower": {
@@ -170,6 +170,18 @@
     "NAME": "Tesla Coil",
     "DESCRIPTIONS": [
       "At the start of your turn, add #b%d #yPlasmic Energ%s into your hand."
+    ]
+  },
+  "${modID}:HadalJetsuitPower": {
+    "NAME": "Hadal Jetsuit",
+    "DESCRIPTIONS": [
+      "When you #yPhase a card, gain #b%d temporary #yManipulation. \n Every 3 cards #yPhased, gain #b%d Manipulation."
+    ]
+  },
+  "${modID}:O5CommandPower": {
+    "NAME": "O5 Command",
+    "DESCRIPTIONS": [
+      "You cannot draw cards for the next #b%d turn%s."
     ]
   }
 }

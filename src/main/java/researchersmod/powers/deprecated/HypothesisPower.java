@@ -1,12 +1,11 @@
-package researchersmod.powers;
+package researchersmod.powers.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
+import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
 
 public class HypothesisPower extends BasePower {
