@@ -183,5 +183,12 @@
     "DESCRIPTIONS": [
       "You cannot draw cards for the next #b%d turn%s."
     ]
+  },
+  "${modID}:AccelechargerPower": {
+    "NAME": "Accelecharger",
+    "DESCRIPTIONS": [
+      "At the start of your turn, choose #b%d card%s in your draw pile to add to your hand. \n It gains #yEthereal.",
+      "add a copy with Ethereal to your hand."
+    ]
   }
 }

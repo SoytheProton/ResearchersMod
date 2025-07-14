@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.status.BurntDocument;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
@@ -24,7 +23,6 @@ public class LetVandDocumenting extends BaseCard {
     public LetVandDocumenting() {
         super(ID, info);
         setExhaustive(2,1);
-        this.cardsToPreview = new BurntDocument();
     }
 
     @Override

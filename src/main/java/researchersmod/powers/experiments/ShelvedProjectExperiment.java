@@ -4,12 +4,14 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -33,6 +35,7 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
 
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_HEAVY"));
+        Wiz.atb(new VFXAction(owner,new CleaveEffect(),0.0F));
         Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,(int) damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.tickExperiment(this);
     }

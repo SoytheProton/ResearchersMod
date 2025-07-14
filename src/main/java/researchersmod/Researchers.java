@@ -70,6 +70,7 @@ public class Researchers implements
     public static int expsTerminatedThisCombat;
     public static int expsCompletedThisCombat;
     public static int cardsPhasedThisTurn;
+    public static int cardsPhasedThisCombat;
     @SpireEnum
     public static AbstractCard.CardTags PHASE;
     @SpireEnum
@@ -301,6 +302,7 @@ public class Researchers implements
         expsCompletedThisCombat = 0;
         CardsExhaustedThisTurn = 0;
         cardsPhasedThisTurn = 0;
+        cardsPhasedThisCombat = 0;
     }
 
     @Override

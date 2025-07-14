@@ -2,18 +2,13 @@ package researchersmod.cards.status;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
-import researchersmod.util.Wiz;
-
-import java.util.Objects;
 
 public class SulfurPod extends BaseCard {
     public static final String ID = makeID(SulfurPod.class.getSimpleName());
@@ -40,8 +35,5 @@ public class SulfurPod extends BaseCard {
         }
         addToBot(new SFXAction("ATTACK_POISON"));
         addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
-        for(AbstractCard c : p.hand.group)
-            if(Objects.equals(c.cardID, ID))
-                Wiz.atb(new ExhaustSpecificCardAction(c,p.hand));
     }
 }

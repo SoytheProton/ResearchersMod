@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import researchersmod.Researchers;
 import researchersmod.util.Wiz;
 
@@ -12,7 +13,7 @@ public class IncinerateAction
     private AbstractCard card;
 
     public IncinerateAction(AbstractCard card) {
-        this.duration = 0.0F;
+        this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = AbstractGameAction.ActionType.WAIT;
         this.card = card;
     }

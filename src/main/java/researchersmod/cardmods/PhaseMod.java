@@ -46,18 +46,25 @@ public class PhaseMod extends AbstractCardModifier {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if(!phaseNumbers || isFirstApplication) {
         String p = LocalizedStrings.PERIOD;
-        String[] cardDescription = KH.autoString(KH.hasUnplayableNL(card, rawDescription) ? "." :
+        String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) ? " " :
+                KH.hasEtheric(card, rawDescription) ? " NL " :
+                KH.hasUnplayableNL(card, rawDescription) ? "." :
                         KH.hasUnplayable(card, rawDescription) ? " " : "",
-                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
-                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
+                KH.hasRetain(card,rawDescription) ? uiStrings.TEXT[3] :
+                        KH.hasEthereal(card, rawDescription) ? uiStrings.TEXT[2] :
+                                KH.hasEtheric(card, rawDescription) ? uiStrings.TEXT[5] :
+                                        KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
+                                                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
+                                                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
                 rawDescription);
         return cardDescription[0] +
                 (KH.hasUnplayableNL(card, rawDescription) ? " NL " : " ")
                 + phaseString(card) + p +
                 (KH.hasInnate(card, rawDescription) ||
-                        (KH.hasEther(card, rawDescription) && !CardModifierManager.hasModifier(card, BetterEtherealMod.ID) && !CardModifierManager.hasModifier(card, EthericMod.ID)) ||
+                        (KH.hasEthereal(card, rawDescription) && !CardModifierManager.hasModifier(card, BetterEtherealMod.ID)) ||
                         KH.hasPhase(card, rawDescription) && !isFirstApplication ||
-                        KH.hasRetain(card, rawDescription) ? " " : " NL ")
+                        KH.hasRetain(card, rawDescription) ? " " :
+                        (KH.hasEtheric(card,rawDescription) && !CardModifierManager.hasModifier(card, EthericMod.ID)) ? "" : " NL ")
                 + cardDescription[1];
         }
         return rawDescription;
@@ -117,6 +124,7 @@ public class PhaseMod extends AbstractCardModifier {
                     if (p instanceof OnPhaseInterface)
                         ((OnPhaseInterface) p).onPhase(card);
                 Researchers.cardsPhasedThisTurn++;
+                Researchers.cardsPhasedThisCombat++;
                 this.isDone = true;
             }
         });

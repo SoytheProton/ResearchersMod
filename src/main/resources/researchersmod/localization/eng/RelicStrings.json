@@ -10,7 +10,7 @@
     "NAME": "Database Tablet",
     "FLAVOR": "A holographic tablet for all your research needs.",
     "DESCRIPTIONS": [
-      "At the start of combat, choose #b1 card in your hand to #yExhaust. If you do, draw #b1 card.",
+      "At the start of combat, choose #b1 card in your hand to add to #yExhaust. If you do, draw #b1 card.",
       "Exhaust to draw a card."
     ]
   }

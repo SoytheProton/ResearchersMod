@@ -41,10 +41,8 @@ public class BetterEtherealMod extends AbstractCardModifier {
         if(KH.hasEtheric(card,rawDescription)) {
             Wiz.att(new RemoveEthericAction(card, rawDescription));
         }
-        String[] cardDescription = KH.autoString( KH.hasPhase(card,rawDescription) ? " NL " :
-                        KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
+        String[] cardDescription = KH.autoString(KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
                                  KH.hasUnplayable(card,rawDescription) ? " " : "" ,
-                KH.hasPhase(card, rawDescription) ? uiStrings.TEXT[1] :
                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
                                         KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",

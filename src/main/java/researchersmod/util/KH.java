@@ -22,6 +22,7 @@ Exhaust.
 
 public class KH {
     public static boolean hasEthereal(AbstractCard card, String rawDescription) {
+        if(hasEtheric(card,rawDescription)) return false;
         if(card.isEthereal) return true;
         if(CardModifierManager.hasModifier(card, BetterEtherealMod.ID)) return true;
         if(CardModifierManager.hasModifier(card, EtherealMod.ID)) return true;

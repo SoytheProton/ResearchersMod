@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.actions.IncreaseMiscAttackAction;
 import researchersmod.powers.BasePower;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnCompletionInterface
@@ -31,11 +31,11 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
     }
 
     public void terminateEffect(){
+        Wiz.atb(new IncreaseMiscAttackAction(k.uuid,k.misc,M));
         ExperimentCardManager.remExp(k,this,true);
     }
 
     public void completionEffect(){
-        Wiz.atb(new IncreaseMiscAttackAction(k.uuid,k.misc,M));
         ExperimentCardManager.tickExperiment(this);
     }
 

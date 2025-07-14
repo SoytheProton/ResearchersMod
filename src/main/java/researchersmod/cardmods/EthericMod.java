@@ -48,10 +48,9 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
         String p = LocalizedStrings.PERIOD;
-        String[] cardDescription = KH.autoString( KH.hasPhase(card,rawDescription) ? " NL " :
+        String[] cardDescription = KH.autoString(
                         KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
                                 KH.hasUnplayable(card,rawDescription) ? " " : "" ,
-                KH.hasPhase(card, rawDescription) ? uiStrings.TEXT[1] :
                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
                                         KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",

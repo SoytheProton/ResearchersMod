@@ -205,7 +205,7 @@
   },
   "${modID}:Datamining": {
     "NAME": "Datamining",
-    "DESCRIPTION": "Exhaust 1 card. Draw !M! cards next turn."
+    "DESCRIPTION": "Exhaust 1 card. NL Draw !M! cards next turn."
   },
   "${modID}:TrialRun": {
     "NAME": "Trial Run",
@@ -234,7 +234,7 @@
   },
   "${modID}:Analyze": {
     "NAME": "Analyze",
-    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 2 ${modID}:Completions: Permanently increase this card's damage by !M!. NL ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - 2 ${modID}:Completions. NL ${modID}:Terminate: Permanently increase this card's damage by !M!. Exhaust."
   },
   "${modID}:PlasmicEnergy": {
     "NAME": "Plasmic Energy",
@@ -360,8 +360,8 @@
   },
   "${modID}:CometStrike": {
     "NAME": "Comet Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add an *Ion *Tail into your hand.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add an *Ion *Tail+ into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Add an *Ion *Tail into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add an *Ion *Tail+ into your hand. NL Exhaust."
   },
   "${modID}:IonTail": {
     "NAME": "Ion Tail",
@@ -403,7 +403,7 @@
   },
   "${modID}:HadalJetsuit": {
     "NAME": "Hadal Jetsuit",
-    "DESCRIPTION": "Whenever a card ${modID}:Phases, gain 2 temporary Manipulation. Every 3 cards ${modID}:Phased, gain !M! Manipulation."
+    "DESCRIPTION": "Whenever a card ${modID}:Phases, gain 2 temporary ${modID}:Manipulation. Every 3 cards ${modID}:Phased, gain !M! Manipulation."
   },
   "${modID}:SulfuricOxidation": {
     "NAME": "Sulfuric Oxidation",
@@ -425,7 +425,7 @@
   },
   "${modID}:LetVandDocumenting": {
     "NAME": "Let-Vand Documenting",
-    "DESCRIPTION": "Gain 1 Strength and Dexterity for every *Burnt *Document in your hand."
+    "DESCRIPTION": "Gain 1 Strength and Dexterity for every *Status in your hand."
   },
   "${modID}:Livewire": {
     "NAME": "Livewire",
@@ -433,7 +433,7 @@
   },
   "${modID}:HeavyContainment": {
     "NAME": "Heavy Containment",
-    "DESCRIPTION": "Exhaust all cards in your hand. NL Gain !B! Block for each card Exhausted. NL Next turn, gain half as much Block."
+    "DESCRIPTION": "Exhaust all cards in your hand. NL Gain !B! Block for each card Exhausted. Next turn, gain half as much Block. NL Exhaust."
   },
   "${modID}:Incinerate": {
     "NAME": "Incinerate",
@@ -446,5 +446,23 @@
   "${modID}:FieldTest": {
     "NAME": "Field Test",
     "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 Completion: Gain 1 temporary Strength. NL ${modID}:Terminate: Deal !D! damage to ALL enemies. Exhaust."
+  },
+  "${modID}:Accelecharger": {
+    "NAME": "Accelecharger",
+    "DESCRIPTION": "At the start of your turn, choose !M! card in your draw pile to add to your hand. It gains Ethereal.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, choose !M! card in your draw pile to add to your hand. It gains Ethereal."
+  },
+  "${modID}:OrbitalStrike": {
+    "NAME": "Orbital Strike",
+    "DESCRIPTION": "Add X *Orbital *Beacons to your draw pile. Deals !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your draw pile. Deals !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
+  },
+  "${modID}:OrbitalBeacon": {
+    "NAME": "Orbital Beacon",
+    "DESCRIPTION": "Gain !M! Strength and !M! Dexterity."
+  },
+  "${modID}:CommandExecuted": {
+    "NAME": "Command Executed",
+    "DESCRIPTION": "Thank you for your input, O5-13. NL Your ascent will continue shortly."
   }
 }

@@ -24,6 +24,7 @@ public class HeavyContainment extends BaseCard {
     public HeavyContainment() {
         super(ID, info);
         setBlock(6,3);
+        setExhaust(true);
     }
 
     @Override

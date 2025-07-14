@@ -2,10 +2,10 @@ package researchersmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.status.PlasmicEnergy;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.powers.EnergyDownPower;
 import researchersmod.powers.TeslaCoilPower;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
@@ -29,7 +29,7 @@ public class TeslaCoil extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new EnergyDownPower(p,1));
+        Wiz.applyToSelf(new EnergyDownPower(p,1,false,this.name));
         Wiz.applyToSelf(new TeslaCoilPower(p, magicNumber));
     }
 }

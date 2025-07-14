@@ -1,21 +1,16 @@
 package researchersmod.powers;
 
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.actions.AddPhaseMod;
 import researchersmod.cardmods.BetterEtherealMod;
-import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
-
-import java.util.ArrayList;
-
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
 
 public class EntropyPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(EntropyPower.class.getSimpleName());
@@ -35,13 +30,21 @@ public class EntropyPower extends BasePower {
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat();
-        CardModifierManager.addModifier(card,new BetterEtherealMod());
-        if(upgraded)
-            CardModifierManager.addModifier(card,new PhaseMod());
-        Wiz.atb(new MakeTempCardInHandAction(card));
+        for(int i = amount; i>0; i--) {
+            AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat().makeStatEquivalentCopy();
+            if (upgraded)
+                Wiz.att(new AddPhaseMod(card));
+            CardModifierManager.addModifier(card, new BetterEtherealMod());
+            Wiz.atb(new MakeTempCardInHandAction(card));
+        }
     }
 
+    public boolean isStackable(AbstractPower po) {
+        if(po instanceof EntropyPower) {
+            return ((EntropyPower) po).upgraded == this.upgraded;
+        }
+        return false;
+    }
 
     public void updateDescription() {
         String plural = "s";
