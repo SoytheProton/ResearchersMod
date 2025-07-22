@@ -38,10 +38,10 @@ public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseInterfa
     public float whilePhase(String valueType, float value) {
         switch(valueType) {
             case "BLOCK":
-                value *= 2;
+                value = baseBlock * 2;
                 break;
             case "DAMAGE":
-                value *= 2;
+                value = baseDamage * 2;
                 break;
             default:
                 Researchers.logger.warn("Unexpected value: " + valueType);

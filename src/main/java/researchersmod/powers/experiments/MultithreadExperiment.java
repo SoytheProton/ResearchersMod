@@ -39,7 +39,7 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
 
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_DAGGER_1"));
-        Wiz.att(new DamageAction((AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng),new DamageInfo(owner, (int) CalcUtil.CalcDamage(damage), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        Wiz.atb(new DamageAction((AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng),new DamageInfo(owner, (int) CalcUtil.CalcDamage(damage), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractCard card = k.makeStatEquivalentCopy();
         ((ExperimentCard) card).BaseTrial = ((ExperimentCard)k).BaseTrial + 1;
         ((ExperimentCard) card).Trial = ((ExperimentCard)k).BaseTrial + 1;

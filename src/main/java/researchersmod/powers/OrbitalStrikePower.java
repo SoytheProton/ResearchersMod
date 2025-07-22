@@ -1,8 +1,9 @@
 package researchersmod.powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -18,7 +19,7 @@ import java.util.Objects;
 
 public class OrbitalStrikePower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(OrbitalStrikePower.class.getSimpleName());
-    public static final PowerType TYPE = PowerType.BUFF;
+    public static final PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURNBASED = false;
     private AbstractPlayer p = Wiz.p();
 
@@ -27,18 +28,20 @@ public class OrbitalStrikePower extends BasePower {
         updateDescription();
     }
 
-    public void onUseCard(AbstractCard card) {
+    public void onUseCard(AbstractCard card, UseCardAction action) {
         boolean beaconCheck = true;
-        for (CardGroup cardGroup : Arrays.asList(p.hand, p.drawPile, p.discardPile,p.exhaustPile, ExperimentCardManager.experiments)) {
+        int i = 0;
+        for (CardGroup cardGroup : Arrays.asList(p.hand, p.drawPile, p.discardPile, ExperimentCardManager.experiments)) {
             for (AbstractCard q : cardGroup.group) {
-                if(Objects.equals(q.cardID, OrbitalBeacon.ID)) {
+                if (Objects.equals(q.cardID, OrbitalBeacon.ID) && q != card) {
                     beaconCheck = false;
+                    break;
                 }
             }
         }
         if(beaconCheck) {
             flash();
-            Wiz.atb(new DamageAllEnemiesAction(p,this.amount, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+            Wiz.atb(new DamageAction(owner, new DamageInfo(p, this.amount, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
             Wiz.atb(new RemoveSpecificPowerAction(owner,owner,this));
         }
     }

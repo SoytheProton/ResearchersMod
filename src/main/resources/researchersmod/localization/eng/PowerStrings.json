@@ -32,7 +32,7 @@
       " card."
     ]
   },
-  "${modID}:IonSurgePower": {
+  "${modID}:OldnSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
       "Whenever you play a Power card, add #yPhase and #yEthereal to #b",
@@ -50,7 +50,7 @@
   "${modID}:UplinkPower": {
     "NAME": "Uplink",
     "DESCRIPTIONS": [
-      "The next card you play #yExhausts."
+      "The next card you play will #yExhaust a copy of it, if it has #yPhase."
     ]
   },
   "${modID}:DocumentationPower": {
@@ -139,7 +139,7 @@
   "${modID}:ExtensiveTestingPower": {
     "NAME": "Extensive Testing",
     "DESCRIPTIONS": [
-      "At the start of your turn, play #b%d #yField #Test%s%s."
+      "At the start of your turn, play #b%d #yField #yTest%s%s."
     ]
   },
   "${modID}:EclipsedFormPower": {
@@ -151,7 +151,7 @@
   "${modID}:SystemErrorPower": {
     "NAME": "System Error",
     "DESCRIPTIONS": [
-      "The next #b%d time%s a card ${modID}:Phases, draw 2 cards."
+      "The next #b%d time%s a card #yPhases, draw 2 cards."
     ]
   },
   "${modID}:ManipulationPower": {
@@ -188,7 +188,37 @@
     "NAME": "Accelecharger",
     "DESCRIPTIONS": [
       "At the start of your turn, choose #b%d card%s in your draw pile to add to your hand. \n It gains #yEthereal.",
-      "add a copy with Ethereal to your hand."
+      "Choose %d card%s in your draw pile to add to your hand with Ethereal."
+    ]
+  },
+  "${modID}:OrbitalStrikePower": {
+    "NAME": "Orbital Strike",
+    "DESCRIPTIONS": [
+      "Take #b%d damage when all #yOrbital #yBeacons are played."
+    ]
+  },
+  "${modID}:OwnTempoPower": {
+    "NAME": "Own Tempo",
+    "DESCRIPTIONS": [
+      "Your next #b%d #yExperiment%s played twice."
+    ]
+  },
+  "${modID}:PhaseNextCardPower": {
+    "NAME": "Phase Next Card",
+    "DESCRIPTIONS": [
+      "The next #b%d #yAttack%s or #ySkill%s you play %s #yPhased for free."
+    ]
+  },
+  "${modID}:BorealisProtocolPower": {
+    "NAME": "Borealis Protocol",
+    "DESCRIPTIONS": [
+      "Every time you shuffle your draw pile, #yPhase all cards with #yPhase that cost #b%d or less #b%d time%s."
+    ]
+  },
+  "${modID}:IonSurgePower": {
+    "NAME": "Ion Surge",
+    "DESCRIPTIONS": [
+      "Whenever you #yTerminate an #yExperiment, #yComplete all Active #yExperiments #b%d time%s."
     ]
   }
 }

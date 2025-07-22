@@ -1,9 +1,8 @@
 package researchersmod.powers;
 
-import com.badlogic.gdx.math.Interpolation;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
@@ -28,7 +27,7 @@ public class FreeExperimentsPower extends BasePower {
             Wiz.atb(new ReducePowerAction(this.owner,this.owner,POWER_ID,1));
     }
 
-    public void onUseCard(AbstractCard card) {
+    public void onUseCard(AbstractCard card, UseCardAction action) {
         if(card instanceof ExperimentCard)
             flash();
     }

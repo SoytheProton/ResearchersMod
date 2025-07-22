@@ -16,5 +16,6 @@ public class HadalJetsuitAction extends AbstractGameAction {
         if(Researchers.cardsPhasedThisCombat % 3 == 0) {
             Wiz.applyToSelf(new ManipulationPower(Wiz.p(),this.amount));
         }
+        this.isDone = true;
     }
 }

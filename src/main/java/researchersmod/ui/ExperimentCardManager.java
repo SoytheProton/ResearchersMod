@@ -139,7 +139,7 @@ public class ExperimentCardManager {
         removeExperiment(card, power, shouldExhaust,false);
     }
 
-    public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust,boolean shouldPurge) {
+    public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust, boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
             if (p instanceof ExperimentInterfaces.OnTerminateInterface) {
                 ((ExperimentInterfaces.OnTerminateInterface) p).onTerminate(power);

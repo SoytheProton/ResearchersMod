@@ -22,7 +22,6 @@ public class UpgradeDrawPileAction extends AbstractGameAction {
         this(amount,false,null);
     }
 
-
     public UpgradeDrawPileAction(int amount, boolean shouldCheckRarity, AbstractCard.CardRarity Rarity) {
         this.duration = 1.5F;
         specificCardType = shouldCheckRarity;
@@ -44,7 +43,7 @@ public class UpgradeDrawPileAction extends AbstractGameAction {
             card.upgrade();
             card.applyPowers();
             AbstractCard copy = card.makeStatEquivalentCopy();
-            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(copy));
+            AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(copy));
             copy.superFlash();
         }
         if (y > 0) AbstractDungeon.effectsQueue.add(new UpgradeShineEffect(Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));

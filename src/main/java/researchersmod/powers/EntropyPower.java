@@ -1,6 +1,7 @@
 package researchersmod.powers;
 
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -12,7 +13,7 @@ import researchersmod.actions.AddPhaseMod;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.util.Wiz;
 
-public class EntropyPower extends BasePower {
+public class EntropyPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(EntropyPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;

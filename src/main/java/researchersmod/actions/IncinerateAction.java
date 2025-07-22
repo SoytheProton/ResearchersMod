@@ -24,7 +24,7 @@ public class IncinerateAction
         for (AbstractCard c : DrawCardAction.drawnCards) {
             if (c.hasTag(Researchers.PHASE)) {
                 Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().hand));
-                card.magicNumber++;
+                card.baseMagicNumber++;
                 i++;
             }
         }

@@ -5,14 +5,14 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cards.BaseCard;
 import researchersmod.cardmods.PhaseMod;
+import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.deprecated.InfluxPowerPower;
 import researchersmod.util.CardStats;
 
-public class IonSurge extends BaseCard {
-    public static final String ID = makeID(IonSurge.class.getSimpleName());
+public class OldnSurge extends BaseCard {
+    public static final String ID = makeID(OldnSurge.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             AbstractCard.CardType.POWER,
@@ -24,7 +24,7 @@ public class IonSurge extends BaseCard {
     private static final int MAGIC = 1;
     private static final int UPG_MAGIC = 0;
 
-    public IonSurge() {
+    public OldnSurge() {
         super(ID, info);
         setMagic(MAGIC,UPG_MAGIC);
         CardModifierManager.addModifier(this, new PhaseMod());

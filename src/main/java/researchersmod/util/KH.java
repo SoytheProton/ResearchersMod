@@ -4,7 +4,9 @@ import basemod.cardmods.EtherealMod;
 import basemod.cardmods.InnateMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
@@ -21,6 +23,8 @@ Exhaust.
  */
 
 public class KH {
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
+
     public static boolean hasEthereal(AbstractCard card, String rawDescription) {
         if(hasEtheric(card,rawDescription)) return false;
         if(card.isEthereal) return true;
@@ -77,6 +81,7 @@ public class KH {
 
     public static String[] autoString(String index, String indexStart,String rawDescription) {
         int y = rawDescription.indexOf(indexStart) + indexStart.length();
+        if(indexStart.equals(uiStrings.TEXT[5])) y += 2;
         if(Objects.equals(index, "${modID}:Phase") && ModConfig.enablePhaseNumbers && Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).find()) y = Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).end();
         int i = rawDescription.indexOf(index,y);
         if(index.equals(LocalizedStrings.PERIOD)) i++;
@@ -84,5 +89,4 @@ public class KH {
         // System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
         return new String[]{rawDescription.substring(0, i), rawDescription.substring(i)};
     }
-
 }

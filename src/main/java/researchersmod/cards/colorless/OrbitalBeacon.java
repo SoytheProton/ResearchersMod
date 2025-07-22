@@ -6,15 +6,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.cards.BaseCard;
-import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
 public class OrbitalBeacon extends BaseCard {
     public static final String ID = makeID(OrbitalBeacon.class.getSimpleName());
     private static final CardStats info = new CardStats(
-            ResearchersCharacter.Meta.CARD_COLOR,
+            CardColor.COLORLESS,
             CardType.POWER,
-            CardRarity.BASIC,
+            CardRarity.SPECIAL,
             CardTarget.SELF,
             0
     );
@@ -22,6 +21,7 @@ public class OrbitalBeacon extends BaseCard {
     public OrbitalBeacon() {
         super(ID, info);
         setMagic(1,1);
+        setPhase(true);
     }
 
     @Override

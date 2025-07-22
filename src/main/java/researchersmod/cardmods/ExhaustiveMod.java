@@ -14,6 +14,8 @@ public class ExhaustiveMod extends AbstractCardModifier {
     public int exhaustiveValue = 1;
     public int baseExhaustiveValue = 1;
 
+    private AbstractCard modcard;
+
     private boolean inherent;
 
     @Override
@@ -46,11 +48,12 @@ public class ExhaustiveMod extends AbstractCardModifier {
     public void onInitialApplication(AbstractCard card) {
         this.identifier(card);
         ExhaustiveVariable.setBaseValue(card,baseExhaustiveValue);
+        modcard = card;
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        ExhaustiveVariable.setBaseValue(card, -1);
+        ExhaustiveVariable.upgrade(card, -baseExhaustiveValue);
     }
 
     @Override

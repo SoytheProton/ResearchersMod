@@ -70,7 +70,7 @@
     "NAME": "Assist",
     "DESCRIPTION": "If the next card you play is an Attack, gain !B! Block and draw a card."
   },
-  "${modID}:IonSurge": {
+  "${modID}:OldnSurge": {
     "NAME": "Ion Surge",
     "DESCRIPTION": "Unplayable. NL Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random.",
     "UPGRADE_DESCRIPTION": "Ethereal. NL Whenever you play a Power card, add ${modID}:Phase and Ethereal to a card at random."
@@ -79,7 +79,7 @@
     "NAME": "O5 Command",
     "DESCRIPTION": "Deal !D! damage. NL Add ${modID}:Phase and Ethereal to all cards in your hand. You cannot draw cards next turn."
   },
-  "${modID}:OwnTempo": {
+  "${modID}:OldTempo": {
     "NAME": "Own Tempo",
     "DESCRIPTION": "Choose one: Attacks, Skills, or Powers. NL All cards of that type in your hand cost 0 this turn. NL Exhaust."
   },
@@ -174,7 +174,7 @@
   },
   "${modID}:EncryptData": {
     "NAME": "Encrypt Data",
-    "DESCRIPTION": "Exhaust up to !M! cards in your hand. Gain a *Burnt *Document for each card Exhausted.",
+    "DESCRIPTION": "Exhaust up to !M! cards in your hand. Gain !B! Block and a *Burnt *Document for each card Exhausted.",
     "EXTENDED_DESCRIPTION": [
       "Exhaust."
     ]
@@ -429,15 +429,15 @@
   },
   "${modID}:Livewire": {
     "NAME": "Livewire",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Card: Gain [E] [E]  and add a *Short *Circuit into your discard pile."
+    "DESCRIPTION": "{@@}${modID}:Experiment !${modID}:Trial! - Play 1 Card: Gain [E] [E] {!Upgrades!|>0=[E] } and add a *Short *Circuit into your discard pile."
   },
   "${modID}:HeavyContainment": {
     "NAME": "Heavy Containment",
-    "DESCRIPTION": "Exhaust all cards in your hand. NL Gain !B! Block for each card Exhausted. Next turn, gain half as much Block. NL Exhaust."
+    "DESCRIPTION": "Exhaust your hand. NL Gain !B! Block for each card Exhausted. Next turn, gain half as much Block. NL Exhaust."
   },
   "${modID}:Incinerate": {
     "NAME": "Incinerate",
-    "DESCRIPTION": "Deal !D! damage. Draw 1 card. If you draw a ${modID}:Phase card, Exhaust it and increase this card's draw by 1. NL If 3 or more cards were Exhausted, Exhaust."
+    "DESCRIPTION": "Deal !D! damage. {@@}Draw !M! card{!M!|>1=s}. If you draw a ${modID}:Phase card, Exhaust it and increase this card's draw by 1. NL If 3 or more cards were Exhausted, Exhaust."
   },
   "${modID}:Multithread": {
     "NAME": "Multithread",
@@ -464,5 +464,31 @@
   "${modID}:CommandExecuted": {
     "NAME": "Command Executed",
     "DESCRIPTION": "Thank you for your input, O5-13. NL Your ascent will continue shortly."
+  },
+  "${modID}:OwnTempo": {
+    "NAME": "Own Tempo",
+    "DESCRIPTION": "Your next ${modID}:Experiment will play twice this turn.",
+    "UPGRADE_DESCRIPTION": "Your next two ${modID}:Experiments will play twice this turn."
+  },
+  "${modID}:ContactLight": {
+    "NAME": "Contact Light",
+    "DESCRIPTION": "{@@}Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy{!Upgrades!|>0=+} to your discard pile for each card Exhausted."
+  },
+  "${modID}:BorealisProtocol": {
+    "NAME": "Borealis Protocol",
+    "DESCRIPTION": "Unplayable. NL When you shuffle your draw pile, ${modID}:Phase ALL cards in your draw pile with ${modID}:Phase that cost !M! or less."
+  },
+  "${modID}:Finalize": {
+    "NAME": "Finalize",
+    "DESCRIPTION": "${modID}:Terminate all Active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Terminated. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "${modID}:Complete then ${modID}:Terminate all Active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Completed. NL Exhaust."
+  },
+  "${modID}:IonSurge": {
+    "NAME": "Ion Surge",
+    "DESCRIPTION": "Ethereal. NL When you ${modID}:Terminate an ${modID}:Experiment, ${modID}:Complete all Active ${modID}:Experiments !M! time."
+  },
+  "${modID}:CatalyticAfterburner": {
+    "NAME": "Catalytic Afterburner",
+    "DESCRIPTION": "{@@}Draw cards until you don't draw a Status !M! time{!M!|>1=s}. NL Deal !D! damage to ALL enemies for each Status drawn."
   }
 }

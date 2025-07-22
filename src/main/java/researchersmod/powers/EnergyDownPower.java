@@ -20,6 +20,7 @@ public class EnergyDownPower extends BasePower {
         }
         this.isFasting = isFasting;
         this.type = AbstractPower.PowerType.DEBUFF;
+        initialize();
     }
 
     public EnergyDownPower(AbstractCreature owner, int amount) {

@@ -1,14 +1,11 @@
 package researchersmod.powers;
 
-import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardModUNUSED;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.cardmods.PhaseMod;
+import researchersmod.actions.AddPhaseMod;
 import researchersmod.util.Wiz;
 
 public class PhaseDrawPower extends BasePower {
@@ -31,8 +28,7 @@ public class PhaseDrawPower extends BasePower {
 
     public void onCardDraw(AbstractCard card) {
         flash();
-        CardModifierManager.addModifier(card,new PhaseMod());
-        card.flash(Color.BLUE.cpy());
+        Wiz.atb(new AddPhaseMod(card,true));
     }
 
     public void updateDescription() {

@@ -13,7 +13,7 @@ public class CommandExecuted extends BaseCard implements VanishingCardPatch.Vani
     public static final String ID = makeID(CommandExecuted.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.CURSE,
-            CardType.STATUS,
+            CardType.CURSE,
             CardRarity.SPECIAL,
             CardTarget.SELF,
             -2

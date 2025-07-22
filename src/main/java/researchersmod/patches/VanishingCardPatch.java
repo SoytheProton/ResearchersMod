@@ -30,6 +30,7 @@ public class VanishingCardPatch {
                                     @Override
                                     public void update() {
                                         isDone = true;
+                                        q.untip();
                                         AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(q, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
                                         cardGroup.removeCard(q);
                                     }

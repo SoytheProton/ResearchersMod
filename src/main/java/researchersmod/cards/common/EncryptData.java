@@ -1,13 +1,11 @@
 package researchersmod.cards.common;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.status.BurntDocument;
@@ -26,6 +24,7 @@ public class EncryptData extends BaseCard {
     );
     public EncryptData() {
         super(ID, info);
+        setBlock(4);
         setMagic(2,1);
         // This card is pissing me off...
         // I'm the original
@@ -39,6 +38,7 @@ public class EncryptData extends BaseCard {
             for (AbstractCard c : cards) {
                 Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().hand,true));
                 addToBot(new MakeTempCardInHandAction(new BurntDocument()));
+                addToBot(new GainBlockAction(p,block));
             }
         }));
     }

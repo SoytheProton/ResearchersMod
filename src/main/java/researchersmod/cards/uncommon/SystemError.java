@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.ResearchGrantsPower;
+import researchersmod.powers.SystemErrorPower;
 import researchersmod.util.CardStats;
 
 public class SystemError extends BaseCard {
@@ -25,6 +25,6 @@ public class SystemError extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ResearchGrantsPower(p,magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new SystemErrorPower(p,magicNumber)));
     }
 }

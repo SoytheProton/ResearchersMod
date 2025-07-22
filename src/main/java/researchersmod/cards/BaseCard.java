@@ -584,13 +584,14 @@ public abstract class BaseCard extends CustomCard {
 
             if (upgExhaustiveValue != 0) {
                 ExhaustiveMod mod;
+                int exhaustiveValue = 0;
                 if(CardModifierManager.hasModifier(this,ExhaustiveMod.ID)) {
                     mod = (ExhaustiveMod) CardModifierManager.getModifiers(this, ExhaustiveMod.ID).get(0);
-                    mod.editExhaustive(mod.baseExhaustiveValue + upgExhaustiveValue);
-                } else {
-                    mod = new ExhaustiveMod(true,upgExhaustiveValue);
-                    CardModifierManager.addModifier(this,mod);
+                    exhaustiveValue = mod.baseExhaustiveValue;
+                    CardModifierManager.removeModifiersById(this,ExhaustiveMod.ID,true);
                 }
+                mod = new ExhaustiveMod(true, + exhaustiveValue + upgExhaustiveValue);
+                CardModifierManager.addModifier(this,mod);
             }
 
             this.initializeDescription();

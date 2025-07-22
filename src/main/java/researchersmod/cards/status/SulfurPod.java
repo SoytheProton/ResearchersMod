@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.actions.SulfurPodAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
+import researchersmod.util.Wiz;
 
 public class SulfurPod extends BaseCard {
     public static final String ID = makeID(SulfurPod.class.getSimpleName());
@@ -35,5 +37,6 @@ public class SulfurPod extends BaseCard {
         }
         addToBot(new SFXAction("ATTACK_POISON"));
         addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
+        Wiz.atb(new SulfurPodAction());
     }
 }

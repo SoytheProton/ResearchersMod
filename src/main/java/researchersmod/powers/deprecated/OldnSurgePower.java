@@ -7,12 +7,12 @@ import researchersmod.Researchers;
 import researchersmod.actions.AddPhaseAndEthereal;
 import researchersmod.powers.BasePower;
 
-public class IonSurgePower extends BasePower {
-    public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
+public class OldnSurgePower extends BasePower {
+    public static final String POWER_ID = Researchers.makeID(OldnSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
 
-    public IonSurgePower(AbstractCreature owner, int amount) {
+    public OldnSurgePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
         updateDescription();
     }
