@@ -44,8 +44,9 @@ public class KH {
     }
 
     public static boolean hasEtheric(AbstractCard card, String rawDescription) {
-        if(CardModifierManager.hasModifier(card, EthericMod.ID)) return true;
-        if(rawDescription.contains("Etheric.")) return true;
+        if(CardModifierManager.hasModifier(card, EthericMod.ID)) {
+            return true;
+        }
         return false;
     }
 
@@ -84,8 +85,8 @@ public class KH {
         if(indexStart.equals(uiStrings.TEXT[5])) y += 2;
         if(Objects.equals(index, "${modID}:Phase") && ModConfig.enablePhaseNumbers && Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).find()) y = Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).end();
         int i = rawDescription.indexOf(index,y);
-        if(index.equals(LocalizedStrings.PERIOD)) i++;
-        if (i == -1) i = 0;
+        if(index.equals(LocalizedStrings.PERIOD) || index.equals(LocalizedStrings.PERIOD + " ")) i++;
+        if (i == -1 || !rawDescription.contains(indexStart)) i = 0;
         // System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
         return new String[]{rawDescription.substring(0, i), rawDescription.substring(i)};
     }

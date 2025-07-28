@@ -6,9 +6,6 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import researchersmod.cards.colorless.OrbitalBeacon;
 import researchersmod.powers.OrbitalStrikePower;
@@ -48,13 +45,8 @@ public class OrbitalStrikeAction extends AbstractGameAction {
 
             if (effect > 0) {
                 for(int i = effect; i > 0; i--) {
-                    Wiz.atb(new MakeTempCardInDrawPileAction(new OrbitalBeacon(),1,true,true));
-                    for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                        AbstractPower power = new OrbitalStrikePower(m,damage);
-                        power.owner = m;
-                        if (!m.isDeadOrEscaped() && m.currentHealth > 0)
-                            Wiz.atb(new ApplyPowerAction(m, AbstractDungeon.player, power, power.amount));
-                    }
+                    Wiz.att(new MakeTempCardInDrawPileAction(new OrbitalBeacon(),1,true,true));
+                    Wiz.att(new ApplyPowerAction(p, p, new OrbitalStrikePower(p,damage)));
                 }
                 if (!this.freeToPlayOnce) {
                     this.p.energy.use(EnergyPanel.totalCount);

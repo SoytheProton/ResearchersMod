@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.AddPhaseAndEthereal;
+import researchersmod.actions.AddPhaseAndEtherealAction;
 import researchersmod.powers.BasePower;
 
 public class OldnSurgePower extends BasePower {
@@ -20,7 +20,7 @@ public class OldnSurgePower extends BasePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.POWER) {
             flash();
-            addToBot(new AddPhaseAndEthereal(this.amount,true));
+            addToBot(new AddPhaseAndEtherealAction(this.amount,true));
         }
     }
 

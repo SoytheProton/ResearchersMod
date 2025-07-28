@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
-import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
@@ -38,10 +37,10 @@ public class PlasmicEnergy extends BaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
         if(!this.upgraded) {
-            CardModifierManager.removeModifiersById(this,EthericMod.ID,true);
-            CardModifierManager.addModifier(this,new BetterEtherealMod());
+            CardModifierManager.removeModifiersById(this, EthericMod.ID,true);
+            super.upgrade();
+            this.isEthereal = true;
         }
     }
 }

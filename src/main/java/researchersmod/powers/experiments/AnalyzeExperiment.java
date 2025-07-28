@@ -44,7 +44,7 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
         ExperimentTracker--;
         if(ExperimentTracker == 0) {
             ExperimentTracker = 2;
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 

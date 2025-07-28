@@ -37,7 +37,7 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.POWER) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 

@@ -15,8 +15,10 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.cards.rare.AltercatedBlueprint;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.ManipulationPower;
 import researchersmod.ui.ModConfig;
@@ -48,12 +50,12 @@ public class PhaseMod extends AbstractCardModifier {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if(!phaseNumbers || isFirstApplication) {
             String p = LocalizedStrings.PERIOD;
-            String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) || KH.hasEtheric(card, rawDescription)? " " :
+            String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) || KH.hasEtheric(card, rawDescription) ? " " :
                     KH.hasUnplayableNL(card, rawDescription) ? "." :
                         KH.hasUnplayable(card, rawDescription) ? " " : "",
                 KH.hasRetain(card,rawDescription) ? uiStrings.TEXT[3] :
                         KH.hasEthereal(card, rawDescription) ? uiStrings.TEXT[2] :
-                                KH.hasEtheric(card, rawDescription) ? uiStrings.TEXT[5] :
+                                 KH.hasEtheric(card, rawDescription) ? uiStrings.TEXT[5] :
                                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
                                                         KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
@@ -64,8 +66,7 @@ public class PhaseMod extends AbstractCardModifier {
                 (KH.hasInnate(card, rawDescription) ||
                         (KH.hasEthereal(card, rawDescription) && !CardModifierManager.hasModifier(card, BetterEtherealMod.ID)) ||
                         (KH.hasPhase(card, rawDescription) && !isFirstApplication) ||
-                        KH.hasRetain(card, rawDescription) ? " " :
-                        (KH.hasEtheric(card,rawDescription) && !CardModifierManager.hasModifier(card, EthericMod.ID)) ? "" : " NL ")
+                        KH.hasRetain(card, rawDescription) ? "" : " NL ")
                 + cardDescription[1];
         }
         return rawDescription;
@@ -101,8 +102,12 @@ public class PhaseMod extends AbstractCardModifier {
         void onPhase(AbstractCard card);
     }
 
-    public interface WhilePhaseInterface {
+    public interface WhilePhaseStatInterface {
         float whilePhase(String valueType, float value);
+    }
+
+    public interface WhilePhaseInterface {
+        void whilePhase(AbstractCard card);
     }
     public void onExhausted(AbstractCard card) {
         addToTop(new AbstractGameAction() {
@@ -121,13 +126,23 @@ public class PhaseMod extends AbstractCardModifier {
                 if(tmp instanceof ExperimentCard)
                     tmp.uuid = UUID.randomUUID();
                 PhasingFields.isPhasing.set(tmp,true);
+                for (AbstractPower p : AbstractDungeon.player.powers)
+                    if (p instanceof WhilePhaseInterface)
+                        ((WhilePhaseInterface) p).whilePhase(card);
+                for (AbstractRelic r : AbstractDungeon.player.relics)
+                    if (r instanceof WhilePhaseInterface)
+                        ((WhilePhaseInterface) r).whilePhase(card);
                 tmp.applyPowers();
                 addToTop((new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
                 for (AbstractPower p : AbstractDungeon.player.powers)
                     if (p instanceof OnPhaseInterface)
                         ((OnPhaseInterface) p).onPhase(card);
+                for (AbstractRelic r : AbstractDungeon.player.relics)
+                    if (r instanceof OnPhaseInterface)
+                        ((OnPhaseInterface) r).onPhase(card);
                 Researchers.cardsPhasedThisTurn++;
                 Researchers.cardsPhasedThisCombat++;
+                if(!Objects.equals(card.cardID, AltercatedBlueprint.ID)) Researchers.LastPhasedCard = card;
                 this.isDone = true;
             }
         });
@@ -135,8 +150,8 @@ public class PhaseMod extends AbstractCardModifier {
 
     public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
         if(PhasingFields.isPhasing.get(card) && type == DamageInfo.DamageType.NORMAL) {
-            if (card instanceof WhilePhaseInterface)
-                damage = ((WhilePhaseInterface) card).whilePhase("DAMAGE", damage);
+            if (card instanceof WhilePhaseStatInterface)
+                damage = ((WhilePhaseStatInterface) card).whilePhase("DAMAGE", damage);
             for (AbstractPower p : AbstractDungeon.player.powers)
                 if (Objects.equals(p.ID, ManipulationPower.POWER_ID))
                     damage += p.amount;
@@ -146,8 +161,8 @@ public class PhaseMod extends AbstractCardModifier {
 
     public float modifyBlock(float block, AbstractCard card) {
         if(PhasingFields.isPhasing.get(card)) {
-            if (card instanceof WhilePhaseInterface)
-                block = ((WhilePhaseInterface) card).whilePhase("BLOCK", block);
+            if (card instanceof WhilePhaseStatInterface)
+                block = ((WhilePhaseStatInterface) card).whilePhase("BLOCK", block);
             for (AbstractPower p : AbstractDungeon.player.powers)
                 if (Objects.equals(p.ID, ManipulationPower.POWER_ID))
                     block += p.amount;

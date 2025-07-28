@@ -1,13 +1,9 @@
 package researchersmod.cards;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.core.Settings;
 import researchersmod.Researchers;
 import researchersmod.util.CardStats;
-
-import java.util.ArrayList;
 
 import static researchersmod.util.GeneralUtils.removePrefix;
 import static researchersmod.util.TextureLoader.getCardTextureString;
@@ -56,7 +52,9 @@ public abstract class ExperimentCard extends BaseCard{
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard retVal = super.makeStatEquivalentCopy();
         ((ExperimentCard)retVal).Trial = this.Trial;
-        retVal.initializeDescription();
+        ((ExperimentCard)retVal).BaseTrial = this.BaseTrial;
+        retVal.applyPowers();
+        System.out.println();
         return retVal;
     }
 

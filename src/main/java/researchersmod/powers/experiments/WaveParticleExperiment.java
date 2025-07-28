@@ -3,13 +3,9 @@ package researchersmod.powers.experiments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import researchersmod.Researchers;
 import researchersmod.cards.colorless.SubspaceStrike;
 import researchersmod.powers.BasePower;
@@ -37,7 +33,7 @@ public class WaveParticleExperiment extends BasePower implements InvisiblePower,
 
     public void onExhaust(AbstractCard card) {
         if(card.type == AbstractCard.CardType.STATUS) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 }

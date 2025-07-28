@@ -15,5 +15,6 @@ public class CompletionAction extends AbstractGameAction {
 
     public void update() {
         if(po.amount > 0) ((ExperimentPower) po).completionEffect();
+        this.isDone = true;
     }
 }

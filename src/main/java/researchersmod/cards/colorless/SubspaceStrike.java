@@ -19,41 +19,49 @@ public class SubspaceStrike extends BaseCard {
             CardTarget.ENEMY,
             1
     );
+    private int realBaseDamage;
 
     public SubspaceStrike() {
         super(ID, info);
-        setDamage(2,1);
+        setDamage(0);
+        setCustomVar("Scaling",VariableType.MAGIC,2,1);
         tags.add(CardTags.STRIKE);
         this.selfRetain = true;
         this.exhaust = true;
     }
 
     public void applyPowers() {
+        this.realBaseDamage = this.baseDamage;
+        this.baseMagicNumber = statusCount() * customVar("Scaling");
+        this.baseDamage += baseMagicNumber;
         super.applyPowers();
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
+    }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        this.realBaseDamage = this.baseDamage;
+        this.baseMagicNumber = statusCount() * customVar("Scaling");
+        this.baseDamage += baseMagicNumber;
+        super.calculateCardDamage(mo);
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
+    }
+
+    private int statusCount() {
         int i = 0;
-        for(AbstractCard c : Wiz.p().hand.group) {
+        for (AbstractCard c : Wiz.p().hand.group) {
             if(c.type == CardType.STATUS)
                 i++;
         }
-        String plural = cardStrings.EXTENDED_DESCRIPTION[1];
-        if(i == 1)
-            plural = "";
-        this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0],i,plural);
-    }
-
-    public void onMoveToDiscard() {
-        this.rawDescription = cardStrings.DESCRIPTION;
-        initializeDescription();
+        return i;
     }
 
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int i = 0;
-        for (AbstractCard c : p.hand.group) {
-            if(c.type == CardType.STATUS)
-                i++;
-        }
-        addToBot(new DamageAction(m, new DamageInfo(p, damage * i, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        this.damage += this.magicNumber;
+        calculateCardDamage(m);
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 }

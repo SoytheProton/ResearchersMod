@@ -1,6 +1,6 @@
 package researchersmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
@@ -19,7 +19,8 @@ public class TeslaCoilPower extends BasePower {
     public void atStartOfTurnPostDraw() {
         flash();
         AbstractCard card = new PlasmicEnergy();
-        addToBot(new MakeTempCardInHandAction(card, this.amount));
+        card.upgrade();
+        addToBot(new MakeTempCardInDrawPileAction(card, this.amount,true,true));
     }
 
     public void updateDescription() {

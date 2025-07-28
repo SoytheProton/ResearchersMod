@@ -2,12 +2,12 @@ package researchersmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
-import researchersmod.util.GeneralUtils;
-import researchersmod.util.TextureLoader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import researchersmod.util.GeneralUtils;
+import researchersmod.util.TextureLoader;
 
 import static researchersmod.Researchers.relicPath;
 
@@ -19,7 +19,6 @@ public abstract class BaseRelic extends CustomRelic {
     //for character specific relics
     public BaseRelic(String id, String imageName, AbstractCard.CardColor pool, RelicTier tier, LandingSound sfx) {
         this(id, imageName, tier, sfx);
-
         setPool(pool);
     }
 

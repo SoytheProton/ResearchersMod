@@ -1,9 +1,9 @@
 package researchersmod.util;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import researchersmod.cards.colorless.dummyattack;
 
 public class CalcUtil {
     public static float CalcBlock(float tmp) {
@@ -18,7 +18,7 @@ public class CalcUtil {
     }
     public static float CalcDamage(float tmp) {
         for (AbstractRelic r : Wiz.adp().relics) {
-            tmp = r.atDamageModify(tmp,null);
+            tmp = r.atDamageModify(tmp,new dummyattack());
         }
 
 

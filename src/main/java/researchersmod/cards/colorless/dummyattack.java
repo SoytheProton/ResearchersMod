@@ -25,7 +25,6 @@ public class dummyattack extends BaseCard {
 
     public dummyattack() {
         super(ID, info);
-
         setDamage(DAMAGE, UPG_DAMAGE);
     }
 

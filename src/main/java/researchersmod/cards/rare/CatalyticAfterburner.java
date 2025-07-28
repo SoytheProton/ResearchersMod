@@ -23,12 +23,12 @@ public class CatalyticAfterburner extends BaseCard {
     public CatalyticAfterburner() {
         super(ID, info);
         setDamage(10);
-        setMagic(1);
+        setMagic(1,1);
         this.isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new DrawCardAction(1,new CatalyticAfterburnerAction(p,multiDamage,magicNumber,0)));
+        Wiz.atb(new DrawCardAction(1,new CatalyticAfterburnerAction(p,multiDamage,magicNumber)));
     }
 }

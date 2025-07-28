@@ -24,9 +24,9 @@ public class FerrousBlade extends BaseCard {
 
     public FerrousBlade() {
         super(ID, info);
-        setDamage(6,2);
-        setEtheric(2);
+        setDamage(4,2);
         setPhase(true);
+        setEtheric(2);
     }
 
     @Override

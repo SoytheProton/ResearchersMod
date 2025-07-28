@@ -1,38 +1,33 @@
 package researchersmod.cards.common;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.UplinkPower;
 import researchersmod.util.CardStats;
+import researchersmod.util.Wiz;
 
 public class Uplink extends BaseCard {
     public static final String ID = makeID(Uplink.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
-            CardType.ATTACK,
+            CardType.SKILL,
             CardRarity.COMMON,
-            CardTarget.ENEMY,
+            CardTarget.SELF,
             0
     );
 
-    private static final int DAMAGE = 4;
-    private static final int UPG_DAMAGE = 3;
-
     public Uplink() {
         super(ID, info);
-
-        setDamage(DAMAGE, UPG_DAMAGE);
+        setBlock(4,3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        Wiz.atb(new GainBlockAction(p, block));
         addToBot(new ApplyPowerAction(p, p, new UplinkPower(p),1));
     }
 }

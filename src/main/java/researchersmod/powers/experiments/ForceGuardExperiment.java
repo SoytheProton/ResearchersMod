@@ -11,6 +11,7 @@ import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
 public class ForceGuardExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -29,13 +30,13 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner, B));
+        Wiz.atb(new GainBlockAction(owner, (int) CalcUtil.CalcBlock(B)));
         ExperimentCardManager.tickExperiment(this);
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.SKILL) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 

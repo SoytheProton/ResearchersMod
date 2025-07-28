@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 import java.util.Objects;
@@ -37,7 +37,7 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
     @Override
     public void onCompletion(AbstractPower power) {
         if(!Objects.equals(power.ID, POWER_ID)) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 

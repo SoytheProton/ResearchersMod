@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.actions.AddPhaseMod;
+import researchersmod.actions.AddPhaseModAction;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.util.Wiz;
 
@@ -34,7 +34,7 @@ public class EntropyPower extends BasePower implements NonStackablePower {
         for(int i = amount; i>0; i--) {
             AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat().makeStatEquivalentCopy();
             if (upgraded)
-                Wiz.att(new AddPhaseMod(card));
+                Wiz.att(new AddPhaseModAction(card));
             CardModifierManager.addModifier(card, new BetterEtherealMod());
             Wiz.atb(new MakeTempCardInHandAction(card));
         }

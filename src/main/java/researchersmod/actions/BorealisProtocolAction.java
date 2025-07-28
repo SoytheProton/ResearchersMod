@@ -9,28 +9,21 @@ import researchersmod.cardmods.PhaseMod;
 
 public class BorealisProtocolAction extends AbstractGameAction {
     private final AbstractPlayer owner;
-    private final int costMax;
+    private final int amount;
 
-    public BorealisProtocolAction(AbstractPlayer owner, int costMax) {
+    public BorealisProtocolAction(AbstractPlayer owner, int amount) {
         this.owner = owner;
-        this.costMax = costMax;
+        this.amount = amount;
     }
     @Override
     public void update() {
+        for(AbstractCard c : ((AbstractPlayer) owner).hand.group) {
+            if(CardModifierManager.hasModifier(c, PhaseMod.ID)) {
+                for(AbstractCardModifier mod : CardModifierManager.getModifiers(c, PhaseMod.ID)) {
+                    for(int i = this.amount; i>0; i--) mod.onExhausted(c);
+                }
+            }
+        }
         this.isDone = true;
-        for(AbstractCard c : ((AbstractPlayer) owner).drawPile.group) {
-            if(CardModifierManager.hasModifier(c, PhaseMod.ID) && c.cost <= costMax) {
-                for(AbstractCardModifier mod : CardModifierManager.getModifiers(c, PhaseMod.ID)) {
-                    for(int i = this.amount; i>0; i--) mod.onExhausted(c);
-                }
-            }
-        }
-        for(AbstractCard c : ((AbstractPlayer) owner).discardPile.group) {
-            if(CardModifierManager.hasModifier(c, PhaseMod.ID) && c.cost <= costMax) {
-                for(AbstractCardModifier mod : CardModifierManager.getModifiers(c, PhaseMod.ID)) {
-                    for(int i = this.amount; i>0; i--) mod.onExhausted(c);
-                }
-            }
-        }
     }
 }

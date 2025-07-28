@@ -1,5 +1,6 @@
 [
   {
+    "ID": "Phase",
     "PROPER_NAME": "Phase",
     "NAMES": [
       "Phase",
@@ -7,17 +8,19 @@
       "Phases",
       "Phasing"
     ],
-    "DESCRIPTION": "This card plays when exhausted."
+    "DESCRIPTION": "This card is used when exhausted."
   },
   {
-  "PROPER_NAME": "Experiment",
-  "NAMES": [
-    "Experiment",
-    "Experiments"
-  ],
-  "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be returned."
+    "ID": "Experiment",
+    "PROPER_NAME": "Experiment",
+    "NAMES": [
+      "Experiment",
+      "Experiments"
+    ],
+    "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be returned."
   },
   {
+    "ID": "Terminate",
     "PROPER_NAME": "Terminate",
     "NAMES": [
       "Terminate",
@@ -27,6 +30,7 @@
     "DESCRIPTION": "When an #yExperiment card is used up and returns itself."
   },
   {
+    "ID": "Complete",
     "PROPER_NAME": "Complete",
     "NAMES": [
       "Complete",
@@ -37,6 +41,7 @@
     "DESCRIPTION": "When #b1 or more #yExperiment card meets its conditions and activates its effects."
   },
   {
+    "ID": "Trial",
     "PROPER_NAME": "Trial",
     "NAMES": [
       "Trial",
@@ -45,6 +50,7 @@
     "DESCRIPTION": "The amount of uses an #yExperiment card has left."
   },
   {
+    "ID": "Etheric",
     "PROPER_NAME": "Etheric",
     "NAMES": [
       "Etheric"
@@ -52,6 +58,7 @@
     "DESCRIPTION": "This card will #yExhaust if it is in your hand at the end of the turn a certain number of times."
   },
   {
+    "ID": "PlatedArmor",
     "PROPER_NAME": "Plated Armor",
     "NAMES": [
       "Plated",
@@ -60,6 +67,7 @@
     "DESCRIPTION": "At the end of your turn, gain #yBlock. Receiving unblocked attack damage reduces this by #b1."
   },
   {
+    "ID": "Metallicize",
     "PROPER_NAME": "Metallicize",
     "NAMES": [
       "Metallicize"
@@ -67,6 +75,7 @@
     "DESCRIPTION": "At the end of your turn, gain #yBlock."
   },
   {
+    "ID": "Manipulation",
     "PROPER_NAME": "Manipulation",
     "NAMES": [
       "Manipulation"

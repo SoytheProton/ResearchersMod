@@ -71,6 +71,7 @@ public class Researchers implements
     public static int expsCompletedThisCombat;
     public static int cardsPhasedThisTurn;
     public static int cardsPhasedThisCombat;
+    public static AbstractCard LastPhasedCard;
     @SpireEnum
     public static AbstractCard.CardTags PHASE;
     @SpireEnum
@@ -278,7 +279,7 @@ public class Researchers implements
 
                     //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
                     //If you want all your relics to be visible by default, just remove this if statement.
-                    if (info.seen)
+                    // if (info.seen)
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                 });
     }
@@ -303,6 +304,7 @@ public class Researchers implements
         CardsExhaustedThisTurn = 0;
         cardsPhasedThisTurn = 0;
         cardsPhasedThisCombat = 0;
+        LastPhasedCard = null;
     }
 
     @Override

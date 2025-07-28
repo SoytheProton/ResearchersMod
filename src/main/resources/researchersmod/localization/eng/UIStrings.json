@@ -36,5 +36,10 @@
     "TEXT_DICT": {
       "enablePhaseNumbers": " \nPhase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)"
     }
+  },
+  "${modID}:Blueprint": {
+    "TEXT": [
+      "I haven't Phased a card this combat."
+    ]
   }
 }

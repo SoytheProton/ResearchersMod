@@ -2,6 +2,7 @@ package researchersmod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
+import researchersmod.actions.DelayAction;
 import researchersmod.actions.FuckAssAccelechargerAction;
 import researchersmod.util.Wiz;
 
@@ -20,7 +21,7 @@ public class AccelechargerPower extends BasePower {
         flash();
         String plural = "s";
         if(this.amount == 1) plural = "";
-        Wiz.atb(new FuckAssAccelechargerAction(DESCRIPTIONS[1],plural,this.amount));
+        Wiz.atb(new DelayAction(new FuckAssAccelechargerAction(DESCRIPTIONS[1],plural,this.amount)));
     }
 
     public void updateDescription() {

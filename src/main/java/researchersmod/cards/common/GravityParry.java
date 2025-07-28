@@ -12,7 +12,7 @@ import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
-public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseInterface {
+public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseStatInterface {
     public static final String ID = makeID(GravityParry.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,

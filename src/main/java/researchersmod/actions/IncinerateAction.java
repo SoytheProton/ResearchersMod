@@ -28,7 +28,6 @@ public class IncinerateAction
                 i++;
             }
         }
-        if(i >= 3) Wiz.att(new ExhaustSpecificCardAction(card,Wiz.p().discardPile));
         this.isDone = true;
     }
 }

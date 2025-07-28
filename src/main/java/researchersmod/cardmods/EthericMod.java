@@ -26,7 +26,6 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
 
     public int ethericValue = 1;
     public int baseEthericValue = 1;
-    private boolean inherent;
 
     @Override
     public boolean shouldApply(AbstractCard card) {
@@ -34,14 +33,10 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     }
 
     public EthericMod(boolean isInherent,int value) {
-        inherent = isInherent;
         editEtheric(value);
     }
-    public EthericMod(boolean isInherent) {
-        inherent = isInherent;
-    }
+
     public EthericMod() {
-        inherent = false;
     }
 
     @Override
@@ -49,11 +44,11 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
         String p = LocalizedStrings.PERIOD;
         String[] cardDescription = KH.autoString(
-                        KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
-                                KH.hasUnplayable(card,rawDescription) ? " " : "" ,
-                        KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
-                                KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
-                                        KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
+                KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
+                        KH.hasUnplayable(card,rawDescription) ? " " : "" ,
+                KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
+                        KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
+                                KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
                 rawDescription);
         return cardDescription[0] +
                 (KH.hasUnplayableNL(card,rawDescription) ? " NL " : " ")
@@ -89,8 +84,6 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     public void onRemove(AbstractCard card) {
         card.isEthereal = false;
     }
-
-
 
     @Override
     public String identifier(AbstractCard card) {

@@ -50,7 +50,7 @@ public class FieldTestExperiment extends BasePower implements InvisiblePower, No
     @Override
     public void onCompletion(AbstractPower power) {
         if(!Objects.equals(power.ID, POWER_ID)) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 }

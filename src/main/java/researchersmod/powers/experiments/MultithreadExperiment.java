@@ -41,17 +41,17 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
         Wiz.atb(new SFXAction("ATTACK_DAGGER_1"));
         Wiz.atb(new DamageAction((AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng),new DamageInfo(owner, (int) CalcUtil.CalcDamage(damage), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractCard card = k.makeStatEquivalentCopy();
+        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
         ((ExperimentCard) card).BaseTrial = ((ExperimentCard)k).BaseTrial + 1;
         ((ExperimentCard) card).Trial = ((ExperimentCard)k).BaseTrial + 1;
-        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
-        card.initializeDescription();
-        Wiz.att(new MakeTempCardInDrawPileAction(card,1,true,true));
+        card.applyPowers();
+        Wiz.atb(new MakeTempCardInDrawPileAction(card,1,true,true));
         ExperimentCardManager.tickExperiment(this);
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.SKILL) {
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 

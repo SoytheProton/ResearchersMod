@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
-import researchersmod.ui.ExperimentCardManager;
-import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
+import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentCardManager;
 
 import java.util.Objects;
 
@@ -30,14 +30,14 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     }
 
     public void completionEffect(){
-        ExperimentCardManager.tickExperiment(this);
+        ExperimentCardManager.tickExperiment(this,1,false);
     }
 
     @Override
     public void onCompletion(AbstractPower power) {
         if(!Objects.equals(power.ID, POWER_ID)) {
             ExperimentCardManager.tickExperiment(power,-1);
-            completionEffect();
+            ExperimentCardManager.complete(this);
         }
     }
 }

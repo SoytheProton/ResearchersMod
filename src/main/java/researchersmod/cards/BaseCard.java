@@ -6,6 +6,7 @@ import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.cardmods.EthericMod;
-import researchersmod.cardmods.ExhaustiveMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.CardStats;
 import researchersmod.util.TriFunction;
@@ -454,10 +454,7 @@ public abstract class BaseCard extends CustomCard {
     }
 
     protected final void setExhaustive(int exhaustiveValue, int upgExhaustiveValue) {
-        if(exhaustiveValue > 0) {
-            ExhaustiveMod mod = new ExhaustiveMod(true,exhaustiveValue);
-            CardModifierManager.addModifier(this, mod);
-        }
+        if(exhaustiveValue > 0) ExhaustiveVariable.setBaseValue(this,exhaustiveValue);
         this.upgExhaustiveValue = upgExhaustiveValue;
     }
 
@@ -583,15 +580,7 @@ public abstract class BaseCard extends CustomCard {
             }
 
             if (upgExhaustiveValue != 0) {
-                ExhaustiveMod mod;
-                int exhaustiveValue = 0;
-                if(CardModifierManager.hasModifier(this,ExhaustiveMod.ID)) {
-                    mod = (ExhaustiveMod) CardModifierManager.getModifiers(this, ExhaustiveMod.ID).get(0);
-                    exhaustiveValue = mod.baseExhaustiveValue;
-                    CardModifierManager.removeModifiersById(this,ExhaustiveMod.ID,true);
-                }
-                mod = new ExhaustiveMod(true, + exhaustiveValue + upgExhaustiveValue);
-                CardModifierManager.addModifier(this,mod);
+                ExhaustiveVariable.upgrade(this,upgExhaustiveValue);
             }
 
             this.initializeDescription();

@@ -22,7 +22,8 @@ public class LetVandDocumenting extends BaseCard {
 
     public LetVandDocumenting() {
         super(ID, info);
-        setExhaustive(2,1);
+        setMagic(2,1);
+        this.exhaust = true;
     }
 
     @Override
@@ -31,7 +32,9 @@ public class LetVandDocumenting extends BaseCard {
         for(AbstractCard c : p.hand.group)
             if(c.type == CardType.STATUS)
                 i++;
-        Wiz.applyToSelf(new StrengthPower(p, i));
-        Wiz.applyToSelf(new DexterityPower(p, i));
+        if(i > 0) {
+            Wiz.applyToSelf(new StrengthPower(p, i * magicNumber));
+            Wiz.applyToSelf(new DexterityPower(p, i * magicNumber));
+        }
     }
 }

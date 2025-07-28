@@ -1,12 +1,8 @@
 {
-  "${modID}:ExampleCard": {
-    "NAME": "Name",
-    "DESCRIPTION": "Description.",
-    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+  "${modID}:KeywordHelper": {
     "EXTENDED_DESCRIPTION": [
-      "You can put more text in here.",
-      "If you need to use it for stuff.",
-      "Blizzard is a good example for this."
+      "Etheric",
+      "This card will #yExhaust if it is in your hand at the end of the turn a certain number of times."
     ]
   },
   "${modID}:Strike_Researchers": {
@@ -121,11 +117,11 @@
   },
   "${modID}:Uplink": {
     "NAME": "Uplink",
-    "DESCRIPTION": "Deal !D! damage. NL If the next card you play has ${modID}:Phase, Exhaust a copy of it."
+    "DESCRIPTION": "Gain !B! Block. NL If the next card you play has ${modID}:Phase, Exhaust a copy of it."
   },
   "${modID}:RSquare": {
     "NAME": "R-Square",
-    "DESCRIPTION": "Gain !B! Block. NL Increases by 1 for every ${modID}:Trial on your active ${modID}:Experiments."
+    "DESCRIPTION": "Gain !B! Block. NL Increases by 2 for every ${modID}:Trial on your active ${modID}:Experiments."
   },
   "${modID}:Adapt": {
     "NAME": "Adapt",
@@ -213,8 +209,8 @@
   },
   "${modID}:CleanUpDuty": {
     "NAME": "Clean Up Duty",
-    "DESCRIPTION": "Gain [E] [E]. Add a *Slimed to the top of your deck.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. Add a *Slimed to the top of your deck."
+    "DESCRIPTION": "Gain [E] [E]. Add a *Slimed to the top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. Add a *Slimed to the top of your draw pile."
   },
   "${modID}:Wingbeat": {
     "NAME": "Wingbeat",
@@ -222,7 +218,7 @@
   },
   "${modID}:ShortCircuit": {
     "NAME": "Short Circuit",
-    "DESCRIPTION": "Plays when drawn. NL ${modID}:Experiment !${modID}:Trial! - ${modID}:Completion: Lose [E]. NL ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "Plays when drawn. NL ${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Completion: Lose [E]. NL ${modID}:Terminate: Exhaust."
   },
   "${modID}:LaserStrike": {
     "NAME": "Laser Strike",
@@ -238,20 +234,21 @@
   },
   "${modID}:PlasmicEnergy": {
     "NAME": "Plasmic Energy",
-    "DESCRIPTION": "Unplayable. NL Gain [E] and draw a card next turn."
+    "DESCRIPTION": "Unplayable. NL Next turn, gain [E] and draw a card.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL Ethereal. NL Next turn, gain [E] and draw a card."
   },
   "${modID}:CutThroughLight": {
     "NAME": "Cut Through Light",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage, then add ${modID}:Phase to this card."
+    "DESCRIPTION": "Deal !D! damage. NL ${modID}:Experiment !${modID}:Trial! - Start 1 Turn: Put a card from your discard pile into your hand."
   },
   "${modID}:FerrousBlade": {
     "NAME": "Ferrous Blade",
-    "DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade that costs an additional [E] this turn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade+ that costs an additional [E] this turn."
+    "DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade into your hand that costs an additional [E] this turn.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade+ into your hand that costs an additional [E] this turn."
   },
   "${modID}:Overwrite": {
     "NAME": "Overwrite",
-    "DESCRIPTION": "Choose a card in your hand to add ${modID}:Phase to. NL Exhaust.",
+    "DESCRIPTION": "{@@}Choose !M! card{!M!|>1=s} in your hand to add ${modID}:Phase to. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
       "add Phase to."
     ]
@@ -266,12 +263,12 @@
   },
   "${modID}:Organization": {
     "NAME": "Organization",
-    "DESCRIPTION": "Choose an Active ${modID}:Experiment to gain \"Draw 2 cards\" and ${modID}:Terminate: Exhaust.",
-    "UPGRADE_DESCRIPTION": "Choose an Active ${modID}:Experiment to gain \"Draw 2 cards.\""
+    "DESCRIPTION": "Choose an active ${modID}:Experiment to gain \"Draw 2 cards\" and ${modID}:Terminate: Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose an active ${modID}:Experiment to gain \"Draw 2 cards.\""
   },
   "${modID}:AppliedInformation": {
     "NAME": "Applied Information",
-    "DESCRIPTION": "Draw !M! cards. NL On ${modID}:Termination, lower its cost by 1 this combat."
+    "DESCRIPTION": "Costs 1 less [E] for each ${modID}:Termination this combat. NL Draw !M! cards."
   },
   "${modID}:Dematerialize": {
     "NAME": "Dematerialize",
@@ -288,8 +285,7 @@
   },
   "${modID}:Enthalpy": {
     "NAME": "Enthalpy",
-    "DESCRIPTION": "Exhaust a card in your hand with ${modID}:Phase. NL At the start of your turn, add a copy of that card to your hand with Ethereal and no ${modID}:Phase.",
-    "UPGRADE_DESCRIPTION": "Exhaust a card in your hand with ${modID}:Phase. NL At the start of your turn, add a copy of that card to your hand with Ethereal.",
+    "DESCRIPTION": "Exhaust a card in your hand with ${modID}:Phase. NL At the start of your turn, add a copy of that card to your hand with Ethereal.",
     "EXTENDED_DESCRIPTION": [
       "Exhaust.",
       "I have no cards with Phase in my hand."
@@ -313,7 +309,7 @@
   },
   "${modID}:Hyperfocus": {
     "NAME": "Hyperfocus",
-    "DESCRIPTION": "Choose an Active ${modID}:Experiment. ${modID}:Terminate all other ${modID}:Experiments, then add their remaining ${modID}:Trials to that ${modID}:Experiment."
+    "DESCRIPTION": "Choose an active ${modID}:Experiment. ${modID}:Terminate all other ${modID}:Experiments, then add their remaining ${modID}:Trials to that ${modID}:Experiment."
   },
   "${modID}:ImpactSlash": {
     "NAME": "Impact Slash",
@@ -329,7 +325,7 @@
   },
   "${modID}:SubspaceStrike": {
     "NAME": "Subspace Strike",
-    "DESCRIPTION": "Retain. NL Deal !D! damage for each Status in your hand. NL Exhaust.",
+    "DESCRIPTION": "Retain. NL Deal !D! damage. Increases by !${modID}:Scaling! for each Status in your hand. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
       " NL (You have %d Status%s.)",
       "es"
@@ -355,8 +351,7 @@
   },
   "${modID}:ParticleAccelerator": {
     "NAME": "Particle Accelerator",
-    "DESCRIPTION": "Unplayable. NL Next turn, add ${modID}:Phase to all drawn cards.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL Next turn, draw !M! cards and add ${modID}:Phase to all drawn cards."
+    "DESCRIPTION": "Discard the top !M! cards your draw pile. NL Cards with ${modID}:Phase will be Exhausted instead."
   },
   "${modID}:CometStrike": {
     "NAME": "Comet Strike",
@@ -374,7 +369,7 @@
   },
   "${modID}:ResonantHexagraph": {
     "NAME": "Resonant Hexagraph",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block. Once per turn, add a copy in your hand with 2 less Block until it reaches 0."
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block. Once per turn, add a copy into your hand with 2 less Block until it reaches 0."
   },
   "${modID}:EclipsedForm": {
     "NAME": "Eclipsed Form",
@@ -383,7 +378,7 @@
   },
   "${modID}:MagmaBurn": {
     "NAME": "Magma Burn",
-    "DESCRIPTION": "Unplayable. NL At the end of your turn, take !M! damage for every Status in your hand. When this card is Exhausted, add a *Burn to your discard pile.",
+    "DESCRIPTION": "Unplayable. NL At the end of your turn, take !M! damage for each Status in your hand. When Exhausted, add a *Burn into your discard pile.",
     "EXTENDED_DESCRIPTION": [
       " NL (You have %d Status%s.)",
       "es"
@@ -420,16 +415,16 @@
   },
   "${modID}:TeslaCoil": {
     "NAME": "Tesla Coil",
-    "DESCRIPTION": "At the start of each turn, gain 1 less [E] and add !M! *Plasmic *Energies into your hand.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the start of each turn, gain 1 less [E]  and add !M! *Plasmic *Energies into your hand."
+    "DESCRIPTION": "At the start of each turn, add a *Plasmic *Energy+ into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of each turn, add a *Plasmic *Energy+ into your draw pile."
   },
   "${modID}:LetVandDocumenting": {
     "NAME": "Let-Vand Documenting",
-    "DESCRIPTION": "Gain 1 Strength and Dexterity for every *Status in your hand."
+    "DESCRIPTION": "Gain !M! Strength and Dexterity for every *Status in your hand. NL Exhaust."
   },
   "${modID}:Livewire": {
     "NAME": "Livewire",
-    "DESCRIPTION": "{@@}${modID}:Experiment !${modID}:Trial! - Play 1 Card: Gain [E] [E] {!Upgrades!|>0=[E] } and add a *Short *Circuit into your discard pile."
+    "DESCRIPTION": "{@@}${modID}:Experiment !${modID}:Trial! - Play 1 Card: Gain [E] [E] {!Upgrades!|>0=[E] }. Add a *Short *Circuit into your discard pile."
   },
   "${modID}:HeavyContainment": {
     "NAME": "Heavy Containment",
@@ -437,15 +432,15 @@
   },
   "${modID}:Incinerate": {
     "NAME": "Incinerate",
-    "DESCRIPTION": "Deal !D! damage. {@@}Draw !M! card{!M!|>1=s}. If you draw a ${modID}:Phase card, Exhaust it and increase this card's draw by 1. NL If 3 or more cards were Exhausted, Exhaust."
+    "DESCRIPTION": "{@@}Deal !D! damage. Draw !M! card{!M!|>1=s}. If you draw a ${modID}:Phase card, Exhaust it and increase this card's draw by 1."
   },
   "${modID}:Multithread": {
     "NAME": "Multithread",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Deal !D! damage, then shuffle a copy of this card in your draw pile with 1 more ${modID}:Trial. NL ${modID}:Terminate: Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Skill: Deal !D! damage. Shuffle a copy of this card into your draw pile with 1 more ${modID}:Trial. NL ${modID}:Terminate: Exhaust."
   },
   "${modID}:FieldTest": {
     "NAME": "Field Test",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 Completion: Gain 1 temporary Strength. NL ${modID}:Terminate: Deal !D! damage to ALL enemies. Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Completion: Gain 1 temporary Strength. NL ${modID}:Terminate: Deal !D! damage to ALL enemies. Exhaust."
   },
   "${modID}:Accelecharger": {
     "NAME": "Accelecharger",
@@ -454,8 +449,8 @@
   },
   "${modID}:OrbitalStrike": {
     "NAME": "Orbital Strike",
-    "DESCRIPTION": "Add X *Orbital *Beacons to your draw pile. Deals !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your draw pile. Deals !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
+    "DESCRIPTION": "Add X *Orbital *Beacons to your draw pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your draw pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
   },
   "${modID}:OrbitalBeacon": {
     "NAME": "Orbital Beacon",
@@ -467,28 +462,58 @@
   },
   "${modID}:OwnTempo": {
     "NAME": "Own Tempo",
-    "DESCRIPTION": "Your next ${modID}:Experiment will play twice this turn.",
-    "UPGRADE_DESCRIPTION": "Your next two ${modID}:Experiments will play twice this turn."
+    "DESCRIPTION": "Your next ${modID}:Experiment card this turn will play twice.",
+    "UPGRADE_DESCRIPTION": "Your next two ${modID}:Experiments cards this turn will play twice."
   },
   "${modID}:ContactLight": {
     "NAME": "Contact Light",
-    "DESCRIPTION": "{@@}Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy{!Upgrades!|>0=+} to your discard pile for each card Exhausted."
+    "DESCRIPTION": "{@@}Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy{!Upgrades!|>0=+} into your discard pile for each card Exhausted."
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
-    "DESCRIPTION": "Unplayable. NL When you shuffle your draw pile, ${modID}:Phase ALL cards in your draw pile with ${modID}:Phase that cost !M! or less."
+    "DESCRIPTION": "Unplayable. NL At the start of your turn, ${modID}:Phase ALL cards in your hand with ${modID}:Phase !M! time.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL Retain. NL At the start of your turn, ${modID}:Phase ALL cards in your hand with ${modID}:Phase !M! time."
   },
   "${modID}:Finalize": {
     "NAME": "Finalize",
-    "DESCRIPTION": "${modID}:Terminate all Active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Terminated. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "${modID}:Complete then ${modID}:Terminate all Active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Completed. NL Exhaust."
+    "DESCRIPTION": "${modID}:Terminate all active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Terminated. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "${modID}:Complete then ${modID}:Terminate all active ${modID}:Experiments. NL Gain [E] and draw 1 card for each ${modID}:Experiment ${modID}:Completed. NL Exhaust."
   },
   "${modID}:IonSurge": {
     "NAME": "Ion Surge",
-    "DESCRIPTION": "Ethereal. NL When you ${modID}:Terminate an ${modID}:Experiment, ${modID}:Complete all Active ${modID}:Experiments !M! time."
+    "DESCRIPTION": "Ethereal. NL When you ${modID}:Terminate an ${modID}:Experiment, ${modID}:Complete all active ${modID}:Experiments !M! time.",
+    "UPGRADE_DESCRIPTION": "When you ${modID}:Terminate an ${modID}:Experiment, ${modID}:Complete all active ${modID}:Experiments !M! time."
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",
     "DESCRIPTION": "{@@}Draw cards until you don't draw a Status !M! time{!M!|>1=s}. NL Deal !D! damage to ALL enemies for each Status drawn."
+  },
+  "${modID}:AltercatedBlueprint": {
+    "NAME": "Altercated Blueprint",
+    "DESCRIPTION": "Gain !M! temporary ${modID}:Manipulation. NL ${modID}:Phase the last card ${modID}:Phased this combat."
+  },
+  "${modID}:DataRequest": {
+    "NAME": "Data Request",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Power: Deal !D! damage. Gain !B! Block. NL ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:BlackBox": {
+    "NAME": "Black Box",
+    "DESCRIPTION": "Whenever you ${modID}:Phase a card, gain !M! ${modID}:Metallicize. NL At the start of your turn, lose half of your ${modID}:Metallicize."
+  },
+  "${modID}:DummyExperiment": {
+    "NAME": "ERROR",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 %s: Play *%s. NL ${modID}:Terminate: Exhaust."
+  },
+  "${modID}:Centrifuge": {
+    "NAME": "Centrifuge",
+    "DESCRIPTION": "Select exactly 5 cards with unique card types in your hand. Create ${modID}:Experiments with !M! ${modID}:Trials of those cards with \"Play 1 Type\" as their condition. They have ${modID}:Terminate: Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "turn into an Experiment.",
+      "You failed to read you dumb dumb idiot dumb dumb."
+    ]
+  },
+  "${modID}:DataOverride": {
+    "NAME": "Data Override",
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 Power: Deal !D! damage to ALL enemies. Gain !B! Block. NL ${modID}:Terminate: Play a Data Override. Exhaust."
   }
 }

@@ -2,22 +2,13 @@ package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicDynamicVariable;
-import com.evacipated.cardcrawl.mod.stslib.dynamicdynamic.DynamicProvider;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import researchersmod.Researchers;
-import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.DescriptionModifier;
 import researchersmod.util.Wiz;
-
-import java.util.UUID;
 
 public class ExperimentMod extends AbstractCardModifier {
     public static String ID = "researchersmod:ExperimentModifier";
@@ -32,8 +23,7 @@ public class ExperimentMod extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        String desc  = CardCrawlGame.languagePack.getCardStrings(card.cardID).DESCRIPTION;
-        String cutOff = desc.substring(desc.indexOf(" - ") + 1);
+        String cutOff = rawDescription.substring(rawDescription.indexOf(" - ") + 1);
         String returnString =  (uiStrings.TEXT[0] + cutOff);
         AbstractPower experimentPower = null;
         for (AbstractPower p : Wiz.adp().powers) {

@@ -19,9 +19,9 @@ public class ContactLightAction extends AbstractGameAction {
 
     public void update() {
         int y = 0;
-        for(AbstractCard c : p.hand.group) {
+        for(AbstractCard c : p.drawPile.group) {
             if(c.type == AbstractCard.CardType.STATUS) {
-                Wiz.att(new ExhaustSpecificCardAction(c,p.hand));
+                Wiz.att(new ExhaustSpecificCardAction(c,p.drawPile));
                 y++;
             }
         }

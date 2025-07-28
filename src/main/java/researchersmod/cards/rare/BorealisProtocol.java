@@ -20,7 +20,8 @@ public class BorealisProtocol extends BaseCard {
 
     public BorealisProtocol() {
         super(ID, info);
-        setMagic(1,1);
+        setMagic(1);
+        setSelfRetain(false, true);
         setPhase(true);
     }
 
@@ -30,6 +31,6 @@ public class BorealisProtocol extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BorealisProtocolPower(p,magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new BorealisProtocolPower(p)));
     }
 }

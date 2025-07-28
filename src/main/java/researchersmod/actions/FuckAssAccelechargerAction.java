@@ -1,12 +1,10 @@
 package researchersmod.actions;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import researchersmod.util.Wiz;
 
 public class FuckAssAccelechargerAction extends AbstractGameAction {
-
     private final String DESCRIPTIONS;
     private final String plural;
 
@@ -24,9 +22,10 @@ public class FuckAssAccelechargerAction extends AbstractGameAction {
             return true;
         }),(cards) -> {
             for (AbstractCard c : cards) {
-                Wiz.atb(new AddBetterEtherealMod(c));
+                Wiz.atb(new AddBetterEtherealModAction(c));
                 Wiz.p().drawPile.removeCard(c);
                 Wiz.p().hand.addToTop(c);
+                c.applyPowers();
             }
         } ));
         this.isDone = true;

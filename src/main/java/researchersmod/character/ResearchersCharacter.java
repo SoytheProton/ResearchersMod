@@ -3,7 +3,7 @@ package researchersmod.character;
 import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
+import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -48,9 +48,9 @@ public class ResearchersCharacter extends CustomPlayer {
         //Library color is basically the same as card color, but you need both because that's how the game was made.
         @SpireEnum
         public static PlayerClass RESEARCHERS;
-        @SpireEnum(name = "CHARACTER_LIGHTBLUE_COLOR") // These two MUST match. Change it to something unique for your character.
+        @SpireEnum(name = "CHARACTER_DARKBLUE_COLOR") // These two MUST match. Change it to something unique for your character.
         public static AbstractCard.CardColor CARD_COLOR;
-        @SpireEnum(name = "CHARACTER_LIGHTBLUE_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "CHARACTER_DARKBLUE_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
 
         //Character select images
@@ -69,7 +69,7 @@ public class ResearchersCharacter extends CustomPlayer {
         private static final String SMALL_ORB = characterPath("cardback/small_orb.png");
 
         //This is used to color *some* images, but NOT the actual cards. For that, edit the images in the cardback folder!
-        private static final Color cardColor = new Color(128f/255f, 128f/255f, 128f/255f, 1f);
+        private static final Color cardColor = new Color(30f/255f, 39f/255f, 166f/255f, 1f);
 
         //Methods that will be used in the main mod file
         public static void registerColor() {
@@ -120,7 +120,7 @@ public class ResearchersCharacter extends CustomPlayer {
     public ResearchersCharacter() {
         super(getNames()[0], Meta.RESEARCHERS,
                 new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
-                new SpriterAnimation(characterPath("animation/default.scml"))); //Animation
+                new SpineAnimation(characterPath("animation/skeleton.atlas"),characterPath("animation/skeleton.json"),1.9f)); //Animation
 
         initializeClass(null,
                 SHOULDER_2,
@@ -186,9 +186,9 @@ public class ResearchersCharacter extends CustomPlayer {
         };
     }
 
-    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); //Used for some vfx on moving cards (sometimes) (maybe)
-    private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); //Used for card trail vfx during gameplay.
-    private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); //Used for a screen tint effect when you attack the heart.
+    private final Color cardRenderColor = new Color(30f/255f, 39f/255f, 166f/255f, 1f); //Used for some vfx on moving cards (sometimes) (maybe)
+    private final Color cardTrailColor = new Color(30f/255f, 39f/255f, 166f/255f, 1f); //Used for card trail vfx during gameplay.
+    private final Color slashAttackColor = new Color(30f/255f, 39f/255f, 166f/255f, 1f); //Used for a screen tint effect when you attack the heart.
     @Override
     public Color getCardRenderColor() {
         return cardRenderColor;

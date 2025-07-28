@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
@@ -122,6 +123,12 @@ public class ExperimentCardManager {
         }
     }
 
+    public static void complete(AbstractPower power) {
+        if(power.amount > 0) {
+            ((ExperimentPower) power).completionEffect();
+        }
+    }
+
     public static void remExp(AbstractCard card, AbstractPower power) {
         removeExperiment(card,power);
     }
@@ -141,7 +148,7 @@ public class ExperimentCardManager {
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust, boolean shouldPurge) {
         for (AbstractPower p : Wiz.adp().powers) {
-            if (p instanceof ExperimentInterfaces.OnTerminateInterface) {
+            if (p instanceof ExperimentInterfaces.OnTerminateInterface && p != power) {
                 ((ExperimentInterfaces.OnTerminateInterface) p).onTerminate(power);
             }
         }
@@ -161,7 +168,6 @@ public class ExperimentCardManager {
             else
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
         }
-        Researchers.expsTerminatedThisCombat++;
         for(AbstractCard c : Wiz.p().hand.group)
             if(c instanceof ExperimentInterfaces.OnTerminateInterface)
                 ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
@@ -171,6 +177,7 @@ public class ExperimentCardManager {
         for(AbstractCard c : Wiz.p().drawPile.group)
             if(c instanceof ExperimentInterfaces.OnTerminateInterface)
                 ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
+        Researchers.expsTerminatedThisCombat++;
         Wiz.att(new RemoveSpecificPowerAction(power.owner, power.owner, power));
     }
 
@@ -197,13 +204,18 @@ public class ExperimentCardManager {
         AbstractCard c = ((BasePower) p).k;
         p.amount = p.amount - amt;
         ((ExperimentCard) c).Trial = p.amount;
+        c.flash();
         if(shouldComplete && amt > 0 && p.amount >= 0) {
             for (int i = amt; i > 0; i--) {
-                c.flash();
                 Researchers.expsCompletedThisCombat++;
                 for (AbstractPower power : Wiz.adp().powers) {
-                    if (power instanceof ExperimentInterfaces.OnCompletionInterface) {
+                    if (power instanceof ExperimentInterfaces.OnCompletionInterface && power != p) {
                         ((ExperimentInterfaces.OnCompletionInterface) power).onCompletion(p);
+                    }
+                }
+                for (AbstractRelic r : Wiz.adp().relics) {
+                    if (r instanceof ExperimentInterfaces.OnCompletionInterface) {
+                        ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(p);
                     }
                 }
             }

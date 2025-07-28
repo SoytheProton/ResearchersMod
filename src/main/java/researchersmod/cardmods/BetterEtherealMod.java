@@ -19,19 +19,16 @@ public class BetterEtherealMod extends AbstractCardModifier {
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
-    private boolean inherent;
 
     @Override
     public boolean shouldApply(AbstractCard card) {
         return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
-    public BetterEtherealMod(boolean isInherent) {
-        inherent = isInherent;
+    public BetterEtherealMod(boolean isInherent){
     }
 
     public BetterEtherealMod() {
-        inherent = false;
     }
 
 

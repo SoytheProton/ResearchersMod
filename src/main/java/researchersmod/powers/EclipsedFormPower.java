@@ -1,13 +1,9 @@
 package researchersmod.powers;
 
 import basemod.BaseMod;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
 import researchersmod.Researchers;
-import researchersmod.actions.ExhumeToDrawAction;
 import researchersmod.util.Wiz;
 
 public class EclipsedFormPower extends BasePower {
@@ -30,6 +26,7 @@ public class EclipsedFormPower extends BasePower {
         Wiz.atb(new DrawCardAction(this.amount2));
         this.amount2 += this.amount;
         BaseMod.MAX_HAND_SIZE += this.amount;
+        updateDescription();
     }
 
     public void onVictory() {

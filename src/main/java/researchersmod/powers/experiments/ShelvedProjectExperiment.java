@@ -41,7 +41,7 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     }
 
     public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
-        completionEffect();
+        ExperimentCardManager.complete(this);
     }
 
 }

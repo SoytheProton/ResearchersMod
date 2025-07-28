@@ -169,7 +169,7 @@
   "${modID}:TeslaCoilPower": {
     "NAME": "Tesla Coil",
     "DESCRIPTIONS": [
-      "At the start of your turn, add #b%d #yPlasmic Energ%s into your hand."
+      "At the start of your turn, add #b%d #yPlasmic #yEnerg%s+ into your draw pile."
     ]
   },
   "${modID}:HadalJetsuitPower": {
@@ -194,7 +194,7 @@
   "${modID}:OrbitalStrikePower": {
     "NAME": "Orbital Strike",
     "DESCRIPTIONS": [
-      "Take #b%d damage when all #yOrbital #yBeacons are played."
+      "Deal #b%d damage to ALL enemies when all #yOrbital #yBeacons are played."
     ]
   },
   "${modID}:OwnTempoPower": {
@@ -212,13 +212,19 @@
   "${modID}:BorealisProtocolPower": {
     "NAME": "Borealis Protocol",
     "DESCRIPTIONS": [
-      "Every time you shuffle your draw pile, #yPhase all cards with #yPhase that cost #b%d or less #b%d time%s."
+      "At the start of your turn, #yPhase all cards with #yPhase #b%d time%s."
     ]
   },
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
       "Whenever you #yTerminate an #yExperiment, #yComplete all Active #yExperiments #b%d time%s."
+    ]
+  },
+  "${modID}:BlackBoxPower": {
+    "NAME": "Black Box",
+    "DESCRIPTIONS": [
+      "Whenever you #yPhase a card, gain #b%s #yMetallicize. \n At the start of your turn, lose half of your #yMetallicize."
     ]
   }
 }

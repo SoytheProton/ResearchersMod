@@ -1,13 +1,14 @@
 package researchersmod.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cards.colorless.FieldTest;
+import researchersmod.ui.ExperimentCardManager;
 
 public class ExtensiveTestingPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(ExtensiveTestingPower.class.getSimpleName());
@@ -31,9 +32,13 @@ public class ExtensiveTestingPower extends BasePower implements NonStackablePowe
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        AbstractCard card = new FieldTest();
-        if(upgraded) card.upgrade();
-        addToTop((new NewQueueCardAction(card, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
+        for(int i = this.amount; i>0; i--) {
+            AbstractCard card = new FieldTest();
+            if(upgraded) card.upgrade();
+            card.dontTriggerOnUseCard = true;
+            card.use((AbstractPlayer) owner,(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
+            ExperimentCardManager.addExperiment(card);
+        }
     }
 
 

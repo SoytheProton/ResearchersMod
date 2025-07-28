@@ -1,13 +1,10 @@
 package researchersmod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import researchersmod.actions.ParticleAcceleratorAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.ParticleAcceleratorPower;
-import researchersmod.powers.ResearchGrantsPower;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
@@ -18,23 +15,16 @@ public class ParticleAccelerator extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            -2
+            1
     );
 
     public ParticleAccelerator() {
         super(ID, info);
-        setMagic(0,2);
-        setPhase(true);
+        setMagic(3,1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ParticleAcceleratorPower(p,1),1));
-        if(upgraded)
-            Wiz.atb(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber),magicNumber));
-    }
-
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return false;
+        Wiz.atb(new ParticleAcceleratorAction(magicNumber));
     }
 }

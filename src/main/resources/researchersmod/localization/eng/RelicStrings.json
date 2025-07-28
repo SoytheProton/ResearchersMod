@@ -8,10 +8,51 @@
   },
   "${modID}:DatabaseTablet": {
     "NAME": "Database Tablet",
-    "FLAVOR": "A holographic tablet for all your research needs.",
+    "FLAVOR": ":// Accessing Prism RnD database...clearance level: 2. Welcome, facility guard.",
     "DESCRIPTIONS": [
-      "At the start of combat, the first #yAttack or #ySkill you play #yPhases for free.",
-      "Exhaust to draw a card."
+      "At the start of each combat, play a #yData #yRequest."
+    ]
+  },
+  "${modID}:UniversalAccessCard": {
+    "NAME": "Universal Access Card",
+    "FLAVOR": ":// Accessing Prism RnD database...clearance level: 5. Welcome, overseer.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, play a #yData #yOverride."
+    ]
+  },
+  "${modID}:Flashdrive": {
+    "NAME": "Cyclic Flash Drive",
+    "FLAVOR": "Wait a minute, this is just a SanDisk.",
+    "DESCRIPTIONS": [
+      "Whenever you #yPhase a card, gain #b1 #yBlock."
+    ]
+  },
+  "${modID}:DissonantTongs": {
+    "NAME": "Dissonant Tongs",
+    "FLAVOR": "A little reality-bending, but should work just fine.",
+    "DESCRIPTIONS": [
+      "Cards that are #yPhasing will be #yUpgraded."
+    ]
+  },
+  "${modID}:PhotonBattery": {
+    "NAME": "Photon Battery",
+    "FLAVOR": "Turns out, there's energy everywhere ready to be used! Just be sure to give it a sec to warm up in the sun.",
+    "DESCRIPTIONS": [
+      "Start each combat with a #yPlasmic #yEnergy+ in hand."
+    ]
+  },
+  "${modID}:TripleTechChambers": {
+    "NAME": "Triple-Tech Chmabers",
+    "FLAVOR": "Firing off residual energy in the chamber opens up the heat cyclers quicker and still packs a punch!",
+    "DESCRIPTIONS": [
+      "Whenever you #yComplete an #yExperiment, deal #b3 damage to a random enemy."
+    ]
+  },
+  "${modID}:BehaviorAdjustment": {
+    "NAME": "Behavior Adjustment",
+    "FLAVOR": "It readjusts everyone to become righteous, no matter how wicked, evil, and arrogant they may be.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain #b6 #yManipulation, but lose #b2 #yStrength and #yDexterity."
     ]
   }
 }

@@ -15,5 +15,6 @@ public class TerminateAction extends AbstractGameAction {
 
     public void update() {
         if(po.amount > 0) ((ExperimentPower) po).terminateEffect();
+        this.isDone = true;
     }
 }

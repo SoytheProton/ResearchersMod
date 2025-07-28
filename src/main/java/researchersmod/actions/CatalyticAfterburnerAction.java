@@ -12,33 +12,26 @@ import researchersmod.util.Wiz;
 public class CatalyticAfterburnerAction
         extends AbstractGameAction {
     private int amount;
-    private int total;
     private final AbstractPlayer p;
-    private final int[] damage;
+    private final int[] multiDamage;
 
-    public CatalyticAfterburnerAction(AbstractPlayer p,int[] damage, int amount, int total) {
+    public CatalyticAfterburnerAction(AbstractPlayer p, int[] multiDamage, int amount) {
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.WAIT;
         this.amount = amount;
-        this.total = total;
         this.p = p;
-        this.damage = damage;
+        this.multiDamage = multiDamage;
     }
 
 
     public void update() {
         for (AbstractCard c : DrawCardAction.drawnCards) {
             if (c.type == AbstractCard.CardType.STATUS) {
-                total++;
+                Wiz.atb(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.FIRE));
             } else {
                 amount--;
             }
-            if(amount > 0) Wiz.att(new DrawCardAction(1,new CatalyticAfterburnerAction(p,damage,amount,total)));
-            else if (total > 0) {
-                for(int i = total; i>0; i--) {
-                    Wiz.atb(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AttackEffect.FIRE));
-                }
-            }
+            if(amount > 0) Wiz.att(new DrawCardAction(1,new CatalyticAfterburnerAction(p,multiDamage,amount)));
         }
         this.isDone = true;
     }

@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.util.CardStats;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
 public class RSquare extends BaseCard {
@@ -29,7 +29,7 @@ public class RSquare extends BaseCard {
                 i += power.amount;
             }
         }
-        return i;
+        return i * 2;
     }
 
     public RSquare() {

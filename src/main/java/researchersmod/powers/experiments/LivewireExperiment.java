@@ -38,7 +38,7 @@ public class LivewireExperiment extends BasePower implements InvisiblePower, Non
         ExperimentCardManager.tickExperiment(this);
     }
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        completionEffect();
+        ExperimentCardManager.complete(this);
     }
 
 }
