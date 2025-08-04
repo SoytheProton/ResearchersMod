@@ -1,12 +1,23 @@
 {
-  "${modID}:PotionID": {
-    "NAME": "Some Kind of Potion",
+  "${modID}:LiquidData": {
+    "NAME": "Liquid Data",
     "DESCRIPTIONS": [
-      "Little",
-      " pieces ",
-      "that get put together",
-      " into a description.",
-      " Exactly how depends on the potion, and you can set it up however you want."
+      "Gain #b%d #yManipulation."
+    ]
+  },
+  "${modID}:RH373Vial": {
+    "NAME": "RH-373 Vial",
+    "DESCRIPTIONS": [
+      "Play #b%d #ySingularit%s.",
+      "y",
+      "ies"
+    ]
+  },
+  "${modID}:Coffee": {
+    "NAME": "Coffee",
+    "DESCRIPTIONS": [
+      "This turn, #yPhase a copy of the next card you play.",
+      "This turn, #yPhase a copy of the next #b%d cards you play."
     ]
   }
 }

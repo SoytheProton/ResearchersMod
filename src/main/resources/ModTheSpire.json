@@ -2,10 +2,12 @@
   "modid": "${modID}",
   "name": "${project.name}",
   "author_list": ["${author}"],
+  "credits" : "The Modding Community",
   "description": "!(project.description)",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
   "dependencies": ["basemod", "stslib"],
+  "optional_dependencies": ["mintyspire"],
   "update_json": ""
 }

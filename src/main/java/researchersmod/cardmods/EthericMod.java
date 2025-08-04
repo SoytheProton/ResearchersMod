@@ -32,7 +32,7 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
         return (!card.isEthereal || !CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
-    public EthericMod(boolean isInherent,int value) {
+    public EthericMod(int value) {
         editEtheric(value);
     }
 

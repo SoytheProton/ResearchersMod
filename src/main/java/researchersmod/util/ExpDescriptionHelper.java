@@ -2,6 +2,7 @@ package researchersmod.util;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import researchersmod.Researchers;
 
 public class ExpDescriptionHelper {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:ExpDescriptionHelper");
@@ -22,9 +23,9 @@ public class ExpDescriptionHelper {
     public static String completionEffect(String rawDescription, String addedEffect) {
         String returnString = rawDescription;
         int colonInstance = countStr(rawDescription, ": ");
-        boolean terminateInstance = rawDescription.contains("Terminate:");
+        boolean terminateInstance = rawDescription.contains(Researchers.keywords.get("Terminate").PROPER_NAME+":");
         if (terminateInstance && colonInstance == 2) { // Completion: and Terminate: effect
-            int index = rawDescription.indexOf(": ",rawDescription.indexOf("Experiment"))+1;
+            int index = rawDescription.indexOf(": ",rawDescription.indexOf(Researchers.keywords.get("Experiment").PROPER_NAME))+1;
             String[] description = {rawDescription.substring(0,index),rawDescription.substring(index)};
             description[0] = description[0] + " " + addedEffect;
             returnString = description[0] + description[1];
@@ -42,7 +43,7 @@ public class ExpDescriptionHelper {
 
     public static String terminationEffect(String rawDescription, String addedEffect) {
         String returnString = rawDescription;
-        boolean terminateInstance = rawDescription.contains("Terminate:");
+        boolean terminateInstance = rawDescription.contains(Researchers.keywords.get("Terminate").PROPER_NAME+":");
         if(terminateInstance)
             returnString = rawDescription + " " + addedEffect;
         else

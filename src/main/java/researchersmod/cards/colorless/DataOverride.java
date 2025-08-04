@@ -25,6 +25,6 @@ public class DataOverride extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DataOverrideExperiment(p, this.Trial,this,this.baseBlock,this.baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new DataOverrideExperiment(p, this.trial,this,this.baseBlock,this.baseDamage)));
     }
 }

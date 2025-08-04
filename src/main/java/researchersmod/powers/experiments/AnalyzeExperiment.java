@@ -3,18 +3,18 @@ package researchersmod.powers.experiments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.actions.IncreaseMiscAttackAction;
 import researchersmod.powers.BasePower;
-import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
-public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnCompletionInterface
+public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower
 {
 
     public static final String POWER_ID = Researchers.makeID(AnalyzeExperiment.class.getSimpleName());
@@ -22,30 +22,25 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
     private static final boolean TURNBASED = false;
 
 
-    private int M;
-    private int ExperimentTracker = 2;
+    private int block;
 
-    public AnalyzeExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+    public AnalyzeExperiment(AbstractCreature owner, int amount, AbstractCard card, int block) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount, card);
-        M = magic;
+        this.block = block;
     }
 
     public void terminateEffect(){
-        Wiz.atb(new IncreaseMiscAttackAction(k.uuid,k.misc,M));
         ExperimentCardManager.remExp(k,this,true);
     }
 
     public void completionEffect(){
+        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(block)));
         ExperimentCardManager.tickExperiment(this);
     }
 
     @Override
-    public void onCompletion(AbstractPower power) {
-        ExperimentTracker--;
-        if(ExperimentTracker == 0) {
-            ExperimentTracker = 2;
-            ExperimentCardManager.complete(this);
-        }
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        ExperimentCardManager.complete(this);
     }
 
 }

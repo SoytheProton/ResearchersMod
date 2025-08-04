@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.ui.ExperimentCardManager;
 
-public class CardTargeting extends TargetingHandler<AbstractCard> {
+public class ExperimentTargeting extends TargetingHandler<AbstractCard> {
 
     @SpireEnum
     public static AbstractCard.CardTarget EXPERIMENT;

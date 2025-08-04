@@ -1,10 +1,9 @@
 package researchersmod.relics;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
@@ -16,8 +15,6 @@ import static researchersmod.Researchers.makeID;
 
 public class TripleTechChambers extends BaseRelic implements ExperimentInterfaces.OnCompletionInterface {
     public static final String ID = makeID(TripleTechChambers.class.getSimpleName());
-    private final AbstractPlayer p = Wiz.p();
-
     public TripleTechChambers() {
         super(ID, RelicTier.RARE, LandingSound.SOLID);
         this.pool = ResearchersCharacter.Meta.CARD_COLOR;
@@ -31,6 +28,8 @@ public class TripleTechChambers extends BaseRelic implements ExperimentInterface
 
     @Override
     public void onCompletion(AbstractPower power) {
-        Wiz.atb(new DamageAction((AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng),new DamageInfo(p, 3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+        flash();
+        addToBot(new RelicAboveCreatureAction(Wiz.p(), this));
+        Wiz.atb(new DamageRandomEnemyAction(new DamageInfo(Wiz.p(), 3, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
     }
 }

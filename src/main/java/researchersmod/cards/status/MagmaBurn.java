@@ -1,5 +1,6 @@
 package researchersmod.cards.status;
 
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -29,9 +30,8 @@ public class MagmaBurn extends BaseCard {
 
     public MagmaBurn() {
         super(ID, info);
-        this.exhaust = true;
         setMagic(2);
-        setEtheric(2,1);
+        ExhaustiveVariable.setBaseValue(this,2);
         cardsToPreview = new Burn();
     }
 
@@ -68,4 +68,10 @@ public class MagmaBurn extends BaseCard {
         Wiz.atb(new MakeTempCardInDiscardAction(new Burn(),1));
     }
 
+    public void upgrade() {
+        if(!upgraded) {
+            super.upgrade();
+            ExhaustiveVariable.upgrade(this,1);
+        }
+    }
 }

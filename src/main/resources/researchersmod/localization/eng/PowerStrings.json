@@ -206,25 +206,31 @@
   "${modID}:PhaseNextCardPower": {
     "NAME": "Phase Next Card",
     "DESCRIPTIONS": [
-      "The next #b%d #yAttack%s or #ySkill%s you play %s #yPhased for free."
+      "#yPhase a copy of the next #b%d card%s you play."
     ]
   },
   "${modID}:BorealisProtocolPower": {
     "NAME": "Borealis Protocol",
     "DESCRIPTIONS": [
-      "At the start of your turn, #yPhase all cards with #yPhase #b%d time%s."
+      "At the start of your turn, #yPhase all non-Power cards with #yPhase #b%d time%s."
     ]
   },
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Whenever you #yTerminate an #yExperiment, #yComplete all Active #yExperiments #b%d time%s."
+      "Whenever you #yComplete an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact."
     ]
   },
   "${modID}:BlackBoxPower": {
     "NAME": "Black Box",
     "DESCRIPTIONS": [
       "Whenever you #yPhase a card, gain #b%s #yMetallicize. \n At the start of your turn, lose half of your #yMetallicize."
+    ]
+  },
+  "${modID}:InstabilityPower": {
+    "NAME": "Instability",
+    "DESCRIPTIONS": [
+      "When you have #b3 #yInstability, lose all stacks of #yInstability and end your turn."
     ]
   }
 }

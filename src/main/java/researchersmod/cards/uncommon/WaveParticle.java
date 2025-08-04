@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.colorless.SubspaceStrike;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.experiments.ForceGuardExperiment;
 import researchersmod.powers.experiments.WaveParticleExperiment;
 import researchersmod.util.CardStats;
 
@@ -27,6 +26,6 @@ public class WaveParticle extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new WaveParticleExperiment(p, this.Trial, this)));
+        addToBot(new ApplyPowerAction(p, p, new WaveParticleExperiment(p, this.trial, this)));
     }
 }

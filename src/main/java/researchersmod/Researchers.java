@@ -2,6 +2,7 @@ package researchersmod;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.abstracts.CustomUnlockBundle;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
@@ -20,15 +21,26 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 import researchersmod.cards.BaseCard;
+import researchersmod.cards.common.EncryptData;
+import researchersmod.cards.common.Exploit;
+import researchersmod.cards.common.RagingBlade;
+import researchersmod.cards.rare.Centrifuge;
+import researchersmod.cards.rare.O5Command;
+import researchersmod.cards.rare.OrbitalStrike;
 import researchersmod.cards.rare.ResonantHexagraph;
-import researchersmod.cards.targeting.CardTargeting;
+import researchersmod.cards.targeting.ExperimentTargeting;
+import researchersmod.cards.uncommon.Entropy;
+import researchersmod.cards.uncommon.FerrousBlade;
+import researchersmod.cards.uncommon.TeslaCoil;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.relics.BaseRelic;
+import researchersmod.potions.BasePotion;
+import researchersmod.relics.*;
 import researchersmod.ui.ExperimentCardManager;
 import researchersmod.ui.ModConfig;
 import researchersmod.util.GeneralUtils;
@@ -37,6 +49,9 @@ import researchersmod.util.TextureLoader;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+
+import static com.megacrit.cardcrawl.unlock.UnlockTracker.unlockProgress;
+
 @SpireInitializer
 public class Researchers implements
         EditCharactersSubscriber,
@@ -48,7 +63,8 @@ public class Researchers implements
         PostExhaustSubscriber,
         OnPlayerTurnStartSubscriber,
         PostBattleSubscriber,
-        PostDeathSubscriber{
+        PostDeathSubscriber,
+        SetUnlocksSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -67,7 +83,9 @@ public class Researchers implements
         ResearchersCharacter.Meta.registerColor();
     }
 
+    public static int expsTerminatedThisTurn;
     public static int expsTerminatedThisCombat;
+    public static int expsCompletedThisTurn;
     public static int expsCompletedThisCombat;
     public static int cardsPhasedThisTurn;
     public static int cardsPhasedThisCombat;
@@ -91,12 +109,12 @@ public class Researchers implements
         Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png"));
         //Set up the mod information displayed in the in-game mods menu.
         //The information used is taken from your pom.xml file.
-
+        registerPotions();
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, new ModConfig());
-
-        CustomTargeting.registerCustomTargeting(CardTargeting.EXPERIMENT, new CardTargeting());
+        CustomTargeting.registerCustomTargeting(ExperimentTargeting.EXPERIMENT, new ExperimentTargeting());
+        if(!ModConfig.enableUnlocks) unlockBundles();
     }
 
     /*----------Localization----------*/
@@ -138,8 +156,6 @@ public class Researchers implements
                 localizationPath(lang, "CharacterStrings.json"));
         BaseMod.loadCustomStringsFile(EventStrings.class,
                 localizationPath(lang, "EventStrings.json"));
-        BaseMod.loadCustomStringsFile(OrbStrings.class,
-                localizationPath(lang, "OrbStrings.json"));
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 localizationPath(lang, "PotionStrings.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class,
@@ -176,6 +192,18 @@ public class Researchers implements
                 logger.warn(modID + " does not support " + getLangString() + " keywords.");
             }
         }
+    }
+
+    public static void registerPotions() {
+        new AutoAdd(modID) //Loads files from this mod
+                .packageFilter(BasePotion.class) //In the same package as this class
+                .any(BasePotion.class, (info, potion) -> { //Run this code for any classes that extend this class
+                    //These three null parameters are colors.
+                    //If they're not null, they'll overwrite whatever color is set in the potions themselves.
+                    //This is an old feature added before having potions determine their own color was possible.
+                    BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, potion.playerClass);
+                    //playerClass will make a potion character-specific. By default, it's null and will do nothing.
+                });
     }
 
     private void registerKeyword(KeywordInfo info) {
@@ -263,7 +291,7 @@ public class Researchers implements
         new AutoAdd(modID) //Loads files from this mod
                 .packageFilter(BaseCard.class) //In the same package as this class
                 .notPackageFilter("researchersmod.cards.deprecated")
-                .setDefaultSeen(true) //And marks them as seen in the compendium
+                .setDefaultSeen(!ModConfig.enableUnlocks) //And marks them as seen in the compendium
                 .cards(); //Adds the cards
     }
 
@@ -279,7 +307,7 @@ public class Researchers implements
 
                     //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
                     //If you want all your relics to be visible by default, just remove this if statement.
-                    // if (info.seen)
+                    if (info.seen || !ModConfig.enableUnlocks)
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                 });
     }
@@ -293,6 +321,8 @@ public class Researchers implements
     @Override
     public void receiveOnPlayerTurnStart() {
         CardsExhaustedThisTurn = 0;
+        expsCompletedThisTurn = 0;
+        expsTerminatedThisTurn = 0;
         cardsPhasedThisTurn = 0;
         ResonantHexagraph.copiedThisTurn.clear();
     }
@@ -304,11 +334,42 @@ public class Researchers implements
         CardsExhaustedThisTurn = 0;
         cardsPhasedThisTurn = 0;
         cardsPhasedThisCombat = 0;
+        expsCompletedThisTurn = 0;
+        expsTerminatedThisTurn = 0;
         LastPhasedCard = null;
     }
 
     @Override
     public void receivePostDeath() {
         ExperimentCardManager.experiments.group.clear();
+    }
+
+    private void unlockBundles() {
+        for (int y = 4; y >= 0; y--) {
+            ArrayList<AbstractUnlock> unlockBundle = UnlockTracker.getUnlockBundle(ResearchersCharacter.Meta.RESEARCHERS, y);
+            switch (((AbstractUnlock) unlockBundle.get(0)).type) {
+                case CARD:
+                    for (AbstractUnlock unlock : unlockBundle) {
+                        UnlockTracker.unlockCard(((AbstractUnlock) unlock).card.cardID);
+                    }
+                    break;
+                case RELIC:
+                    for (AbstractUnlock abstractUnlock : unlockBundle) {
+                        UnlockTracker.hardUnlockOverride(((AbstractUnlock) abstractUnlock).relic.relicId);
+                        UnlockTracker.markRelicAsSeen(((AbstractUnlock) abstractUnlock).relic.relicId);
+                    }
+                    break;
+            }
+            unlockProgress.putInteger(ResearchersCharacter.Meta.RESEARCHERS.toString() + "UnlockLevel", 5);
+        }
+    }
+
+    @Override
+    public void receiveSetUnlocks() {
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, Exploit.ID, TeslaCoil.ID, OrbitalStrike.ID), ResearchersCharacter.Meta.RESEARCHERS, 0);
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.RELIC, OccamsRazor.ID, MarketGardener.ID, TripleTechChambers.ID), ResearchersCharacter.Meta.RESEARCHERS, 1);
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, EncryptData.ID, Entropy.ID, O5Command.ID), ResearchersCharacter.Meta.RESEARCHERS, 2);
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.RELIC, ElectromagneticEqualizer.ID, HypnoticWatch.ID, BehaviorAdjustment.ID), ResearchersCharacter.Meta.RESEARCHERS, 3);
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, RagingBlade.ID, FerrousBlade.ID, Centrifuge.ID), ResearchersCharacter.Meta.RESEARCHERS, 4);
     }
 }

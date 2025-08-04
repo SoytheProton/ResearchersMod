@@ -36,6 +36,8 @@ public abstract class BasePotion extends AbstractPotion {
     public int basePotency;
     public AbstractPlayer.PlayerClass playerClass = null;
 
+    protected final Color characterColor = new Color(30f/255f, 39f/255f, 166f/255f, 1f);
+
     public BasePotion(String id, int potency, PotionRarity rarity, PotionSize shape, Color liquidColor, Color hybridColor, Color spotsColor) {
         super("", id, rarity, shape, PotionEffect.NONE, liquidColor, hybridColor, spotsColor);
         basePotency = potency;

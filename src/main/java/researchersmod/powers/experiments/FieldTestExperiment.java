@@ -36,7 +36,7 @@ public class FieldTestExperiment extends BasePower implements InvisiblePower, No
     }
 
     public void terminateEffect(){
-        Wiz.atb(new SFXAction("ATTACK_LIGHT"));
+        Wiz.atb(new SFXAction("ATTACK_IRON_1"));
         Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.remExp(k,this,true);
     }

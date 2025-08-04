@@ -30,7 +30,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     }
 
     public void completionEffect(){
-        ExperimentCardManager.tickExperiment(this,1,false);
+        ExperimentCardManager.tickExperiment(this,1);
     }
 
     @Override

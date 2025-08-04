@@ -1,7 +1,7 @@
 package researchersmod.powers;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -33,7 +33,7 @@ public class UplinkPower extends BasePower {
             ((AbstractPlayer) owner).limbo.addToBottom(tmp);
             Wiz.atb(new ExhaustSpecificCardAction(tmp,((AbstractPlayer) owner).limbo));
         }
-        addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        addToBot(new ReducePowerAction(this.owner, this.owner, this,1));
     }
 
     public void updateDescription() {

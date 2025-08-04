@@ -3,7 +3,6 @@ package researchersmod.cards.uncommon;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,37 +21,16 @@ public class EnergySlash extends BaseCard {
             1
     );
 
-
     public EnergySlash() {
-        this(0);
-    }
-    public EnergySlash(int upgrades) {
         super(ID, info);
-        setDamage(6);
-        setPhase(true,true);
+        setDamage(5,2);
+        setPhase(true);
         this.exhaust = true;
-        this.timesUpgraded = upgrades;
+        CardModifierManager.addModifier(this,new PhaseMod());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-    }
-
-    public void upgrade() {
-        if(upgraded) {
-            CardModifierManager.addModifier(this, new PhaseMod(true));
-            this.timesUpgraded++;
-        }
-        super.upgrade();
-        this.upgraded = true;
-        this.name = cardStrings.NAME + "+" + this.timesUpgraded;
-        initializeTitle();
-    }
-
-    public AbstractCard makeCopy() {
-        AbstractCard card = super.makeCopy();
-        card.timesUpgraded = this.timesUpgraded;
-        return card;
     }
 }

@@ -1,6 +1,7 @@
 package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.ExperimentCard;
@@ -20,11 +21,22 @@ public class Multithread extends ExperimentCard {
 
     public Multithread() {
         super(ID, info,1);
-        setDamage(4,2);
+        setDamage(8,2);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.Trial, this, baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.trial, this, baseDamage)));
+    }
+
+    public AbstractCard makeTrialCopy(int trialNumber) {
+        setCustomVar("Trial",trialNumber);
+        AbstractCard retVal = super.makeStatEquivalentCopy();
+        setCustomVar("Trial",this.baseTrial);
+        return retVal;
+    }
+
+    public AbstractCard makeStatEquivalentCopy() {
+        return makeTrialCopy(this.baseTrial);
     }
 }

@@ -26,6 +26,6 @@ public class OldSystemError extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SystemErrorExperiment(p, this.Trial, this)));
+        addToBot(new ApplyPowerAction(p, p, new SystemErrorExperiment(p, this.trial, this)));
     }
 }

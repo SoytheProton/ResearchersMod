@@ -20,19 +20,11 @@ public class IonSurge extends BaseCard {
 
     public IonSurge() {
         super(ID, info);
-        setMagic(1);
-        setEthereal(true);
+        setMagic(1,1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new IonSurgePower(p,magicNumber)));
-    }
-
-    public void upgrade() {
-        if(!upgraded) {
-            super.upgrade();
-            this.isEthereal = false;
-        }
     }
 }

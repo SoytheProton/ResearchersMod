@@ -2,6 +2,7 @@ package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.Researchers;
 import researchersmod.actions.AltercatedBlueprintAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
@@ -24,6 +25,14 @@ public class AltercatedBlueprint extends BaseCard {
     public AltercatedBlueprint() {
         super(ID, info);
         setMagic(2,1);
+    }
+
+    public void applyPowers() {
+        super.applyPowers();
+        if(Researchers.LastPhasedCard != null) {
+            String name = Researchers.LastPhasedCard.name.replace(" ", "* ");
+            this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0], name);
+        }
     }
 
 

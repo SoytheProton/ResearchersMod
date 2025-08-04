@@ -45,6 +45,6 @@ public class DummyExperiment extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new CentrifugeExperiment(p,this.Trial,this,targetCard));
+        Wiz.applyToSelf(new CentrifugeExperiment(p,this.trial,this,targetCard));
     }
 }

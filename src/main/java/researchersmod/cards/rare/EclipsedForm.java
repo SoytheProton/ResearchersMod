@@ -1,5 +1,6 @@
 package researchersmod.cards.rare;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,6 +23,7 @@ public class EclipsedForm extends BaseCard {
         super(ID, info);
         setMagic(1);
         this.isEthereal = true;
+        this.tags.add(BaseModCardTags.FORM);
     }
 
     @Override

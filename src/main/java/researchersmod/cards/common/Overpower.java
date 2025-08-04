@@ -3,17 +3,12 @@ package researchersmod.cards.common;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.Researchers;
-import researchersmod.cards.BaseCard;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.OverpowerExperiment;
-import researchersmod.powers.experiments.ServerHashExperiment;
 import researchersmod.util.CardStats;
 
 public class Overpower extends ExperimentCard {
@@ -38,6 +33,6 @@ public class Overpower extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new ApplyPowerAction(p, p, new OverpowerExperiment(p, this.Trial, this,this.magicNumber),1));
+        addToBot(new ApplyPowerAction(p, p, new OverpowerExperiment(p, this.trial, this,this.magicNumber),1));
     }
 }

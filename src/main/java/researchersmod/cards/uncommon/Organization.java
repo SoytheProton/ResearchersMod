@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.targeting.CardTargeting;
+import researchersmod.cards.targeting.ExperimentTargeting;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.deprecated.OrganizationExpAttachment;
 import researchersmod.util.CardStats;
@@ -17,7 +17,7 @@ public class Organization extends BaseCard {
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTargeting.EXPERIMENT,
+            ExperimentTargeting.EXPERIMENT,
             1
     );
     public Organization() {
@@ -27,12 +27,11 @@ public class Organization extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCard target = CardTargeting.getTarget(this);
+        AbstractCard target = ExperimentTargeting.getTarget(this);
         if(target != null) {
             target.superFlash();
             Wiz.atb(new ApplyPowerAction(p, p, new OrganizationExpAttachment(p,target,upgraded)));
         }
-
     }
 }
 

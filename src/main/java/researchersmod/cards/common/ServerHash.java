@@ -4,8 +4,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.Researchers;
-import researchersmod.cards.BaseCard;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.ServerHashExperiment;
@@ -30,6 +28,6 @@ public class ServerHash extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, customVar("Blocc")));
-        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.Trial, this, this.baseBlock)));
+        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.trial, this, this.baseBlock)));
     }
 }

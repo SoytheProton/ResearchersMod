@@ -4,13 +4,13 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -40,13 +40,10 @@ public class CentrifugeExperiment extends BasePower implements InvisiblePower, N
 
     public void completionEffect(){
         AbstractCard card = targetCard.makeSameInstanceOf();
-        card.current_y = -200.0F * Settings.scale;
-        card.target_x = Settings.WIDTH / 2.0F;
-        card.target_y = Settings.HEIGHT / 2.0F;
-        card.targetAngle = 0.0F;
-        card.dontTriggerOnUseCard = true;
+        card.purgeOnUse = true;
         card.applyPowers();
-        addToTop((new NewQueueCardAction(card, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
+        AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
+        if(target != null) targetCard.use(Wiz.p(),target);
         ExperimentCardManager.tickExperiment(this);
     }
     public void onUseCard(AbstractCard card, UseCardAction action) {

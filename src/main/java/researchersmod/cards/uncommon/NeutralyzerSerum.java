@@ -1,9 +1,6 @@
 package researchersmod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
@@ -11,7 +8,6 @@ import researchersmod.actions.NeutralyzerSerumAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.NeutralyzerSerumExperiment;
-import researchersmod.powers.experiments.PlasmaPulseExperiment;
 import researchersmod.util.CardStats;
 
 public class NeutralyzerSerum extends ExperimentCard {
@@ -35,7 +31,7 @@ public class NeutralyzerSerum extends ExperimentCard {
             this.tags.remove(Researchers.EXPERIMENT);
         else if(!this.hasTag(Researchers.EXPERIMENT))
             tags.add(Researchers.EXPERIMENT);
-        addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.Trial, this,magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.trial, this,magicNumber)));
         addToBot(new NeutralyzerSerumAction(p,this,this.freeToPlayOnce,this.energyOnUse));
     }
 }

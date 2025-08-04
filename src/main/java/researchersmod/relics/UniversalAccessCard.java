@@ -14,7 +14,6 @@ import static researchersmod.Researchers.makeID;
 
 public class UniversalAccessCard extends BaseRelic {
     public static final String ID = makeID(UniversalAccessCard.class.getSimpleName());
-    private boolean activated;
 
     public UniversalAccessCard() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK);

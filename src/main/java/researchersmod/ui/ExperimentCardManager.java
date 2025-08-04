@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
@@ -113,11 +112,12 @@ public class ExperimentCardManager {
                 }
             }
         }
-        for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof ExperimentInterfaces.OnExperimentInterface){
-                ((ExperimentInterfaces.OnExperimentInterface) p).onExperiment(expPower);
-            }
-        }
+        AbstractPower power = expPower;
+        Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
+        Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
+        AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));
+        AbstractDungeon.player.discardPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));
+        AbstractDungeon.player.drawPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));
         if (playSFX) {
             CardCrawlGame.sound.play("ORB_SLOT_GAIN", 0.1F);
         }
@@ -147,13 +147,19 @@ public class ExperimentCardManager {
     }
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust, boolean shouldPurge) {
-        for (AbstractPower p : Wiz.adp().powers) {
-            if (p instanceof ExperimentInterfaces.OnTerminateInterface && p != power) {
-                ((ExperimentInterfaces.OnTerminateInterface) p).onTerminate(power);
-            }
+        if(((BasePower)power).freeToTerminateOnce) {
+            ((BasePower) power).freeToTerminateOnce = false;
+            return;
         }
+        Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnTerminateInterface).forEach(r -> ((ExperimentInterfaces.OnTerminateInterface) r).onTerminate(power));
+        Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnTerminateInterface).forEach(r -> ((ExperimentInterfaces.OnTerminateInterface) r).onTerminate(power));
+        AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnTerminateInterface).forEach(c -> ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power));
+        AbstractDungeon.player.discardPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnTerminateInterface).forEach(c -> ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power));
+        AbstractDungeon.player.drawPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnTerminateInterface).forEach(c -> ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power));
+        Researchers.expsTerminatedThisCombat++;
+        Researchers.expsTerminatedThisTurn++;
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID, true);
-        ((ExperimentCard) card).Trial = ((ExperimentCard) card).BaseTrial;
+        ((ExperimentCard) card).trial = ((ExperimentCard) card).baseTrial;
         card.unhover();
         card.untip();
         card.stopGlowing();
@@ -168,60 +174,48 @@ public class ExperimentCardManager {
             else
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
         }
-        for(AbstractCard c : Wiz.p().hand.group)
-            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
-                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
-        for(AbstractCard c : Wiz.p().discardPile.group)
-            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
-                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
-        for(AbstractCard c : Wiz.p().drawPile.group)
-            if(c instanceof ExperimentInterfaces.OnTerminateInterface)
-                ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power);
-        Researchers.expsTerminatedThisCombat++;
         Wiz.att(new RemoveSpecificPowerAction(power.owner, power.owner, power));
     }
 
-    public static void tickExp(AbstractPower p) {
-        tickExperiment(p);
+    public static void tickExp(AbstractPower power) {
+        tickExperiment(power);
     }
 
-    public static void tickExp(AbstractPower p, int amt) {
-        tickExperiment(p, amt);
+    public static void tickExp(AbstractPower power, int amt) {
+        tickExperiment(power, amt);
     }
 
-    public static void tickExp(AbstractPower p, int amt, boolean shouldComplete) {
-        tickExperiment(p, amt, shouldComplete);
+    public static void tickExp(AbstractPower power, int amt, boolean shouldComplete) {
+        tickExperiment(power, amt, shouldComplete);
     }
 
-    public static void tickExperiment(AbstractPower p) {
-        tickExperiment(p,1);
+    public static void tickExperiment(AbstractPower power) {
+        tickExperiment(power,1);
     }
-    public static void tickExperiment(AbstractPower p, int amt) {
-        tickExperiment(p,amt,true);
+    public static void tickExperiment(AbstractPower power, int amt) {
+        tickExperiment(power,amt,true);
     }
 
-    public static void tickExperiment(AbstractPower p, int amt, boolean shouldComplete) {
-        AbstractCard c = ((BasePower) p).k;
-        p.amount = p.amount - amt;
-        ((ExperimentCard) c).Trial = p.amount;
-        c.flash();
-        if(shouldComplete && amt > 0 && p.amount >= 0) {
+    public static void tickExperiment(AbstractPower power, int amt, boolean shouldComplete) {
+        AbstractCard card = ((BasePower) power).k;
+        power.amount = power.amount - amt;
+        ((ExperimentCard) card).trial = power.amount;
+        card.flash();
+        if(amt > 0 && power.amount >= 0) {
             for (int i = amt; i > 0; i--) {
                 Researchers.expsCompletedThisCombat++;
-                for (AbstractPower power : Wiz.adp().powers) {
-                    if (power instanceof ExperimentInterfaces.OnCompletionInterface && power != p) {
-                        ((ExperimentInterfaces.OnCompletionInterface) power).onCompletion(p);
-                    }
-                }
-                for (AbstractRelic r : Wiz.adp().relics) {
-                    if (r instanceof ExperimentInterfaces.OnCompletionInterface) {
-                        ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(p);
-                    }
+                Researchers.expsCompletedThisTurn++;
+                if (shouldComplete && !(power instanceof ExperimentInterfaces.OnCompletionInterface)) {
+                    Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
+                    Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
+                    AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnCompletionInterface).forEach(c -> ((ExperimentInterfaces.OnCompletionInterface) c).onCompletion(power));
+                    AbstractDungeon.player.discardPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnCompletionInterface).forEach(c -> ((ExperimentInterfaces.OnCompletionInterface) c).onCompletion(power));
+                    AbstractDungeon.player.drawPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnCompletionInterface).forEach(c -> ((ExperimentInterfaces.OnCompletionInterface) c).onCompletion(power));
                 }
             }
         }
-        if (p.amount <= 0) {
-            ((ExperimentPower)p).terminateEffect();
+        if (power.amount <= 0) {
+            ((ExperimentPower)power).terminateEffect();
         }
     }
 

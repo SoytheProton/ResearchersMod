@@ -27,6 +27,6 @@ public class Livewire extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new LivewireExperiment(p, this.Trial, this, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new LivewireExperiment(p, this.trial, this, magicNumber)));
     }
 }

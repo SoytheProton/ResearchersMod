@@ -30,6 +30,6 @@ public class CutThroughLight extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        Wiz.applyToSelf(new CutThroughLightExperiment(p,this.Trial,this,magicNumber));
+        Wiz.applyToSelf(new CutThroughLightExperiment(p,this.trial,this,magicNumber));
     }
 }

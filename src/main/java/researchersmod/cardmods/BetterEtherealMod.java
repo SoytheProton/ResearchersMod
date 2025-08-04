@@ -25,9 +25,6 @@ public class BetterEtherealMod extends AbstractCardModifier {
         return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
     }
 
-    public BetterEtherealMod(boolean isInherent){
-    }
-
     public BetterEtherealMod() {
     }
 

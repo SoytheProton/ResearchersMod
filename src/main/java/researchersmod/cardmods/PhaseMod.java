@@ -2,7 +2,6 @@ package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
@@ -24,7 +23,6 @@ import researchersmod.powers.ManipulationPower;
 import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -32,19 +30,7 @@ public class PhaseMod extends AbstractCardModifier {
     public static String ID = "researchersmod:PhaseCardModifier";
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
     private boolean isFirstApplication = false;
-    private boolean inherent;
     private boolean phaseNumbers = ModConfig.enablePhaseNumbers;
-    public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
-        return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
-    }
-
-    public PhaseMod(boolean isInherent) {
-        inherent = false; // Returning true causes issues when Saving and Quiting.
-    }
-
-    public PhaseMod() {
-        inherent = false;
-    }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
@@ -128,10 +114,10 @@ public class PhaseMod extends AbstractCardModifier {
                 PhasingFields.isPhasing.set(tmp,true);
                 for (AbstractPower p : AbstractDungeon.player.powers)
                     if (p instanceof WhilePhaseInterface)
-                        ((WhilePhaseInterface) p).whilePhase(card);
+                        ((WhilePhaseInterface) p).whilePhase(tmp);
                 for (AbstractRelic r : AbstractDungeon.player.relics)
                     if (r instanceof WhilePhaseInterface)
-                        ((WhilePhaseInterface) r).whilePhase(card);
+                        ((WhilePhaseInterface) r).whilePhase(tmp);
                 tmp.applyPowers();
                 addToTop((new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
                 for (AbstractPower p : AbstractDungeon.player.powers)

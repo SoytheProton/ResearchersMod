@@ -21,22 +21,24 @@
   },
   {
     "ID": "Terminate",
-    "PROPER_NAME": "Terminate",
+    "PROPER_NAME": "Complete",
     "NAMES": [
-      "Terminate",
-      "Termination",
-      "Terminated"
+      "Complete",
+      "Completes",
+      "Completing",
+      "Completion",
+      "Completed"
     ],
     "DESCRIPTION": "When an #yExperiment card is used up and returns itself."
   },
   {
     "ID": "Complete",
-    "PROPER_NAME": "Complete",
+    "PROPER_NAME": "Progress",
     "NAMES": [
-      "Complete",
-      "Completed",
-      "Completion",
-      "Completions"
+      "Progress",
+      "Progressed",
+      "Progresses",
+      "Progression"
     ],
     "DESCRIPTION": "When #b1 or more #yExperiment card meets its conditions and activates its effects."
   },
@@ -81,5 +83,13 @@
       "Manipulation"
     ],
     "DESCRIPTION": "Increases the amount of damage dealt and #yBlock given by #yPhasing cards."
+  },
+  {
+    "ID": "Instability",
+    "PROPER_NAME": "Instability",
+    "NAMES": [
+      "Instability"
+    ],
+    "DESCRIPTION": "When you get #b3 #yInstability, remove all #yInstability and end your turn."
   }
 ]

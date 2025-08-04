@@ -432,7 +432,7 @@ public abstract class BaseCard extends CustomCard {
 
     protected final void setPhase(boolean basePhase, boolean upgPhase) {
         if(basePhase) {
-            PhaseMod mod = new PhaseMod(/*true*/);
+            PhaseMod mod = new PhaseMod();
             CardModifierManager.addModifier(this, mod);
         } this.upgPhase = upgPhase;
     }
@@ -443,7 +443,7 @@ public abstract class BaseCard extends CustomCard {
 
     protected final void setEtheric(int ethericValue, int upgEthericValue) {
         if(ethericValue > 0) {
-            EthericMod mod = new EthericMod(true,ethericValue);
+            EthericMod mod = new EthericMod(ethericValue);
             CardModifierManager.addModifier(this, mod);
         }
         this.upgEthericValue = upgEthericValue;
@@ -564,7 +564,7 @@ public abstract class BaseCard extends CustomCard {
                 this.selfRetain = upgRetain;
 
             if (upgPhase) {
-                AbstractCardModifier mod = new PhaseMod(true);
+                AbstractCardModifier mod = new PhaseMod();
                 CardModifierManager.addModifier(this, mod);
             }
 
@@ -574,7 +574,7 @@ public abstract class BaseCard extends CustomCard {
                     mod = (EthericMod) CardModifierManager.getModifiers(this, EthericMod.ID).get(0);
                     mod.editEtheric(mod.baseEthericValue + upgEthericValue);
                 } else {
-                    mod = new EthericMod(true,upgEthericValue);
+                    mod = new EthericMod(upgEthericValue);
                     CardModifierManager.addModifier(this,mod);
                 }
             }

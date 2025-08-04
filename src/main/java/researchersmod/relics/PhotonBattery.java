@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.cards.status.PlasmicEnergy;
 import researchersmod.character.ResearchersCharacter;
@@ -15,7 +14,6 @@ import static researchersmod.Researchers.makeID;
 
 public class PhotonBattery extends BaseRelic {
     public static final String ID = makeID(PhotonBattery.class.getSimpleName());
-    private final AbstractPlayer p = Wiz.p();
 
     public PhotonBattery() {
         super(ID, RelicTier.COMMON, LandingSound.HEAVY);
@@ -27,7 +25,7 @@ public class PhotonBattery extends BaseRelic {
     @Override
     public void atBattleStart() {
         flash();
-        addToBot((AbstractGameAction)new RelicAboveCreatureAction((AbstractCreature) p, this));
+        addToBot((AbstractGameAction)new RelicAboveCreatureAction((AbstractCreature) Wiz.p(), this));
         AbstractCard tmp = new PlasmicEnergy();
         tmp.upgrade();
         Wiz.atb(new MakeTempCardInHandAction(tmp));

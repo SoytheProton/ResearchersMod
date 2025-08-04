@@ -1,12 +1,13 @@
 package researchersmod.powers;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
-import researchersmod.actions.CompletionAction;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
-import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
 
 public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnTerminateInterface {
@@ -21,15 +22,20 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnT
 
     @Override
     public void onTerminate(AbstractPower power) {
-        for(AbstractPower p : owner.powers) {
-            if(p instanceof ExperimentPower) {
-                for(int i = this.amount; i>0; i--) Wiz.atb(new CompletionAction((AbstractPlayer) owner,p));
-            }
+        int i = AbstractDungeon.cardRandomRng.random(1,3);
+        switch (i) {
+            case 1:
+                Wiz.applyToSelf(new StrengthPower(owner, this.amount));
+                break;
+            case 2:
+                Wiz.applyToSelf(new DexterityPower(owner, this.amount));
+                break;
+            case 3:
+                Wiz.applyToSelf(new ArtifactPower(owner, this.amount));
+                break;
         }
     }
     public void updateDescription() {
-        String plural = "s";
-        if(this.amount == 1) plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
+        this.description = String.format(DESCRIPTIONS[0],this.amount);
     }
 }

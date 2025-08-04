@@ -47,6 +47,6 @@ public class PlasmaPulse extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(p, p, new PlasmaPulseExperiment(p, this.Trial, this)));
+        addToBot(new ApplyPowerAction(p, p, new PlasmaPulseExperiment(p, this.trial, this)));
     }
 }

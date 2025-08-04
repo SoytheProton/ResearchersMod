@@ -216,13 +216,13 @@ public class ResearchersCharacter extends CustomPlayer {
     public void doCharSelectScreenSelectEffect() {
         //This occurs when you click the character's button in the character select screen.
         //See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_2", MathUtils.random(-0.2F, 0.2F));
+        CardCrawlGame.sound.playA("ATTACK_IRON_3", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
         //Similar to doCharSelectScreenSelectEffect, but used for the Custom mode screen. No shaking.
-        return "ATTACK_DAGGER_2";
+        return "ATTACK_IRON_3";
     }
 
     //Don't adjust these four directly, adjust the contents of the CharacterStrings.json file.

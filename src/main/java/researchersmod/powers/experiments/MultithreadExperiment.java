@@ -5,17 +5,17 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.cards.rare.Multithread;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
@@ -34,18 +34,18 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
+        AbstractCard card = ((Multithread)k).makeTrialCopy(((ExperimentCard)k).baseTrial + 1);
+        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
+        ((ExperimentCard) card).baseTrial = ((ExperimentCard)k).baseTrial + 1;
+        ((ExperimentCard) card).trial = ((ExperimentCard)k).baseTrial + 1;
+        card.applyPowers();
+        Wiz.atb(new MakeTempCardInDiscardAction(card,2));
         ExperimentCardManager.remExp(k,this,true);
     }
 
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_DAGGER_1"));
-        Wiz.atb(new DamageAction((AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng),new DamageInfo(owner, (int) CalcUtil.CalcDamage(damage), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractCard card = k.makeStatEquivalentCopy();
-        CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
-        ((ExperimentCard) card).BaseTrial = ((ExperimentCard)k).BaseTrial + 1;
-        ((ExperimentCard) card).Trial = ((ExperimentCard)k).BaseTrial + 1;
-        card.applyPowers();
-        Wiz.atb(new MakeTempCardInDrawPileAction(card,1,true,true));
+        Wiz.atb(new DamageRandomEnemyAction(new DamageInfo(owner, (int) CalcUtil.CalcDamage(damage), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         ExperimentCardManager.tickExperiment(this);
     }
 

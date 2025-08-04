@@ -28,22 +28,22 @@ public abstract class ExperimentCard extends BaseCard{
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial, int upgradedtrial, String cardImage) {
         super(ID, cost, cardType, target, rarity, color, cardImage);
         tags.add(Researchers.EXPERIMENT);
-        BaseTrial = basetrial;
-        Trial = basetrial;
+        baseTrial = basetrial;
+        trial = basetrial;
         upgradedTrial = upgradedtrial;
-        setCustomVar("Trial",VariableType.MAGIC,Trial,upgradedTrial,(card, m, base) -> ((ExperimentCard)card).Trial);
+        setCustomVar("Trial",VariableType.MAGIC,trial,upgradedTrial,(card, m, base) -> ((ExperimentCard)card).trial);
         colorCustomVar("Trial", Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR,Settings.BLUE_TEXT_COLOR);
     }
 
-    public int Trial = 1;
+    public int trial = 1;
     public int upgradedTrial;
-    public int BaseTrial = 1;
+    public int baseTrial = 1;
 
     @Override
     public void upgrade() {
         if (!upgraded && upgradedTrial != 0) {
-            this.Trial = this.BaseTrial + this.upgradedTrial;
-            this.BaseTrial = this.BaseTrial + this.upgradedTrial;
+            this.trial = this.baseTrial + this.upgradedTrial;
+            this.baseTrial = this.baseTrial + this.upgradedTrial;
         }
         super.upgrade();
     }
@@ -51,9 +51,8 @@ public abstract class ExperimentCard extends BaseCard{
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard retVal = super.makeStatEquivalentCopy();
-        ((ExperimentCard)retVal).Trial = this.Trial;
-        ((ExperimentCard)retVal).BaseTrial = this.BaseTrial;
-        retVal.applyPowers();
+        ((ExperimentCard)retVal).trial = this.trial;
+        ((ExperimentCard)retVal).baseTrial = this.baseTrial;
         System.out.println();
         return retVal;
     }

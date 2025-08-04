@@ -1,18 +1,18 @@
 package researchersmod.powers;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import researchersmod.util.GeneralUtils;
-import researchersmod.util.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import researchersmod.util.GeneralUtils;
+import researchersmod.util.TextureLoader;
 
 public abstract class BasePower extends AbstractPower {
     private static PowerStrings getPowerStrings(String ID)
@@ -92,5 +92,6 @@ public abstract class BasePower extends AbstractPower {
     }
 
     public AbstractCard k;
+    public boolean freeToTerminateOnce = false;
     public AbstractPower attachedPower = null;
 }

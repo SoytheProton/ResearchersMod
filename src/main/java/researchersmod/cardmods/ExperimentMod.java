@@ -46,7 +46,7 @@ public class ExperimentMod extends AbstractCardModifier {
     }
 
     public boolean shouldApply(AbstractCard card) {
-        return (!CardModifierManager.hasModifier(card,ExperimentMod.ID));
+        return !CardModifierManager.hasModifier(card,ExperimentMod.ID);
     }
 
     @Override

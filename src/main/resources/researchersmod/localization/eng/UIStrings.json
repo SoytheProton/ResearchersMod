@@ -34,7 +34,8 @@
   },
   "${modID}:ModConfig": {
     "TEXT_DICT": {
-      "enablePhaseNumbers": " \nPhase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)"
+      "enablePhaseNumbers": " Phase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)",
+      "enableUnlocks": "Enable Unlocks. \n (Requires Restart. PERMANENTLY Unlocks if set to false.)"
     }
   },
   "${modID}:Blueprint": {

@@ -1,18 +1,15 @@
 package researchersmod.relics;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import researchersmod.Researchers;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
 
 public class DissonantTongs extends BaseRelic implements PhaseMod.WhilePhaseInterface {
     public static final String ID = makeID(DissonantTongs.class.getSimpleName());
-    private final AbstractPlayer p = Wiz.p();
 
     public DissonantTongs() {
         super(ID, RelicTier.RARE, LandingSound.CLINK);

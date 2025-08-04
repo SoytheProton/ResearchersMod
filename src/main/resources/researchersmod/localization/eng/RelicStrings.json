@@ -42,17 +42,80 @@
     ]
   },
   "${modID}:TripleTechChambers": {
-    "NAME": "Triple-Tech Chmabers",
+    "NAME": "Triple-Tech Chambers",
     "FLAVOR": "Firing off residual energy in the chamber opens up the heat cyclers quicker and still packs a punch!",
     "DESCRIPTIONS": [
-      "Whenever you #yComplete an #yExperiment, deal #b3 damage to a random enemy."
+      "Whenever you #yProgress an #yExperiment, deal #b3 damage to a random enemy."
     ]
   },
   "${modID}:BehaviorAdjustment": {
     "NAME": "Behavior Adjustment",
-    "FLAVOR": "It readjusts everyone to become righteous, no matter how wicked, evil, and arrogant they may be.",
+    "FLAVOR": "\"It readjusts everyone to become righteous, no matter how wicked, evil, and arrogant they may be.\" - The Architect",
     "DESCRIPTIONS": [
       "At the start of each combat, gain #b6 #yManipulation, but lose #b2 #yStrength and #yDexterity."
+    ]
+  },
+  "${modID}:MothBookmark": {
+    "NAME": "Moth Bookmark",
+    "FLAVOR": "For the entomologist in your life.....you don't know any of those?",
+    "DESCRIPTIONS": [
+      "All #yExperiments trigger their #yComplete effect twice."
+    ]
+  },
+  "${modID}:SampleTracker": {
+    "NAME": "Sample Tracker",
+    "FLAVOR": "My god, why weren't we writing things down before?",
+    "DESCRIPTIONS": [
+      "Start each combat with #b2 #yBurnt #yDocuments in your hand. All #yBurnt #yDocuments are Upgraded."
+    ]
+  },
+  "${modID}:ThermiteBlade": {
+    "NAME": "Thermite Blade",
+    "FLAVOR": "I don't think this is a good idea.",
+    "DESCRIPTIONS": [
+      "Whenever you draw a #yStatus, draw #b1 card and gain #b1 #yBlock. Every #b12 drawn cards, shuffle a #yMagma #yBurn+ into your draw pile."
+    ]
+  },
+  "${modID}:RunicBinder": {
+    "NAME": "Runic Binder",
+    "FLAVOR": "\"Organized, if only a little offputting.\" - Ranwid",
+    "DESCRIPTIONS": [
+      "The first #b3 #yExperiments created each combat have an additional #yTrial."
+    ]
+  },
+  "${modID}:OccamsRazor": {
+    "NAME": "Occam's Horn",
+    "FLAVOR": "I do not know if the Elite is Gremlin Nob or not until I walk into the room...what do you mean, wrong philosopher?",
+    "DESCRIPTIONS": [
+      "#yBasic cards deal #b2 additional damage, and give #b3 additional #yBlock."
+    ]
+  },
+  "${modID}:MarketGardener": {
+    "NAME": "Market Gardener",
+    "FLAVOR": "\"SCREAMIN' EAGLEEEEES!!!\" - The Soldier",
+    "DESCRIPTIONS": [
+      "The last #yAttack you play each combat deals double damage the first time you play it next combat."
+    ]
+  },
+  "${modID}:Code2": {
+    "NAME": "Code 2",
+    "FLAVOR": "\"Not the type of code I was expecting, but entertaining nonetheless.\" - Ranwid",
+    "DESCRIPTIONS": [
+      "The first time you #yComplete an #yExperiment each turn, gain [E]."
+    ]
+  },
+  "${modID}:HypnoticWatch": {
+    "NAME": "Hypnotic Watch",
+    "FLAVOR": "Wisdom is a circle...what you receive...you must give back...",
+    "DESCRIPTIONS": [
+      "Shuffle a #yDazed into your draw pile at the start of your turn. Whenever you draw a #yStatus for the first time each turn, discard it, gain [E] , and draw #b1 card."
+    ]
+  },
+  "${modID}:ElectromagneticEqualizer": {
+    "NAME": "Electromagnetic Equalizer",
+    "FLAVOR": "\"Powerful energy harmonizes around the central point, arcing and dancing within the sphere.\" - The Architect",
+    "DESCRIPTIONS": [
+      "Gain [E] and draw #b2 cards at start of your turn. Upon pickup, obtain #b3 #rInstabilities."
     ]
   }
 }

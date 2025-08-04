@@ -24,6 +24,6 @@ public class FieldTest extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new FieldTestExperiment(p, this.Trial,this,this.baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new FieldTestExperiment(p, this.trial,this,this.baseDamage)));
     }
 }
