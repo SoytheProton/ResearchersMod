@@ -29,6 +29,7 @@ public class ContactLight extends BaseCard {
     public ContactLight() {
         super(ID, info);
         this.cardsToPreview = new PlasmicEnergy();
+        cardsToPreview.upgrade();
     }
 
     @Override
@@ -44,13 +45,6 @@ public class ContactLight extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new ContactLightAction(p,upgraded));
-    }
-
-    public void upgrade() {
-        if(!upgraded) {
-            super.upgrade();
-            cardsToPreview.upgrade();
-        }
+        Wiz.atb(new ContactLightAction(p, upgraded));
     }
 }

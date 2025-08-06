@@ -17,7 +17,7 @@ public class SubspaceStrike extends BaseCard {
             CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            1
+            0
     );
     private int realBaseDamage;
 

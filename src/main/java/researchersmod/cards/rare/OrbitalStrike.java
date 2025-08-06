@@ -30,6 +30,6 @@ public class OrbitalStrike extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new OrbitalStrikeAction(Wiz.p(),this,freeToPlayOnce,energyOnUse,damage));
+        Wiz.atb(new OrbitalStrikeAction(Wiz.p(),this,freeToPlayOnce,energyOnUse,baseDamage));
     }
 }

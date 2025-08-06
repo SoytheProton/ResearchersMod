@@ -66,7 +66,7 @@
       "Draw #b",
       " card next turn for each card you #yExhaust this turn.",
       " cards next turn for each card you #yExhaust this turn.",
-      "\n (Draws ",
+      " NL (Draws ",
       " card.)",
       " cards.)"
     ]
@@ -145,7 +145,7 @@
   "${modID}:EclipsedFormPower": {
     "NAME": "Eclipsed Form",
     "DESCRIPTIONS": [
-      "At the start of your turn, draw #b%d card%s, then increase this gain and your maximum hand size by #b%d."
+      "At the start of your turn, draw #b%d card%s and increase your maximum hand size by #b%d. NL (Your current maximum hand size is #b%d.)"
     ]
   },
   "${modID}:SystemErrorPower": {
@@ -175,7 +175,7 @@
   "${modID}:HadalJetsuitPower": {
     "NAME": "Hadal Jetsuit",
     "DESCRIPTIONS": [
-      "When you #yPhase a card, gain #b%d temporary #yManipulation. \n Every 3 cards #yPhased, gain #b%d Manipulation."
+      "When you #yPhase a card, gain #b%d temporary #yManipulation. NL Every 3 cards #yPhased, gain #b%d Manipulation."
     ]
   },
   "${modID}:O5CommandPower": {
@@ -187,7 +187,7 @@
   "${modID}:AccelechargerPower": {
     "NAME": "Accelecharger",
     "DESCRIPTIONS": [
-      "At the start of your turn, choose #b%d card%s in your draw pile to add to your hand. \n It gains #yEthereal.",
+      "At the start of your turn, choose #b%d card%s in your draw pile to add to your hand. NL It gains #yEthereal.",
       "Choose %d card%s in your draw pile to add to your hand with Ethereal."
     ]
   },
@@ -218,13 +218,13 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Whenever you #yComplete an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact."
+      "Whenever you #yComplete an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact randomly."
     ]
   },
   "${modID}:BlackBoxPower": {
     "NAME": "Black Box",
     "DESCRIPTIONS": [
-      "Whenever you #yPhase a card, gain #b%s #yMetallicize. \n At the start of your turn, lose half of your #yMetallicize."
+      "Whenever you #yPhase a card, gain #b%s #yMetallicize. NL At the start of your turn, lose half of your #yMetallicize."
     ]
   },
   "${modID}:InstabilityPower": {

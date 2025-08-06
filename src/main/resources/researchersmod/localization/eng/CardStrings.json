@@ -197,7 +197,7 @@
   },
   "${modID}:Folder": {
     "NAME": "Folder",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Don't reduce the ${modID}:Trial. NL ${modID}:Complete: Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Add an additional ${modID}:Trial. NL ${modID}:Complete: Exhaust."
   },
   "${modID}:Datamining": {
     "NAME": "Datamining",
@@ -373,8 +373,8 @@
   },
   "${modID}:EclipsedForm": {
     "NAME": "Eclipsed Form",
-    "DESCRIPTION": "Ethereal. NL At the start of your turn, draw 1 card. Then, increase this gain and your maximum hand size by !M!.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, draw 1 card. Then, increase this gain and your maximum hand size by !M!."
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, draw 3 cards and increase your maximum hand NL size by !M!.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, draw 3 cards and increase your maximum hand NL size by !M!."
   },
   "${modID}:MagmaBurn": {
     "NAME": "Magma Burn",
@@ -467,7 +467,8 @@
   },
   "${modID}:ContactLight": {
     "NAME": "Contact Light",
-    "DESCRIPTION": "{@@}Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy{!Upgrades!|>0=+} into your discard pile for each card Exhausted."
+    "DESCRIPTION": "Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy+ into your discard pile for each card Exhausted.",
+    "UPGRADE_DESCRIPTION": "Exhaust ALL *Statuses in your draw and discard pile. NL Add a *Plasmic *Energy+ into your discard pile for each card Exhausted."
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
@@ -481,7 +482,8 @@
   },
   "${modID}:IonSurge": {
     "NAME": "Ion Surge",
-    "DESCRIPTION": "Whenever you ${modID}:Complete an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact"
+    "DESCRIPTION": "Ethereal. NL Whenever you ${modID}:Complete an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly.",
+    "UPGRADE_DESCRIPTION": "Whenever you ${modID}:Complete an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly."
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",

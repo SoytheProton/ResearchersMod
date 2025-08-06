@@ -24,7 +24,7 @@ public class UplinkPower extends BasePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         flash();
         if(card.hasTag(Researchers.PHASE)){
-            AbstractCard tmp = card.makeStatEquivalentCopy();
+            AbstractCard tmp = card.makeSameInstanceOf();
             tmp.purgeOnUse = true;
             tmp.target_x = Settings.WIDTH/2.0F;
             tmp.target_y = Settings.HEIGHT/2.0F;

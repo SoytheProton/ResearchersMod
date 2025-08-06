@@ -10,8 +10,8 @@ import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 
 public class HyperfocusAction extends AbstractGameAction {
-    AbstractCard target;
-    AbstractPlayer p;
+    private final AbstractCard target;
+    private final AbstractPlayer p;
 
     public HyperfocusAction(AbstractPlayer p, AbstractCard target) {
         this.p = p;

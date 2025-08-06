@@ -35,7 +35,9 @@
   "${modID}:ModConfig": {
     "TEXT_DICT": {
       "enablePhaseNumbers": " Phase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)",
-      "enableUnlocks": "Enable Unlocks. \n (Requires Restart. PERMANENTLY Unlocks if set to false.)"
+      "enableUnlocks": "Enable Unlocks. \n (Requires Restart. PERMANENTLY Unlocks if set to false.)",
+      "altBehaviorAdjustment": "Alt Behavior Adjustment",
+      "noConditionThermiteBlade": "Thermite Blade will trigger on ANY card created."
     }
   },
   "${modID}:Blueprint": {

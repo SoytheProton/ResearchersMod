@@ -23,7 +23,7 @@ public class RunicBinder extends BaseRelic implements ExperimentInterfaces.OnExp
 
 
     public void atBattleStart() {
-        this.counter = 0;
+        this.counter = 3;
     }
     @Override
     public void onExperiment(AbstractPower power) {
@@ -31,9 +31,9 @@ public class RunicBinder extends BaseRelic implements ExperimentInterfaces.OnExp
             flash();
             Wiz.att(new RelicAboveCreatureAction(Wiz.p(),this));
             ExperimentCardManager.tickExp(power,-1);
-            this.counter++;
+            this.counter--;
         }
-        if(this.counter == 3) {
+        if(this.counter == 0) {
             flash();
             this.counter = -1;
             this.grayscale = true;

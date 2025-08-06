@@ -6,6 +6,8 @@ import researchersmod.Researchers;
 public class ModConfig extends EasyConfigPanel {
     public static boolean enablePhaseNumbers = true;
     public static boolean enableUnlocks = true;
+    public static boolean altBehaviorAdjustment = false;
+    public static boolean noConditionThermiteBlade = false;
     public ModConfig() {
         super(Researchers.modID, Researchers.makeID("ModConfig"));
     }

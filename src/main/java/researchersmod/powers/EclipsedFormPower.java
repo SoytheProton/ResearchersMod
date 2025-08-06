@@ -16,15 +16,13 @@ public class EclipsedFormPower extends BasePower {
     public EclipsedFormPower(AbstractCreature owner) {
         super(POWER_ID, TYPE, TURNBASED, owner, 1);
         updateDescription();
-        this.amount2 = 1;
         InitialHandSize = BaseMod.MAX_HAND_SIZE;
     }
 
     @Override
     public void atStartOfTurnPostDraw() {
         flash();
-        Wiz.atb(new DrawCardAction(this.amount2));
-        this.amount2 += this.amount;
+        Wiz.atb(new DrawCardAction(this.amount * 3));
         BaseMod.MAX_HAND_SIZE += this.amount;
         updateDescription();
     }
@@ -36,6 +34,6 @@ public class EclipsedFormPower extends BasePower {
     public void updateDescription() {
         String plural = "s";
         if(this.amount2 == 1) plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount2,plural,this.amount);
+        this.description = String.format(DESCRIPTIONS[0],this.amount * 3,plural,this.amount, BaseMod.MAX_HAND_SIZE);
     }
 }

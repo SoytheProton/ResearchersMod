@@ -14,7 +14,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
-import researchersmod.cards.colorless.DataRequest;
+import researchersmod.actions.ManualExperimentAction;
+import researchersmod.cards.colorless.DataOverride;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
@@ -37,9 +38,9 @@ public class DataOverrideExperiment extends BasePower implements InvisiblePower,
     }
 
     public void terminateEffect(){
-        AbstractCard tmp = new DataRequest();
-        ExperimentCardManager.addExperiment(tmp);
+        AbstractCard tmp = new DataOverride();
         tmp.use((AbstractPlayer) owner, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
+        Wiz.atb(new ManualExperimentAction(tmp));
         ExperimentCardManager.remExp(k,this,true);
     }
 

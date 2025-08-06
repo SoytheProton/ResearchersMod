@@ -32,6 +32,7 @@ public class AltercatedBlueprint extends BaseCard {
         if(Researchers.LastPhasedCard != null) {
             String name = Researchers.LastPhasedCard.name.replace(" ", "* ");
             this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0], name);
+            initializeDescription();
         }
     }
 

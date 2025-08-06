@@ -14,13 +14,15 @@ import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 public class FinalizeAction extends AbstractGameAction {
-    AbstractCard target;
-    AbstractPlayer p;
+    private final AbstractCard target;
+    private final AbstractPlayer p;
+    private final boolean upgraded;
 
-    public FinalizeAction(AbstractPlayer p, AbstractCard target) {
+    public FinalizeAction(AbstractPlayer p, AbstractCard target, boolean upgraded) {
         this.p = p;
         this.target = target;
         this.duration = Settings.ACTION_DUR_XFAST;
+        this.upgraded = upgraded;
     }
     @Override
     public void update() {
@@ -41,7 +43,7 @@ public class FinalizeAction extends AbstractGameAction {
                 Researchers.logger.warn("Target Power is null.");
             target.superFlash();
             Wiz.atb(new DrawCardAction(i));
-            Wiz.atb(new GainEnergyAction(i));
+            if(upgraded) Wiz.atb(new GainEnergyAction(i));
         }
         this.isDone = true;
     }

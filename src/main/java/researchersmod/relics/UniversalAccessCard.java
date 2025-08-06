@@ -3,11 +3,10 @@ package researchersmod.relics;
 import basemod.helpers.CardPowerTip;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import researchersmod.actions.ManualExperimentAction;
 import researchersmod.cards.colorless.DataOverride;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
@@ -41,14 +40,10 @@ public class UniversalAccessCard extends BaseRelic {
             @Override
             public void update() {
                 AbstractCard tmp = new DataOverride();
-                tmp.current_y = -200.0F * Settings.scale;
-                tmp.target_x = Settings.WIDTH / 2.0F;
-                tmp.target_y = Settings.HEIGHT / 2.0F;
-                tmp.targetAngle = 0.0F;
                 tmp.dontTriggerOnUseCard = true;
                 tmp.applyPowers();
                 tmp.use(Wiz.adp(),(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
-                ExperimentCardManager.addExperiment(tmp);
+                Wiz.atb(new ManualExperimentAction(tmp));
                 this.isDone = true;
             }
         });

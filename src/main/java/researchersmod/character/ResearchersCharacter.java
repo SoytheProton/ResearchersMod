@@ -5,6 +5,7 @@ import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -25,6 +27,7 @@ import researchersmod.cards.basic.Strike_Researchers;
 import researchersmod.relics.DatabaseTablet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static researchersmod.Researchers.characterPath;
 import static researchersmod.Researchers.makeID;
@@ -120,7 +123,7 @@ public class ResearchersCharacter extends CustomPlayer {
     public ResearchersCharacter() {
         super(getNames()[0], Meta.RESEARCHERS,
                 new CustomEnergyOrb(orbTextures, characterPath("energyorb/vfx.png"), layerSpeeds), //Energy Orb
-                new SpineAnimation(characterPath("animation/skeleton.atlas"),characterPath("animation/skeleton.json"),1.9f)); //Animation
+                new SpineAnimation(characterPath("animation/skeleton.atlas"),characterPath("animation/skeleton.json"),2f)); //Animation
 
         initializeClass(null,
                 SHOULDER_2,
@@ -262,5 +265,20 @@ public class ResearchersCharacter extends CustomPlayer {
     public AbstractPlayer newInstance() {
         //Makes a new instance of your character class.
         return new ResearchersCharacter();
+    }
+
+    @Override
+    public List<CutscenePanel> getCutscenePanels() {
+        ArrayList<CutscenePanel> panels = new ArrayList<>();
+
+        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_1.png", "ATTACK_IRON_3"));
+        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_2.png", "ATTACK_MAGIC_SHORT"));
+        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_3.png"));
+        return panels;
+    }
+
+    @Override
+    public Texture getCutsceneBg() {
+        return new Texture("Resources/researchersmod/images/ending/ResearchersBg.jpg");
     }
 }

@@ -28,6 +28,6 @@ public class Finalize extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractCard target = ExperimentTargeting.getTarget(this);
-        Wiz.atb(new FinalizeAction(p,target));
+        Wiz.atb(new FinalizeAction(p,target,upgraded));
     }
 }

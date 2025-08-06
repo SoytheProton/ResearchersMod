@@ -29,13 +29,7 @@ public class Multithread extends ExperimentCard {
         addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.trial, this, baseDamage)));
     }
 
-    public AbstractCard makeTrialCopy(int trialNumber) {
-        setCustomVar("Trial",trialNumber);
-        AbstractCard retVal = super.makeStatEquivalentCopy();
-        setCustomVar("Trial",this.baseTrial);
-        return retVal;
-    }
-
+    @Override
     public AbstractCard makeStatEquivalentCopy() {
         return makeTrialCopy(this.baseTrial);
     }

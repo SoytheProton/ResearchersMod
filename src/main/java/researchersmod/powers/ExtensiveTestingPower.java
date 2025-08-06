@@ -7,8 +7,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.actions.ManualExperimentAction;
 import researchersmod.cards.colorless.FieldTest;
-import researchersmod.ui.ExperimentCardManager;
+import researchersmod.util.Wiz;
 
 public class ExtensiveTestingPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(ExtensiveTestingPower.class.getSimpleName());
@@ -37,7 +38,7 @@ public class ExtensiveTestingPower extends BasePower implements NonStackablePowe
             if(upgraded) card.upgrade();
             card.dontTriggerOnUseCard = true;
             card.use((AbstractPlayer) owner,(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
-            ExperimentCardManager.addExperiment(card);
+            Wiz.atb(new ManualExperimentAction(card));
         }
     }
 

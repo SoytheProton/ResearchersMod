@@ -25,7 +25,7 @@ public class RelicAffectionPatch {
         public static void Postfix(AbstractCard card, SpriteBatch sb, boolean b1, boolean b2) {
             if (CardModifierManager.hasModifier(card, DoubleDamageOnce.ID)) {
                 float numRelics = 0;
-                float scale = 1.5f;
+                float scale = 1.5f * Settings.scale;
                 boolean shouldAppear = !combatCheck() || !AbstractDungeon.player.hand.contains(card);
                 if(!combatCheck()) {
                     for (Pair<Predicate<AbstractCard>, AbstractRelic> info : BaseMod.getBottledRelicList())
@@ -35,16 +35,16 @@ public class RelicAffectionPatch {
                 if(Loader.isModLoaded("mintyspire")) {
                     shouldAppear = true;
                     if(!AbstractDungeon.player.masterDeck.contains(card)) {
-                        scale = 1.0f;
+                        scale = Settings.scale;
                         if (mintySpire.patches.cards.RelicAffectionPatch.cardFields.isPenAff.get(card))
-                            numRelics = 0.5f;
+                            numRelics += 0.3f;
                         if (mintySpire.patches.cards.RelicAffectionPatch.cardFields.isNecroAff.get(card))
-                            numRelics = 0.7f;
+                            numRelics += 0.5f;
                     }
                 }
                 if(shouldAppear){
                     mGar.currentX = card.current_x + 390.0f * card.drawScale / 3.0f * Settings.scale;
-                    mGar.currentY = card.current_y + 546.0f * card.drawScale / 3.0f * Settings.scale - AbstractRelic.PAD_X * numRelics * scale * card.drawScale;
+                    mGar.currentY = card.current_y + 546.0f * card.drawScale / 3.0f * Settings.scale - AbstractRelic.PAD_X * numRelics * scale * Settings.scale * card.drawScale;
                     mGar.scale = card.drawScale * scale;
                     mGar.renderOutline(sb, false);
                     mGar.render(sb);

@@ -25,8 +25,14 @@ public class ContactLightAction extends AbstractGameAction {
                 y++;
             }
         }
+        if(upgraded) for(AbstractCard c : p.discardPile.group) {
+            if(c.type == AbstractCard.CardType.STATUS) {
+                Wiz.att(new ExhaustSpecificCardAction(c,p.drawPile));
+                y++;
+            }
+        }
         AbstractCard tmp = new PlasmicEnergy();
-        if(upgraded) tmp.upgrade();
+        tmp.upgrade();
         if(y > 0) Wiz.atb(new MakeTempCardInDiscardAction(tmp,y));
         this.isDone = true;
     }

@@ -47,7 +47,7 @@ public class OrbitalStrikePower extends BasePower {
             int y;
             for (y = 0; y < tmp.length; y++)
                 tmp[y] = this.amount;
-            Wiz.atb(new DamageAllEnemiesAction(p, tmp, DamageInfo.DamageType.NORMAL,AbstractGameAction.AttackEffect.FIRE));
+            Wiz.atb(new DamageAllEnemiesAction(p, tmp, DamageInfo.DamageType.THORNS,AbstractGameAction.AttackEffect.FIRE));
             Wiz.atb(new RemoveSpecificPowerAction(owner,owner,this));
         }
     }

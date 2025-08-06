@@ -11,7 +11,7 @@ public class DataRequest extends ExperimentCard {
     public static final String ID = makeID(DataRequest.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
-            CardType.SKILL,
+            CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.SELF,
             0

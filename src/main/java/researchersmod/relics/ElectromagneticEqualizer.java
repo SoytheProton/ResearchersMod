@@ -18,8 +18,8 @@ public class ElectromagneticEqualizer extends BaseRelic {
     public static final String ID = makeID(ElectromagneticEqualizer.class.getSimpleName());
     public ElectromagneticEqualizer() {
         super(ID, RelicTier.BOSS, LandingSound.CLINK);
-        this.tips.add(new CardPowerTip(new ElectromagneticInstability()));
         this.tips.add(new PowerTip(Researchers.keywords.get("Instability").PROPER_NAME, Researchers.keywords.get("Instability").DESCRIPTION));
+        this.tips.add(new CardPowerTip(new ElectromagneticInstability()));
     }
     @Override
     public String getUpdatedDescription() {
@@ -28,8 +28,8 @@ public class ElectromagneticEqualizer extends BaseRelic {
 
     public void atTurnStartPostDraw() {
         flash();
-        Wiz.att(new DrawCardAction(2));
-        Wiz.att(new RelicAboveCreatureAction(Wiz.p(),this));
+        Wiz.atb(new DrawCardAction(2));
+        Wiz.atb(new RelicAboveCreatureAction(Wiz.p(),this));
     }
 
     public void onEquip() {

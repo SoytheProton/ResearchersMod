@@ -1,5 +1,6 @@
 package researchersmod.cards.uncommon;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.actions.IncreaseMiscTrialAction;
@@ -19,8 +20,8 @@ public class Analyze extends ExperimentCard {
 
     public Analyze() {
         super(ID, info,0);
-        this.misc = 1;
-        setBlock(3);
+        this.misc = 0;
+        setBlock(2,1);
         setMagic(1);
     }
 
@@ -30,6 +31,13 @@ public class Analyze extends ExperimentCard {
 
     public void editTrial(int trialAmount) {
         setCustomVar("Trial",trialAmount);
+        this.baseTrial = trialAmount;
+        this.trial = trialAmount;
         initializeDescription();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        return makeTrialCopy(this.baseTrial);
     }
 }

@@ -53,8 +53,13 @@ public abstract class ExperimentCard extends BaseCard{
         AbstractCard retVal = super.makeStatEquivalentCopy();
         ((ExperimentCard)retVal).trial = this.trial;
         ((ExperimentCard)retVal).baseTrial = this.baseTrial;
-        System.out.println();
         return retVal;
     }
 
+    public AbstractCard makeTrialCopy(int trialNumber) {
+        setCustomVar("Trial",trialNumber);
+        AbstractCard retVal = super.makeStatEquivalentCopy();
+        setCustomVar("Trial",this.baseTrial);
+        return retVal;
+    }
 }

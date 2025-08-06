@@ -52,7 +52,8 @@
     "NAME": "Behavior Adjustment",
     "FLAVOR": "\"It readjusts everyone to become righteous, no matter how wicked, evil, and arrogant they may be.\" - The Architect",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #b6 #yManipulation, but lose #b2 #yStrength and #yDexterity."
+      "At the start of each combat, gain #b4 #yManipulation, but lose #b1 #yStrength and #yDexterity.",
+      "At the start of each combat, gain #b3 #yManipulation, but lose #b1 #yStrength and #yDexterity. NL All values are mulitplied by the current Act number."
     ]
   },
   "${modID}:MothBookmark": {
@@ -73,7 +74,8 @@
     "NAME": "Thermite Blade",
     "FLAVOR": "I don't think this is a good idea.",
     "DESCRIPTIONS": [
-      "Whenever you draw a #yStatus, draw #b1 card and gain #b1 #yBlock. Every #b12 drawn cards, shuffle a #yMagma #yBurn+ into your draw pile."
+      "Whenever a #yStatus is created, shuffle a #yMagma Burn+ into your draw pile. #yMagma Burns can now be played for [E] to deal double the damage to ALL enemies.",
+      "Whenever a card is created, shuffle a #yMagma Burn+ into your draw pile. #yMagma Burns can now be played for [E] to deal double the damage to ALL enemies."
     ]
   },
   "${modID}:RunicBinder": {
@@ -101,7 +103,7 @@
     "NAME": "Code 2",
     "FLAVOR": "\"Not the type of code I was expecting, but entertaining nonetheless.\" - Ranwid",
     "DESCRIPTIONS": [
-      "The first time you #yComplete an #yExperiment each turn, gain [E]."
+      "The first time you #yComplete an #yExperiment each turn, gain [E] [REMOVE_SPACE]."
     ]
   },
   "${modID}:HypnoticWatch": {
@@ -115,7 +117,7 @@
     "NAME": "Electromagnetic Equalizer",
     "FLAVOR": "\"Powerful energy harmonizes around the central point, arcing and dancing within the sphere.\" - The Architect",
     "DESCRIPTIONS": [
-      "Gain [E] and draw #b2 cards at start of your turn. Upon pickup, obtain #b3 #rInstabilities."
+      "Gain [E] and draw #b2 cards at start of your turn. Upon pickup, obtain #b3 #rElectromagnetic #rInstabilities."
     ]
   }
 }

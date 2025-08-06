@@ -11,7 +11,7 @@ public class DataOverride extends ExperimentCard {
     public static final String ID = makeID(DataOverride.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
-            CardType.SKILL,
+            CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.SELF,
             0
@@ -19,8 +19,8 @@ public class DataOverride extends ExperimentCard {
 
     public DataOverride() {
         super(ID, info, 1);
-        setDamage(10,3);
-        setBlock(10,3);
+        setDamage(5,3);
+        setBlock(5,3);
     }
 
     @Override

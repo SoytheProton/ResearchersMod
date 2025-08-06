@@ -1,7 +1,9 @@
 package researchersmod.actions;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.util.Wiz;
 
 public class FuckAssAccelechargerAction extends AbstractGameAction {
@@ -15,6 +17,11 @@ public class FuckAssAccelechargerAction extends AbstractGameAction {
     }
     @Override
     public void update() {
+        if(AbstractDungeon.player.hand.group.size() == BaseMod.MAX_HAND_SIZE) {
+            AbstractDungeon.player.createHandIsFullDialog();
+            this.isDone = true;
+            return;
+        }
         Wiz.atb(new SelectCardsAction(Wiz.p().drawPile.group,this.amount,String.format(DESCRIPTIONS,this.amount,plural),false,(c -> {
             for(AbstractCard card : Wiz.p().hand.group) {
                 if(c == card) return false;
