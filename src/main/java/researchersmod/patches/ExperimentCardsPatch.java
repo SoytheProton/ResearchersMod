@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import researchersmod.Researchers;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentFields;
 
 @SpirePatch(
         clz = UseCardAction.class,
@@ -35,7 +35,7 @@ public class ExperimentCardsPatch {
         if (card.purgeOnUse) {
             return true;
         }
-        if (card.hasTag(Researchers.EXPERIMENT)){
+        if (ExperimentFields.playExperiment.get(card)){
             AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
                 @Override
                 public void update() {

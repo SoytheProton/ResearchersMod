@@ -1,5 +1,5 @@
 package researchersmod.cards.deprecated;
-
+/*
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -74,3 +74,4 @@ public class Enthalpy extends BaseCard {
         return canUse;
     }
 }
+*/

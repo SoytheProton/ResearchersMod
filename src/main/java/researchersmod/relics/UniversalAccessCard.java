@@ -50,8 +50,7 @@ public class UniversalAccessCard extends BaseRelic {
     }
     @Override
     public boolean canSpawn() {
-        if(AbstractDungeon.player.hasRelic(DatabaseTablet.ID)) return true;
-        return super.canSpawn();
+        return AbstractDungeon.player.hasRelic(DatabaseTablet.ID);
     }
 
     @Override

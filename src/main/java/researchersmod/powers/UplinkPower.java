@@ -9,7 +9,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.cards.common.Uplink;
+import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.util.Wiz;
+
+import java.util.Objects;
 
 public class UplinkPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(UplinkPower.class.getSimpleName());
@@ -23,7 +27,7 @@ public class UplinkPower extends BasePower {
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         flash();
-        if(card.hasTag(Researchers.PHASE)){
+        if(PhasingFields.isPhasing.get(card) && !Objects.equals(card.cardID, Uplink.ID)){
             AbstractCard tmp = card.makeSameInstanceOf();
             tmp.purgeOnUse = true;
             tmp.target_x = Settings.WIDTH/2.0F;
@@ -31,7 +35,7 @@ public class UplinkPower extends BasePower {
             tmp.current_x = Settings.WIDTH/2.0F;
             tmp.current_y = Settings.HEIGHT/2.0F;
             ((AbstractPlayer) owner).limbo.addToBottom(tmp);
-            Wiz.atb(new ExhaustSpecificCardAction(tmp,((AbstractPlayer) owner).limbo));
+            Wiz.att(new ExhaustSpecificCardAction(tmp,((AbstractPlayer) owner).limbo));
         }
         addToBot(new ReducePowerAction(this.owner, this.owner, this,1));
     }

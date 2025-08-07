@@ -1,5 +1,5 @@
 package researchersmod.cards.deprecated;
-
+/*
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -59,3 +59,4 @@ public class OldDatamining extends BaseCard {
         }
     }
 }
+*/

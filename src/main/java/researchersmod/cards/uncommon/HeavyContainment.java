@@ -1,11 +1,8 @@
 package researchersmod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
+import researchersmod.actions.HeavyContainmentAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -29,12 +26,6 @@ public class HeavyContainment extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int i = 0;
-        for(AbstractCard c : p.hand.group) {
-            Wiz.atb(new ExhaustSpecificCardAction(c,p.hand));
-            i++;
-        }
-        Wiz.atb(new GainBlockAction(p, i * this.block));
-        Wiz.applyToSelf(new NextTurnBlockPower(p, (i*this.block)/2,"Heavy Containment"));
+        Wiz.atb(new HeavyContainmentAction(p, this.block, this.name));
     }
 }

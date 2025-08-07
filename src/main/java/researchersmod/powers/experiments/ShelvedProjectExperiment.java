@@ -30,7 +30,7 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

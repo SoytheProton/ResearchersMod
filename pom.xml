@@ -24,7 +24,7 @@
 
     <!-- This information will be displayed in ModTheSpire, the modded launcher. -->
     <name>The Researchers</name>
-    <version>0.1.1</version>
+    <version>0.1.3</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
     <description>A character mod with all new mechanics, relics, unlocks to explore. \n\n\n\n Major Thanks to:\n AutumnMooncat (For letting me steal their code) \n Vex (Also letting me steal their code) \n Ellie (Being very helpful overall) \n jords314 (For being a major help in testing this mod and finding bugs) \n modding-technical in the StS Discord as whole. </description>

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
-
+@SuppressWarnings("all")
 public class ParticleAcceleratorPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(ParticleAcceleratorPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

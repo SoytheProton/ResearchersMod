@@ -6,7 +6,7 @@ import researchersmod.Researchers;
 import researchersmod.actions.ExhumeToDrawAction;
 import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
-
+@SuppressWarnings("all")
 public class OldEclipsedFormPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(OldEclipsedFormPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.powers.BasePower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class NeutralyzerSerumAction extends AbstractGameAction {
@@ -45,15 +45,13 @@ public class NeutralyzerSerumAction extends AbstractGameAction {
             AbstractPower exp = null;
 
             for(AbstractPower pow : p.powers) {
-                if(pow instanceof BasePower) {
-                    if(((BasePower) pow).k == c) {
-                        exp = pow;
-                    }
+                if(ExperimentPowerFields.attachedCard.get(pow) == c) {
+                    exp = pow;
                 }
             }
 
             if(effect == 0) {
-                ExperimentCardManager.remExp(c,exp);
+                ExperimentCardManager.remExp(exp);
                 Wiz.atb(new RemoveSpecificPowerAction(p,p,exp));
             }
 

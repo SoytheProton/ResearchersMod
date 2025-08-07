@@ -1,5 +1,6 @@
 package researchersmod.cards.uncommon;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -7,6 +8,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -38,6 +40,15 @@ public class FerrousBlade extends BaseCard {
         if(upgraded)
             Blade.upgrade();
         Wiz.atb(new MakeTempCardInHandAction(Blade));
+    }
+
+    public void applyPowers() {
+        super.applyPowers();
+        if(CardModifierManager.hasModifier(this, BetterEtherealMod.ID)) {
+            int i = 0; if(upgraded) i = 1;
+            this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[i];
+            initializeDescription();
+        }
     }
 
 /*    public void upgrade() {

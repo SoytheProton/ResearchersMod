@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import researchersmod.powers.BasePower;
-
+@SuppressWarnings("all")
 public class EnergyDownPower extends BasePower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings("EnergyDownPower"); public static final String POWER_ID = "EnergyDownPower"; private boolean isFasting;
 

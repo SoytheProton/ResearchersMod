@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
-
+@SuppressWarnings("all")
 public class HypothesisPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(HypothesisPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

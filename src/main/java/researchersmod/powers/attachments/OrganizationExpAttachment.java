@@ -1,4 +1,4 @@
-package researchersmod.powers.deprecated;
+package researchersmod.powers.attachments;
 
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
@@ -13,6 +13,8 @@ import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.DescriptionModifier;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentFields;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.ExpDescriptionHelper;
 import researchersmod.util.Wiz;
 
@@ -28,8 +30,8 @@ public class OrganizationExpAttachment extends BasePower implements InvisiblePow
         super(POWER_ID, TYPE, TURNBASED, owner, 2);
         for(AbstractPower p : owner.powers) {
             if(p instanceof ExperimentPower) {
-                if(((BasePower) p).k == card) {
-                    attachedPower = p;
+                if(ExperimentPowerFields.attachedCard.get(p) == card) {
+                    ExperimentPowerFields.attachedPower.set(this,p);
                 }
             }
         }
@@ -39,16 +41,16 @@ public class OrganizationExpAttachment extends BasePower implements InvisiblePow
 
     @Override
     public void onCompletion(AbstractPower power) {
-        if(power == attachedPower) {
+        if(power == ExperimentPowerFields.attachedPower.get(this)) {
             Wiz.atb(new DrawCardAction(this.amount));
         }
     }
 
     @Override
     public void onTerminate(AbstractPower power) {
-        if(power == attachedPower) {
+        if(power == ExperimentPowerFields.attachedPower.get(this)) {
             if(!upgraded)
-                ((BasePower) power).k.tags.add(Researchers.EXHAUSTEXP);
+                ExperimentFields.exhaustingExperiment.set(ExperimentPowerFields.attachedCard.get(power),true);
             addToBot(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         }
     }

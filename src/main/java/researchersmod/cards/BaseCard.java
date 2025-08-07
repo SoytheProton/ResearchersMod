@@ -589,38 +589,6 @@ public abstract class BaseCard extends CustomCard {
 
     boolean inCalc = false;
 
-    public boolean ATTACKcheck = false, SKILLcheck = false, POWERcheck = false, STATUScheck = false, CURSEcheck = false;
-
-    public void atTurnStart() {
-        ATTACKcheck = false;
-        SKILLcheck = false;
-        POWERcheck = false;
-        STATUScheck = false;
-        CURSEcheck = false;
-    }
-
-    public int CardTypesPlayed (AbstractCard.CardType typecheck) {
-        int count = 0;
-        if (!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
-            for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-                if (c.type == CardType.ATTACK) {
-                    ATTACKcheck = true;
-                } else if (c.type == CardType.SKILL) {
-                    SKILLcheck = true;
-                } else if (c.type == CardType.POWER) {
-                    POWERcheck = true;
-                } else if (c.type == CardType.STATUS) {
-                    STATUScheck = true;
-                } else if (c.type == CardType.CURSE) {
-                    CURSEcheck = true;
-                } if (c.type == typecheck) return 99;
-            } for (boolean i : new boolean[]{ATTACKcheck,SKILLcheck,POWERcheck,STATUScheck,CURSEcheck}) {
-                    count += i ? 1 : 0;
-            }
-        }
-        return count;
-    }
-
     @Override
     public void applyPowers() {
         if (!inCalc) {

@@ -41,7 +41,7 @@ public class DataOverrideExperiment extends BasePower implements InvisiblePower,
         AbstractCard tmp = new DataOverride();
         tmp.use((AbstractPlayer) owner, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
         Wiz.atb(new ManualExperimentAction(tmp));
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){

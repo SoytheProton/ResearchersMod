@@ -24,7 +24,7 @@ public class CutThroughLightExperiment extends BasePower implements InvisiblePow
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

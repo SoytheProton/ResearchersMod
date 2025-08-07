@@ -12,6 +12,7 @@ import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.ui.ModConfig;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -81,13 +82,17 @@ public class KH {
     }
 
     public static String[] autoString(String index, String indexStart,String rawDescription) {
+        return autoString(index,indexStart,rawDescription,false);
+    }
+
+    public static String[] autoString(String index, String indexStart,String rawDescription, boolean HARDCODE) {
         int y = rawDescription.indexOf(indexStart) + indexStart.length();
-        if(indexStart.equals(uiStrings.TEXT[5])) y += 2;
+        if(indexStart.equals(uiStrings.TEXT[5]) && !HARDCODE) y += 2;
         if(Objects.equals(index, "${modID}:Phase") && ModConfig.enablePhaseNumbers && Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).find()) y = Pattern.compile("Phase\\s+([0-9]+)").matcher(rawDescription).end();
         int i = rawDescription.indexOf(index,y);
         if(index.equals(LocalizedStrings.PERIOD) || index.equals(LocalizedStrings.PERIOD + " ")) i++;
         if (i == -1 || !rawDescription.contains(indexStart)) i = 0;
-        // System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
+        if(ModConfig.emergencyLogging) System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
         return new String[]{rawDescription.substring(0, i), rawDescription.substring(i)};
     }
 }

@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.DescriptionModifier;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class ExperimentMod extends AbstractCardModifier {
@@ -27,12 +27,10 @@ public class ExperimentMod extends AbstractCardModifier {
         String returnString =  (uiStrings.TEXT[0] + cutOff);
         AbstractPower experimentPower = null;
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof BasePower) {
-                if (((BasePower) p).k == card)
-                    experimentPower = p;
-                if (p instanceof DescriptionModifier && experimentPower == ((BasePower) p).attachedPower) {
-                    returnString = ((DescriptionModifier) p).ModifyDescription(returnString);
-                }
+            if (ExperimentPowerFields.attachedCard.get(p) == card)
+                experimentPower = p;
+            if (p instanceof DescriptionModifier && experimentPower == ExperimentPowerFields.attachedPower.get(p)) {
+                returnString = ((DescriptionModifier) p).ModifyDescription(returnString);
             }
         }
         return returnString;

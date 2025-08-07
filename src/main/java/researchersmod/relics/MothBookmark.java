@@ -5,9 +5,9 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
@@ -28,7 +28,7 @@ public class MothBookmark extends BaseRelic implements ExperimentInterfaces.OnTe
     public void onTerminate(AbstractPower power) {
         flash();
         addToTop(new RelicAboveCreatureAction(Wiz.p(), this));
-        ((BasePower)power).freeToTerminateOnce = true;
+        ExperimentPowerFields.freeToTerminateOnce.set(power,true);
         ((ExperimentPower) power).terminateEffect();
     }
 }

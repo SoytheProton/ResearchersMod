@@ -2,7 +2,7 @@ package researchersmod.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import researchersmod.Researchers;
+import researchersmod.ui.ExperimentFields;
 import researchersmod.util.CardStats;
 
 import static researchersmod.util.GeneralUtils.removePrefix;
@@ -27,7 +27,7 @@ public abstract class ExperimentCard extends BaseCard{
 
     public ExperimentCard(String ID, int cost, CardType cardType, CardTarget target, CardRarity rarity, CardColor color, int basetrial, int upgradedtrial, String cardImage) {
         super(ID, cost, cardType, target, rarity, color, cardImage);
-        tags.add(Researchers.EXPERIMENT);
+        ExperimentFields.playExperiment.set(this,true);
         baseTrial = basetrial;
         trial = basetrial;
         upgradedTrial = upgradedtrial;

@@ -10,10 +10,12 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import researchersmod.cards.uncommon.FerrousBlade;
 import researchersmod.util.KH;
 import researchersmod.util.Wiz;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class EthericMod extends AbstractCardModifier implements DynamicProvider {
@@ -43,6 +45,10 @@ public class EthericMod extends AbstractCardModifier implements DynamicProvider 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String key = "!" + DynamicProvider.generateKey(card, this) + "!";
         String p = LocalizedStrings.PERIOD;
+        if(Objects.equals(card.cardID, FerrousBlade.ID)) {
+            String[] cardDescription = new String[]{rawDescription.substring(0,rawDescription.indexOf(uiStrings.TEXT[5]) + uiStrings.TEXT[5].length()), rawDescription.substring(rawDescription.indexOf(uiStrings.TEXT[5])+ uiStrings.TEXT[5].length())};
+            return cardDescription[0] + " " + key + cardDescription[1];
+        }
         String[] cardDescription = KH.autoString(
                 KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
                         KH.hasUnplayable(card,rawDescription) ? " " : "" ,

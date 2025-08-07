@@ -29,7 +29,7 @@ public class LivewireExperiment extends BasePower implements InvisiblePower, Non
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

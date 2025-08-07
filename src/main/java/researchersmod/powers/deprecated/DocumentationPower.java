@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
-
+@SuppressWarnings("all")
 public class DocumentationPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(DocumentationPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

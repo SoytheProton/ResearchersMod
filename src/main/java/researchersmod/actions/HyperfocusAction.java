@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
+import researchersmod.ui.ExperimentPowerFields;
 
 public class HyperfocusAction extends AbstractGameAction {
     private final AbstractCard target;
@@ -24,12 +24,12 @@ public class HyperfocusAction extends AbstractGameAction {
             int i = 0;
             AbstractPower targetPower = null;
             for(AbstractPower power : p.powers) {
-                if(power instanceof ExperimentPower && ((BasePower)power).k == target) {
+                if(power instanceof ExperimentPower && ExperimentPowerFields.attachedCard.get(power) == target) {
                     targetPower = power;
                 }
             }
             for(AbstractPower power : p.powers) {
-                if(power instanceof ExperimentPower && power != targetPower) {
+                if(power instanceof ExperimentPower && power != targetPower && !ExperimentPowerFields.instantImmunity.get(power)) {
                     i += power.amount;
                     ((ExperimentPower) power).terminateEffect();
                 }

@@ -44,6 +44,7 @@ public class MagmaBurn extends BaseCard {
         ExhaustiveVariable.setBaseValue(this,2);
         cardsToPreview = new Burn();
         CardModifierManager.addModifier(this,new ThermiteMod());
+        if(AbstractDungeon.player != null) if(AbstractDungeon.player.hasRelic(ThermiteBlade.ID)) setMagic(3);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -56,7 +57,7 @@ public class MagmaBurn extends BaseCard {
                     if(c.type == CardType.STATUS)
                         statusCount++;
                 }
-                addToBot((AbstractGameAction)new DamageAllEnemiesAction(AbstractDungeon.player, 2*magicNumber * statusCount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+                addToBot((AbstractGameAction)new DamageAllEnemiesAction(AbstractDungeon.player, this.magicNumber * statusCount, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
                 statusCount = 0;
             }
         }
@@ -76,6 +77,8 @@ public class MagmaBurn extends BaseCard {
                 i++;
         }
         if(AbstractDungeon.player.hasRelic(ThermiteBlade.ID)) {
+            this.baseMagicNumber = 3;
+            this.magicNumber = 3;
             this.cost = 1;
             this.baseCost = 1;
             this.costForTurn = 1;
@@ -96,6 +99,11 @@ public class MagmaBurn extends BaseCard {
                 statusCount++;
         }
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
+    }
+
+    public void onMoveToDiscard() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        initializeDescription();
     }
 
     public void triggerOnExhaust() {

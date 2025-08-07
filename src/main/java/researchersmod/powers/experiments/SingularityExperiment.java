@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.cards.colorless.Singularity;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
@@ -32,15 +32,16 @@ public class SingularityExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        if(((ExperimentCard)k).baseTrial > 1) {
-            AbstractCard tmp = ((Singularity) k).makeTrialCopy(((ExperimentCard) k).baseTrial - 1);
-            ((ExperimentCard) tmp).baseTrial = ((ExperimentCard) k).baseTrial - 1;
-            ((ExperimentCard) tmp).trial = ((ExperimentCard) k).baseTrial - 1;
-            tmp.baseBlock = k.baseBlock - 1;
+        ExperimentCard kard = ((ExperimentCard) ExperimentPowerFields.attachedCard.get(this));
+        if(kard.baseTrial > 1) {
+            AbstractCard tmp = kard.makeTrialCopy(kard.baseTrial - 1);
+            ((ExperimentCard) tmp).baseTrial = kard.baseTrial - 1;
+            ((ExperimentCard) tmp).trial = kard.baseTrial - 1;
+            if(tmp.baseBlock > 0) tmp.baseBlock = kard.baseBlock - 1;
             ExperimentCardManager.addExperiment(tmp);
             tmp.use((AbstractPlayer) owner, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
         }
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){
