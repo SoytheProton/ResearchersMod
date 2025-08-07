@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import researchersmod.ui.ModConfig;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.TextureLoader;
 
@@ -96,6 +97,12 @@ public abstract class BaseRelic extends CustomRelic {
                     "relic's ID. It should look like \"${modID}:" + GeneralUtils.removePrefix(ID) + "\".");
         }
         return ID;
+    }
+
+    @Override
+    public boolean canSpawn() {
+        if(this.pool == null && ModConfig.disableRelics) return false;
+        return super.canSpawn();
     }
 
     private static boolean notPng(String name) {

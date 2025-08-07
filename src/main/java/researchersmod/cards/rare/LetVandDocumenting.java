@@ -17,12 +17,13 @@ public class LetVandDocumenting extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
-            1
+            2
     );
 
     public LetVandDocumenting() {
         super(ID, info);
-        setMagic(2,1);
+        setMagic(1);
+        setCostUpgrade(1);
         this.exhaust = true;
     }
 

@@ -49,6 +49,12 @@ public class UniversalAccessCard extends BaseRelic {
         });
     }
     @Override
+    public boolean canSpawn() {
+        if(AbstractDungeon.player.hasRelic(DatabaseTablet.ID)) return true;
+        return super.canSpawn();
+    }
+
+    @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }

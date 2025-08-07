@@ -271,14 +271,14 @@ public class ResearchersCharacter extends CustomPlayer {
     public List<CutscenePanel> getCutscenePanels() {
         ArrayList<CutscenePanel> panels = new ArrayList<>();
 
-        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_1.png", "ATTACK_IRON_3"));
-        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_2.png", "ATTACK_MAGIC_SHORT"));
-        panels.add(new CutscenePanel("Resources/researchersmod/images/ending/EndingSlice_3.png"));
+        panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_1.png", "ATTACK_IRON_3"));
+        panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_2.png", "ATTACK_MAGIC_SHORT"));
+        panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_3.png"));
         return panels;
     }
 
     @Override
     public Texture getCutsceneBg() {
-        return new Texture("Resources/researchersmod/images/ending/ResearchersBg.jpg");
+        return new Texture("researchersmod/images/ending/ResearchersBg.jpg");
     }
 }

@@ -86,6 +86,7 @@ public class MagmaBurn extends BaseCard {
         if(i == 1)
             plural = "";
         this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0],i,plural);
+        initializeDescription();
     }
 
     public void triggerOnEndOfTurnForPlayingCard() {

@@ -42,8 +42,8 @@ public class FinalizeAction extends AbstractGameAction {
             else
                 Researchers.logger.warn("Target Power is null.");
             target.superFlash();
-            Wiz.atb(new DrawCardAction(i));
-            if(upgraded) Wiz.atb(new GainEnergyAction(i));
+            if(upgraded) Wiz.atb(new DrawCardAction(i));
+            Wiz.atb(new GainEnergyAction(i));
         }
         this.isDone = true;
     }
