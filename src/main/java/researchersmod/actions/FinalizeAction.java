@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class FinalizeAction extends AbstractGameAction {
@@ -31,7 +31,7 @@ public class FinalizeAction extends AbstractGameAction {
             int i = 0;
             AbstractPower targetPower = null;
             for (AbstractPower power : p.powers) {
-                if (power instanceof ExperimentPower && ((BasePower) power).k == target) {
+                if (power instanceof ExperimentPower && ExperimentPowerFields.attachedCard.get(power) == target) {
                     targetPower = power;
                 }
             }

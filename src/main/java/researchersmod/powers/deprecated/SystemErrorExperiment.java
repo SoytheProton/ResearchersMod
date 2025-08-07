@@ -11,10 +11,11 @@ import researchersmod.cards.status.BurntDocument;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 import java.util.Objects;
-
+@SuppressWarnings("all")
 public class SystemErrorExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
 
     public static final String POWER_ID = Researchers.makeID(SystemErrorExperiment.class.getSimpleName());
@@ -25,14 +26,14 @@ public class SystemErrorExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        if(k.upgraded) {
+        if(ExperimentPowerFields.attachedCard.get(this).upgraded) {
             for(AbstractCard c : Wiz.p().hand.group) {
                 if(Objects.equals(c.cardID, BurntDocument.ID)) {
                     c.upgrade();
                 }
             }
         }
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

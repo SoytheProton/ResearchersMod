@@ -24,7 +24,7 @@ import javassist.CtBehavior;
 import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.powers.BasePower;
+import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.Wiz;
@@ -91,8 +91,8 @@ public class ExperimentCardManager {
     public static void addExperiment(AbstractCard card, boolean playSFX) {
         AbstractCard tmp = card.makeStatEquivalentCopy();
         card.targetAngle = 0f;
-        if (card.hasTag(Researchers.EXHAUSTEXP) || card.hasTag(Researchers.PURGEEXP)) {
-            if(card.hasTag(Researchers.PHASE)) card.glowColor = Color.BLUE.cpy();
+        if (ExperimentFields.exhaustingExperiment.get(card) || ExperimentFields.purgingExperiment.get(card)) {
+            if(PhasingFields.isPhasing.get(card)) card.glowColor = Color.BLUE.cpy();
             tmp.current_x = Settings.WIDTH / 2.0F * Settings.xScale;
             tmp.current_y = Settings.HEIGHT / 2.0F;
             Wiz.att(new ShowCardAndPoofAction(tmp));
@@ -106,10 +106,8 @@ public class ExperimentCardManager {
         experiments.addToTop(card);
         AbstractPower expPower = null;
         for (AbstractPower p : Wiz.adp().powers) {
-            if(p instanceof BasePower) {
-                if (((BasePower)p).k == card) {
-                    expPower = p;
-                }
+            if (ExperimentPowerFields.attachedCard.get(p) == card) {
+                expPower = p;
             }
         }
         AbstractPower power = expPower;
@@ -129,15 +127,16 @@ public class ExperimentCardManager {
         }
     }
 
-    public static void remExp(AbstractCard card, AbstractPower power) {
-        removeExperiment(card,power);
+    public static void remExp(AbstractPower power) {
+        remExp(power,false);
     }
-    public static void remExp(AbstractCard card, AbstractPower power, boolean shouldExhaust) {
-        removeExperiment(card, power,shouldExhaust);
+    public static void remExp(AbstractPower power, boolean shouldExhaust) {
+        remExp(power,shouldExhaust,false);
     }
 
-    public static void remExp(AbstractCard card, AbstractPower power,  boolean shouldExhaust, boolean shouldPurge) {
-        removeExperiment(card, power,shouldExhaust, shouldPurge);
+    public static void remExp(AbstractPower power,  boolean shouldExhaust, boolean shouldPurge) {
+        AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
+        removeExperiment(card,power,shouldExhaust,shouldPurge);
     }
     public static void removeExperiment(AbstractCard card, AbstractPower power) {
         removeExperiment(card,power, false);
@@ -147,8 +146,8 @@ public class ExperimentCardManager {
     }
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust, boolean shouldPurge) {
-        if(((BasePower)power).freeToTerminateOnce) {
-            ((BasePower) power).freeToTerminateOnce = false;
+        if(ExperimentPowerFields.freeToTerminateOnce.get(power)) {
+            ExperimentPowerFields.freeToTerminateOnce.set(power,false);
             return;
         }
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnTerminateInterface).forEach(r -> ((ExperimentInterfaces.OnTerminateInterface) r).onTerminate(power));
@@ -164,12 +163,12 @@ public class ExperimentCardManager {
         card.untip();
         card.stopGlowing();
         card.flash(Color.RED.cpy());
-        if (shouldPurge || card.hasTag(Researchers.PURGEEXP)) {
+        if (shouldPurge || ExperimentFields.purgingExperiment.get(card)) {
             experiments.removeCard(card);
             Wiz.att(new ShowCardAndPoofAction(card));
         }
         else if(experiments.group.contains(card)) {
-            if (shouldExhaust || card.hasTag(Researchers.EXHAUSTEXP))
+            if (shouldExhaust || ExperimentFields.exhaustingExperiment.get(card))
                 Wiz.atb(new ExhaustSpecificCardAction(card, experiments));
             else
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
@@ -197,7 +196,7 @@ public class ExperimentCardManager {
     }
 
     public static void tickExperiment(AbstractPower power, int amt, boolean shouldComplete) {
-        AbstractCard card = ((BasePower) power).k;
+        AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
         power.amount = power.amount - amt;
         ((ExperimentCard) card).trial = power.amount;
         card.flash();

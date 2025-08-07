@@ -15,10 +15,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
-import researchersmod.cards.rare.Multithread;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
@@ -34,13 +34,14 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        AbstractCard card = ((Multithread)k).makeTrialCopy(((ExperimentCard)k).baseTrial + 1);
+        ExperimentCard kard = ((ExperimentCard) ExperimentPowerFields.attachedCard.get(this));
+        AbstractCard card = kard.makeTrialCopy(kard.baseTrial + 1);
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
-        ((ExperimentCard) card).baseTrial = ((ExperimentCard)k).baseTrial + 1;
-        ((ExperimentCard) card).trial = ((ExperimentCard)k).baseTrial + 1;
+        ((ExperimentCard) card).baseTrial = kard.baseTrial + 1;
+        ((ExperimentCard) card).trial = kard.baseTrial + 1;
         card.applyPowers();
         Wiz.atb(new MakeTempCardInDiscardAction(card,2));
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){

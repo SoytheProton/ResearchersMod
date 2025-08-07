@@ -1,11 +1,12 @@
 package researchersmod.actions;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import researchersmod.Researchers;
+import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
 
 public class IncinerateAction
@@ -22,7 +23,7 @@ public class IncinerateAction
     public void update() {
         int i = 0;
         for (AbstractCard c : DrawCardAction.drawnCards) {
-            if (c.hasTag(Researchers.PHASE)) {
+            if (CardModifierManager.hasModifier(c, PhaseMod.ID)) {
                 Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().hand));
                 card.baseMagicNumber++;
                 i++;

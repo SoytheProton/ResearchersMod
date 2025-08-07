@@ -26,7 +26,7 @@ public class ShortCircuitExperiment extends BasePower implements InvisiblePower,
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){

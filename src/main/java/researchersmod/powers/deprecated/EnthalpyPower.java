@@ -9,7 +9,7 @@ import researchersmod.Researchers;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
-
+@SuppressWarnings({})
 public class EnthalpyPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(EnthalpyPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

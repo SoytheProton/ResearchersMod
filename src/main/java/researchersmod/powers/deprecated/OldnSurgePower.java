@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
 import researchersmod.actions.AddPhaseAndEtherealAction;
 import researchersmod.powers.BasePower;
-
+@SuppressWarnings("all")
 public class OldnSurgePower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(OldnSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

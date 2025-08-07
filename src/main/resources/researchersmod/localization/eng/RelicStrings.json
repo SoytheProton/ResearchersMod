@@ -74,8 +74,8 @@
     "NAME": "Thermite Blade",
     "FLAVOR": "I don't think this is a good idea.",
     "DESCRIPTIONS": [
-      "Whenever a #yStatus is created, shuffle a #yMagma Burn+ into your draw pile. #yMagma Burns can now be played for [E] to deal double the damage to ALL enemies.",
-      "Whenever a card is created, shuffle a #yMagma Burn+ into your draw pile. #yMagma Burns can now be played for [E] to deal double the damage to ALL enemies."
+      "Whenever a #yStatus is created, shuffle a #yMagma Burn+ into your draw pile. NL #yMagma Burns deal 50% more damage, and can now be played for [E] to deal damage to ALL enemies.",
+      "Whenever a card is created, shuffle a #yMagma Burn+ into your draw pile. NL #yMagma Burns deal 50% more damage, and can now be played for [E] to deal damage to ALL enemies."
     ]
   },
   "${modID}:RunicBinder": {
@@ -103,7 +103,7 @@
     "NAME": "Code 2",
     "FLAVOR": "\"Not the type of code I was expecting, but entertaining nonetheless.\" - Ranwid",
     "DESCRIPTIONS": [
-      "The first time you #yComplete an #yExperiment each turn, gain [E] [REMOVE_SPACE]."
+      "The first time you #yComplete NL an #yExperiment each turn, NL gain [E] [REMOVE_SPACE]."
     ]
   },
   "${modID}:HypnoticWatch": {

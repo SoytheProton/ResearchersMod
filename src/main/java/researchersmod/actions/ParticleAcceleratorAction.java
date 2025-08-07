@@ -1,6 +1,7 @@
 package researchersmod.actions;
 
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -8,7 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import researchersmod.Researchers;
+import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
 
 public class ParticleAcceleratorAction
@@ -45,7 +46,7 @@ public class ParticleAcceleratorAction
                 }
             }
         if (!tmpGroup.isEmpty()) for(AbstractCard c : tmpGroup.group) {
-            if(c.hasTag(Researchers.PHASE)) Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().drawPile,true));
+            if(CardModifierManager.hasModifier(c, PhaseMod.ID)) Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().drawPile,true));
             else Wiz.att(new DiscardSpecificCardAction(c,Wiz.p().drawPile));
         }
         this.isDone = true;

@@ -35,7 +35,7 @@ public class CentrifugeExperiment extends BasePower implements InvisiblePower, N
         targetCard.target_x = Settings.WIDTH / 2.0F;
         targetCard.target_y = Settings.HEIGHT / 2.0F;
         Wiz.att(new ExhaustSpecificCardAction(targetCard,((AbstractPlayer)owner).limbo));
-        ExperimentCardManager.remExp(k,this,false,true);
+        ExperimentCardManager.remExp(this,false,true);
     }
 
     public void completionEffect(){

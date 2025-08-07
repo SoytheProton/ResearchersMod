@@ -243,8 +243,12 @@
   },
   "${modID}:FerrousBlade": {
     "NAME": "Ferrous Blade",
-    "DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade into your hand that costs an additional [E]  this turn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add a Ferrous Blade+ into your hand that costs an additional [E]  this turn."
+    "DESCRIPTION": "${modID}:Etheric. Deal !D! damage. Add a Ferrous Blade into your hand that costs an additional [E]  this turn.",
+    "UPGRADE_DESCRIPTION": "${modID}:Etheric. Deal !D! damage. Add a Ferrous Blade+ into your hand that costs an additional [E]  this turn.",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage. Add a Ferrous Blade into your hand that costs an additional [E]  this turn.",
+      "Deal !D! damage. Add a Ferrous Blade+ into your hand that costs an additional [E]  this turn."
+    ]
   },
   "${modID}:Overwrite": {
     "NAME": "Overwrite",

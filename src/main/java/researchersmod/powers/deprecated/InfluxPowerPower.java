@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
-
+@SuppressWarnings("all")
 public class InfluxPowerPower extends BasePower implements ExperimentInterfaces.OnCompletionInterface {
     public static final String POWER_ID = Researchers.makeID(InfluxPowerPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

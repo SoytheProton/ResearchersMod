@@ -25,7 +25,7 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

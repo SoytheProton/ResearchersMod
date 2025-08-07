@@ -26,7 +26,7 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.targeting.ExperimentTargeting;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.deprecated.OrganizationExpAttachment;
+import researchersmod.powers.attachments.OrganizationExpAttachment;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 
+@SuppressWarnings("all")
 public class ComboPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(ComboPower.class.getSimpleName());
     public static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;

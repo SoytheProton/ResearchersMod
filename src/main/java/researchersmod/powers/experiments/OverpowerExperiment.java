@@ -28,7 +28,7 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
 
     public void terminateEffect(){
         Wiz.atb(new DrawCardAction(M));
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

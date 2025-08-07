@@ -20,13 +20,13 @@ public class IncreaseMiscTrialAction
     private UUID uuid;
     private final AbstractPlayer p;
 
-    private final AbstractCard c;
+    private final AbstractCard card;
 
-    public IncreaseMiscTrialAction(UUID targetUUID, AbstractPlayer p, AbstractCard c, int miscIncrease) {
+    public IncreaseMiscTrialAction(UUID targetUUID, AbstractPlayer p, AbstractCard card, int miscIncrease) {
         this.miscIncrease = miscIncrease;
         this.uuid = targetUUID;
         this.p = p;
-        this.c = c;
+        this.card = card;
     }
 
 
@@ -43,7 +43,7 @@ public class IncreaseMiscTrialAction
             ((Analyze)c).editTrial(c.misc);
             c.applyPowers();
         }
-        Wiz.atb(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) c).trial, c, c.baseBlock)));
+        Wiz.atb(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) card).trial, card, card.baseBlock)));
         this.isDone = true;
     }
 }

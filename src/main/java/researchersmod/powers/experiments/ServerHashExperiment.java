@@ -32,7 +32,7 @@ public class ServerHashExperiment extends BasePower implements InvisiblePower, N
 
     public void terminateEffect(){
         Wiz.atb(new DrawCardAction(1));
-        ExperimentCardManager.remExp(k,this);
+        ExperimentCardManager.remExp(this);
     }
 
     public void completionEffect(){

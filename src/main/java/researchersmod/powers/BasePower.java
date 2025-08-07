@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.TextureLoader;
 
@@ -32,9 +33,9 @@ public abstract class BasePower extends AbstractPower {
         this(id, powerType, isTurnBased, owner, null, amount);
     }
 
-    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount,AbstractCard card) {
+    public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount, AbstractCard card) {
         this(id, powerType, isTurnBased, owner, null, amount);
-        k = card;
+        ExperimentPowerFields.attachedCard.set(this,card);
     }
     public BasePower(String id, PowerType powerType, boolean isTurnBased, AbstractCreature owner, AbstractCreature source, int amount) {
         this(id, powerType, isTurnBased, owner, source, amount, true);
@@ -90,8 +91,4 @@ public abstract class BasePower extends AbstractPower {
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
         }
     }
-
-    public AbstractCard k;
-    public boolean freeToTerminateOnce = false;
-    public AbstractPower attachedPower = null;
 }

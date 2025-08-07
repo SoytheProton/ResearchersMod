@@ -14,7 +14,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.ModInfo;
 import com.evacipated.cardcrawl.modthespire.Patcher;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -90,14 +89,6 @@ public class Researchers implements
     public static int cardsPhasedThisTurn;
     public static int cardsPhasedThisCombat;
     public static AbstractCard LastPhasedCard;
-    @SpireEnum
-    public static AbstractCard.CardTags PHASE;
-    @SpireEnum
-    public static AbstractCard.CardTags EXPERIMENT;
-    @SpireEnum
-    public static AbstractCard.CardTags PURGEEXP;
-    @SpireEnum
-    public static AbstractCard.CardTags EXHAUSTEXP;
     public Researchers() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");

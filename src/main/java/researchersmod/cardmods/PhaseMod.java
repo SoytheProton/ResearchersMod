@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.rare.AltercatedBlueprint;
+import researchersmod.cards.uncommon.FerrousBlade;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.ManipulationPower;
 import researchersmod.ui.ModConfig;
@@ -45,7 +46,7 @@ public class PhaseMod extends AbstractCardModifier {
                                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
                                                         KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
-                rawDescription);
+                rawDescription, Objects.equals(card.cardID, FerrousBlade.ID));
             return cardDescription[0] +
                 (KH.hasUnplayableNL(card, rawDescription) ? " NL " : " ")
                 + phaseString(card) + p +
@@ -70,14 +71,9 @@ public class PhaseMod extends AbstractCardModifier {
     public void onInitialApplication(AbstractCard card) {
         if(CardModifierManager.getModifiers(card,PhaseMod.ID).get(0) == this)
             isFirstApplication = true;
-        card.tags.add(Researchers.PHASE);
         this.identifier(card);
     }
 
-    @Override
-    public void onRemove(AbstractCard card) {
-        card.tags.remove(Researchers.PHASE);
-    }
 
     @Override
     public AbstractCardModifier makeCopy() {
@@ -135,7 +131,7 @@ public class PhaseMod extends AbstractCardModifier {
     }
 
     public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if(PhasingFields.isPhasing.get(card) && type == DamageInfo.DamageType.NORMAL) {
+        if(PhasingFields.isPhasing.get(card) && type == DamageInfo.DamageType.NORMAL && isFirstApplication) {
             if (card instanceof WhilePhaseStatInterface)
                 damage = ((WhilePhaseStatInterface) card).whilePhase("DAMAGE", damage);
             for (AbstractPower p : AbstractDungeon.player.powers)
@@ -146,7 +142,7 @@ public class PhaseMod extends AbstractCardModifier {
     }
 
     public float modifyBlock(float block, AbstractCard card) {
-        if(PhasingFields.isPhasing.get(card)) {
+        if(PhasingFields.isPhasing.get(card) && isFirstApplication) {
             if (card instanceof WhilePhaseStatInterface)
                 block = ((WhilePhaseStatInterface) card).whilePhase("BLOCK", block);
             for (AbstractPower p : AbstractDungeon.player.powers)

@@ -8,7 +8,7 @@ import researchersmod.Researchers;
 import researchersmod.actions.AddPhaseModAction;
 import researchersmod.powers.BasePower;
 import researchersmod.util.Wiz;
-
+@SuppressWarnings("all")
 public class PhaseDrawPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(PhaseDrawPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;

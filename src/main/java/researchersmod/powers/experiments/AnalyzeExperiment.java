@@ -30,7 +30,7 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){

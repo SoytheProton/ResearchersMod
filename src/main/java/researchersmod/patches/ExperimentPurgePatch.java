@@ -3,11 +3,10 @@ package researchersmod.patches;
 
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import researchersmod.Researchers;
+import researchersmod.ui.ExperimentFields;
 
 @SpirePatch(
         clz= UseCardAction.class,
@@ -19,12 +18,12 @@ import researchersmod.Researchers;
 )
 public class ExperimentPurgePatch {
     public static void Postfix(UseCardAction __instance, AbstractCard __card) {
-        if(__card.hasTag(Researchers.EXPERIMENT)) {
+        if(ExperimentFields.playExperiment.get(__card)) {
             if (__card.purgeOnUse) {
-                __card.tags.add(Researchers.PURGEEXP);
+                ExperimentFields.purgingExperiment.set(__card,true);
                 __card.purgeOnUse = false;
             } else if (__card.exhaust || __card.exhaustOnUseOnce) {
-                __card.tags.add(Researchers.EXHAUSTEXP);
+                ExperimentFields.exhaustingExperiment.set(__card,true);
                 __card.exhaust = false;
                 __card.exhaustOnUseOnce = false;
                 __instance.exhaustCard = false;

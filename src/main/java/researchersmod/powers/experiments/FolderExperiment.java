@@ -26,7 +26,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(k,this,true);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){
