@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
         method = SpirePatch.CLASS
 )
 public class PhasingFields {
-    public static SpireField<Boolean> isPhasing = new SpireField<>(()->false); //if card is always playable
+    public static SpireField<Boolean> isPhasing = new SpireField<>(()->false);
     public static SpireField<Boolean> notEnoughEnergy = new SpireField<>(()->false); //if you don't have enough energy for a card
     public static SpireField<Boolean> isOccultPlayable = new SpireField<>(()->false); //if a card normally isn't playable, but is playable due to occult
 }

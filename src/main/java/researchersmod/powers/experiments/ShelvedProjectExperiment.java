@@ -23,10 +23,8 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     public static final String POWER_ID = Researchers.makeID(ShelvedProjectExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private int damageNumber;
-    public ShelvedProjectExperiment(AbstractCreature owner, int amount, AbstractCard card, int damage) {
+    public ShelvedProjectExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        damageNumber = damage;
     }
 
     public void terminateEffect(){
@@ -36,7 +34,7 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_HEAVY"));
         Wiz.atb(new VFXAction(owner,new CleaveEffect(),0.0F));
-        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,(int) damageNumber, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.tickExperiment(this);
     }
 

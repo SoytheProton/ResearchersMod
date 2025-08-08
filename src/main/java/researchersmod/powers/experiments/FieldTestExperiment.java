@@ -27,17 +27,14 @@ public class FieldTestExperiment extends BasePower implements InvisiblePower, No
     public static final String POWER_ID = Researchers.makeID(FieldTestExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private int damage;
 
-
-    public FieldTestExperiment(AbstractCreature owner, int amount, AbstractCard card, int damage) {
+    public FieldTestExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount, card);
-        this.damage = damage;
     }
 
     public void terminateEffect(){
         Wiz.atb(new SFXAction("ATTACK_IRON_1"));
-        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner, expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
         ExperimentCardManager.remExp(this,true);
     }
 

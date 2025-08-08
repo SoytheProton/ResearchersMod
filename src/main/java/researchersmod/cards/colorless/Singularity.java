@@ -25,7 +25,7 @@ public class Singularity extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SingularityExperiment(p, this.trial,this,this.baseBlock)));
+        addToBot(new ApplyPowerAction(p, p, new SingularityExperiment(p, this.trial,this)));
     }
 
     public AbstractCard makeTrialCopy(int trialNumber) {

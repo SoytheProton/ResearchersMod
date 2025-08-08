@@ -17,10 +17,8 @@ public class CutThroughLightExperiment extends BasePower implements InvisiblePow
     public static final String POWER_ID = Researchers.makeID(CutThroughLightExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private final int magicNumber;
-    public CutThroughLightExperiment(AbstractCreature owner, int amount, AbstractCard card, int magicNumber) {
+    public CutThroughLightExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        this.magicNumber = magicNumber;
     }
 
     public void terminateEffect(){
@@ -28,7 +26,7 @@ public class CutThroughLightExperiment extends BasePower implements InvisiblePow
     }
 
     public void completionEffect(){
-        Wiz.atb(new BetterDiscardPileToHandAction(magicNumber));
+        Wiz.atb(new BetterDiscardPileToHandAction(expCard().magicNumber));
         ExperimentCardManager.tickExperiment(this);
     }
 

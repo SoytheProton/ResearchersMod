@@ -24,11 +24,8 @@ public class SingularityExperiment extends BasePower implements InvisiblePower, 
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private final int block;
-
-    public SingularityExperiment(AbstractCreature owner, int amount, AbstractCard card, int block) {
+    public SingularityExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        this.block = block;
     }
 
     public void terminateEffect(){
@@ -45,7 +42,7 @@ public class SingularityExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(block)));
+        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(expCard().block,ExperimentPowerFields.attachedCard.get(this))));
         ExperimentCardManager.tickExperiment(this);
     }
 

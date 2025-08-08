@@ -26,7 +26,7 @@ public class Multithread extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.trial, this, baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new MultithreadExperiment(p, this.trial, this)));
     }
 
     @Override

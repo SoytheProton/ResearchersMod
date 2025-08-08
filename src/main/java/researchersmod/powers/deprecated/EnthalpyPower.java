@@ -1,5 +1,5 @@
 package researchersmod.powers.deprecated;
-
+/*
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -37,3 +37,4 @@ public class EnthalpyPower extends BasePower implements NonStackablePower {
         this.description = String.format(DESCRIPTIONS[0],card,upgrade);
     }
 }
+*/

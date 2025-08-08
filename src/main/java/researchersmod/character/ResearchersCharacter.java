@@ -272,7 +272,7 @@ public class ResearchersCharacter extends CustomPlayer {
         ArrayList<CutscenePanel> panels = new ArrayList<>();
 
         panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_1.png", "ATTACK_IRON_3"));
-        panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_2.png", "ATTACK_MAGIC_SHORT"));
+        panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_2.png", "ATTACK_MAGIC_BEAM_SHORT"));
         panels.add(new CutscenePanel("researchersmod/images/ending/EndingSlice_3.png"));
         return panels;
     }

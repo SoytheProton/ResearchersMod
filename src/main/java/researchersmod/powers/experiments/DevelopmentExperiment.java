@@ -18,10 +18,9 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     public static final String POWER_ID = Researchers.makeID(DevelopmentExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private int magicNumber;
-    public DevelopmentExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+
+    public DevelopmentExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        magicNumber = magic;
     }
 
     public void terminateEffect(){
@@ -29,7 +28,7 @@ public class DevelopmentExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void completionEffect(){
-        Wiz.atb(new UpgradeDrawPileAction(magicNumber));
+        Wiz.atb(new UpgradeDrawPileAction(expCard().magicNumber));
         ExperimentCardManager.tickExperiment(this);
     }
 

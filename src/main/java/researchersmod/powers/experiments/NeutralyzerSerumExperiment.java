@@ -21,10 +21,8 @@ public class NeutralyzerSerumExperiment extends BasePower implements InvisiblePo
     public static final String POWER_ID = Researchers.makeID(NeutralyzerSerumExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private int magicNumber;
-    public NeutralyzerSerumExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+    public NeutralyzerSerumExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        magicNumber = magic;
     }
 
     public void terminateEffect(){
@@ -34,8 +32,8 @@ public class NeutralyzerSerumExperiment extends BasePower implements InvisiblePo
     public void completionEffect(){
         AbstractCreature target = (AbstractCreature) AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
         if(target != null) {
-            Wiz.atb(new ApplyPowerAction(target, owner, new VulnerablePower(target, magicNumber, !owner.isPlayer)));
-            Wiz.atb(new ApplyPowerAction(target, owner, new WeakPower(target, magicNumber, !owner.isPlayer)));
+            Wiz.atb(new ApplyPowerAction(target, owner, new VulnerablePower(target, expCard().magicNumber, !owner.isPlayer)));
+            Wiz.atb(new ApplyPowerAction(target, owner, new WeakPower(target, expCard().magicNumber, !owner.isPlayer)));
         } ExperimentCardManager.tickExperiment(this);
     }
 

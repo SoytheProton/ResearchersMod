@@ -28,6 +28,6 @@ public class ServerHash extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, customVar("Blocc")));
-        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.trial, this, this.baseBlock)));
+        addToBot(new ApplyPowerAction(p, p, new ServerHashExperiment(p, this.trial, this)));
     }
 }

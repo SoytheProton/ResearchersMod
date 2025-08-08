@@ -31,6 +31,6 @@ public class Development extends ExperimentCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, this.trial,this,this.magicNumber)));
+        Wiz.atb(new ApplyPowerAction(p,p, new DevelopmentExperiment(p, this.trial,this)));
     }
 }
