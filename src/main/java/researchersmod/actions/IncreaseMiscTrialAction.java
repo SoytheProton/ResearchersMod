@@ -43,7 +43,7 @@ public class IncreaseMiscTrialAction
             ((Analyze)c).editTrial(c.misc);
             c.applyPowers();
         }
-        Wiz.atb(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) card).trial, card, card.baseBlock)));
+        Wiz.atb(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) card).trial, card)));
         this.isDone = true;
     }
 }

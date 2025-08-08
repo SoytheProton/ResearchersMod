@@ -19,7 +19,6 @@ import researchersmod.cards.colorless.DataOverride;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
 public class DataOverrideExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -28,13 +27,8 @@ public class DataOverrideExperiment extends BasePower implements InvisiblePower,
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private final int block;
-    private final int damage;
-
-    public DataOverrideExperiment(AbstractCreature owner, int amount, AbstractCard card, int block, int damage) {
+    public DataOverrideExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        this.block = block;
-        this.damage = damage;
     }
 
     public void terminateEffect(){
@@ -45,9 +39,9 @@ public class DataOverrideExperiment extends BasePower implements InvisiblePower,
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(block)));
+        Wiz.atb(new GainBlockAction(owner,expCard().block));
         Wiz.atb(new SFXAction("BLUNT_FAST"));
-        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner,damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner,expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         ExperimentCardManager.tickExperiment(this);
     }
 

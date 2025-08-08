@@ -25,6 +25,6 @@ public class DataRequest extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DataRequestExperiment(p, this.trial,this,this.baseBlock,this.baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new DataRequestExperiment(p, this.trial,this)));
     }
 }

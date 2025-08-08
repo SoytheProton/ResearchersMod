@@ -20,10 +20,11 @@ public class FieldTest extends ExperimentCard {
     public FieldTest() {
         super(ID, info, 2);
         setDamage(5,3);
+        this.isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new FieldTestExperiment(p, this.trial,this,this.baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new FieldTestExperiment(p, this.trial,this)));
     }
 }

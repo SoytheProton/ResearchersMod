@@ -21,10 +21,11 @@ public class DataOverride extends ExperimentCard {
         super(ID, info, 1);
         setDamage(5,3);
         setBlock(5,3);
+        this.isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DataOverrideExperiment(p, this.trial,this,this.baseBlock,this.baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new DataOverrideExperiment(p, this.trial,this)));
     }
 }

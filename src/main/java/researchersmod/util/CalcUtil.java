@@ -1,12 +1,13 @@
 package researchersmod.util;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import researchersmod.cards.colorless.dummyattack;
 
 public class CalcUtil {
-    public static float CalcBlock(float tmp) {
+    public static float CalcBlock(float tmp, AbstractCard card) {
         for (AbstractPower p : Wiz.adp().powers) {
             tmp = p.modifyBlock(tmp);
         }
@@ -16,12 +17,10 @@ public class CalcUtil {
         }
         return tmp;
     }
-    public static float CalcDamage(float tmp) {
+    public static float CalcDamage(float tmp, AbstractCard card) {
         for (AbstractRelic r : Wiz.adp().relics) {
             tmp = r.atDamageModify(tmp,new dummyattack());
         }
-
-
 
         for (AbstractPower p : Wiz.adp().powers) {
             tmp = p.atDamageGive(tmp, DamageInfo.DamageType.NORMAL);

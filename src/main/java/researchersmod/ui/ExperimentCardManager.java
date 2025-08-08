@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
 import researchersmod.Researchers;
+import researchersmod.actions.KillCardAction;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
@@ -164,8 +165,8 @@ public class ExperimentCardManager {
         card.stopGlowing();
         card.flash(Color.RED.cpy());
         if (shouldPurge || ExperimentFields.purgingExperiment.get(card)) {
-            experiments.removeCard(card);
-            Wiz.att(new ShowCardAndPoofAction(card));
+            Wiz.atb(new ShowCardAndPoofAction(card));
+            Wiz.atb(new KillCardAction(card,experiments));
         }
         else if(experiments.group.contains(card)) {
             if (shouldExhaust || ExperimentFields.exhaustingExperiment.get(card))

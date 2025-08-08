@@ -25,6 +25,6 @@ public class Digithunder extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DigithunderExperiment(p, this.trial, this, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new DigithunderExperiment(p, this.trial, this)));
     }
 }

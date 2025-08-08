@@ -19,15 +19,12 @@ public class OverpowerExperiment extends BasePower implements InvisiblePower, No
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private int M;
-
-    public OverpowerExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+    public OverpowerExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        M = magic;
     }
 
     public void terminateEffect(){
-        Wiz.atb(new DrawCardAction(M));
+        Wiz.atb(new DrawCardAction(expCard().magicNumber));
         ExperimentCardManager.remExp(this);
     }
 

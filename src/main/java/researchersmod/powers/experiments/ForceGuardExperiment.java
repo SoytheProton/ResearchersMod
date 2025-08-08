@@ -11,7 +11,6 @@ import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
 public class ForceGuardExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -19,10 +18,8 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     public static final String POWER_ID = Researchers.makeID(ForceGuardExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
-    private int B;
-    public ForceGuardExperiment(AbstractCreature owner, int amount, AbstractCard card, int block) {
+    public ForceGuardExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        B = block;
     }
 
     public void terminateEffect(){
@@ -30,7 +27,7 @@ public class ForceGuardExperiment extends BasePower implements InvisiblePower, N
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner, (int) CalcUtil.CalcBlock(B)));
+        Wiz.atb(new GainBlockAction(owner, expCard().block));
         ExperimentCardManager.tickExperiment(this);
     }
 

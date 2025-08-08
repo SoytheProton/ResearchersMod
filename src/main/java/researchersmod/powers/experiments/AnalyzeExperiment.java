@@ -11,22 +11,16 @@ import researchersmod.Researchers;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
 public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower
 {
-
     public static final String POWER_ID = Researchers.makeID(AnalyzeExperiment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-
-    private int block;
-
-    public AnalyzeExperiment(AbstractCreature owner, int amount, AbstractCard card, int block) {
+    public AnalyzeExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount, card);
-        this.block = block;
     }
 
     public void terminateEffect(){
@@ -34,7 +28,7 @@ public class AnalyzeExperiment extends BasePower implements InvisiblePower, NonS
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(block)));
+        Wiz.atb(new GainBlockAction(owner,expCard().block));
         ExperimentCardManager.tickExperiment(this);
     }
 

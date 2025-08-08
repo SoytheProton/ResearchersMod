@@ -22,10 +22,11 @@ public class ShelvedProject extends ExperimentCard {
     public ShelvedProject() {
         super(ID, info,2);
         setDamage(8,3);
+        this.isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ShelvedProjectExperiment(p, this.trial, this,baseDamage)));
+        addToBot(new ApplyPowerAction(p, p, new ShelvedProjectExperiment(p, this.trial, this)));
     }
 }

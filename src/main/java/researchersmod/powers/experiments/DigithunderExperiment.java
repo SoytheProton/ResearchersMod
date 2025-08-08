@@ -22,11 +22,8 @@ public class DigithunderExperiment extends BasePower implements InvisiblePower, 
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private int M;
-
-    public DigithunderExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+    public DigithunderExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        M = magic;
     }
 
     public void terminateEffect(){
@@ -34,7 +31,7 @@ public class DigithunderExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void completionEffect(){
-        Wiz.applyToSelf(new StrengthPower(owner, M));
+        Wiz.applyToSelf(new StrengthPower(owner, expCard().magicNumber));
         ExperimentCardManager.tickExperiment(this);
     }
 

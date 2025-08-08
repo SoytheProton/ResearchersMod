@@ -26,6 +26,6 @@ public class ForceGuard extends ExperimentCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ForceGuardExperiment(p, this.trial, this, this.baseBlock)));
+        addToBot(new ApplyPowerAction(p, p, new ForceGuardExperiment(p, this.trial, this)));
     }
 }

@@ -29,7 +29,7 @@ public class NeutralyzerSerum extends ExperimentCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if(this.energyOnUse == 0 && !upgraded) ExperimentFields.playExperiment.set(this,false);
         else ExperimentFields.playExperiment.set(this,true);
-        addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.trial, this,magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.trial, this)));
         addToBot(new NeutralyzerSerumAction(p,this,this.freeToPlayOnce,this.energyOnUse));
     }
 }

@@ -89,6 +89,7 @@ public class Researchers implements
     public static int cardsPhasedThisTurn;
     public static int cardsPhasedThisCombat;
     public static AbstractCard LastPhasedCard;
+
     public Researchers() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");

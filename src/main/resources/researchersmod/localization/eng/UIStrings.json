@@ -39,7 +39,7 @@
       "altBehaviorAdjustment": "Behavior Adjustment will scale off Act. (Restart Req)",
       "noConditionThermiteBlade": "Thermite Blade will trigger on ANY card created. (Restart Req)",
       "disableRelics": "Disable non-Character specific relics.",
-      "emergencyLogging": "Enables Log Spam."
+      "emergencyLogging": "Enables Log Spam. (Warning: May cause Lag)"
     }
   },
   "${modID}:Blueprint": {

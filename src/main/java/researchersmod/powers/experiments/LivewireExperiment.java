@@ -21,11 +21,8 @@ public class LivewireExperiment extends BasePower implements InvisiblePower, Non
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;
     private static final boolean TURNBASED = false;
 
-    private int M;
-
-    public LivewireExperiment(AbstractCreature owner, int amount, AbstractCard card, int magic) {
+    public LivewireExperiment(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount,card);
-        M = magic;
     }
 
     public void terminateEffect(){
@@ -33,7 +30,7 @@ public class LivewireExperiment extends BasePower implements InvisiblePower, Non
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainEnergyAction(M));
+        Wiz.atb(new GainEnergyAction(expCard().magicNumber));
         Wiz.atb(new MakeTempCardInDiscardAction(new ShortCircuit(),1));
         ExperimentCardManager.tickExperiment(this);
     }
