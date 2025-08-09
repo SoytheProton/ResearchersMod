@@ -1,5 +1,6 @@
 package researchersmod.powers;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -9,8 +10,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.common.Uplink;
-import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.util.Wiz;
 
 import java.util.Objects;
@@ -27,7 +28,7 @@ public class UplinkPower extends BasePower {
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         flash();
-        if(PhasingFields.isPhasing.get(card) && !Objects.equals(card.cardID, Uplink.ID)){
+        if(CardModifierManager.hasModifier(card, PhaseMod.ID) && !Objects.equals(card.cardID, Uplink.ID)){
             AbstractCard tmp = card.makeSameInstanceOf();
             tmp.purgeOnUse = true;
             tmp.target_x = Settings.WIDTH/2.0F;

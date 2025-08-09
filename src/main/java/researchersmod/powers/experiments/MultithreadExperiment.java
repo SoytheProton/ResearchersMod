@@ -30,7 +30,7 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void terminateEffect(){
-        ExperimentCard kard = ((ExperimentCard) ExperimentPowerFields.attachedCard.get(this));
+        ExperimentCard kard = (ExperimentCard) expCard();
         AbstractCard card = kard.makeTrialCopy(kard.baseTrial + 1);
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID,true);
         ((ExperimentCard) card).baseTrial = kard.baseTrial + 1;

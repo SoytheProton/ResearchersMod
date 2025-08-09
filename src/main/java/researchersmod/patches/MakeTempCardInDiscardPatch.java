@@ -14,13 +14,17 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
         method = "update"
 )
 public class MakeTempCardInDiscardPatch {
-    public static void Prefix(MakeTempCardInDiscardAction __instance, int ___numCards, AbstractCard ___c, float ___startDuration, @ByRef float[] ___duration) {
-        if (___numCards > 6 && ___duration[0] == ___startDuration) {
+    public static void Prefix(MakeTempCardInDiscardAction __instance, int ___numCards, AbstractCard ___c, float ___startDuration, boolean ___sameUUID, @ByRef float[] ___duration) {
+        if (___numCards >= 6 && ___duration[0] == ___startDuration) {
             for (int i = 0; i < ___numCards; i++) {
-                AbstractCard c = ___c.makeStatEquivalentCopy();
-                AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(c));
+                AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(makeNewCard(___c,___sameUUID)));
             }
             ___duration[0] -= Gdx.graphics.getDeltaTime();
         }
+    }
+
+    private static AbstractCard makeNewCard(AbstractCard card, boolean sameUUID) {
+        if(sameUUID) return card.makeSameInstanceOf();
+        return card.makeStatEquivalentCopy();
     }
 }
