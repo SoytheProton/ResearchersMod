@@ -1,5 +1,5 @@
 package researchersmod.powers.deprecated;
-
+/*
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -27,4 +27,4 @@ public class OldnSurgePower extends BasePower {
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
-}
+}*/

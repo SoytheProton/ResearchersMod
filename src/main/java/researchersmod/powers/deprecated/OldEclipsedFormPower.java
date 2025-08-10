@@ -1,5 +1,5 @@
 package researchersmod.powers.deprecated;
-
+/*
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
@@ -28,3 +28,4 @@ public class OldEclipsedFormPower extends BasePower {
         this.description = String.format(DESCRIPTIONS[0],this.amount2,plural,this.amount2,plural,this.amount);
     }
 }
+*/

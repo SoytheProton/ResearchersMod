@@ -2,8 +2,8 @@ package researchersmod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.DelayAction;
-import researchersmod.actions.FuckAssAccelechargerAction;
+import researchersmod.actions.common.DelayAction;
+import researchersmod.actions.unique.FuckAssAccelechargerAction;
 import researchersmod.util.Wiz;
 
 public class AccelechargerPower extends BasePower {

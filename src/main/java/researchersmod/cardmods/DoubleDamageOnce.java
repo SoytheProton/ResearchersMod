@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.RemoveModifierAction;
+import researchersmod.actions.common.RemoveModifierAction;
 import researchersmod.util.Wiz;
 
 public class DoubleDamageOnce extends AbstractCardModifier {

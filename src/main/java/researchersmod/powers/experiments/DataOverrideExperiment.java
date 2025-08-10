@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
-import researchersmod.actions.ManualExperimentAction;
+import researchersmod.actions.common.ManualExperimentAction;
 import researchersmod.cards.colorless.DataOverride;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;

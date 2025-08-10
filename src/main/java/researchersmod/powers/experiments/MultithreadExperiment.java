@@ -5,13 +5,13 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
+import researchersmod.actions.common.InstantAttackDamageRandomEnemyAction;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.powers.BasePower;
@@ -42,7 +42,7 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
 
     public void completionEffect(){
         Wiz.atb(new SFXAction("ATTACK_DAGGER_1"));
-        Wiz.atb(new AttackDamageRandomEnemyAction(ExperimentPowerFields.attachedCard.get(this), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        Wiz.atb(new InstantAttackDamageRandomEnemyAction(ExperimentPowerFields.attachedCard.get(this), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         ExperimentCardManager.tickExperiment(this);
     }
 

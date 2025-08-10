@@ -1,5 +1,5 @@
 package researchersmod.powers.deprecated;
-
+/*
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -31,3 +31,4 @@ public class ParticleAcceleratorPower extends BasePower {
         this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
     }
 }
+*/

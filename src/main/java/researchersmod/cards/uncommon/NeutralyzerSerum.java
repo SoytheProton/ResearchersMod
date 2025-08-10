@@ -3,7 +3,7 @@ package researchersmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.NeutralyzerSerumAction;
+import researchersmod.actions.unique.NeutralyzerSerumAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.experiments.NeutralyzerSerumExperiment;

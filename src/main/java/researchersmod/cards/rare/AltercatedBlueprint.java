@@ -3,7 +3,7 @@ package researchersmod.cards.rare;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
-import researchersmod.actions.AltercatedBlueprintAction;
+import researchersmod.actions.unique.AltercatedBlueprintAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.LoseManipulationPower;

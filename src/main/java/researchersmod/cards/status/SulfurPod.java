@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.SulfurPodAction;
+import researchersmod.actions.unique.SulfurPodAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;

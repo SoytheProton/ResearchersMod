@@ -3,8 +3,8 @@ package researchersmod.powers;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.BorealisProtocolAction;
-import researchersmod.actions.DelayAction;
+import researchersmod.actions.common.DelayAction;
+import researchersmod.actions.unique.BorealisProtocolAction;
 import researchersmod.util.Wiz;
 
 public class BorealisProtocolPower extends BasePower {

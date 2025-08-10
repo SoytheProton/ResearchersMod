@@ -3,7 +3,7 @@ package researchersmod.cards.uncommon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.HyperfocusAction;
+import researchersmod.actions.unique.HyperfocusAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.targeting.ExperimentTargeting;
 import researchersmod.character.ResearchersCharacter;

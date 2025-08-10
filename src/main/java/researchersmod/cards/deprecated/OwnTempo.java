@@ -9,7 +9,7 @@ import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
 import java.util.ArrayList;
-
+/*
 public class OwnTempo extends BaseCard {
     public static final String ID = makeID(OwnTempo.class.getSimpleName());
     private static final CardStats info = new CardStats(
@@ -41,3 +41,4 @@ public class OwnTempo extends BaseCard {
     }
 
 }
+*/

@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
-import researchersmod.actions.AddPhaseModAction;
+import researchersmod.actions.common.AddPhaseModAction;
 import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.util.Wiz;
 

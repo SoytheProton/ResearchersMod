@@ -3,7 +3,7 @@ package researchersmod.powers;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
-import researchersmod.actions.HadalJetsuitAction;
+import researchersmod.actions.unique.HadalJetsuitAction;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
 

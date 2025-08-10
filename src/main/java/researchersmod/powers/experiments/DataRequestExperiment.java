@@ -4,13 +4,13 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import researchersmod.Researchers;
+import researchersmod.actions.common.InstantAttackDamageRandomEnemyAction;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
@@ -33,7 +33,7 @@ public class DataRequestExperiment extends BasePower implements InvisiblePower, 
     public void completionEffect(){
         Wiz.atb(new GainBlockAction(owner,expCard().block));
         Wiz.atb(new SFXAction("BLUNT_FAST"));
-        Wiz.atb(new AttackDamageRandomEnemyAction(expCard(), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        Wiz.atb(new InstantAttackDamageRandomEnemyAction(expCard(), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         ExperimentCardManager.tickExperiment(this);
     }
 

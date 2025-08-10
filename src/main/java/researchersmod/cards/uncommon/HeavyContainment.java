@@ -2,7 +2,7 @@ package researchersmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.HeavyContainmentAction;
+import researchersmod.actions.unique.HeavyContainmentAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;

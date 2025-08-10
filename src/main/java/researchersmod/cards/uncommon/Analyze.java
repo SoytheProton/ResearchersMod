@@ -3,7 +3,7 @@ package researchersmod.cards.uncommon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.IncreaseMiscTrialAction;
+import researchersmod.actions.unique.IncreaseMiscTrialAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;

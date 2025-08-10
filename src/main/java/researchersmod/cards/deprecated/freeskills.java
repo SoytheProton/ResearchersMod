@@ -1,5 +1,5 @@
 package researchersmod.cards.deprecated;
-
+/*
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
@@ -26,3 +26,4 @@ public class freeskills extends BaseCard {
         addToBot(new MakeCardTypeFree(CardType.SKILL));
     }
 }
+*/

@@ -4,7 +4,7 @@ import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
-import researchersmod.actions.ContactLightAction;
+import researchersmod.actions.unique.ContactLightAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.status.PlasmicEnergy;
 import researchersmod.character.ResearchersCharacter;

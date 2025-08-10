@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import researchersmod.actions.ManualExperimentAction;
+import researchersmod.actions.common.ManualExperimentAction;
 import researchersmod.cards.colorless.DataRequest;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.Wiz;

@@ -1,5 +1,5 @@
 package researchersmod.powers.deprecated;
-
+/*
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -39,3 +39,4 @@ public class PhaseDrawPower extends BasePower {
         this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
     }
 }
+*/

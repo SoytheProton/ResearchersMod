@@ -2,7 +2,7 @@ package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.OrbitalStrikeAction;
+import researchersmod.actions.unique.OrbitalStrikeAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.colorless.OrbitalBeacon;
 import researchersmod.character.ResearchersCharacter;

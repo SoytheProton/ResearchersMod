@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import researchersmod.actions.RemoveEthericAction;
+import researchersmod.actions.common.RemoveEthericAction;
 import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
 import researchersmod.util.Wiz;
