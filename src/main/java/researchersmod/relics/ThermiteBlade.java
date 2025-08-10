@@ -1,13 +1,11 @@
 package researchersmod.relics;
 
-import basemod.helpers.CardModifierManager;
 import basemod.helpers.CardPowerTip;
 import com.evacipated.cardcrawl.mod.stslib.patches.bothInterfaces.OnCreateCardInterface;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.ThermiteMod;
 import researchersmod.cards.status.MagmaBurn;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.ui.ModConfig;
@@ -22,8 +20,14 @@ public class ThermiteBlade extends BaseRelic implements OnCreateCardInterface {
     public ThermiteBlade() {
         super(ID, RelicTier.BOSS, LandingSound.HEAVY);
         this.pool = ResearchersCharacter.Meta.CARD_COLOR;
-        AbstractCard tmp = new MagmaBurn();
+        AbstractCard tmp = new MagmaBurn(true);
         tmp.upgrade();
+        tmp.baseMagicNumber = 3;
+        tmp.magicNumber = 3;
+        tmp.cost = 1;
+        tmp.costForTurn = 1;
+        tmp.isCostModifiedForTurn = false;
+        tmp.isCostModified = false;
         this.tips.add(new CardPowerTip(tmp));
     }
     @Override
@@ -53,9 +57,7 @@ public class ThermiteBlade extends BaseRelic implements OnCreateCardInterface {
 
     @Override
     public void onCreateCard(AbstractCard card) {
-        if(CardModifierManager.hasModifier(card, ThermiteMod.ID)) {
-            return;
-        }
+        if(Objects.equals(card.cardID, MagmaBurn.ID)) if(!((MagmaBurn)card).triggerThermite) return;
         if(card.type == AbstractCard.CardType.STATUS || ModConfig.noConditionThermiteBlade) {
             AbstractCard tmp = new MagmaBurn(true);
             tmp.upgrade();

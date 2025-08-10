@@ -14,23 +14,17 @@ public class HadalJetsuitPower extends BasePower implements PhaseMod.OnPhaseInte
 
     public HadalJetsuitPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
-        this.amount2 = 2;
         updateDescription();
     }
 
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        this.amount2 += 2;
-    }
-
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0],this.amount2,this.amount);
+        this.description = String.format(DESCRIPTIONS[0],this.amount,this.amount);
     }
 
     @Override
     public void onPhase(AbstractCard card) {
-        Wiz.applyToSelf(new ManipulationPower(owner,this.amount2));
-        Wiz.applyToSelf(new LoseManipulationPower(owner, this.amount2));
+        Wiz.applyToSelf(new ManipulationPower(owner,this.amount));
+        Wiz.applyToSelf(new LoseManipulationPower(owner, this.amount));
         Wiz.att(new HadalJetsuitAction(this.amount));
     }
 }

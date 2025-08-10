@@ -24,7 +24,7 @@ public class SampleTracker extends BaseRelic implements OnCreateCardInterface {
     }
     @Override
     public void atBattleStart() {
-        Wiz.att(new MakeTempCardInHandAction(new BurntDocument(),2));
+        Wiz.att(new MakeTempCardInHandAction(new BurntDocument(),1));
     }
 
     @Override

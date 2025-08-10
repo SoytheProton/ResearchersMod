@@ -35,9 +35,11 @@
   "${modID}:ModConfig": {
     "TEXT_DICT": {
       "enablePhaseNumbers": " Phase Number Toggle. \n (WARNING: Toggling this off may cause Text Overflow issues.)",
+      "etherealOverrideRetain" : "Ethereal added from effects will override Self-Retaining.",
       "enableUnlocks": "Enable Unlocks. (Restart Req)",
-      "altBehaviorAdjustment": "Behavior Adjustment will scale off Act. (Restart Req)",
-      "noConditionThermiteBlade": "Thermite Blade will trigger on ANY card created. (Restart Req)",
+      "altBehaviorAdjustment": "Behavior Adjustment will scale off Act.",
+      "noConditionThermiteBlade": "Thermite Blade will trigger on ANY card created.",
+      "oldVolcanicResearch": "Volcanic Research is more chaotic.",
       "disableRelics": "Disable non-Character specific relics.",
       "emergencyLogging": "Enables Log Spam. (Warning: May cause Lag)"
     }

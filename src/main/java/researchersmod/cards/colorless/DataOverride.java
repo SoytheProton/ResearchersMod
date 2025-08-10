@@ -19,8 +19,8 @@ public class DataOverride extends ExperimentCard {
 
     public DataOverride() {
         super(ID, info, 1);
-        setDamage(5,3);
-        setBlock(5,3);
+        setDamage(3,2);
+        setBlock(3,2);
         this.isMultiDamage = true;
     }
 

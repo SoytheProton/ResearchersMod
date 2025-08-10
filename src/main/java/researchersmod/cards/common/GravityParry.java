@@ -25,6 +25,8 @@ public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseStatInt
         super(ID, info);
         setDamage(5,2);
         setBlock(4,2);
+        setCustomVar("blockplus",VariableType.MAGIC,4,2);
+        setCustomVar("damageplus",VariableType.MAGIC,5,2);
         setPhase(true);
     }
 
@@ -38,10 +40,10 @@ public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseStatInt
     public float whilePhase(String valueType, float value) {
         switch(valueType) {
             case "BLOCK":
-                value = baseBlock * 2;
+                value += customVar("blockplus");
                 break;
             case "DAMAGE":
-                value = baseDamage * 2;
+                value += customVar("damageplus");
                 break;
             default:
                 Researchers.logger.warn("Unexpected value: " + valueType);

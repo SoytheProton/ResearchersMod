@@ -2,9 +2,7 @@ package researchersmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.defect.DamageAllButOneEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -28,7 +26,7 @@ public class RagingBlade extends BaseCard {
     public RagingBlade() {
         super(ID, info);
         setDamage(10, 4);
-        setCustomVar("Subdamage",VariableType.DAMAGE,6,4);
+        setCustomVar("Subdamage",VariableType.DAMAGE,6,2);
         cardsToPreview = new Burn();
     }
 

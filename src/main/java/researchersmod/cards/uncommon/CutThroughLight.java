@@ -23,7 +23,7 @@ public class CutThroughLight extends ExperimentCard {
 
     public CutThroughLight() {
         super(ID, info,2,1);
-        setDamage(14,3);
+        setDamage(12);
         setMagic(1);
     }
 

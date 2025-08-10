@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import researchersmod.Researchers;
-import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.rare.AltercatedBlueprint;
 import researchersmod.cards.uncommon.FerrousBlade;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
@@ -25,7 +24,6 @@ import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class PhaseMod extends AbstractCardModifier {
     public static String ID = "researchersmod:PhaseCardModifier";
@@ -105,8 +103,6 @@ public class PhaseMod extends AbstractCardModifier {
                 tmp.target_y = Settings.HEIGHT / 2.0F;
                 tmp.targetAngle = 0.0F;
                 tmp.purgeOnUse = true;
-                if(tmp instanceof ExperimentCard)
-                    tmp.uuid = UUID.randomUUID();
                 PhasingFields.isPhasing.set(tmp,true);
                 for (AbstractPower p : AbstractDungeon.player.powers)
                     if (p instanceof WhilePhaseInterface)

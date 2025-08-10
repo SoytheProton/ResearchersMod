@@ -21,7 +21,7 @@ public class Multithread extends ExperimentCard {
 
     public Multithread() {
         super(ID, info,1);
-        setDamage(8,2);
+        setDamage(4,2);
     }
 
     @Override

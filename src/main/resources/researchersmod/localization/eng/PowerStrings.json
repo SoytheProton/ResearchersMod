@@ -124,6 +124,12 @@
       "Whenever you draw a #yStatus, gain #b%d Strength."
     ]
   },
+  "${modID}:ChaoticResearchPower": {
+    "NAME": "Volcanic Research",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b%d #yMagma #yBurn%s into your draw pile. NL Whenever you draw a #yStatus, gain #b%d Strength and draw #b%d card%s."
+    ]
+  },
   "${modID}:PhaseDrawPower": {
     "NAME": "Phase Draws",
     "DESCRIPTIONS": [
@@ -218,7 +224,7 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Whenever you #yComplete an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact randomly."
+      "Every #b4 times you #yProgress an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d Progression%s left.)"
     ]
   },
   "${modID}:BlackBoxPower": {

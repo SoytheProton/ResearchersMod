@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import researchersmod.actions.RemoveEthericAction;
+import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
 import researchersmod.util.Wiz;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class BetterEtherealMod extends AbstractCardModifier {
     public static String ID = "researchersmod:EtherealCardModifier";
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
+    private boolean selfRetain = false;
     public static ArrayList<AbstractCardModifier> modifiers(AbstractCard c) {
         return CardModifierPatches.CardModifierFields.cardModifiers.get(c);
     }
@@ -23,9 +25,6 @@ public class BetterEtherealMod extends AbstractCardModifier {
     @Override
     public boolean shouldApply(AbstractCard card) {
         return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
-    }
-
-    public BetterEtherealMod() {
     }
 
 
@@ -51,11 +50,16 @@ public class BetterEtherealMod extends AbstractCardModifier {
     @Override
     public void onInitialApplication(AbstractCard card) {
         card.isEthereal = true;
+        if(ModConfig.etherealOverrideRetain) {
+            selfRetain = card.selfRetain;
+            card.selfRetain = false;
+        }
         this.identifier(card);
     }
 
     @Override
     public void onRemove(AbstractCard card) {
+        if(ModConfig.etherealOverrideRetain) card.selfRetain = selfRetain;
         card.isEthereal = false;
     }
 

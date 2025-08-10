@@ -1,20 +1,16 @@
 package researchersmod.cards.status;
 
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.ThermiteMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.relics.ThermiteBlade;
 import researchersmod.util.CardStats;
@@ -30,21 +26,28 @@ public class MagmaBurn extends BaseCard {
             -2
     );
     private int statusCount = 0;
+    public boolean triggerThermite = true;
+
+    private void setThermite() {
+        this.baseMagicNumber = 3;
+        this.magicNumber = 3;
+        this.cost = 1;
+        this.baseCost = 1;
+        this.costForTurn = 1;
+        this.isCostModifiedForTurn = false;
+        this.isCostModified = false;
+    }
 
     public MagmaBurn() {
         super(ID, info);
         setMagic(2);
+        if(AbstractDungeon.player != null) if(AbstractDungeon.player.hasRelic(ThermiteBlade.ID)) setThermite();
         ExhaustiveVariable.setBaseValue(this,2);
-        cardsToPreview = new Burn();
     }
 
     public MagmaBurn(boolean madeByThermite) {
-        super(ID, info);
-        setMagic(2);
-        ExhaustiveVariable.setBaseValue(this,2);
-        cardsToPreview = new Burn();
-        CardModifierManager.addModifier(this,new ThermiteMod());
-        if(AbstractDungeon.player != null) if(AbstractDungeon.player.hasRelic(ThermiteBlade.ID)) setMagic(3);
+        this();
+        triggerThermite = !madeByThermite;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -77,13 +80,7 @@ public class MagmaBurn extends BaseCard {
                 i++;
         }
         if(AbstractDungeon.player.hasRelic(ThermiteBlade.ID)) {
-            this.baseMagicNumber = 3;
-            this.magicNumber = 3;
-            this.cost = 1;
-            this.baseCost = 1;
-            this.costForTurn = 1;
-            this.isCostModifiedForTurn = false;
-            this.isCostModified = false;
+            setThermite();
         }
         String plural = cardStrings.EXTENDED_DESCRIPTION[1];
         if(i == 1)
@@ -106,12 +103,6 @@ public class MagmaBurn extends BaseCard {
         initializeDescription();
     }
 
-    public void triggerOnExhaust() {
-        AbstractCard tmp = new Burn();
-        if(CardModifierManager.hasModifier(this, ThermiteMod.ID)) CardModifierManager.addModifier(tmp,new ThermiteMod());
-        Wiz.atb(new MakeTempCardInDiscardAction(tmp,1));
-    }
-
     public void upgrade() {
         if(!upgraded) {
             super.upgrade();
@@ -121,6 +112,7 @@ public class MagmaBurn extends BaseCard {
 
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard retVal = super.makeStatEquivalentCopy();
+        ((MagmaBurn) retVal).triggerThermite = this.triggerThermite;
         return retVal;
     }
 }

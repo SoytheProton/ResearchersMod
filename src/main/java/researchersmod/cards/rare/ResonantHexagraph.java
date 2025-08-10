@@ -29,7 +29,7 @@ public class ResonantHexagraph extends BaseCard {
 
     public ResonantHexagraph() {
         super(ID, info);
-        setBlock(12,2);
+        setBlock(10,2);
         setPhase(true);
         this.isEthereal = true;
     }
