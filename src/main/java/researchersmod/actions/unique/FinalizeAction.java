@@ -1,8 +1,6 @@
 package researchersmod.actions.unique;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -32,16 +30,14 @@ public class FinalizeAction extends AbstractGameAction {
             for (AbstractPower power : p.powers) {
                 if (power instanceof ExperimentPower && ExperimentPowerFields.attachedCard.get(power) == target) {
                     targetPower = power;
+                    ExperimentPowerFields.shouldTriggerCompletions.set(power,true);
                 }
             }
             if (targetPower != null) {
-                Wiz.atb(new CompleteAgainAction(targetPower));
+                Wiz.atb(new CompleteAgainAction(targetPower,upgraded));
             }
             else
                 Researchers.logger.warn("Target Power is null.");
-            target.superFlash();
-            if(upgraded) Wiz.atb(new DrawCardAction(i));
-            Wiz.atb(new GainEnergyAction(i));
         }
         this.isDone = true;
     }

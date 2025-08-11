@@ -112,6 +112,8 @@ public class ExperimentCardManager {
             }
         }
         AbstractPower power = expPower;
+        if(power instanceof ExperimentInterfaces.OnCompletionInterface) ExperimentPowerFields.shouldTriggerCompletions.set(power,false);
+        System.out.println(ExperimentPowerFields.shouldTriggerCompletions.get(power));
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));
@@ -180,23 +182,15 @@ public class ExperimentCardManager {
     public static void tickExp(AbstractPower power) {
         tickExperiment(power);
     }
-
     public static void tickExp(AbstractPower power, int amt) {
         tickExperiment(power, amt);
     }
-
-    public static void tickExp(AbstractPower power, int amt, boolean shouldComplete) {
-        tickExperiment(power, amt, shouldComplete);
-    }
-
     public static void tickExperiment(AbstractPower power) {
         tickExperiment(power,1);
     }
-    public static void tickExperiment(AbstractPower power, int amt) {
-        tickExperiment(power,amt,true);
-    }
 
-    public static void tickExperiment(AbstractPower power, int amt, boolean shouldComplete) {
+    public static void tickExperiment(AbstractPower power, int amt) {
+        System.out.println(ExperimentPowerFields.shouldTriggerCompletions.get(power));
         AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
         power.amount = power.amount - amt;
         ((ExperimentCard) card).trial = power.amount;
@@ -205,7 +199,7 @@ public class ExperimentCardManager {
             for (int i = amt; i > 0; i--) {
                 Researchers.expsCompletedThisCombat++;
                 Researchers.expsCompletedThisTurn++;
-                if (shouldComplete && !(power instanceof ExperimentInterfaces.OnCompletionInterface)) {
+                if (ExperimentPowerFields.shouldTriggerCompletions.get(power)) {
                     Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
                     Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
                     AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnCompletionInterface).forEach(c -> ((ExperimentInterfaces.OnCompletionInterface) c).onCompletion(power));

@@ -12,7 +12,7 @@ import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 
-public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseStatInterface {
+public class GravityParry extends BaseCard implements PhaseMod.PhaseStatInterface {
     public static final String ID = makeID(GravityParry.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
@@ -37,7 +37,7 @@ public class GravityParry extends BaseCard implements PhaseMod.WhilePhaseStatInt
     }
 
     @Override
-    public float whilePhase(String valueType, float value) {
+    public float alterPhaseStats(String valueType, float value) {
         switch(valueType) {
             case "BLOCK":
                 value += customVar("blockplus");

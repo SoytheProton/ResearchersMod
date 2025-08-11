@@ -20,6 +20,7 @@ public class FieldTest extends ExperimentCard {
     public FieldTest() {
         super(ID, info, 1);
         setDamage(3,2);
+        setMagic(2);
         this.isMultiDamage = true;
     }
 

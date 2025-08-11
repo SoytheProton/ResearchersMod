@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.ManipulationPower;
-import researchersmod.powers.deprecated.InfluxPowerPower;
 import researchersmod.util.CardStats;
 
 public class InfluxPower extends BaseCard {
@@ -22,7 +21,7 @@ public class InfluxPower extends BaseCard {
 
     public InfluxPower() {
         super(ID, info);
-        setMagic(2,1);
+        setMagic(3,1);
     }
 
     @Override

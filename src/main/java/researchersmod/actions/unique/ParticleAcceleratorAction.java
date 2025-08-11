@@ -46,8 +46,17 @@ public class ParticleAcceleratorAction
                 }
             }
         if (!tmpGroup.isEmpty()) for(AbstractCard c : tmpGroup.group) {
-            if(CardModifierManager.hasModifier(c, PhaseMod.ID)) Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().drawPile,true));
-            else Wiz.att(new DiscardSpecificCardAction(c,Wiz.p().drawPile));
+            if(CardModifierManager.hasModifier(c, PhaseMod.ID)) {
+                AbstractCard tmp = c.makeSameInstanceOf();
+                tmp.purgeOnUse = true;
+                tmp.target_x = Settings.WIDTH/2.0F;
+                tmp.target_y = Settings.HEIGHT/2.0F;
+                tmp.current_x = Settings.WIDTH/2.0F;
+                tmp.current_y = Settings.HEIGHT/2.0F;
+                Wiz.p().limbo.addToBottom(tmp);
+                Wiz.att(new ExhaustSpecificCardAction(tmp,Wiz.p().limbo));
+            }
+            Wiz.att(new DiscardSpecificCardAction(c,Wiz.p().drawPile));
         }
         this.isDone = true;
     }
