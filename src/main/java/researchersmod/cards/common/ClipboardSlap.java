@@ -2,13 +2,12 @@ package researchersmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.actions.common.BetterSelectCardsAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -24,17 +23,19 @@ public class ClipboardSlap extends BaseCard {
             1
     );
 
-    private static final int DAMAGE = 8;
-    private static final int UPG_DAMAGE = 3;
     public ClipboardSlap() {
         super(ID, info);
-        setDamage(DAMAGE, UPG_DAMAGE);
+        setDamage(8, 2);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        if(!Wiz.p().discardPile.isEmpty())
-            addToBot(new ExhaustSpecificCardAction(p.discardPile.getTopCard(), p.discardPile));
+        if(upgraded) Wiz.atb(new BetterSelectCardsAction(p.discardPile.group,1, cardStrings.EXTENDED_DESCRIPTION[0],true,(c -> true),(cards) -> {
+            for (AbstractCard c : cards) {
+                Wiz.att(new ExhaustSpecificCardAction(c, p.discardPile));
+            }
+        }));
+        else if(!Wiz.p().discardPile.isEmpty()) addToBot(new ExhaustSpecificCardAction(p.discardPile.getTopCard(), p.discardPile));
     }
 }

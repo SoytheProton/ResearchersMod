@@ -39,8 +39,8 @@ public class FieldTestExperiment extends BasePower implements InvisiblePower, No
     }
 
     public void completionEffect(){
-        Wiz.applyToSelf(new StrengthPower(owner, 1));
-        Wiz.applyToSelf(new LoseStrengthPower(owner, 1));
+        Wiz.applyToSelf(new StrengthPower(owner, expCard().magicNumber));
+        Wiz.applyToSelf(new LoseStrengthPower(owner, expCard().magicNumber));
         ExperimentCardManager.tickExperiment(this);
     }
 

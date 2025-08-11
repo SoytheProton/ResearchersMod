@@ -19,7 +19,7 @@ public class Digithunder extends ExperimentCard {
     );
 
     public Digithunder() {
-        super(ID, info,2,1);
+        super(ID, info,3,1);
         setMagic(1);
     }
 

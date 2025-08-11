@@ -17,7 +17,7 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnC
 
     public IonSurgePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
-        this.amount2 = 4;
+        this.amount2 = 2;
         updateDescription();
     }
 
@@ -26,7 +26,7 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnC
         this.amount2--;
         if(this.amount2 == 0) {
             flash();
-            this.amount2 = 4;
+            this.amount2 = 2;
             int i = AbstractDungeon.cardRandomRng.random(1, 3);
             switch (i) {
                 case 1:

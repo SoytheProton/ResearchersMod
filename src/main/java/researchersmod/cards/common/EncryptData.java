@@ -36,7 +36,7 @@ public class EncryptData extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[0],true,true,(c -> true),(cards) -> {
             for (AbstractCard c : cards) {
-                Wiz.att(new ExhaustSpecificCardAction(c,Wiz.p().hand,true));
+                Wiz.att(new ExhaustSpecificCardAction(c,p.hand,true));
                 addToBot(new MakeTempCardInHandAction(new BurntDocument()));
                 addToBot(new GainBlockAction(p,block));
             }

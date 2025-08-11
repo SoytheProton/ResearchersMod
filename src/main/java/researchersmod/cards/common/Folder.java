@@ -18,7 +18,7 @@ public class Folder extends ExperimentCard {
             0
     );
     public Folder() {
-        super(ID, info,2,1);
+        super(ID, info,1,1);
     }
 
     @Override

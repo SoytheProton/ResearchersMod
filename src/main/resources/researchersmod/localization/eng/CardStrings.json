@@ -158,7 +158,7 @@
   },
   "${modID}:ConcealedCarry": {
     "NAME": "Concealed Carry",
-    "DESCRIPTION": "Deal !D! damage. NL If this card is Exhausted, gain !M! Strength."
+    "DESCRIPTION": "Deal !D! damage. NL If this card is ${modID}:Phased, gain !M! Strength."
   },
   "${modID}:ShuttleKick": {
     "NAME": "Shuttle Kick",
@@ -177,7 +177,11 @@
   },
   "${modID}:ClipboardSlap": {
     "NAME": "Clipboard Slap",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust the top card of your discard pile."
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust the top card of your discard pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust a card in your discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose 1 card in your Discard pile to Exhaust."
+    ]
   },
   "${modID}:Documentation": {
     "NAME": "Documentation",
@@ -358,7 +362,7 @@
   },
   "${modID}:ParticleAccelerator": {
     "NAME": "Particle Accelerator",
-    "DESCRIPTION": "Discard the top !M! cards your draw pile. NL Cards with ${modID}:Phase will be Exhausted instead."
+    "DESCRIPTION": "Discard the top !M! cards your draw pile. NL Cards with ${modID}:Phase will have a copy Exhausted."
   },
   "${modID}:CometStrike": {
     "NAME": "Comet Strike",
@@ -447,7 +451,7 @@
   },
   "${modID}:FieldTest": {
     "NAME": "Field Test",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Gain 1 temporary Strength. NL ${modID}:Complete: Deal !D! damage to ALL enemies. Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Gain !M! temporary Strength. NL ${modID}:Complete: Deal !D! damage to ALL enemies. Exhaust."
   },
   "${modID}:Accelecharger": {
     "NAME": "Accelecharger",
@@ -489,8 +493,8 @@
   },
   "${modID}:IonSurge": {
     "NAME": "Ion Surge",
-    "DESCRIPTION": "Ethereal. NL Every 4 times you ${modID}:Progress an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly.",
-    "UPGRADE_DESCRIPTION": "Every 4 times ${modID}:Progress an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly."
+    "DESCRIPTION": "Ethereal. NL Every 2 times you ${modID}:Progress an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly.",
+    "UPGRADE_DESCRIPTION": "Every 2 times you ${modID}:Progress an ${modID}:Experiment, gain !M! Strength, Dexterity, or Artifact randomly."
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",
