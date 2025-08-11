@@ -28,5 +28,6 @@ public class HeavyContainmentAction extends AbstractGameAction {
         }
         Wiz.atb(new GainBlockAction(p, i * this.block));
         Wiz.applyToSelf(new NextTurnBlockPower(p, (i*this.block)/2,"Heavy Containment"));
+        this.isDone = true;
     }
 }
