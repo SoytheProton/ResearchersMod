@@ -460,8 +460,8 @@
   },
   "${modID}:OrbitalStrike": {
     "NAME": "Orbital Strike",
-    "DESCRIPTION": "Add X *Orbital *Beacons to your draw pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your draw pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
+    "DESCRIPTION": "Add X *Orbital *Beacons to your draw pile. Deal !M! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your draw pile. Deal !M! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
   },
   "${modID}:OrbitalBeacon": {
     "NAME": "Orbital Beacon",

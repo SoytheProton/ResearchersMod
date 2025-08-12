@@ -113,7 +113,6 @@ public class ExperimentCardManager {
         }
         AbstractPower power = expPower;
         if(power instanceof ExperimentInterfaces.OnCompletionInterface) ExperimentPowerFields.shouldTriggerCompletions.set(power,false);
-        System.out.println(ExperimentPowerFields.shouldTriggerCompletions.get(power));
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));

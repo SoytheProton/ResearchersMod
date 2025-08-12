@@ -22,7 +22,7 @@ public class OrbitalStrike extends BaseCard {
 
     public OrbitalStrike() {
         super(ID, info);
-        setDamage(12);
+        setMagic(12);
         this.cardsToPreview = new OrbitalBeacon();
         this.tags.add(CardTags.STRIKE);
         this.exhaust = true;

@@ -25,19 +25,19 @@ public class HypnoticWatch extends BaseRelic {
 
     public void atTurnStartPostDraw() {
         flash();
-        Wiz.att(new MakeTempCardInDrawPileAction(new Dazed(),1,true,true));
-        Wiz.att(new RelicAboveCreatureAction(Wiz.p(),this));
+        Wiz.atb(new MakeTempCardInDrawPileAction(new Dazed(),1,true,true));
+        Wiz.atb(new RelicAboveCreatureAction(Wiz.p(),this));
     }
 
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
         if(drawnCard.type == AbstractCard.CardType.STATUS && !triggeredThisTurn) {
             triggeredThisTurn = true;
+            Wiz.atb(new RelicAboveCreatureAction(Wiz.p(),this));
+            flash();
+            Wiz.atb(new DiscardSpecificCardAction(drawnCard));
             Wiz.atb(new DrawCardAction(1));
             Wiz.atb(new GainEnergyAction(1));
-            Wiz.att(new DiscardSpecificCardAction(drawnCard));
-            flash();
-            Wiz.att(new RelicAboveCreatureAction(Wiz.p(),this));
         }
     }
 }

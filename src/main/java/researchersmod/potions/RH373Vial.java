@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import researchersmod.actions.common.ManualExperimentAction;
 import researchersmod.cards.colorless.Singularity;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
@@ -39,7 +39,7 @@ public class RH373Vial extends BasePotion {
                     tmp.dontTriggerOnUseCard = true;
                     tmp.applyPowers();
                     tmp.use(Wiz.adp(),(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
-                    ExperimentCardManager.addExperiment(tmp);
+                    Wiz.atb(new ManualExperimentAction(tmp));
                     this.isDone = true;
                 }
             });
