@@ -14,8 +14,6 @@ import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.Wiz;
 
-import java.util.Objects;
-
 public class DigithunderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnTerminateInterface {
 
     public static final String POWER_ID = Researchers.makeID(DigithunderExperiment.class.getSimpleName());
@@ -37,7 +35,7 @@ public class DigithunderExperiment extends BasePower implements InvisiblePower, 
 
     @Override
     public void onTerminate(AbstractPower power) {
-        if(!Objects.equals(power.ID, POWER_ID)) {
+        if(power != this) {
             ExperimentCardManager.complete(this);
         }
     }

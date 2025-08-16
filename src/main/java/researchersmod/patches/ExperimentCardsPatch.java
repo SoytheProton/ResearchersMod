@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
+import researchersmod.fields.ExperimentFields;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.ui.ExperimentFields;
 
 @SpirePatch(
         clz = UseCardAction.class,

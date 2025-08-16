@@ -21,7 +21,7 @@ public class HyperfocusAction extends AbstractGameAction {
     public void update() {
         if(target != null) {
             target.superFlash();
-            int i = 0;
+            int i = 1;
             AbstractPower targetPower = null;
             for(AbstractPower power : p.powers) {
                 if(power instanceof ExperimentPower && ExperimentPowerFields.attachedCard.get(power) == target) {

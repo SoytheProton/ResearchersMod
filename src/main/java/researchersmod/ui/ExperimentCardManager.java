@@ -25,6 +25,7 @@ import researchersmod.Researchers;
 import researchersmod.actions.common.KillCardAction;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.fields.ExperimentFields;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -112,7 +113,7 @@ public class ExperimentCardManager {
             }
         }
         AbstractPower power = expPower;
-        if(power instanceof ExperimentInterfaces.OnCompletionInterface) ExperimentPowerFields.shouldTriggerCompletions.set(power,false);
+        if(power instanceof ExperimentInterfaces.OnCompletionInterface || power instanceof ExperimentInterfaces.OnTerminateInterface) ExperimentPowerFields.shouldTriggerCompletions.set(power,false);
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnExperimentInterface).forEach(c -> ((ExperimentInterfaces.OnExperimentInterface) c).onExperiment(power));
@@ -189,7 +190,6 @@ public class ExperimentCardManager {
     }
 
     public static void tickExperiment(AbstractPower power, int amt) {
-        System.out.println(ExperimentPowerFields.shouldTriggerCompletions.get(power));
         AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
         power.amount = power.amount - amt;
         ((ExperimentCard) card).trial = power.amount;
@@ -198,6 +198,8 @@ public class ExperimentCardManager {
             for (int i = amt; i > 0; i--) {
                 Researchers.expsCompletedThisCombat++;
                 Researchers.expsCompletedThisTurn++;
+                Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionPowerInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionPowerInterface) r).onCompletion(power));
+                Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionPowerInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionPowerInterface) r).onCompletion(power));
                 if (ExperimentPowerFields.shouldTriggerCompletions.get(power)) {
                     Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
                     Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));

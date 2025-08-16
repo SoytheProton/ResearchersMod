@@ -20,7 +20,7 @@ public class ShortCircuit extends ExperimentCard {
     );
 
     public ShortCircuit() {
-        super(ID, info, 1);
+        super(ID, info, 1,1);
         AutoplayField.autoplay.set(this,true);
     }
 

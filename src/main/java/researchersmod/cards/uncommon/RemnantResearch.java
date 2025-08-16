@@ -23,7 +23,7 @@ public class RemnantResearch extends BaseCard {
 
     public RemnantResearch() {
         super(ID, info);
-        setBlock(3,1);
+        setMagic(3,1);
         this.cardsToPreview = new BurntDocument();
         this.exhaust = true;
     }
@@ -31,6 +31,6 @@ public class RemnantResearch extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new MakeTempCardInHandAction(new BurntDocument(), 2));
-        addToBot(new ApplyPowerAction(p, p, new RemnantResearchPower(p,this.block),this.block));
+        addToBot(new ApplyPowerAction(p, p, new RemnantResearchPower(p,this.magicNumber),this.magicNumber));
     }
 }

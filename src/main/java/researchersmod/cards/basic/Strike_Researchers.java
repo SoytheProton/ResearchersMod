@@ -1,21 +1,13 @@
 package researchersmod.cards.basic;
 
-import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.Researchers;
-import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Strike_Researchers extends BaseCard {
     public static final String ID = makeID(Strike_Researchers.class.getSimpleName());

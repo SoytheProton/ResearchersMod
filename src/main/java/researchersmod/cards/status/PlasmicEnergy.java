@@ -1,15 +1,14 @@
 package researchersmod.cards.status;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
-import researchersmod.cardmods.EthericMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
+import researchersmod.variables.EthericVariable;
 
 public class PlasmicEnergy extends BaseCard {
     public static final String ID = makeID(PlasmicEnergy.class.getSimpleName());
@@ -25,7 +24,7 @@ public class PlasmicEnergy extends BaseCard {
         super(ID, info);
         this.exhaust = true;
         setMagic(1);
-        setEtheric(2);
+        EthericVariable.setBaseValue(this,2);
         setPhase(true);
     }
 
@@ -38,7 +37,7 @@ public class PlasmicEnergy extends BaseCard {
     @Override
     public void upgrade() {
         if(!this.upgraded) {
-            CardModifierManager.removeModifiersById(this, EthericMod.ID,true);
+            EthericVariable.upgrade(this,-3);
             super.upgrade();
             this.isEthereal = true;
         }

@@ -1,43 +1,47 @@
 package researchersmod.cards.uncommon;
 
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cards.BaseCard;
 import researchersmod.cardmods.PhaseMod;
-import researchersmod.cards.status.BurntDocument;
+import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.BDNextTurn;
 import researchersmod.util.CardStats;
+import researchersmod.util.Wiz;
 
-public class OpeningStatement extends BaseCard {
+public class OpeningStatement extends BaseCard implements PhaseMod.WhilePhaseInterface {
     public static final String ID = makeID(OpeningStatement.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
-            AbstractCard.CardType.SKILL,
+            CardType.ATTACK,
             AbstractCard.CardRarity.UNCOMMON,
             AbstractCard.CardTarget.SELF,
             1
     );
 
-
-    private static final int BLOCK = 10;
-
     public OpeningStatement() {
         super(ID, info);
-        setBlock(BLOCK);
+        setDamage(10,2);
         this.isInnate = true;
         this.isEthereal = true;
-        this.cardsToPreview = new BurntDocument();
-        this.upgPhase = true;
+        setPhase(true);
+        this.isMultiDamage = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new ApplyPowerAction(p, p, new BDNextTurn(p,1),1));
+        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.LIGHTNING));
+    }
+
+    @Override
+    public void whilePhase(AbstractCard card) {
+        AbstractCard tmp = makeStatEquivalentCopy();
+        CardModifierManager.removeModifiersById(tmp,PhaseMod.ID,true);
+        Wiz.atb(new MakeTempCardInDiscardAction(tmp,1));
     }
 }

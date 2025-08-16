@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import researchersmod.ui.ExperimentFields;
+import researchersmod.fields.ExperimentFields;
 
 @SpirePatch(
         clz= UseCardAction.class,

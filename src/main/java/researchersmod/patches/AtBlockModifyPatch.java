@@ -10,8 +10,6 @@ import javassist.CtBehavior;
 import researchersmod.relics.interfaces.AtBlockModifyInterface;
 import researchersmod.util.Wiz;
 
-import java.util.ArrayList;
-
 @SpirePatch(
         clz= AbstractCard.class,
         method = "applyPowersToBlock"
@@ -28,7 +26,7 @@ public class AtBlockModifyPatch {
     private static class Locator extends SpireInsertLocator {
         public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
             Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class,"powers");
-            return LineFinder.findInOrder(ctMethodToPatch, new ArrayList<Matcher>(), finalMatcher);
+            return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
         }
     }
 }

@@ -2,7 +2,6 @@ package researchersmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,18 +17,17 @@ public class Incinerate extends BaseCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            1
+            2
     );
 
     public Incinerate() {
         super(ID, info);
-        setDamage(7);
-        setPhase(false, true);
+        setDamage(10,4);
         setMagic(1);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToBot(new DrawCardAction(magicNumber,new IncinerateAction(this)));
+        addToBot(new IncinerateAction(p));
     }
 }

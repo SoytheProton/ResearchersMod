@@ -12,8 +12,6 @@ import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
 
-import java.util.Objects;
-
 public class FolderExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower, ExperimentInterfaces.OnCompletionInterface {
 
     public static final String POWER_ID = Researchers.makeID(FolderExperiment.class.getSimpleName());
@@ -35,7 +33,7 @@ public class FolderExperiment extends BasePower implements InvisiblePower, NonSt
 
     @Override
     public void onCompletion(AbstractPower power) {
-        if(!Objects.equals(power.ID, POWER_ID)) {
+        if(power != this) {
             ExperimentCardManager.tickExperiment(power,-1);
             ExperimentCardManager.complete(this);
         }

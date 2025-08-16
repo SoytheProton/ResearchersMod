@@ -17,7 +17,7 @@
     "NAME": "Universal Access Card",
     "FLAVOR": ":// Accessing Prism RnD database...clearance level: 5. Welcome, overseer.",
     "DESCRIPTIONS": [
-      "At the start of each combat, play a #yData #yOverride."
+      "Replaces [#3540db]Database [#3540db]Tablet[]. At the start of each combat, play a #yData #yOverride."
     ]
   },
   "${modID}:Flashdrive": {

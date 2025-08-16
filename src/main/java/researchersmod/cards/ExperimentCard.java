@@ -2,7 +2,7 @@ package researchersmod.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import researchersmod.ui.ExperimentFields;
+import researchersmod.fields.ExperimentFields;
 import researchersmod.util.CardStats;
 
 import static researchersmod.util.GeneralUtils.removePrefix;
