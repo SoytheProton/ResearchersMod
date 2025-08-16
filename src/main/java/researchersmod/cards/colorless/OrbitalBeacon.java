@@ -20,8 +20,8 @@ public class OrbitalBeacon extends BaseCard {
 
     public OrbitalBeacon() {
         super(ID, info);
-        setMagic(1,1);
-        setPhase(true);
+        setMagic(1);
+        setPhase(true,true);
     }
 
     @Override

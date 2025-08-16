@@ -17,7 +17,7 @@
       "Experiment",
       "Experiments"
     ],
-    "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be returned."
+    "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be discarded."
   },
   {
     "ID": "Terminate",
@@ -29,7 +29,7 @@
       "Completion",
       "Completed"
     ],
-    "DESCRIPTION": "When an #yExperiment card is used up and returns itself."
+    "DESCRIPTION": "When an #yExperiment card is used up."
   },
   {
     "ID": "Complete",

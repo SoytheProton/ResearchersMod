@@ -2,7 +2,7 @@ package researchersmod.actions.unique;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -45,7 +45,7 @@ public class OrbitalStrikeAction extends AbstractGameAction {
 
             if (effect > 0) {
                 for(int i = effect; i > 0; i--) {
-                    Wiz.att(new MakeTempCardInDrawPileAction(new OrbitalBeacon(),1,true,true));
+                    Wiz.att(new MakeTempCardInDiscardAction(new OrbitalBeacon(),1));
                     Wiz.att(new ApplyPowerAction(p, p, new OrbitalStrikePower(p,damage)));
                 }
                 if (!this.freeToPlayOnce) {

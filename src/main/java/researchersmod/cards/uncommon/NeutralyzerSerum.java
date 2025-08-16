@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.actions.unique.NeutralyzerSerumAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.fields.ExperimentFields;
 import researchersmod.powers.experiments.NeutralyzerSerumExperiment;
-import researchersmod.ui.ExperimentFields;
 import researchersmod.util.CardStats;
 
 public class NeutralyzerSerum extends ExperimentCard {

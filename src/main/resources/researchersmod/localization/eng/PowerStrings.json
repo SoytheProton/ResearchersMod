@@ -16,48 +16,10 @@
       " last.)"
     ]
   },
-  "${modID}:BDNextTurn": {
-    "NAME": "Opening Statement",
-    "DESCRIPTIONS": [
-      "Next turn, add #b",
-      " #yBurnt #yDocument into your hand.",
-      " #yBurnt #yDocuments into your hand."
-    ]
-  },
-  "${modID}:ComboPower": {
-    "NAME": "Assist",
-    "DESCRIPTIONS": [
-      "If the next card you play is an Attack, gain #b",
-      " #yBlock and draw #b",
-      " card."
-    ]
-  },
-  "${modID}:OldnSurgePower": {
-    "NAME": "Ion Surge",
-    "DESCRIPTIONS": [
-      "Whenever you play a Power card, add #yPhase and #yEthereal to #b",
-      " card in your hand.",
-      " cards in your hand."
-    ]
-  },
-  "${modID}:InfluxPowerPower": {
-    "NAME": "Influx Power",
-    "DESCRIPTIONS": [
-      "Whenever a card is #yPhased, gain #b",
-      " #yBlock."
-    ]
-  },
   "${modID}:UplinkPower": {
     "NAME": "Uplink",
     "DESCRIPTIONS": [
       "The next card you play will #yExhaust a copy of it, if it has #yPhase."
-    ]
-  },
-  "${modID}:DocumentationPower": {
-    "NAME": "Documentation",
-    "DESCRIPTIONS": [
-      "Whenever you play a Power, gain #b",
-      " #yBlock."
     ]
   },
   "${modID}:WingbeatPower": {
@@ -92,30 +54,11 @@
       "Exhaust."
     ]
   },
-  "${modID}:ResearchGrantsPower": {
-    "NAME": "Research Grants",
-    "DESCRIPTIONS": [
-      "Reduce #yExperiment cards' costs to 0 for the next #b%d turn%s."
-    ]
-  },
-  "${modID}:FreeExperimentsPower": {
-    "NAME": "Free Experiments",
-    "DESCRIPTIONS": [
-      "#yExperiment cards' costs are reduced to 0 for #b%d turn%s."
-    ]
-  },
   "${modID}:EntropyPower": {
     "NAME": "Entropy",
     "DESCRIPTIONS": [
       "At the start of your turn, add #b%d random card%s to your hand and give it #yEthereal%s.",
       " and #yPhase"
-    ]
-  },
-  "${modID}:EnthalpyPower": {
-    "NAME": "Enthalpy",
-    "DESCRIPTIONS": [
-      "At the start of your turn, add a #y%s to your hand with #yEthereal%s.",
-      " and no #yPhase"
     ]
   },
   "${modID}:VolcanicResearchPower": {
@@ -128,18 +71,6 @@
     "NAME": "Volcanic Research",
     "DESCRIPTIONS": [
       "At the start of your turn, add #b%d #yMagma #yBurn%s into your draw pile. NL Whenever you draw a #yStatus, gain #b%d Strength and draw #b%d card%s."
-    ]
-  },
-  "${modID}:PhaseDrawPower": {
-    "NAME": "Phase Draws",
-    "DESCRIPTIONS": [
-      "Add #yPhase to all drawn cards for #b%d turn%s."
-    ]
-  },
-  "${modID}:ParticleAcceleratorPower": {
-    "NAME": "Particle Accelerator",
-    "DESCRIPTIONS": [
-      "Add #yPhase to all drawn cards for the next #b%d turn%s."
     ]
   },
   "${modID}:ExtensiveTestingPower": {
@@ -157,7 +88,7 @@
   "${modID}:SystemErrorPower": {
     "NAME": "System Error",
     "DESCRIPTIONS": [
-      "The next #b%d time%s a card #yPhases, draw 2 cards."
+      "At the start of your turn, play #b%d #yShort #yCircuit%s+. NL Whenever a #yShort #yCircuit #yCompletes, gain #b%d #yStrength and #yDexterity."
     ]
   },
   "${modID}:ManipulationPower": {
@@ -237,6 +168,12 @@
     "NAME": "Instability",
     "DESCRIPTIONS": [
       "When you have #b3 #yInstability, lose all stacks of #yInstability and end your turn."
+    ]
+  },
+  "${modID}:PurgeRecordsPower": {
+    "NAME": "Purge Records",
+    "DESCRIPTIONS": [
+      "When you play a #yBurnt #yDocument this turn, gain #b%d Strength."
     ]
   }
 }

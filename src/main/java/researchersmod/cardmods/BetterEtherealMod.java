@@ -1,16 +1,13 @@
 package researchersmod.cardmods;
 
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import researchersmod.actions.common.RemoveEthericAction;
 import researchersmod.ui.ModConfig;
 import researchersmod.util.KH;
-import researchersmod.util.Wiz;
 
 import java.util.ArrayList;
 
@@ -24,17 +21,18 @@ public class BetterEtherealMod extends AbstractCardModifier {
 
     @Override
     public boolean shouldApply(AbstractCard card) {
-        return (!card.isEthereal || CardModifierManager.hasModifier(card,EthericMod.ID));
+        return (!card.isEthereal || KH.hasEtheric(card,""));
     }
 
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         String p = LocalizedStrings.PERIOD;
+        String[] cardDescription;
         if(KH.hasEtheric(card,rawDescription)) {
-            Wiz.att(new RemoveEthericAction(card, rawDescription));
+            cardDescription = new String[] {rawDescription.substring(0,rawDescription.indexOf(uiStrings.TEXT[5])),rawDescription.substring(2+rawDescription.indexOf(p,rawDescription.indexOf(uiStrings.TEXT[5])))};
         }
-        String[] cardDescription = KH.autoString(KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
+        else cardDescription = KH.autoString(KH.hasInnate(card,rawDescription) || KH.hasUnplayableNL(card,rawDescription) ? "." :
                                  KH.hasUnplayable(card,rawDescription) ? " " : "" ,
                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :

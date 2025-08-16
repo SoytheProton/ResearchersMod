@@ -45,6 +45,7 @@ import researchersmod.ui.ModConfig;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.KeywordInfo;
 import researchersmod.util.TextureLoader;
+import researchersmod.variables.EthericVariable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -62,8 +63,8 @@ public class Researchers implements
         PostExhaustSubscriber,
         OnPlayerTurnStartSubscriber,
         PostBattleSubscriber,
-        PostDeathSubscriber,
-        SetUnlocksSubscriber {
+        SetUnlocksSubscriber,
+        StartGameSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -280,9 +281,9 @@ public class Researchers implements
 
     @Override
     public void receiveEditCards() {
+        BaseMod.addDynamicVariable(new EthericVariable());
         new AutoAdd(modID) //Loads files from this mod
                 .packageFilter(BaseCard.class) //In the same package as this class
-                .notPackageFilter("researchersmod.cards.deprecated")
                 .setDefaultSeen(!ModConfig.enableUnlocks) //And marks them as seen in the compendium
                 .cards(); //Adds the cards
     }
@@ -331,11 +332,6 @@ public class Researchers implements
         LastPhasedCard = null;
     }
 
-    @Override
-    public void receivePostDeath() {
-        ExperimentCardManager.experiments.group.clear();
-    }
-
     private void unlockBundles() {
         for (int y = 4; y >= 0; y--) {
             ArrayList<AbstractUnlock> unlockBundle = UnlockTracker.getUnlockBundle(ResearchersCharacter.Meta.RESEARCHERS, y);
@@ -363,5 +359,10 @@ public class Researchers implements
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, EncryptData.ID, Entropy.ID, O5Command.ID), ResearchersCharacter.Meta.RESEARCHERS, 2);
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.RELIC, ElectromagneticEqualizer.ID, HypnoticWatch.ID, BehaviorAdjustment.ID), ResearchersCharacter.Meta.RESEARCHERS, 3);
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, RagingBlade.ID, FerrousBlade.ID, Centrifuge.ID), ResearchersCharacter.Meta.RESEARCHERS, 4);
+    }
+
+    @Override
+    public void receiveStartGame() {
+        ExperimentCardManager.experiments.group.clear();
     }
 }

@@ -1,32 +1,54 @@
 package researchersmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
-import researchersmod.cardmods.PhaseMod;
+import researchersmod.actions.common.ManualExperimentAction;
+import researchersmod.cards.status.ShortCircuit;
+import researchersmod.powers.experiments.ShortCircuitExperiment;
+import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.util.Wiz;
 
-public class SystemErrorPower extends BasePower implements PhaseMod.OnPhaseInterface {
+import java.util.Objects;
+
+public class SystemErrorPower extends BasePower implements ExperimentInterfaces.OnTerminateInterface {
     public static final String POWER_ID = Researchers.makeID(SystemErrorPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
-    private static final boolean TURNBASED = true;
+    private static final boolean TURNBASED = false;
     public SystemErrorPower(AbstractCreature owner, int amt) {
         super(POWER_ID, TYPE, TURNBASED, owner, amt);
         updateDescription();
     }
 
+    @Override
+    public void atStartOfTurnPostDraw() {
+        flash();
+        for(int i = amount; i>0; i--) {
+            AbstractCard card = new ShortCircuit();
+            card.upgrade();
+            card.dontTriggerOnUseCard = true;
+            card.use((AbstractPlayer) owner,(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
+            Wiz.atb(new ManualExperimentAction(card));
+        }
+    }
 
     public void updateDescription() {
         String plural = "s";
         if(this.amount == 1) plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
+        this.description = String.format(DESCRIPTIONS[0],this.amount,plural,this.amount);
     }
 
     @Override
-    public void onPhase(AbstractCard card) {
-        Wiz.atb(new DrawCardAction(2));
-        Wiz.atb(new ReducePowerAction(owner, owner, this, 1));
+    public void onTerminate(AbstractPower power) {
+        if(Objects.equals(power.ID, ShortCircuitExperiment.POWER_ID)) {
+            flashWithoutSound();
+            Wiz.applyToSelf(new StrengthPower(owner,this.amount));
+            Wiz.applyToSelf(new DexterityPower(owner, this.amount));
+        }
     }
 }

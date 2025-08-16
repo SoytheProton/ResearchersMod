@@ -6,7 +6,6 @@ import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,7 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
-import researchersmod.cardmods.EthericMod;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.CardStats;
 import researchersmod.util.TriFunction;
@@ -437,30 +435,7 @@ public abstract class BaseCard extends CustomCard {
         } this.upgPhase = upgPhase;
     }
 
-    protected final void setEtheric(int ethericValue) {
-        setEtheric(ethericValue,0);
-    }
-
-    protected final void setEtheric(int ethericValue, int upgEthericValue) {
-        if(ethericValue > 0) {
-            EthericMod mod = new EthericMod(ethericValue);
-            CardModifierManager.addModifier(this, mod);
-        }
-        this.upgEthericValue = upgEthericValue;
-    }
-
-    protected final void setExhaustive(int exhaustiveValue) {
-        setExhaustive(exhaustiveValue,0);
-    }
-
-    protected final void setExhaustive(int exhaustiveValue, int upgExhaustiveValue) {
-        if(exhaustiveValue > 0) ExhaustiveVariable.setBaseValue(this,exhaustiveValue);
-        this.upgExhaustiveValue = upgExhaustiveValue;
-    }
-
     protected boolean upgPhase = false;
-    protected int upgEthericValue = 0;
-    protected int upgExhaustiveValue = 0;
 
 
     @Override
@@ -566,21 +541,6 @@ public abstract class BaseCard extends CustomCard {
             if (upgPhase) {
                 AbstractCardModifier mod = new PhaseMod();
                 CardModifierManager.addModifier(this, mod);
-            }
-
-            if (upgEthericValue != 0) {
-                EthericMod mod;
-                if(CardModifierManager.hasModifier(this,EthericMod.ID)) {
-                    mod = (EthericMod) CardModifierManager.getModifiers(this, EthericMod.ID).get(0);
-                    mod.editEtheric(mod.baseEthericValue + upgEthericValue);
-                } else {
-                    mod = new EthericMod(upgEthericValue);
-                    CardModifierManager.addModifier(this,mod);
-                }
-            }
-
-            if (upgExhaustiveValue != 0) {
-                ExhaustiveVariable.upgrade(this,upgExhaustiveValue);
             }
 
             this.initializeDescription();

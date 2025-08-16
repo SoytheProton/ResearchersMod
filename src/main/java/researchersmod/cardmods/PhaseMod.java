@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cards.rare.AltercatedBlueprint;
-import researchersmod.cards.uncommon.FerrousBlade;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.ManipulationPower;
 import researchersmod.ui.ModConfig;
@@ -35,8 +34,8 @@ public class PhaseMod extends AbstractCardModifier {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if(!phaseNumbers || isFirstApplication) {
             String p = LocalizedStrings.PERIOD;
-            String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) || KH.hasEtheric(card, rawDescription) ? " " :
-                    KH.hasUnplayableNL(card, rawDescription) ? "." :
+            String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) ? " " :
+                    KH.hasUnplayableNL(card, rawDescription) || KH.hasEtheric(card, rawDescription) ? "." :
                         KH.hasUnplayable(card, rawDescription) ? " " : "",
                 KH.hasRetain(card,rawDescription) ? uiStrings.TEXT[3] :
                         KH.hasEthereal(card, rawDescription) ? uiStrings.TEXT[2] :
@@ -44,13 +43,13 @@ public class PhaseMod extends AbstractCardModifier {
                                         KH.hasInnate(card, rawDescription) ? uiStrings.TEXT[4] :
                                                 KH.hasUnplayable(card, rawDescription) ? uiStrings.TEXT[0] + p + " NL" :
                                                         KH.hasUnplayableNL(card, rawDescription) ? uiStrings.TEXT[0] : "",
-                rawDescription, Objects.equals(card.cardID, FerrousBlade.ID));
+                rawDescription);
             return cardDescription[0] +
                 (KH.hasUnplayableNL(card, rawDescription) ? " NL " : " ")
                 + phaseString(card) + p +
                 (KH.hasInnate(card, rawDescription) ||
                         (KH.hasEthereal(card, rawDescription) && !CardModifierManager.hasModifier(card, BetterEtherealMod.ID)) ||
-                        (KH.hasPhase(card, rawDescription) && !isFirstApplication) ||
+                        (KH.hasPhase(card, rawDescription) && !isFirstApplication) || KH.hasEtheric(card, rawDescription) ||
                         KH.hasRetain(card, rawDescription) ? "" : " NL ")
                 + cardDescription[1];
         }
@@ -109,9 +108,6 @@ public class PhaseMod extends AbstractCardModifier {
                 Wiz.p().powers.stream().filter(r-> r instanceof PhaseMod.WhilePhaseInterface).forEach(r -> ((PhaseMod.WhilePhaseInterface) r).whilePhase(tmp));
                 tmp.applyPowers();
                 addToTop((new NewQueueCardAction(tmp, (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false, true)));
-                if(tmp instanceof PhaseMod.OnPhaseInterface) ((PhaseMod.OnPhaseInterface)tmp).onPhase(tmp);
-                Wiz.p().relics.stream().filter(r-> r instanceof PhaseMod.OnPhaseInterface).forEach(r -> ((PhaseMod.OnPhaseInterface) r).onPhase(tmp));
-                Wiz.p().powers.stream().filter(r-> r instanceof PhaseMod.OnPhaseInterface).forEach(r -> ((PhaseMod.OnPhaseInterface) r).onPhase(tmp));
                 Researchers.cardsPhasedThisTurn++;
                 Researchers.cardsPhasedThisCombat++;
                 if(!Objects.equals(card.cardID, AltercatedBlueprint.ID)) Researchers.LastPhasedCard = card;

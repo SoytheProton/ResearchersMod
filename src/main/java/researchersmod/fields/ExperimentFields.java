@@ -1,4 +1,4 @@
-package researchersmod.ui;
+package researchersmod.fields;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

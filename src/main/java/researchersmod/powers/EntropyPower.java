@@ -4,7 +4,6 @@ import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -17,10 +16,7 @@ public class EntropyPower extends BasePower implements NonStackablePower {
     public static final String POWER_ID = Researchers.makeID(EntropyPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
-    private boolean upgraded = false;
-    public static CardGroup srcCommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
-    public static CardGroup srcUncommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
-    public static CardGroup srcRareCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+    private final boolean upgraded;
 
     public EntropyPower(AbstractCreature owner, boolean upg) {
         super(POWER_ID, TYPE, TURNBASED, owner, 1);

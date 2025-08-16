@@ -10,14 +10,14 @@ import researchersmod.Researchers;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.util.Wiz;
 
-public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnCompletionInterface {
+public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnCompletionPowerInterface {
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
 
     public IonSurgePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
-        this.amount2 = 2;
+        this.amount2 = 3;
         updateDescription();
     }
 
@@ -26,7 +26,7 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnC
         this.amount2--;
         if(this.amount2 == 0) {
             flash();
-            this.amount2 = 2;
+            this.amount2 = 3;
             int i = AbstractDungeon.cardRandomRng.random(1, 3);
             switch (i) {
                 case 1:

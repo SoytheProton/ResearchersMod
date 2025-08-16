@@ -23,7 +23,7 @@ public class EnergySlash extends BaseCard {
 
     public EnergySlash() {
         super(ID, info);
-        setDamage(5,2);
+        setDamage(6,2);
         setPhase(true);
         this.exhaust = true;
         CardModifierManager.addModifier(this,new PhaseMod());

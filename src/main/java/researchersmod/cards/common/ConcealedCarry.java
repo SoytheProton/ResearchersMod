@@ -14,7 +14,7 @@ import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
-public class ConcealedCarry extends BaseCard implements PhaseMod.OnPhaseInterface {
+public class ConcealedCarry extends BaseCard implements PhaseMod.WhilePhaseInterface {
     public static final String ID = makeID(ConcealedCarry.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
@@ -38,7 +38,7 @@ public class ConcealedCarry extends BaseCard implements PhaseMod.OnPhaseInterfac
     }
 
     @Override
-    public void onPhase(AbstractCard card) {
+    public void whilePhase(AbstractCard card) {
         Wiz.atb(new ApplyPowerAction(Wiz.adp(), Wiz.adp(), new StrengthPower(Wiz.adp(),magicNumber)));
     }
 }

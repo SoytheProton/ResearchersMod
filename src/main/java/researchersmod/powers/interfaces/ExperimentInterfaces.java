@@ -11,9 +11,12 @@ public class ExperimentInterfaces {
         void onCompletion(AbstractPower power);
     }
 
+    public interface OnCompletionPowerInterface {
+        void onCompletion(AbstractPower power);
+    }
+
     public interface OnTerminateInterface {
         void onTerminate(AbstractPower power);
     }
-
 }
 

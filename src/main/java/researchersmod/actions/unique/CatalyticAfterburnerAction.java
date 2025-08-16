@@ -1,39 +1,31 @@
 package researchersmod.actions.unique;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
-import researchersmod.util.Wiz;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.GiantFireEffect;
 
-public class CatalyticAfterburnerAction
-        extends AbstractGameAction {
-    private int amount;
-    private final AbstractPlayer p;
-    private final int[] multiDamage;
-
-    public CatalyticAfterburnerAction(AbstractPlayer p, int[] multiDamage, int amount) {
-        this.duration = Settings.ACTION_DUR_FAST;
-        this.actionType = ActionType.WAIT;
-        this.amount = amount;
-        this.p = p;
-        this.multiDamage = multiDamage;
+public class CatalyticAfterburnerAction extends AttackDamageRandomEnemyAction {
+    public CatalyticAfterburnerAction(AbstractCard card) {
+        super(card,AttackEffect.FIRE);
     }
-
 
     public void update() {
-        for (AbstractCard c : DrawCardAction.drawnCards) {
-            if (c.type == AbstractCard.CardType.STATUS) {
-                Wiz.atb(new DamageAllEnemiesAction(p, multiDamage, DamageInfo.DamageType.NORMAL, AttackEffect.FIRE));
-            } else {
-                amount--;
-            }
-            if(amount > 0) Wiz.att(new DrawCardAction(1,new CatalyticAfterburnerAction(p,multiDamage,amount)));
+        if (!Settings.FAST_MODE)
+            addToTop((AbstractGameAction)new WaitAction(0.1F));
+        super.update();
+        if (this.target != null) {
+            AbstractDungeon.effectsQueue.add(new GiantFireEffect());
+            AbstractDungeon.effectsQueue.add(new GiantFireEffect());
+            AbstractDungeon.effectsQueue.add(new GiantFireEffect());
+            AbstractDungeon.effectsQueue.add(new GiantFireEffect());
+            AbstractDungeon.effectsQueue.add(new GiantFireEffect());
+            AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Color.FIREBRICK));
         }
-        this.isDone = true;
     }
 }
-

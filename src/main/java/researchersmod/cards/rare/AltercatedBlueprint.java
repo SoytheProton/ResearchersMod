@@ -30,8 +30,9 @@ public class AltercatedBlueprint extends BaseCard {
     public void applyPowers() {
         super.applyPowers();
         if(Researchers.LastPhasedCard != null) {
-            String name = Researchers.LastPhasedCard.name.replace(" ", "* ");
-            this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0], name);
+            String cardName = Researchers.LastPhasedCard.name.replace(" ", " [#efc851]");
+            this.cardsToPreview = Researchers.LastPhasedCard.makeStatEquivalentCopy();
+            this.rawDescription = cardStrings.DESCRIPTION + String.format(cardStrings.EXTENDED_DESCRIPTION[0], cardName);
             initializeDescription();
         }
     }

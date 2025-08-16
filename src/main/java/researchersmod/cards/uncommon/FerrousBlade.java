@@ -1,6 +1,5 @@
 package researchersmod.cards.uncommon;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -8,11 +7,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.BetterEtherealMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
+import researchersmod.variables.EthericVariable;
 
 public class FerrousBlade extends BaseCard {
     public static final String ID = makeID(FerrousBlade.class.getSimpleName());
@@ -28,7 +27,7 @@ public class FerrousBlade extends BaseCard {
         super(ID, info);
         setDamage(4,2);
         setPhase(true);
-        setEtheric(2);
+        EthericVariable.setBaseValue(this,2);
     }
 
     @Override
@@ -41,21 +40,4 @@ public class FerrousBlade extends BaseCard {
             Blade.upgrade();
         Wiz.atb(new MakeTempCardInHandAction(Blade));
     }
-
-    public void applyPowers() {
-        super.applyPowers();
-        if(CardModifierManager.hasModifier(this, BetterEtherealMod.ID)) {
-            int i = 0; if(upgraded) i = 1;
-            this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[i];
-            initializeDescription();
-        }
-    }
-
-/*    public void upgrade() {
-        if(!upgraded) {
-            super.upgrade();
-            CardModifierManager.removeModifiersById(this,EthericMod.ID,true);
-            CardModifierManager.addModifier(this, new BetterEtherealMod());
-        }
-    }*/
 }

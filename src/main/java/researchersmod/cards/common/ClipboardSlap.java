@@ -31,7 +31,7 @@ public class ClipboardSlap extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        if(upgraded) Wiz.atb(new BetterSelectCardsAction(p.discardPile.group,1, cardStrings.EXTENDED_DESCRIPTION[0],true,(c -> true),(cards) -> {
+        if(upgraded) Wiz.atb(new BetterSelectCardsAction(p.discardPile.group,1, cardStrings.EXTENDED_DESCRIPTION[0],false,(c -> true),(cards) -> {
             for (AbstractCard c : cards) {
                 Wiz.att(new ExhaustSpecificCardAction(c, p.discardPile));
             }

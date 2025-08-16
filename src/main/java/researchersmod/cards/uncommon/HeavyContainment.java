@@ -20,12 +20,11 @@ public class HeavyContainment extends BaseCard {
 
     public HeavyContainment() {
         super(ID, info);
-        setBlock(6,3);
         setExhaust(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new HeavyContainmentAction(p, this.block, this.name));
+        Wiz.atb(new HeavyContainmentAction(p,upgraded));
     }
 }

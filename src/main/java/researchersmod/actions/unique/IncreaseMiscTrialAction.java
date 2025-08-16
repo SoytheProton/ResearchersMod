@@ -36,7 +36,6 @@ public class IncreaseMiscTrialAction
                 continue;
             c.misc += this.miscIncrease;
             ((Analyze)c).editTrial(c.misc);
-            c.applyPowers();
         }
         for (AbstractCard c : GetAllInBattleInstances.get(this.uuid)) {
             c.misc += this.miscIncrease;
