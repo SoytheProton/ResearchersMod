@@ -3,6 +3,7 @@ package researchersmod.cards.uncommon;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.actions.common.SetCostAction;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
@@ -28,9 +29,7 @@ public class ResearchGrants extends BaseCard implements PhaseMod.OnPhaseInterfac
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new ManipulationPower(p,this.magicNumber));
-        this.cost = 4;
-        this.costForTurn = 4;
-        this.isCostModified = false;
+        Wiz.atb(new SetCostAction(this, 4, false));
     }
 
     @Override

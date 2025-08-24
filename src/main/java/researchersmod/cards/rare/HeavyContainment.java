@@ -15,16 +15,17 @@ public class HeavyContainment extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
-            2
+            3
     );
 
     public HeavyContainment() {
         super(ID, info);
+        setCostUpgrade(2);
         setExhaust(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new HeavyContainmentAction(p,upgraded));
+        Wiz.atb(new HeavyContainmentAction(p,false));
     }
 }

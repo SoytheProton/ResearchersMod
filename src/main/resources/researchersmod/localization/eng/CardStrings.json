@@ -159,7 +159,7 @@
   "${modID}:PlasmicEnergy": {
     "NAME": "Plasmic Energy",
     "DESCRIPTION": "Unplayable. NL ${modID}:Etheric !${modID}:eth!. NL Next turn, gain [E]  and draw a card.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL ${modID}:Etheric !${modID}:eth!. NL Ethereal. NL Next turn, gain [E]  and draw a card."
+    "UPGRADE_DESCRIPTION": "Unplayable. NL Ethereal. NL Next turn, gain [E]  and draw a card."
   },
   "${modID}:CutThroughLight": {
     "NAME": "Cut Through Light",
@@ -354,12 +354,11 @@
   },
   "${modID}:HeavyContainment": {
     "NAME": "Heavy Containment",
-    "DESCRIPTION": "Exhaust your hand. NL Add a copy of each card Exhausted into your hand that costs [E]  less this turn. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Exhaust your hand. NL Add a copy of each card Exhausted into your hand that costs [E]  less this combat. NL Exhaust."
+    "DESCRIPTION": "Exhaust your hand. NL Add a copy of each card Exhausted into your hand that costs [E]  less this turn. NL Exhaust."
   },
   "${modID}:Incinerate": {
     "NAME": "Incinerate",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust all Statuses in hand. Draw a card for each Status Exhausted."
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust all *Statuses in hand. Draw a card for each Status Exhausted."
   },
   "${modID}:Multithread": {
     "NAME": "Multithread",
@@ -376,8 +375,8 @@
   },
   "${modID}:OrbitalStrike": {
     "NAME": "Orbital Strike",
-    "DESCRIPTION": "Add X *Orbital *Beacons to your discard pile. Deal !M! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your discard pile. Deal !M! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
+    "DESCRIPTION": "Add X *Orbital *Beacons to your discard pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add X+1 Orbital Beacons to your discard pile. Deal !D! damage to ALL enemies per *Orbital *Beacon after all of them are played. NL Exhaust."
   },
   "${modID}:OrbitalBeacon": {
     "NAME": "Orbital Beacon",
@@ -399,8 +398,8 @@
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
-    "DESCRIPTION": "Unplayable. NL At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL Retain. NL At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time."
+    "DESCRIPTION": "Unplayable. NL When drawn, lose [E] [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When drawn, lose [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time."
   },
   "${modID}:Finalize": {
     "NAME": "Finalize",
@@ -458,6 +457,6 @@
   },
   "${modID}:ElectromagneticInstability": {
     "NAME": "Electromagnetic Instability",
-    "DESCRIPTION": "Unplayable. NL Cannot be removed from your deck. When drawn, gain 1 ${modID}:Instability."
+    "DESCRIPTION": "Unplayable. NL Cannot be removed from your deck. When entering your hand, gain 1 ${modID}:Instability."
   }
 }

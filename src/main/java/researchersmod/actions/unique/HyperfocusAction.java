@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.ui.ExperimentPowerFields;
 
 public class HyperfocusAction extends AbstractGameAction {
     private final AbstractCard target;

@@ -23,9 +23,11 @@ import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
 import researchersmod.Researchers;
 import researchersmod.actions.common.KillCardAction;
+import researchersmod.cardmods.DamageModMod;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.fields.ExperimentFields;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -105,6 +107,7 @@ public class ExperimentCardManager {
         if(!CardModifierManager.hasModifier(card, ExperimentMod.ID)) {
             CardModifierManager.addModifier(card, new ExperimentMod());
         }
+
         experiments.addToTop(card);
         AbstractPower expPower = null;
         for (AbstractPower p : Wiz.adp().powers) {
@@ -160,6 +163,7 @@ public class ExperimentCardManager {
         AbstractDungeon.player.drawPile.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnTerminateInterface).forEach(c -> ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power));
         Researchers.expsTerminatedThisCombat++;
         Researchers.expsTerminatedThisTurn++;
+        CardModifierManager.removeModifiersById(card, DamageModMod.ID,true);
         CardModifierManager.removeModifiersById(card, ExperimentMod.ID, true);
         ((ExperimentCard) card).trial = ((ExperimentCard) card).baseTrial;
         card.unhover();

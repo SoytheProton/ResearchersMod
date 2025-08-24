@@ -16,7 +16,8 @@ import researchersmod.ui.ExperimentCardManager;
         clz = UseCardAction.class,
         method = "update"
 )
-public class ExperimentCardsPatch {
+public class
+ExperimentCardsPatch {
     public static ExprEditor Instrument() {
         return new ExprEditor() {
             @Override

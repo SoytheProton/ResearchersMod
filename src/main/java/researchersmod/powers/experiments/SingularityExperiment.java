@@ -11,11 +11,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.Researchers;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.ui.ExperimentPowerFields;
-import researchersmod.util.CalcUtil;
 import researchersmod.util.Wiz;
 
 public class SingularityExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {
@@ -42,7 +41,7 @@ public class SingularityExperiment extends BasePower implements InvisiblePower, 
     }
 
     public void completionEffect(){
-        Wiz.atb(new GainBlockAction(owner,(int) CalcUtil.CalcBlock(expCard().block,ExperimentPowerFields.attachedCard.get(this))));
+        Wiz.atb(new GainBlockAction(owner,expCard().block));
         ExperimentCardManager.tickExperiment(this);
     }
 

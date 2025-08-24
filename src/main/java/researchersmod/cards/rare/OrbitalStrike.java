@@ -22,7 +22,7 @@ public class OrbitalStrike extends BaseCard {
 
     public OrbitalStrike() {
         super(ID, info);
-        setMagic(12);
+        setDamage(12);
         this.cardsToPreview = new OrbitalBeacon();
         this.tags.add(CardTags.STRIKE);
         this.exhaust = true;
@@ -30,6 +30,6 @@ public class OrbitalStrike extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.atb(new OrbitalStrikeAction(Wiz.p(),this,freeToPlayOnce,energyOnUse,magicNumber));
+        Wiz.atb(new OrbitalStrikeAction(Wiz.p(),this,freeToPlayOnce,energyOnUse,damage));
     }
 }

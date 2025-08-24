@@ -40,8 +40,7 @@
       "altBehaviorAdjustment": "Behavior Adjustment will scale off Act.",
       "noConditionThermiteBlade": "Thermite Blade will trigger on ANY card created.",
       "oldVolcanicResearch": "Volcanic Research is more chaotic.",
-      "disableRelics": "Disable non-Character specific relics.",
-      "emergencyLogging": "Enables Log Spam. (Warning: May cause Lag)"
+      "disableRelics": "Disable non-Character specific relics."
     }
   },
   "${modID}:Blueprint": {

@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class NeutralyzerSerumAction extends AbstractGameAction {

@@ -45,7 +45,7 @@
     "NAME": "Triple-Tech Chambers",
     "FLAVOR": "Firing off residual energy in the chamber opens up the heat cyclers quicker and still packs a punch!",
     "DESCRIPTIONS": [
-      "Whenever you #yProgress an #yExperiment, deal #b3 damage to a random enemy."
+      "Whenever you #yProgress an [researchersmod:DB]Experiment[], deal #b3 damage to a random enemy."
     ]
   },
   "${modID}:BehaviorAdjustment": {
@@ -60,7 +60,7 @@
     "NAME": "Moth Bookmark",
     "FLAVOR": "For the entomologist in your life.....you don't know any of those?",
     "DESCRIPTIONS": [
-      "All #yExperiments trigger their #yComplete effect twice."
+      "All [researchersmod:DB]Experiments[]trigger their #yComplete effect twice."
     ]
   },
   "${modID}:SampleTracker": {
@@ -82,7 +82,7 @@
     "NAME": "Runic Binder",
     "FLAVOR": "\"Organized, if only a little offputting.\" - Ranwid",
     "DESCRIPTIONS": [
-      "The first #b3 #yExperiments created each combat have an additional #yTrial."
+      "The first #b3 [researchersmod:DB]Experiments[] created each combat have an additional #yTrial."
     ]
   },
   "${modID}:OccamsRazor": {
@@ -103,7 +103,7 @@
     "NAME": "Code 2",
     "FLAVOR": "\"Not the type of code I was expecting, but entertaining nonetheless.\" - Ranwid",
     "DESCRIPTIONS": [
-      "The first time you #yComplete NL an #yExperiment each turn, NL gain [E] [REMOVE_SPACE]."
+      "The first time you [researchersmod:DB]Complete[] NL an [researchersmod:DB]Experiment[] each turn, NL gain [E] [REMOVE_SPACE]."
     ]
   },
   "${modID}:HypnoticWatch": {

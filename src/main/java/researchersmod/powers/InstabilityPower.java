@@ -1,14 +1,12 @@
 package researchersmod.powers;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import researchersmod.Researchers;
-import researchersmod.relics.ElectromagneticEqualizer;
 import researchersmod.util.Wiz;
 
 public class InstabilityPower extends BasePower {
@@ -23,17 +21,31 @@ public class InstabilityPower extends BasePower {
 
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        if(this.amount >= 3 && !AbstractDungeon.actionManager.turnHasEnded) {
-            Wiz.att(new RemoveSpecificPowerAction(owner, owner, this));
-            AbstractDungeon.actionManager.callEndTurnEarlySequence();
-            CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE",0.05f);
-            AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.RED.cpy(), true));
-            AbstractDungeon.player.getRelic(ElectromagneticEqualizer.ID).flash();
-            Wiz.atb(new RelicAboveCreatureAction(owner, AbstractDungeon.player.getRelic(ElectromagneticEqualizer.ID)));
+        CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE",0.05f);
+        AbstractDungeon.player.gameHandSize--;
+        AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.RED.cpy(), true));
+        updateDescription();
+    }
+
+    public void onInitialApplication() {
+        CardCrawlGame.sound.play("ORB_LIGHTNING_EVOKE",0.05f);
+        AbstractDungeon.player.gameHandSize--;
+        AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.RED.cpy(), true));
+    }
+
+    public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
+        if(AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            Wiz.atb(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
 
+    public void onRemove() {
+        AbstractDungeon.player.gameHandSize+= this.amount;
+    }
+
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0];
+        String plural = "s";
+        if(this.amount == 1) plural = "";
+        this.description = String.format(DESCRIPTIONS[0],this.amount,plural);
     }
 }

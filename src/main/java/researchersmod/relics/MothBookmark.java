@@ -5,9 +5,9 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;

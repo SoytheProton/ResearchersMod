@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.interfaces.DescriptionModifier;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class ExperimentMod extends AbstractCardModifier {

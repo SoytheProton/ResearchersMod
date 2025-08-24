@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class FinalizeAction extends AbstractGameAction {

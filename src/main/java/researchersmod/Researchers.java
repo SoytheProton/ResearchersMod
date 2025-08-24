@@ -8,6 +8,8 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglFileHandle;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.mod.stslib.patches.CustomTargeting;
@@ -19,12 +21,15 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.powers.PenNibPower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+import researchersmod.cardmods.DoubleDamageOnce;
 import researchersmod.cards.BaseCard;
 import researchersmod.cards.common.EncryptData;
 import researchersmod.cards.common.Exploit;
@@ -44,6 +49,7 @@ import researchersmod.ui.ExperimentCardManager;
 import researchersmod.ui.ModConfig;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.KeywordInfo;
+import researchersmod.util.PowerIDWrapper;
 import researchersmod.util.TextureLoader;
 import researchersmod.variables.EthericVariable;
 
@@ -103,6 +109,8 @@ public class Researchers implements
         //Set up the mod information displayed in the in-game mods menu.
         //The information used is taken from your pom.xml file.
         registerPotions();
+        registerSnapshotPowers();
+        Colors.put("researchersmod:DB", new Color(0f/255f, 149f/255f, 1.0f, 1.0f));
         //If you want to set up a config panel, that will be done here.
         //You can find information about this on the BaseMod wiki page "Mod Config and Panel".
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, new ModConfig());
@@ -199,8 +207,17 @@ public class Researchers implements
                 });
     }
 
+
+    public static HashMap<String, PowerIDWrapper> statSnapshotting = new HashMap<>();
+
+    public static void registerSnapshotPowers() {
+        statSnapshotting.put(VigorPower.POWER_ID,new PowerIDWrapper(true));
+        statSnapshotting.put(PenNibPower.POWER_ID,new PowerIDWrapper(2,true));
+        statSnapshotting.put(DoubleDamageOnce.ID,new PowerIDWrapper(2,true));
+    }
+
     private void registerKeyword(KeywordInfo info) {
-        BaseMod.addKeyword(modID.toLowerCase(), info.PROPER_NAME, info.NAMES, info.DESCRIPTION);
+        BaseMod.addKeyword(modID.toLowerCase(), info.PROPER_NAME, info.NAMES, info.DESCRIPTION,info.COLOR);
         if (!info.ID.isEmpty())
         {
             keywords.put(info.ID, info);

@@ -33,7 +33,7 @@ public class FuckAssAccelechargerAction extends AbstractGameAction {
             for (AbstractCard c : cards) {
                 Wiz.atb(new AddBetterEtherealModAction(c));
                 Wiz.p().drawPile.removeCard(c);
-                Wiz.p().hand.addToTop(c);
+                Wiz.p().hand.addToHand(c);
                 c.applyPowers();
             }
         } ));

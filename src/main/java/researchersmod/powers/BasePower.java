@@ -11,7 +11,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import researchersmod.ui.ExperimentPowerFields;
+import researchersmod.fields.ExperimentPowerFields;
+import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.GeneralUtils;
 import researchersmod.util.TextureLoader;
 
@@ -56,7 +57,7 @@ public abstract class BasePower extends AbstractPower {
         this.amount = amount;
         this.type = powerType;
 
-        if (loadImage)
+        if (loadImage || this instanceof ExperimentPower)
         {
             String unPrefixed = GeneralUtils.removePrefix(id);
             Texture normalTexture = TextureLoader.getPowerTexture(unPrefixed);

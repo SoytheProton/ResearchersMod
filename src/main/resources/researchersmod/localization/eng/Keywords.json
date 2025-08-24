@@ -8,7 +8,7 @@
       "Phases",
       "Phasing"
     ],
-    "DESCRIPTION": "This card is used when exhausted."
+    "DESCRIPTION": "This card is used when #yExhausted."
   },
   {
     "ID": "Experiment",
@@ -17,7 +17,8 @@
       "Experiment",
       "Experiments"
     ],
-    "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be discarded."
+    "DESCRIPTION": "This card remains when played, separate from your hand. Upon meeting its conditions, it will activate its effects, and can be activated up to the amount of uses it has. After all uses, it will be discarded.",
+    "COLOR": "0095ff"
   },
   {
     "ID": "Terminate",
@@ -29,7 +30,8 @@
       "Completion",
       "Completed"
     ],
-    "DESCRIPTION": "When an #yExperiment card is used up."
+    "DESCRIPTION": "When an [researchersmod:DB]Experiment[] card is used up.",
+    "COLOR": "0095ff"
   },
   {
     "ID": "Complete",
@@ -40,7 +42,8 @@
       "Progresses",
       "Progression"
     ],
-    "DESCRIPTION": "When #b1 or more #yExperiment card meets its conditions and activates its effects."
+    "DESCRIPTION": "When #b1 or more [researchersmod:DB]Experiment[] card meets its conditions and activates its effects.",
+    "COLOR": "0095ff"
   },
   {
     "ID": "Trial",
@@ -49,7 +52,8 @@
       "Trial",
       "Trials"
     ],
-    "DESCRIPTION": "The amount of uses an #yExperiment card has left."
+    "DESCRIPTION": "The amount of uses an [researchersmod:DB]Experiment[] card has left.",
+    "COLOR": "0095ff"
   },
   {
     "ID": "Etheric",

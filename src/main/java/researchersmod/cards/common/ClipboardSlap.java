@@ -28,6 +28,12 @@ public class ClipboardSlap extends BaseCard {
         setDamage(8, 2);
     }
 
+    public void applyPowers() {
+        super.applyPowers();
+        if(!Wiz.p().discardPile.isEmpty() && !this.upgraded) this.cardsToPreview = Wiz.p().discardPile.getTopCard().makeStatEquivalentCopy();
+        else this.cardsToPreview = null;
+    }
+
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));

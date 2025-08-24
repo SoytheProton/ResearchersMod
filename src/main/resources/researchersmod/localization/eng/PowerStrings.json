@@ -88,7 +88,7 @@
   "${modID}:SystemErrorPower": {
     "NAME": "System Error",
     "DESCRIPTIONS": [
-      "At the start of your turn, play #b%d #yShort #yCircuit%s+. NL Whenever a #yShort #yCircuit #yCompletes, gain #b%d #yStrength and #yDexterity."
+      "At the start of your turn, play #b%d #yShort #yCircuit%s+. NL Whenever a #yShort #yCircuit [researchersmod:DB]Completes[], gain #b%d #yStrength and #yDexterity."
     ]
   },
   "${modID}:ManipulationPower": {
@@ -137,7 +137,7 @@
   "${modID}:OwnTempoPower": {
     "NAME": "Own Tempo",
     "DESCRIPTIONS": [
-      "Your next #b%d #yExperiment%s played twice."
+      "Your next #b%d [researchersmod:DB]Experiment%s[] played twice."
     ]
   },
   "${modID}:PhaseNextCardPower": {
@@ -155,7 +155,7 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Every #b4 times you #yProgress an #yExperiment, gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d Progression%s left.)"
+      "Every #b4 times you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[], gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d Progression%s left.)"
     ]
   },
   "${modID}:BlackBoxPower": {
@@ -167,7 +167,7 @@
   "${modID}:InstabilityPower": {
     "NAME": "Instability",
     "DESCRIPTIONS": [
-      "When you have #b3 #yInstability, lose all stacks of #yInstability and end your turn."
+      "Draw #b%d less card%s. If you end a turn without playing a card, remove all #yInstability."
     ]
   },
   "${modID}:PurgeRecordsPower": {

@@ -9,7 +9,6 @@ public class ModConfig extends EasyConfigPanel {
     public static boolean enableUnlocks = true;
     public static boolean altBehaviorAdjustment = false;
     public static boolean noConditionThermiteBlade = false;
-    public static boolean emergencyLogging = false;
     public static boolean etherealOverrideRetain = true;
     public static boolean oldVolcanicResearch = false;
     public ModConfig() {

@@ -29,6 +29,12 @@ public class Analyze extends ExperimentCard {
         addToBot(new IncreaseMiscTrialAction(this.uuid,p,this,magicNumber));
     }
 
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        setCustomVar("Trial",this.misc);
+    }
+
     public void editTrial(int trialAmount) {
         setCustomVar("Trial",trialAmount);
         this.baseTrial = trialAmount;

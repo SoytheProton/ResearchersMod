@@ -14,10 +14,10 @@ import researchersmod.Researchers;
 import researchersmod.actions.common.InstantAttackDamageRandomEnemyAction;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.ui.ExperimentCardManager;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.Wiz;
 
 public class MultithreadExperiment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentPower {

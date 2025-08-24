@@ -1,8 +1,6 @@
 package researchersmod.relics;
 
 import basemod.helpers.CardPowerTip;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
@@ -10,7 +8,6 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import researchersmod.Researchers;
 import researchersmod.cards.curse.ElectromagneticInstability;
-import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
 
@@ -26,13 +23,8 @@ public class ElectromagneticEqualizer extends BaseRelic {
         return DESCRIPTIONS[0];
     }
 
-    public void atTurnStartPostDraw() {
-        flash();
-        Wiz.atb(new DrawCardAction(2));
-        Wiz.atb(new RelicAboveCreatureAction(Wiz.p(),this));
-    }
-
     public void onEquip() {
+        AbstractDungeon.player.masterHandSize+=2;
         AbstractDungeon.player.energy.energyMaster++;
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new ElectromagneticInstability(), Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new ElectromagneticInstability(), Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
@@ -42,5 +34,6 @@ public class ElectromagneticEqualizer extends BaseRelic {
 
     public void onUnequip() {
         AbstractDungeon.player.energy.energyMaster--;
+        AbstractDungeon.player.masterHandSize-=2;
     }
 }

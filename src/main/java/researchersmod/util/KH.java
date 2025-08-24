@@ -12,7 +12,6 @@ import researchersmod.cardmods.PhaseMod;
 import researchersmod.fields.EthericFields;
 import researchersmod.ui.ModConfig;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -85,10 +84,6 @@ public class KH {
         int i = rawDescription.indexOf(index,y);
         if(index.equals(LocalizedStrings.PERIOD) || index.equals(LocalizedStrings.PERIOD + " ")) i++;
         if (i == -1 || !rawDescription.contains(indexStart)) i = 0;
-        if(ModConfig.emergencyLogging) {
-            System.out.println(Arrays.toString(new String[]{index, indexStart, rawDescription, String.valueOf(i)}));
-            System.out.println(Arrays.toString(new String[]{rawDescription.substring(0, i), rawDescription.substring(i)}));
-        }
         return new String[]{rawDescription.substring(0, i), rawDescription.substring(i)};
     }
 }

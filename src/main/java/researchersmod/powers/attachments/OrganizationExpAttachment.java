@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.fields.ExperimentFields;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.DescriptionModifier;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
-import researchersmod.ui.ExperimentPowerFields;
 import researchersmod.util.ExpDescriptionHelper;
 import researchersmod.util.Wiz;
 

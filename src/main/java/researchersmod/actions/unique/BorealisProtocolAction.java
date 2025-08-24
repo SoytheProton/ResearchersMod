@@ -19,9 +19,8 @@ public class BorealisProtocolAction extends AbstractGameAction {
     public void update() {
         for(AbstractCard c : ((AbstractPlayer) owner).hand.group) {
             if(CardModifierManager.hasModifier(c, PhaseMod.ID) && c.type != AbstractCard.CardType.POWER) {
-                for(AbstractCardModifier mod : CardModifierManager.getModifiers(c, PhaseMod.ID)) {
-                    for(int i = this.amount; i>0; i--) mod.onExhausted(c);
-                }
+                AbstractCardModifier mod = CardModifierManager.getModifiers(c, PhaseMod.ID).get(0);
+                for(int i = this.amount; i>0; i--) mod.onExhausted(c);
             }
         }
         this.isDone = true;

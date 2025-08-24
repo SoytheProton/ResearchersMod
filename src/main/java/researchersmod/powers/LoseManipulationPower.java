@@ -9,7 +9,7 @@ import researchersmod.util.Wiz;
 public class LoseManipulationPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(LoseManipulationPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.DEBUFF;
-    private static final boolean TURNBASED = true;
+    private static final boolean TURNBASED = false;
 
     public LoseManipulationPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
