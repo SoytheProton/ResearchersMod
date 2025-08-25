@@ -295,7 +295,7 @@
   },
   "${modID}:ResonantHexagraph": {
     "NAME": "Resonant Hexagraph",
-    "DESCRIPTION": "Unplayable. NL Ethereal. NL Gain !B! Block. Once per turn, add a copy into your hand with 2 less Block until it reaches 0."
+    "DESCRIPTION": "{@@}Unplayable. NL Ethereal. NL Gain !B! Block. When Exhausted, add a copy into your hand with 2 less Block up to !${modID}:counter! time{!M!|1=|@=s}."
   },
   "${modID}:EclipsedForm": {
     "NAME": "Eclipsed Form",
@@ -398,8 +398,8 @@
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
-    "DESCRIPTION": "Unplayable. NL When drawn, lose [E] [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When drawn, lose [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase !M! time."
+    "DESCRIPTION": "Unplayable. NL When drawn, lose [E] [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase 1 time.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When drawn, lose [E]. At the start of your turn, ${modID}:Phase all non-Power cards in your hand with ${modID}:Phase 1 time."
   },
   "${modID}:Finalize": {
     "NAME": "Finalize",

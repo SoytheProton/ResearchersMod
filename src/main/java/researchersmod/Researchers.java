@@ -37,7 +37,6 @@ import researchersmod.cards.common.RagingBlade;
 import researchersmod.cards.rare.Centrifuge;
 import researchersmod.cards.rare.O5Command;
 import researchersmod.cards.rare.OrbitalStrike;
-import researchersmod.cards.rare.ResonantHexagraph;
 import researchersmod.cards.targeting.ExperimentTargeting;
 import researchersmod.cards.uncommon.Entropy;
 import researchersmod.cards.uncommon.FerrousBlade;
@@ -334,7 +333,6 @@ public class Researchers implements
         expsCompletedThisTurn = 0;
         expsTerminatedThisTurn = 0;
         cardsPhasedThisTurn = 0;
-        ResonantHexagraph.copiedThisTurn.clear();
     }
 
     @Override
