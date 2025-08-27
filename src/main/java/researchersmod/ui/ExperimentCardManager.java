@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
 import researchersmod.Researchers;
 import researchersmod.actions.common.KillCardAction;
+import researchersmod.actions.common.TerminateAction;
 import researchersmod.cardmods.DamageModMod;
 import researchersmod.cardmods.ExperimentMod;
 import researchersmod.cards.ExperimentCard;
@@ -194,10 +195,14 @@ public class ExperimentCardManager {
     }
 
     public static void tickExperiment(AbstractPower power, int amt) {
+        if(ExperimentPowerFields.freeToCompleteOnce.get(power)) {
+            ExperimentPowerFields.freeToCompleteOnce.set(power,false);
+            return;
+        }
         AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
         power.amount = power.amount - amt;
         ((ExperimentCard) card).trial = power.amount;
-        card.flash();
+        card.superFlash();
         if(amt > 0 && power.amount >= 0) {
             for (int i = amt; i > 0; i--) {
                 Researchers.expsCompletedThisCombat++;
@@ -214,7 +219,7 @@ public class ExperimentCardManager {
             }
         }
         if (power.amount <= 0) {
-            ((ExperimentPower)power).terminateEffect();
+            Wiz.atb(new TerminateAction(power));
         }
     }
 

@@ -14,19 +14,19 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnC
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
+    private int counter = 3;
 
     public IonSurgePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
-        this.amount2 = 3;
         updateDescription();
     }
 
     @Override
     public void onCompletion(AbstractPower power) {
-        this.amount2--;
-        if(this.amount2 == 0) {
+        this.counter--;
+        if(this.counter == 0) {
             flash();
-            this.amount2 = 3;
+            this.counter = 3;
             int i = AbstractDungeon.cardRandomRng.random(1, 3);
             switch (i) {
                 case 1:
@@ -40,10 +40,11 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnC
                     break;
             }
         }
+        updateDescription();
     }
     public void updateDescription() {
         String plural = "s";
-        if(this.amount2 == 1) plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount,this.amount2,plural);
+        if(this.counter == 1) plural = "";
+        this.description = String.format(DESCRIPTIONS[0],this.amount,this.counter,plural);
     }
 }

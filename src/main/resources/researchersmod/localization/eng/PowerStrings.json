@@ -155,7 +155,7 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Every #b4 times you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[], gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d Progression%s left.)"
+      "Every #b4 times you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[], gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d [researchersmod:DB]Progression%s[] left.)"
     ]
   },
   "${modID}:BlackBoxPower": {

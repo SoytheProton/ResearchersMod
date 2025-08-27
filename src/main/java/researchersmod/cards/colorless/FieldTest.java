@@ -21,7 +21,6 @@ public class FieldTest extends ExperimentCard {
         super(ID, info, 1);
         setDamage(3,2);
         setMagic(2);
-        this.isMultiDamage = true;
     }
 
     @Override

@@ -366,7 +366,7 @@
   },
   "${modID}:FieldTest": {
     "NAME": "Field Test",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Gain !M! temporary Strength. NL ${modID}:Complete: Deal !D! damage to ALL enemies. Exhaust."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - 1 ${modID}:Progression: Gain !M! temporary Strength. NL ${modID}:Complete: Deal !D! damage. Exhaust."
   },
   "${modID}:Accelecharger": {
     "NAME": "Accelecharger",

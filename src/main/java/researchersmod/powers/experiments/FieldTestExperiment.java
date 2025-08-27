@@ -4,16 +4,14 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
+import researchersmod.actions.common.InstantAttackDamageRandomEnemyAction;
 import researchersmod.powers.BasePower;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
@@ -32,7 +30,7 @@ public class FieldTestExperiment extends BasePower implements InvisiblePower, No
 
     public void terminateEffect(){
         Wiz.atb(new SFXAction("ATTACK_IRON_1"));
-        Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner, expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));
+        Wiz.atb(new InstantAttackDamageRandomEnemyAction(expCard(), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         ExperimentCardManager.remExp(this,true);
     }
 

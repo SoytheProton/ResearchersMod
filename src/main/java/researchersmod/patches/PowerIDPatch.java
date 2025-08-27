@@ -15,6 +15,8 @@ import researchersmod.cardmods.DamageModMod;
 import researchersmod.util.PowerIDWrapper;
 import researchersmod.util.Wiz;
 
+import java.util.ArrayList;
+
 @SpirePatch2(
         clz = UseCardAction.class,
         method = SpirePatch.CONSTRUCTOR,
@@ -30,16 +32,15 @@ public class PowerIDPatch {
                 CardModifierManager.addModifier(card, new DamageModMod(amt,wrapper.getIsMult()));
             }
         }
+        ArrayList<AbstractCardModifier> modList = new ArrayList<>();
         for(AbstractCardModifier mod : CardModifierPatches.CardModifierFields.cardModifiers.get(card)) {
             if(Researchers.statSnapshotting.containsKey(mod.identifier(card))) {
                 PowerIDWrapper wrapper = Researchers.statSnapshotting.get(mod.identifier(card));
-                CardModifierManager.addModifier(card, new DamageModMod(wrapper.getNumber(),wrapper.getIsMult()));
+                modList.add(new DamageModMod(wrapper.getNumber(),wrapper.getIsMult()));
             }
         }
-    }
-
-    private static AbstractCard makeNewCard(AbstractCard card, boolean sameUUID) {
-        if(sameUUID) return card.makeSameInstanceOf();
-        return card.makeStatEquivalentCopy();
+        for(AbstractCardModifier mod : modList) {
+            CardModifierManager.addModifier(card,mod);
+        }
     }
 }

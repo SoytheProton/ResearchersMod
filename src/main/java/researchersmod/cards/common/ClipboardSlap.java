@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.actions.common.BetterSelectCardsAction;
 import researchersmod.cards.BaseCard;
@@ -42,6 +43,13 @@ public class ClipboardSlap extends BaseCard {
                 Wiz.att(new ExhaustSpecificCardAction(c, p.discardPile));
             }
         }));
-        else if(!Wiz.p().discardPile.isEmpty()) addToBot(new ExhaustSpecificCardAction(p.discardPile.getTopCard(), p.discardPile));
+        else if(!Wiz.p().discardPile.isEmpty())  {
+            AbstractCard card = p.discardPile.getTopCard();
+            card.current_x = Settings.WIDTH / 2f;
+            card.current_y   = Settings.HEIGHT / 2f;
+            card.target_x = Settings.WIDTH / 2f;
+            card.target_y = Settings.HEIGHT / 2f;
+            p.discardPile.moveToExhaustPile(card);
+        }
     }
 }
