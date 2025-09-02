@@ -17,12 +17,12 @@ public class Incinerate extends BaseCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            2
+            1
     );
 
     public Incinerate() {
         super(ID, info);
-        setDamage(10,4);
+        setDamage(8,3);
         setMagic(1);
     }
 

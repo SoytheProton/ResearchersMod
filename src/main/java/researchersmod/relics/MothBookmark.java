@@ -15,7 +15,7 @@ import static researchersmod.Researchers.makeID;
 public class MothBookmark extends BaseRelic implements ExperimentInterfaces.OnTerminateInterface {
     public static final String ID = makeID(MothBookmark.class.getSimpleName());
     public MothBookmark() {
-        super(ID, RelicTier.RARE, LandingSound.CLINK);
+        super(ID, RelicTier.UNCOMMON, LandingSound.CLINK);
         this.pool = ResearchersCharacter.Meta.CARD_COLOR;
         this.tips.add(new PowerTip(Researchers.keywords.get("Experiment").PROPER_NAME, Researchers.keywords.get("Experiment").DESCRIPTION));
         this.tips.add(new PowerTip(Researchers.keywords.get("Terminate").PROPER_NAME, Researchers.keywords.get("Terminate").DESCRIPTION));

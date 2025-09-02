@@ -378,6 +378,14 @@ public class Researchers implements
 
     @Override
     public void receiveStartGame() {
+        expsTerminatedThisCombat = 0;
+        expsCompletedThisCombat = 0;
+        CardsExhaustedThisTurn = 0;
+        cardsPhasedThisTurn = 0;
+        cardsPhasedThisCombat = 0;
+        expsCompletedThisTurn = 0;
+        expsTerminatedThisTurn = 0;
+        LastPhasedCard = null;
         ExperimentCardManager.experiments.group.clear();
     }
 }

@@ -21,7 +21,7 @@ public class DummyExperiment extends ExperimentCard {
             0
     );
     public DummyExperiment() {
-        super(ID, info, 2,1);
+        super(ID, info, 3,1);
     }
 
     public void applyPowers() {

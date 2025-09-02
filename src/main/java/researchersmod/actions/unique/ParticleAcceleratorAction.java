@@ -3,12 +3,12 @@ package researchersmod.actions.unique;
 
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
 
@@ -31,6 +31,7 @@ public class ParticleAcceleratorAction
             this.isDone = true;
             return;
         }
+        if(this.duration == this.startingDuration) {
             if (AbstractDungeon.player.drawPile.isEmpty()) {
                 this.isDone = true;
                 return;
@@ -45,19 +46,21 @@ public class ParticleAcceleratorAction
                     tmpGroup.addToBottom(c);
                 }
             }
-        if (!tmpGroup.isEmpty()) for(AbstractCard c : tmpGroup.group) {
-            if(CardModifierManager.hasModifier(c, PhaseMod.ID)) {
-                AbstractCard tmp = c.makeSameInstanceOf();
-                tmp.purgeOnUse = true;
-                tmp.target_x = Settings.WIDTH/2.0F;
-                tmp.target_y = Settings.HEIGHT/2.0F;
-                tmp.current_x = Settings.WIDTH/2.0F;
-                tmp.current_y = Settings.HEIGHT/2.0F;
-                Wiz.p().limbo.addToBottom(tmp);
-                Wiz.att(new ExhaustSpecificCardAction(tmp,Wiz.p().limbo));
+            if (!tmpGroup.isEmpty()) for (AbstractCard c : tmpGroup.group) {
+                Wiz.p().drawPile.removeCard(c);
+                AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(c));
+                if (CardModifierManager.hasModifier(c, PhaseMod.ID)) {
+                    AbstractCard tmp = c.makeSameInstanceOf();
+                    tmp.purgeOnUse = true;
+                    tmp.target_x = Settings.WIDTH / 2.0F;
+                    tmp.target_y = Settings.HEIGHT / 2.0F;
+                    tmp.current_x = Settings.WIDTH / 2.0F;
+                    tmp.current_y = Settings.HEIGHT / 2.0F;
+                    Wiz.p().limbo.addToBottom(tmp);
+                    Wiz.att(new ExhaustSpecificCardAction(tmp, Wiz.p().limbo));
+                }
             }
-            Wiz.att(new DiscardSpecificCardAction(c,Wiz.p().drawPile));
         }
-        this.isDone = true;
+        tickDuration();
     }
 }

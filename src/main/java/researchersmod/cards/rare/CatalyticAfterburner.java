@@ -23,14 +23,13 @@ public class CatalyticAfterburner extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ALL_ENEMY,
-            1
+            2
     );
 
 
     public CatalyticAfterburner() {
         super(ID, info);
         setDamage(4,1);
-        this.cardsToPreview = new PlasmicEnergy();
     }
 
     public void applyPowers() {
@@ -56,7 +55,7 @@ public class CatalyticAfterburner extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         boolean playedVFX = false;
         for(AbstractCard c : p.exhaustPile.group) {
-            if(Objects.equals(c.cardID, PlasmicEnergy.ID)) {
+            if(c.type == CardType.STATUS) {
                 if(!playedVFX) {
                     playedVFX = true;
                     CardCrawlGame.sound.play("GHOST_FLAMES");

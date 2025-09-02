@@ -413,11 +413,11 @@
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",
-    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Plasmic *Energy Exhausted this combat.",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each Status Exhausted this combat.",
     "EXTENDED_DESCRIPTION": [
-      " NL (Exhausted %d Plasmic Energ%s.)",
-      "ies",
-      "y"
+      " NL (Exhausted %d Status%s.)",
+      "es",
+      ""
     ]
   },
   "${modID}:AltercatedBlueprint": {

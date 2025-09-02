@@ -3,6 +3,7 @@ package researchersmod.relics;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Dazed;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
@@ -35,7 +36,7 @@ public class HypnoticWatch extends BaseRelic {
             triggeredThisTurn = true;
             Wiz.atb(new RelicAboveCreatureAction(Wiz.p(),this));
             flash();
-            Wiz.atb(new DiscardSpecificCardAction(drawnCard));
+            Wiz.atb(new ExhaustSpecificCardAction(drawnCard, AbstractDungeon.player.hand));
             Wiz.atb(new DrawCardAction(1));
             Wiz.atb(new GainEnergyAction(1));
         }

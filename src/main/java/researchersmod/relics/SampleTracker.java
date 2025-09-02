@@ -16,7 +16,7 @@ public class SampleTracker extends BaseRelic implements OnCreateCardInterface {
     public static final String ID = makeID(SampleTracker.class.getSimpleName());
 
     public SampleTracker() {
-        super(ID, RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, RelicTier.RARE, LandingSound.FLAT);
         this.pool = ResearchersCharacter.Meta.CARD_COLOR;
         AbstractCard tmp = new BurntDocument();
         tmp.upgrade();

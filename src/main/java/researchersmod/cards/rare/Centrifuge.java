@@ -20,7 +20,7 @@ public class Centrifuge extends BaseCard {
     );
     public Centrifuge() {
         super(ID, info);
-        setMagic(2,1);
+        setMagic(3,1);
     }
 
     @Override

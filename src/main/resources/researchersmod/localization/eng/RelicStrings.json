@@ -110,7 +110,7 @@
     "NAME": "Hypnotic Watch",
     "FLAVOR": "Wisdom is a circle...what you receive...you must give back...",
     "DESCRIPTIONS": [
-      "Shuffle a #yDazed into your draw pile at the start of your turn. Whenever you draw a #yStatus for the first time each turn, discard it, gain [E] [REMOVE_SPACE], and draw #b1 card."
+      "Shuffle a #yDazed into your draw pile at the start of your turn. Whenever you draw a #yStatus for the first time each turn, #yExhaust it, gain [E] [REMOVE_SPACE], and draw #b1 card."
     ]
   },
   "${modID}:ElectromagneticEqualizer": {

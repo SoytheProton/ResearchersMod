@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
@@ -25,11 +26,11 @@ public class RSquare extends BaseCard {
     private int ExperimentTrialCount() {
         int i = 0;
         for (AbstractPower power : Wiz.adp().powers) {
-            if (power instanceof ExperimentPower) {
+            if (power instanceof ExperimentPower && !ExperimentPowerFields.instantImmunity.get(power)) {
                 i += power.amount;
             }
         }
-        return i * 2;
+        return i;
     }
 
     public RSquare() {

@@ -18,7 +18,7 @@ import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.ExpDescriptionHelper;
 import researchersmod.util.Wiz;
 
-public class OrganizationExpAttachment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentInterfaces.OnCompletionInterface, ExperimentInterfaces.OnTerminateInterface, DescriptionModifier {
+public class OrganizationExpAttachment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentInterfaces.OnCompletionPowerInterface, ExperimentInterfaces.OnTerminateInterface, DescriptionModifier {
 
     public static final String POWER_ID = Researchers.makeID(OrganizationExpAttachment.class.getSimpleName());
     public static final PowerType TYPE = NeutralPowertypePatch.NEUTRAL;

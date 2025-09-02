@@ -28,11 +28,13 @@ public class PhaseMod extends AbstractCardModifier {
     public static String ID = "researchersmod:PhaseCardModifier";
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("researchersmod:Keywords");
     private boolean isFirstApplication = false;
-    private boolean phaseNumbers = ModConfig.enablePhaseNumbers;
+    private boolean phaseNumbers() {
+        return ModConfig.enablePhaseNumbers;
+    }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if(!phaseNumbers || isFirstApplication) {
+        if(!phaseNumbers() || isFirstApplication) {
             String p = LocalizedStrings.PERIOD;
             String[] cardDescription = KH.autoString(KH.hasEthereal(card,rawDescription) || KH.hasInnate(card,rawDescription) || KH.hasRetain(card,rawDescription) ? " " :
                     KH.hasUnplayableNL(card, rawDescription) || KH.hasEtheric(card, rawDescription) ? "." :
@@ -57,7 +59,7 @@ public class PhaseMod extends AbstractCardModifier {
     }
 
     private String phaseString(AbstractCard card) {
-        if(phaseNumbers && CardModifierManager.getModifiers(card, PhaseMod.ID).size() > 1) {
+        if(phaseNumbers() && CardModifierManager.getModifiers(card, PhaseMod.ID).size() > 1) {
             return uiStrings.TEXT[1]+ " " + CardModifierManager.getModifiers(card, PhaseMod.ID).size();
         }
         return uiStrings.TEXT[1];
@@ -97,6 +99,7 @@ public class PhaseMod extends AbstractCardModifier {
                 tmp.beginGlowing();
                 tmp.transparency = 0.6F;
                 tmp.targetTransparency = 0.6F;
+                tmp.current_x = card.current_x;
                 tmp.current_y = -200.0F * Settings.scale;
                 tmp.target_x = Settings.WIDTH / 2.0F;
                 tmp.target_y = Settings.HEIGHT / 2.0F;

@@ -26,15 +26,15 @@ public class ShieldCrash extends BaseCard {
 
     public ShieldCrash() {
         super(ID, info);
-        setDamage(12,4);
+        setDamage(10,2);
         setBlock(6,2);
         setPhase(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainBlockAction(p, block));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH));
-        Wiz.atb(new GainBlockAction(p, block));
     }
 
     public void triggerOnExhaust() {

@@ -195,10 +195,10 @@ public class ExperimentCardManager {
     }
 
     public static void tickExperiment(AbstractPower power, int amt) {
-        if(ExperimentPowerFields.freeToCompleteOnce.get(power)) {
+        /* if(ExperimentPowerFields.freeToCompleteOnce.get(power)) {
             ExperimentPowerFields.freeToCompleteOnce.set(power,false);
             return;
-        }
+        }*/
         AbstractCard card = ExperimentPowerFields.attachedCard.get(power);
         power.amount = power.amount - amt;
         ((ExperimentCard) card).trial = power.amount;

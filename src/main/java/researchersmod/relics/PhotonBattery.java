@@ -25,10 +25,10 @@ public class PhotonBattery extends BaseRelic {
     @Override
     public void atBattleStart() {
         flash();
-        addToBot((AbstractGameAction)new RelicAboveCreatureAction((AbstractCreature) Wiz.p(), this));
+        addToTop((AbstractGameAction)new RelicAboveCreatureAction((AbstractCreature) Wiz.p(), this));
         AbstractCard tmp = new PlasmicEnergy();
         tmp.upgrade();
-        Wiz.atb(new MakeTempCardInHandAction(tmp));
+        Wiz.att(new MakeTempCardInHandAction(tmp));
     }
     @Override
     public String getUpdatedDescription() {

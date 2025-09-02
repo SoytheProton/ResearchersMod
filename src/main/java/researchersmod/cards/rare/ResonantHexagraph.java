@@ -28,7 +28,6 @@ public class ResonantHexagraph extends BaseCard {
         setPhase(true);
         setCustomVar("counter",VariableType.MAGIC,baseMagicNumber,magicUpgrade,(card, m, base) -> (card.magicNumber));
         this.isEthereal = true;
-        this.isMagicNumberModified = true;
     }
 
 
@@ -39,11 +38,12 @@ public class ResonantHexagraph extends BaseCard {
 
     public void triggerOnExhaust() {
         if(this.magicNumber > 1) {
+            this.magicNumber--;
+            this.baseMagicNumber--;
             AbstractCard card = this.makeStatEquivalentCopy();
             card.baseBlock -= 2;
             if (card.baseBlock <= 0)
                 card.baseBlock = 0;
-            card.magicNumber = this.magicNumber - 1;
             Wiz.atb(new MakeTempCardInHandAction(card));
         }
     }
@@ -51,6 +51,7 @@ public class ResonantHexagraph extends BaseCard {
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard retVal = super.makeStatEquivalentCopy();
         retVal.magicNumber = this.magicNumber;
+        retVal.baseMagicNumber = this.baseMagicNumber;
         return retVal;
     }
 
