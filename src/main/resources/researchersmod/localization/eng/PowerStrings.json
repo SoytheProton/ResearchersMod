@@ -50,8 +50,14 @@
   "${modID}:OrganizationExpAttachment": {
     "NAME": "Organization",
     "DESCRIPTIONS": [
-      "Draw 2 cards.",
-      "Exhaust."
+      "Draw %d cards."
+    ]
+  },
+  "${modID}:ExhaustExpAttachment": {
+    "NAME": "Organization",
+    "DESCRIPTIONS": [
+      "Exhaust.",
+      ": Exhaust."
     ]
   },
   "${modID}:EntropyPower": {

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import researchersmod.cardmods.PhaseMod;
+import researchersmod.vfx.BorealisAuraParticle;
 
 public class BorealisProtocolAction extends AbstractGameAction {
     private final AbstractPlayer owner;
@@ -31,25 +32,10 @@ public class BorealisProtocolAction extends AbstractGameAction {
                     mod.onExhausted(c);
                 }
                 c.flash(Color.BLUE.cpy());
-                for(int y = 0; y<6; y++) AbstractDungeon.topLevelEffectsQueue.add(borealisAura(c.current_x,c.current_y));
+                for(int y = 0; y<6; y++) AbstractDungeon.topLevelEffectsQueue.add(new BorealisAuraParticle(c.current_x,c.current_y));
             }
         }
         this.isDone = true;
-    }
-
-    private static AbstractGameEffect borealisAura(float x, float y) {
-        Color auraColor = new Color(33.0F/255.0F, 1.0F, 188.0F/255.0F, 0.5F);
-        float randomX = x+MathUtils.random(-200.0F,200F);
-        randomizeColor(auraColor,0.3F);
-        return new VfxBuilder(ImageMaster.VERTICAL_AURA,x,y,1.5f)
-                .setColor(auraColor)
-                .setAlpha(0.6f)
-                .setScale(MathUtils.random(0.4f,1.0f))
-                .fadeIn(0.9f)
-                .fadeOutFromOriginalAlpha(0.6f)
-                .moveY(y+MathUtils.random(-100.0f,100.0F)*Settings.scale,y+MathUtils.random(-75.0F,75.0F) * Settings.scale, VfxBuilder.Interpolations.CIRCLEOUT)
-                .moveX(randomX+MathUtils.random(-20.0f,20.0F)* Settings.scale,randomX+MathUtils.random(-20.0F,20.0F) * Settings.scale, VfxBuilder.Interpolations.CIRCLEOUT)
-                .build();
     }
 
     private static void randomizeColor(Color c, float amt) {

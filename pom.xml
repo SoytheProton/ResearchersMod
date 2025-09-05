@@ -24,10 +24,10 @@
 
     <!-- This information will be displayed in ModTheSpire, the modded launcher. -->
     <name>The Researchers</name>
-    <version>0.3.3.1</version>
+    <version>0.3.4.0</version>
     <!-- Avoid using \ in this description, as they can cause the description to fail to load. -->
     <!-- If you really want to use them, you'll need to "escape" them by putting another one in front, like \\ -->
-    <description>A character mod with all new mechanics, relics, unlocks to explore. \n\n\n\n Major Thanks to:\n AutumnMooncat (For letting me steal their code) \n Vex (Also letting me steal their code) \n Kio for being a java wizard. \n Ellie (Being very helpful overall) \n jords314 (For being a major help in testing this mod and finding bugs) \n BatNick (For button art) \n modding-technical in the StS Discord as whole.</description>
+    <description>A character mod with all new mechanics, relics, unlocks to explore. \n\n\n\n Major Thanks to:\n AutumnMooncat (For letting me steal their code) \n BatNick (For their AMAZING INCREDIBLE GORGEOUS Splash Art and Button Art)  \n jords314 (For being a major help in bug testing, balancing, and suggestion) \n Vex (Also letting me steal their code) \n Kio for being a java wizard. \n Ellie (Being very helpful overall) \n modding-technical in the StS Discord as whole.</description>
 
     <!--You shouldn't need to change anything below this point, but feel free to look at it.-->
     <!--You'll get a warning regarding these when you package your mod, but don't worry, it's just set up like this for convenience.-->

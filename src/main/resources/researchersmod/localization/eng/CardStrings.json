@@ -50,7 +50,7 @@
   },
   "${modID}:GravityParry": {
     "NAME": "Gravity Parry",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL When ${modID}:Phasing, deal !${modID}:damageplus! more damage and gain !${modID}:blockplus! more Block."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL When ${modID}:Phasing, deal !${modID}:damageplus! more damage and gain !${modID}:blockplus! more Block."
   },
   "${modID}:Assist": {
     "NAME": "Assist",
@@ -86,7 +86,7 @@
   },
   "${modID}:ConcealedCarry": {
     "NAME": "Concealed Carry",
-    "DESCRIPTION": "Deal !D! damage. NL If this card is ${modID}:Phased, gain !M! Strength."
+    "DESCRIPTION": "Deal !D! damage. NL When ${modID}:Phasing, gain !M! Strength."
   },
   "${modID}:ShuttleKick": {
     "NAME": "Shuttle Kick",
@@ -221,7 +221,7 @@
   },
   "${modID}:ShieldCrash": {
     "NAME": "Shield Crash",
-    "DESCRIPTION": "Deal !D! damage. Gain !B! Block. When this card is Exhausted, add a copy to your hand with swapped damage and Block values."
+    "DESCRIPTION": "Gain !B! Block. Deal !D! damage. When this card is Exhausted, add a copy to your hand with swapped damage and Block values."
   },
   "${modID}:LostMedia": {
     "NAME": "Lost Media",

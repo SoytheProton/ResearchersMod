@@ -207,8 +207,8 @@ public class ExperimentCardManager {
             for (int i = amt; i > 0; i--) {
                 Researchers.expsCompletedThisCombat++;
                 Researchers.expsCompletedThisTurn++;
-                Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionPowerInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionPowerInterface) r).onCompletion(power));
-                Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionPowerInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionPowerInterface) r).onCompletion(power));
+                Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnAnyCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnAnyCompletionInterface) r).onCompletion(power));
+                Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnAnyCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnAnyCompletionInterface) r).onCompletion(power));
                 if (ExperimentPowerFields.shouldTriggerCompletions.get(power)) {
                     Wiz.p().relics.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));
                     Wiz.p().powers.stream().filter(r -> r instanceof ExperimentInterfaces.OnCompletionInterface).forEach(r -> ((ExperimentInterfaces.OnCompletionInterface) r).onCompletion(power));

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import researchersmod.Researchers;
 import researchersmod.cardmods.DamageModMod;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.util.PowerIDWrapper;
 import researchersmod.util.Wiz;
 
@@ -24,23 +25,25 @@ import java.util.ArrayList;
 )
 public class PowerIDPatch {
     public static void Prefix(AbstractCard card) {
-        for(AbstractPower p : Wiz.p().powers) {
-            if(Researchers.statSnapshotting.containsKey(p.ID)) {
-                PowerIDWrapper wrapper = Researchers.statSnapshotting.get(p.ID);
-                float amt = wrapper.getUseAmount() ? p.amount : wrapper.getNumber();
-                if(wrapper.getIsMult() && wrapper.getUseAmount()) amt *= wrapper.getNumber();
-                CardModifierManager.addModifier(card, new DamageModMod(amt,wrapper.getIsMult()));
+        if(card.type == AbstractCard.CardType.ATTACK && card instanceof ExperimentCard) {
+            for (AbstractPower p : Wiz.p().powers) {
+                if (Researchers.statSnapshotting.containsKey(p.ID)) {
+                    PowerIDWrapper wrapper = Researchers.statSnapshotting.get(p.ID);
+                    float amt = wrapper.getUseAmount() ? p.amount : wrapper.getNumber();
+                    if (wrapper.getIsMult() && wrapper.getUseAmount()) amt *= wrapper.getNumber();
+                    CardModifierManager.addModifier(card, new DamageModMod(amt, wrapper.getIsMult()));
+                }
             }
-        }
-        ArrayList<AbstractCardModifier> modList = new ArrayList<>();
-        for(AbstractCardModifier mod : CardModifierPatches.CardModifierFields.cardModifiers.get(card)) {
-            if(Researchers.statSnapshotting.containsKey(mod.identifier(card))) {
-                PowerIDWrapper wrapper = Researchers.statSnapshotting.get(mod.identifier(card));
-                modList.add(new DamageModMod(wrapper.getNumber(),wrapper.getIsMult()));
+            ArrayList<AbstractCardModifier> modList = new ArrayList<>();
+            for (AbstractCardModifier mod : CardModifierPatches.CardModifierFields.cardModifiers.get(card)) {
+                if (Researchers.statSnapshotting.containsKey(mod.identifier(card))) {
+                    PowerIDWrapper wrapper = Researchers.statSnapshotting.get(mod.identifier(card));
+                    modList.add(new DamageModMod(wrapper.getNumber(), wrapper.getIsMult()));
+                }
             }
-        }
-        for(AbstractCardModifier mod : modList) {
-            CardModifierManager.addModifier(card,mod);
+            for (AbstractCardModifier mod : modList) {
+                CardModifierManager.addModifier(card, mod);
+            }
         }
     }
 }

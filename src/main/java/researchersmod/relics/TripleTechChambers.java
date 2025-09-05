@@ -13,7 +13,7 @@ import researchersmod.util.Wiz;
 
 import static researchersmod.Researchers.makeID;
 
-public class TripleTechChambers extends BaseRelic implements ExperimentInterfaces.OnCompletionPowerInterface {
+public class TripleTechChambers extends BaseRelic implements ExperimentInterfaces.OnAnyCompletionInterface {
     public static final String ID = makeID(TripleTechChambers.class.getSimpleName());
     public TripleTechChambers() {
         super(ID, RelicTier.RARE, LandingSound.SOLID);

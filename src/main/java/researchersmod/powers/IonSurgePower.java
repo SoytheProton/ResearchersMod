@@ -10,7 +10,7 @@ import researchersmod.Researchers;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.util.Wiz;
 
-public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnCompletionPowerInterface {
+public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnAnyCompletionInterface {
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
