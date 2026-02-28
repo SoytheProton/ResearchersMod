@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.cards.uncommon.Analyze;
 import researchersmod.powers.experiments.AnalyzeExperiment;
-import researchersmod.util.Wiz;
 
 import java.util.UUID;
 
@@ -42,7 +41,7 @@ public class IncreaseMiscTrialAction
             ((Analyze)c).editTrial(c.misc);
             c.applyPowers();
         }
-        Wiz.atb(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) card).trial, card)));
+        addToTop(new ApplyPowerAction(p, p, new AnalyzeExperiment(p, ((ExperimentCard) card).trial, card)));
         this.isDone = true;
     }
 }

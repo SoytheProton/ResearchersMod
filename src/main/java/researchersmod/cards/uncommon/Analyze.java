@@ -46,4 +46,8 @@ public class Analyze extends ExperimentCard {
     public AbstractCard makeStatEquivalentCopy() {
         return makeTrialCopy(this.baseTrial);
     }
+
+    public void onLoadedMisc() {
+        editTrial(this.misc);
+    }
 }

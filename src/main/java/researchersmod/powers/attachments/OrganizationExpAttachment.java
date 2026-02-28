@@ -24,8 +24,8 @@ public class OrganizationExpAttachment extends BasePower implements InvisiblePow
     private static final boolean TURNBASED = false;
 
 
-    public OrganizationExpAttachment(AbstractCreature owner, AbstractCard card) {
-        super(POWER_ID, TYPE, TURNBASED, owner, 2);
+    public OrganizationExpAttachment(AbstractCreature owner, AbstractCard card, int amount) {
+        super(POWER_ID, TYPE, TURNBASED, owner, amount);
         for(AbstractPower p : owner.powers) {
             if(p instanceof ExperimentPower) {
                 if(ExperimentPowerFields.attachedCard.get(p) == card) {

@@ -17,7 +17,7 @@ public class CompletionAction extends AbstractGameAction {
     }
 
     public void update() {
-        if(po.amount > 0) ExperimentCardManager.complete(po);
-        this.isDone = true;
+        if(po.amount > 0 && duration == Settings.ACTION_DUR_XFAST) ExperimentCardManager.complete(po);
+        tickDuration();
     }
 }

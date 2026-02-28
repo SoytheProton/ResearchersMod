@@ -6,12 +6,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
 import researchersmod.Researchers;
-import researchersmod.cardmods.PhaseMod;
 import researchersmod.util.Wiz;
 
 import java.util.Objects;
 
-public class BlackBoxPower extends BasePower implements PhaseMod.OnPhaseInterface {
+public class BlackBoxPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(BlackBoxPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
@@ -22,7 +21,7 @@ public class BlackBoxPower extends BasePower implements PhaseMod.OnPhaseInterfac
     }
 
     @Override
-    public void onPhase(AbstractCard card) {
+    public void onExhaust(AbstractCard card) {
         flash();
         Wiz.applyToSelf(new MetallicizePower(owner,this.amount));
     }

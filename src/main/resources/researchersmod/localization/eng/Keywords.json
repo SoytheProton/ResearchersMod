@@ -94,6 +94,14 @@
     "NAMES": [
       "Instability"
     ],
-    "DESCRIPTION": "When you get #b3 #yInstability, remove all #yInstability and end your turn."
+    "DESCRIPTION": "At the start of your turn, draw less cards. If you end a turn without playing a card, remove all #yInstability."
+  },
+  {
+    "ID": "Distortion",
+    "PROPER_NAME": "Distortion",
+    "NAMES": [
+      "Distortion"
+    ],
+    "DESCRIPTION": "Distorted creatures take an additional 10% of damage when attacked per Distortion."
   }
 ]

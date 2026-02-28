@@ -34,7 +34,7 @@ public class OnPhasePatch {
         public int[] Locate(CtBehavior ctBehavior) throws Exception
         {
             Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractDungeon.class, "getMonsters");
-            return LineFinder.findInOrder(ctBehavior, finalMatcher);
+            return LineFinder.findAllInOrder(ctBehavior, finalMatcher);
         }
     }
 }

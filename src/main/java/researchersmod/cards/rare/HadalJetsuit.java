@@ -3,6 +3,7 @@ package researchersmod.cards.rare;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import researchersmod.actions.common.ApplyDistortionPowerToAll;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.powers.HadalJetsuitPower;
@@ -15,16 +16,17 @@ public class HadalJetsuit extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            1
+            2
     );
 
     public HadalJetsuit() {
         super(ID, info);
-        setMagic(1,1);
+        setMagic(2,1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new HadalJetsuitPower(p,magicNumber)));
+        addToBot(new ApplyDistortionPowerToAll(magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new HadalJetsuitPower(p,1)));
     }
 }

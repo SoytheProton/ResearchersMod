@@ -1,12 +1,10 @@
 package researchersmod.cards.colorless;
 
-import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.screens.compendium.CardLibraryScreen.NoCompendium;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.cards.tempCards.Shiv;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.cardmods.DoubleDamageOnce;
 import researchersmod.cards.BaseCard;
 import researchersmod.util.CardStats;
 
@@ -28,11 +26,7 @@ public class markettester extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[0],false,false,(c -> true),(cards) -> {
-            for (AbstractCard c : cards) {
-                CardModifierManager.addModifier(c, new DoubleDamageOnce());
-            }
-        }));
+        addToBot(new MakeTempCardInDiscardAction(new Shiv(), 6));
     }
 }
 

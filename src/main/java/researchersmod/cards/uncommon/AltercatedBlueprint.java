@@ -1,13 +1,12 @@
 package researchersmod.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.Researchers;
 import researchersmod.actions.unique.AltercatedBlueprintAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.powers.LoseManipulationPower;
-import researchersmod.powers.ManipulationPower;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
@@ -24,7 +23,7 @@ public class AltercatedBlueprint extends BaseCard {
 
     public AltercatedBlueprint() {
         super(ID, info);
-        setMagic(2,1);
+        setBlock(7,3);
     }
 
     public void applyPowers() {
@@ -40,8 +39,7 @@ public class AltercatedBlueprint extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new ManipulationPower(p,magicNumber));
-        Wiz.applyToSelf(new LoseManipulationPower(p,magicNumber));
+        Wiz.atb(new GainBlockAction(p, block));
         Wiz.atb(new AltercatedBlueprintAction());
     }
 }

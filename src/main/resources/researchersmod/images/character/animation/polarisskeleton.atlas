@@ -1,0 +1,188 @@
+
+polarisskeleton.png
+size: 1024,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Tail
+  rotate: false
+  xy: 1, 302
+  size: 443, 590
+  orig: 443, 590
+  offset: 0, 0
+  index: -1
+FootLeft
+  rotate: false
+  xy: 389, 1653
+  size: 125, 161
+  orig: 125, 161
+  offset: 0, 0
+  index: -1
+FootRight
+  rotate: false
+  xy: 355, 1842
+  size: 190, 150
+  orig: 190, 150
+  offset: 0, 0
+  index: -1
+Pelvis
+  rotate: false
+  xy: 603, 907
+  size: 367, 195
+  orig: 367, 195
+  offset: 0, 0
+  index: -1
+ThighRight
+  rotate: false
+  xy: 1, 1790
+  size: 190, 227
+  orig: 190, 227
+  offset: 0, 0
+  index: -1
+LowerLegRight
+  rotate: false
+  xy: 316, 1096
+  size: 212, 306
+  orig: 212, 306
+  offset: 0, 0
+  index: -1
+ThighLeft
+  rotate: false
+  xy: 300, 1404
+  size: 189, 247
+  orig: 189, 247
+  offset: 0, 0
+  index: -1
+LowerLegLeft
+  rotate: false
+  xy: 767, 302
+  size: 204, 322
+  orig: 204, 322
+  offset: 0, 0
+  index: -1
+Torso
+  rotate: false
+  xy: 446, 302
+  size: 319, 399
+  orig: 319, 399
+  offset: 0, 0
+  index: -1
+Sword
+  rotate: false
+  xy: 1, 1
+  size: 942, 299
+  orig: 942, 299
+  offset: 0, 0
+  index: -1
+ArmRight
+  rotate: false
+  xy: 547, 1653
+  size: 117, 231
+  orig: 117, 231
+  offset: 0, 0
+  index: -1
+ForearmRight
+  rotate: false
+  xy: 446, 703
+  size: 123, 152
+  orig: 123, 152
+  offset: 0, 0
+  index: -1
+HandRight
+  rotate: false
+  xy: 604, 1525
+  size: 107, 88
+  orig: 107, 88
+  offset: 0, 0
+  index: -1
+ArmLeft
+  rotate: false
+  xy: 1, 1518
+  size: 170, 270
+  orig: 170, 270
+  offset: 0, 0
+  index: -1
+ForearmLeft
+  rotate: false
+  xy: 193, 1653
+  size: 194, 187
+  orig: 194, 187
+  offset: 0, 0
+  index: -1
+HandLeft
+  rotate: false
+  xy: 173, 1518
+  size: 115, 93
+  orig: 115, 93
+  offset: 0, 0
+  index: -1
+EarRight
+  rotate: false
+  xy: 666, 1615
+  size: 89, 104
+  orig: 89, 104
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 1, 1096
+  size: 313, 219
+  orig: 313, 219
+  offset: 0, 0
+  index: -1
+bastardfucker2
+  rotate: false
+  xy: 1, 1317
+  size: 297, 199
+  orig: 297, 199
+  offset: 0, 0
+  index: -1
+EarLeft
+  rotate: false
+  xy: 193, 1842
+  size: 160, 200
+  orig: 160, 200
+  offset: 0, 0
+  index: -1
+Lure
+  rotate: false
+  xy: 491, 1404
+  size: 156, 119
+  orig: 156, 119
+  offset: 0, 0
+  index: -1
+Untitled47_20251214204515
+  rotate: false
+  xy: 1, 894
+  size: 600, 200
+  orig: 600, 200
+  offset: 0, 0
+  index: -1
+bastardfucker3
+  rotate: false
+  xy: 491, 1612
+  size: 98, 36
+  orig: 98, 36
+  offset: 0, 0
+  index: -1
+bastardfucker4
+  rotate: false
+  xy: 547, 1886
+  size: 198, 135
+  orig: 198, 135
+  offset: 0, 0
+  index: -1
+bastardfucker1
+  rotate: false
+  xy: 491, 1525
+  size: 111, 85
+  orig: 111, 85
+  offset: 0, 0
+  index: -1
+Fluff
+  rotate: false
+  xy: 603, 703
+  size: 394, 202
+  orig: 394, 202
+  offset: 0, 0
+  index: -1

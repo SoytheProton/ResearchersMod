@@ -9,12 +9,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import researchersmod.actions.unique.CatalyticAfterburnerAction;
 import researchersmod.cards.BaseCard;
-import researchersmod.cards.status.PlasmicEnergy;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
-
-import java.util.Objects;
 
 public class CatalyticAfterburner extends BaseCard {
     public static final String ID = makeID(CatalyticAfterburner.class.getSimpleName());
@@ -29,14 +26,14 @@ public class CatalyticAfterburner extends BaseCard {
 
     public CatalyticAfterburner() {
         super(ID, info);
-        setDamage(4,1);
+        setDamage(6,2);
     }
 
     public void applyPowers() {
         super.applyPowers();
         int i = 0;
         for(AbstractCard c : Wiz.p().exhaustPile.group) {
-            if(Objects.equals(c.cardID, PlasmicEnergy.ID))
+            if(c.type == CardType.STATUS)
                 i++;
         }
         String plural = cardStrings.EXTENDED_DESCRIPTION[1];

@@ -4,6 +4,7 @@ import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -117,6 +118,10 @@ public class ExperimentCardManager {
             }
         }
         AbstractPower power = expPower;
+        if(power == null) {
+            Researchers.logger.warn("POWER ON BASE NULL");
+            return;
+        }
         if(power instanceof ExperimentInterfaces.OnCompletionInterface || power instanceof ExperimentInterfaces.OnTerminateInterface) ExperimentPowerFields.shouldTriggerCompletions.set(power,false);
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
         Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnExperimentInterface).forEach(r -> ((ExperimentInterfaces.OnExperimentInterface) r).onExperiment(power));
@@ -129,6 +134,10 @@ public class ExperimentCardManager {
     }
 
     public static void complete(AbstractPower power) {
+        if(ExperimentPowerFields.doNotComplete.get(power)) {
+            ExperimentPowerFields.doNotComplete.set(power, false);
+            return;
+        }
         if(power.amount > 0) {
             ((ExperimentPower) power).completionEffect();
         }
@@ -148,15 +157,29 @@ public class ExperimentCardManager {
     public static void removeExperiment(AbstractCard card, AbstractPower power) {
         removeExperiment(card,power, false);
     }
-    public static void removeExperiment(AbstractCard card, AbstractPower power,boolean shouldExhaust) {
+    public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust) {
         removeExperiment(card, power, shouldExhaust,false);
     }
 
     public static void removeExperiment(AbstractCard card, AbstractPower power, boolean shouldExhaust, boolean shouldPurge) {
+        CardGroup cardGroup = AbstractDungeon.player.discardPile;
+        if(shouldExhaust) cardGroup = AbstractDungeon.player.exhaustPile;
+        removeExperiment(card, power, cardGroup,shouldPurge);
+    }
+
+
+    public static void removeExperiment(AbstractCard card, AbstractPower power, CardGroup cG, boolean shouldPurge) {
         if(ExperimentPowerFields.freeToTerminateOnce.get(power)) {
             ExperimentPowerFields.freeToTerminateOnce.set(power,false);
             return;
         }
+
+        CardGroup cardGroup = cG;
+        if(cG == null)
+            cardGroup = AbstractDungeon.player.discardPile;
+        if(ExperimentFields.exhaustingExperiment.get(card))
+            cardGroup = AbstractDungeon.player.exhaustPile;
+
         Wiz.p().relics.stream().filter(r-> r instanceof ExperimentInterfaces.OnTerminateInterface).forEach(r -> ((ExperimentInterfaces.OnTerminateInterface) r).onTerminate(power));
         Wiz.p().powers.stream().filter(r-> r instanceof ExperimentInterfaces.OnTerminateInterface).forEach(r -> ((ExperimentInterfaces.OnTerminateInterface) r).onTerminate(power));
         AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof ExperimentInterfaces.OnTerminateInterface).forEach(c -> ((ExperimentInterfaces.OnTerminateInterface) c).onTerminate(power));
@@ -176,10 +199,36 @@ public class ExperimentCardManager {
             Wiz.atb(new KillCardAction(card,experiments));
         }
         else if(experiments.group.contains(card)) {
-            if (shouldExhaust || ExperimentFields.exhaustingExperiment.get(card))
+            if (cardGroup == AbstractDungeon.player.exhaustPile)
                 Wiz.atb(new ExhaustSpecificCardAction(card, experiments));
-            else
+            else if (cardGroup == AbstractDungeon.player.discardPile)
                 Wiz.atb(new DiscardSpecificCardAction(card, experiments));
+            else if (cardGroup == AbstractDungeon.player.drawPile)
+                Wiz.atb(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        experiments.moveToDeck(card,true);
+                        this.isDone = true;
+                    }
+                });
+            else if (cardGroup == AbstractDungeon.player.hand)
+                Wiz.atb(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        experiments.moveToHand(card,experiments);
+                        this.isDone = true;
+                    }
+                });
+            else {
+                CardGroup finalCardGroup = cardGroup;
+                Wiz.atb(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            experiments.removeCard(card);
+                            finalCardGroup.addToTop(card);
+                        }
+                    });
+            }
         }
         Wiz.att(new RemoveSpecificPowerAction(power.owner, power.owner, power));
     }

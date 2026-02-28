@@ -23,6 +23,7 @@ public class NeutralyzerSerum extends ExperimentCard {
     public NeutralyzerSerum() {
         super(ID, info,0);
         setMagic(2);
+        setExhaust(true);
     }
 
     @Override

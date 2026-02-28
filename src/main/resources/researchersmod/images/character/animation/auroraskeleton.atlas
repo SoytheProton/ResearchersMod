@@ -1,0 +1,251 @@
+
+auroraskeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Untitled47_20251102134523
+  rotate: false
+  xy: 308, 1562
+  size: 600, 200
+  orig: 600, 200
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 308, 1307
+  size: 722, 253
+  orig: 722, 253
+  offset: 0, 0
+  index: -1
+WingLeftLarge
+  rotate: false
+  xy: 1, 1307
+  size: 305, 609
+  orig: 305, 609
+  offset: 0, 0
+  index: -1
+WingLeftSmall
+  rotate: false
+  xy: 1158, 1719
+  size: 194, 295
+  orig: 194, 295
+  offset: 0, 0
+  index: -1
+WingLeftTail
+  rotate: false
+  xy: 308, 1764
+  size: 235, 240
+  orig: 235, 240
+  offset: 0, 0
+  index: -1
+WingRightLarge
+  rotate: false
+  xy: 1, 672
+  size: 352, 633
+  orig: 352, 633
+  offset: 0, 0
+  index: -1
+WingRightSmall
+  rotate: false
+  xy: 1769, 1654
+  size: 219, 273
+  orig: 219, 273
+  offset: 0, 0
+  index: -1
+WingRightTail
+  rotate: false
+  xy: 1032, 1307
+  size: 398, 410
+  orig: 398, 410
+  offset: 0, 0
+  index: -1
+ArmLeftUpper
+  rotate: false
+  xy: 733, 1764
+  size: 171, 201
+  orig: 171, 201
+  offset: 0, 0
+  index: -1
+HandPink
+  rotate: false
+  xy: 1771, 499
+  size: 132, 254
+  orig: 132, 254
+  offset: 0, 0
+  index: -1
+ArmLeftLower
+  rotate: false
+  xy: 1771, 960
+  size: 156, 166
+  orig: 156, 166
+  offset: 0, 0
+  index: -1
+Coat
+  rotate: false
+  xy: 1432, 1654
+  size: 335, 307
+  orig: 335, 307
+  offset: 0, 0
+  index: -1
+FootRight
+  rotate: false
+  xy: 1771, 1427
+  size: 139, 164
+  orig: 139, 164
+  offset: 0, 0
+  index: -1
+FootLeft
+  rotate: false
+  xy: 1771, 1128
+  size: 157, 153
+  orig: 157, 153
+  offset: 0, 0
+  index: -1
+LegRight
+  rotate: false
+  xy: 1771, 1
+  size: 179, 286
+  orig: 179, 286
+  offset: 0, 0
+  index: -1
+RingLegBack
+  rotate: false
+  xy: 355, 672
+  size: 159, 94
+  orig: 159, 94
+  offset: 0, 0
+  index: -1
+LegLeft
+  rotate: false
+  xy: 545, 1764
+  size: 186, 281
+  orig: 186, 281
+  offset: 0, 0
+  index: -1
+RingLegFront
+  rotate: false
+  xy: 733, 1967
+  size: 146, 79
+  orig: 146, 79
+  offset: 0, 0
+  index: -1
+Hips
+  rotate: false
+  xy: 1432, 1307
+  size: 337, 345
+  orig: 337, 345
+  offset: 0, 0
+  index: -1
+Body
+  rotate: false
+  xy: 1, 1
+  size: 428, 669
+  orig: 428, 669
+  offset: 0, 0
+  index: -1
+ArmRightUpper
+  rotate: false
+  xy: 910, 1719
+  size: 246, 241
+  orig: 246, 241
+  offset: 0, 0
+  index: -1
+EarPink
+  rotate: false
+  xy: 1771, 755
+  size: 159, 203
+  orig: 159, 203
+  offset: 0, 0
+  index: -1
+AntennaGreen
+  rotate: false
+  xy: 1969, 1929
+  size: 77, 106
+  orig: 77, 106
+  offset: 0, 0
+  index: -1
+AntennaPink
+  rotate: false
+  xy: 206, 1918
+  size: 78, 102
+  orig: 78, 102
+  offset: 0, 0
+  index: -1
+RingEarBack
+  rotate: false
+  xy: 355, 768
+  size: 153, 97
+  orig: 153, 97
+  offset: 0, 0
+  index: -1
+EarGreen
+  rotate: false
+  xy: 1905, 499
+  size: 118, 194
+  orig: 118, 194
+  offset: 0, 0
+  index: -1
+RingEarFront
+  rotate: false
+  xy: 1354, 1963
+  size: 149, 81
+  orig: 149, 81
+  offset: 0, 0
+  index: -1
+Eyelids
+  rotate: false
+  xy: 1912, 1427
+  size: 133, 85
+  orig: 133, 85
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 1771, 289
+  size: 199, 208
+  orig: 199, 208
+  offset: 0, 0
+  index: -1
+Glasses
+  rotate: false
+  xy: 906, 1962
+  size: 218, 76
+  orig: 218, 76
+  offset: 0, 0
+  index: -1
+Hologram
+  rotate: false
+  xy: 1771, 1283
+  size: 161, 142
+  orig: 161, 142
+  offset: 0, 0
+  index: -1
+RingArmBack
+  rotate: false
+  xy: 1354, 1719
+  size: 67, 116
+  orig: 67, 116
+  offset: 0, 0
+  index: -1
+HandGreen
+  rotate: false
+  xy: 1, 1918
+  size: 203, 127
+  orig: 203, 127
+  offset: 0, 0
+  index: -1
+ArmRightLower
+  rotate: false
+  xy: 1769, 1929
+  size: 198, 109
+  orig: 198, 109
+  offset: 0, 0
+  index: -1
+RingArmFront
+  rotate: false
+  xy: 1929, 960
+  size: 82, 158
+  orig: 82, 158
+  offset: 0, 0
+  index: -1

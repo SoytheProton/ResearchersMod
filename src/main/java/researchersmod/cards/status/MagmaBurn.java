@@ -33,9 +33,10 @@ public class MagmaBurn extends BaseCard {
         this.magicNumber = 3;
         this.cost = 1;
         this.baseCost = 1;
-        this.costForTurn = 1;
-        this.isCostModifiedForTurn = false;
-        this.isCostModified = false;
+        if(!isCostModifiedForTurn) {
+            this.costForTurn = 1;
+            this.isCostModified = false;
+        }
     }
 
     public MagmaBurn() {

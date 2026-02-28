@@ -30,6 +30,9 @@ public class RunicBinder extends BaseRelic implements ExperimentInterfaces.OnExp
         if(!grayscale) {
             flash();
             Wiz.att(new RelicAboveCreatureAction(Wiz.p(),this));
+            if(power == null) {
+                Researchers.logger.warn("RUNIC BINDER FUCKED.");
+            }
             ExperimentCardManager.tickExp(power,-1);
             this.counter--;
         }

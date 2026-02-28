@@ -23,7 +23,7 @@ public class Organization extends BaseCard {
     );
     public Organization() {
         super(ID, info);
-        setMagic(2);
+        setMagic(3);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Organization extends BaseCard {
         AbstractCard target = ExperimentTargeting.getTarget(this);
         if(target != null) {
             target.superFlash();
-            Wiz.atb(new ApplyPowerAction(p, p, new OrganizationExpAttachment(p,target)));
+            Wiz.atb(new ApplyPowerAction(p, p, new OrganizationExpAttachment(p,target, magicNumber)));
             if(!upgraded) Wiz.atb(new ApplyPowerAction(p, p, new ExhaustExpAttachment(p,target)));
         }
     }

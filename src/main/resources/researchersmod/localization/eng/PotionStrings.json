@@ -2,7 +2,7 @@
   "${modID}:LiquidData": {
     "NAME": "Liquid Data",
     "DESCRIPTIONS": [
-      "Gain #b%d #yManipulation."
+      "Apply #b%d #yDistortion to target enemy."
     ]
   },
   "${modID}:RH373Vial": {

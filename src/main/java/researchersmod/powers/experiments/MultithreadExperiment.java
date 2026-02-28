@@ -51,5 +51,4 @@ public class MultithreadExperiment extends BasePower implements InvisiblePower, 
             ExperimentCardManager.complete(this);
         }
     }
-
 }

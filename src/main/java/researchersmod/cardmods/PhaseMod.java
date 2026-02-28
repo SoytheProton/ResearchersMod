@@ -97,8 +97,8 @@ public class PhaseMod extends AbstractCardModifier {
                 AbstractCard tmp = card.makeSameInstanceOf();
                 tmp.glowColor = Color.BLUE;
                 tmp.beginGlowing();
-                tmp.transparency = 0.6F;
-                tmp.targetTransparency = 0.6F;
+                // tmp.transparency = 0.6F;
+                // tmp.targetTransparency = 0.6F;
                 tmp.current_x = card.current_x;
                 tmp.current_y = -200.0F * Settings.scale;
                 tmp.target_x = Settings.WIDTH / 2.0F;

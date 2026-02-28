@@ -25,7 +25,7 @@ public class BorealisProtocol extends BaseCard {
 
     public BorealisProtocol() {
         super(ID, info);
-        setMagic(2,-1);
+        setMagic(1,-1);
         setPhase(true);
     }
 

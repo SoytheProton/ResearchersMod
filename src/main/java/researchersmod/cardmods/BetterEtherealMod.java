@@ -46,7 +46,7 @@ public class BetterEtherealMod extends AbstractCardModifier {
     }
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
+        public void onInitialApplication(AbstractCard card) {
         card.isEthereal = true;
         if(ModConfig.etherealOverrideRetain) {
             selfRetain = card.selfRetain;
