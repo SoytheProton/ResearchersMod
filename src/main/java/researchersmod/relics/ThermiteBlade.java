@@ -73,7 +73,7 @@ public class ThermiteBlade extends BaseRelic implements OnCreateCardInterface {
         }
     }
 
-    public void onVictory() {
+    /* public void onVictory() {
         this.counter = -1;
-    }
+    }*/
 }

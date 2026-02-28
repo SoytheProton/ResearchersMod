@@ -14,13 +14,15 @@ public class AddCardToPilePatch {
     }
 
     @SpirePatch(clz = CardGroup.class, method = "addToHand")
-    @SpirePatch(clz = CardGroup.class, method = "addToTop")
+    /*@SpirePatch(clz = CardGroup.class, method = "addToTop")
     @SpirePatch(clz = CardGroup.class, method = "addToBottom")
-    @SpirePatch(clz = CardGroup.class, method = "addToRandomSpot")
+    @SpirePatch(clz = CardGroup.class, method = "addToRandomSpot")*/
     public static class onAddCardPatch {
         @SpirePrefixPatch
         public static void Prefix(CardGroup __instance, AbstractCard __c) {
-            if(__c instanceof AddToPileInterface && (AbstractDungeon.currMapNode != null && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT)) ((AddToPileInterface) __c).onAddCard(__instance, __c);
+            if((AbstractDungeon.currMapNode == null || AbstractDungeon.player == null)) return;
+            if(__instance == AbstractDungeon.player.limbo) return;
+            if(__c instanceof AddToPileInterface && (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) ((AddToPileInterface) __c).onAddCard(__instance, __c);
         }
     }
 }

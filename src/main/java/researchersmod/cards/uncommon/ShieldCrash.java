@@ -3,8 +3,7 @@ package researchersmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -26,7 +25,7 @@ public class ShieldCrash extends BaseCard {
 
     public ShieldCrash() {
         super(ID, info);
-        setDamage(10,2);
+        setDamage(12,4);
         setBlock(6,2);
         setPhase(true);
     }
@@ -38,9 +37,6 @@ public class ShieldCrash extends BaseCard {
     }
 
     public void triggerOnExhaust() {
-        AbstractCard card = this.makeStatEquivalentCopy();
-        card.baseBlock = this.baseDamage;
-        card.baseDamage = this.baseBlock;
-        Wiz.atb(new MakeTempCardInHandAction(card));
+        Wiz.atb(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
     }
 }

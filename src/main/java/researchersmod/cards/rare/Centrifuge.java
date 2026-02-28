@@ -1,25 +1,29 @@
 package researchersmod.cards.rare;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.actions.unique.CentrifugeAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.ui.ModConfig;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
 
+@AutoAdd.Ignore
 public class Centrifuge extends BaseCard {
     public static final String ID = makeID(Centrifuge.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.RARE,
+            CardRarity.SPECIAL,
             CardTarget.SELF,
             0
     );
     public Centrifuge() {
         super(ID, info);
+        if(ModConfig.enableCentrifuge) this.rarity = CardRarity.RARE;
         setMagic(3,1);
     }
 

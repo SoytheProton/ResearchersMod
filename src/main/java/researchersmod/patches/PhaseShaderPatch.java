@@ -3,119 +3,30 @@ package researchersmod.patches;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.utils.BufferUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import com.megacrit.cardcrawl.vfx.combat.DamageImpactCurvyEffect;
 import researchersmod.Researchers;
+import researchersmod.cards.ExperimentCard;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
 
-import java.util.logging.Logger;
+import java.nio.IntBuffer;
+import java.nio.charset.StandardCharsets;
 
-// shamelessly stolen from Broken Space. I do not know shaders. It hurts my brain.
+// shamelessly stolen from Vex. I do not know shaders. It hurts my brain.
 @SuppressWarnings("unused")
 public class PhaseShaderPatch {
-    public static ShaderProgram phaseShader;
-    private static final FrameBuffer fbo;
-
-    private static final Logger logger = Logger.getLogger(PhaseShaderPatch.class.getName());
-
-    @SpirePatch(
-            clz = AbstractCard.class,
-            method = "renderCard"
-    )
-    public static class RenderPhaseCards {
-        @SpirePrefixPatch
-        public static void addShader(AbstractCard __instance, SpriteBatch sb) {
-            if (shouldRenderPhaseShader(__instance)) {
-                StartFbo(sb);
-            }
-        }
-
-        @SpirePostfixPatch
-        public static void removeShader(AbstractCard __instance, SpriteBatch sb) {
-            if (shouldRenderPhaseShader(__instance)) {
-                float strength = 1.0F;
-
-                if (__instance.hb.hovered) {
-                    strength = 0.2F;
-                }
-                StopFbo(sb, strength, RandomTimeField.randomTime.get(__instance));
-
-            }
-        }
-    }
-
-
-    public static void StartFbo(SpriteBatch sb) {
-        sb.flush();
-        fbo.begin();
-
-        Gdx.gl.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    }
-
-    public static void StopFbo(SpriteBatch sb) {
-        StopFbo(sb, 1.0F);
-    }
-
-    public static void StopFbo(SpriteBatch sb, float strength) {
-        StopFbo(sb, strength, 0.0F);
-    }
-
-    private static void StopFbo(SpriteBatch sb, float strength, float timerOffset) {
-        StopFbo(sb, strength, timerOffset, 0.03F);
-    }
-
-    private static void StopFbo(SpriteBatch sb, float strength, float timerOffset, float chrAb) {
-        StopFbo(sb, strength, timerOffset, chrAb, 1.0F);
-    }
-
-    public static void StopFbo(SpriteBatch sb, float strength, float timerOffset, float chrAb, float timeScale) {
-        StopFbo(sb, strength, timerOffset, chrAb, timeScale, 1f);
-    }
-
-    public static void StopFbo(SpriteBatch sb, float strength, float timerOffset, float chrAb, float timeScale, float UVScl) {
-
-        sb.flush();
-        fbo.end();
-
-
-        TextureRegion region = new TextureRegion(fbo.getColorBufferTexture());
-        region.flip(false, true);
-
-
-        sb.setShader(phaseShader);
-        sb.setColor(Color.WHITE);
-        phaseShader.setUniformf("u_time", Gdx.graphics.getDeltaTime() * timeScale + timerOffset);
-        phaseShader.setUniformf("u_strength", strength);
-        phaseShader.setUniformf("u_chrAb", chrAb);
-        phaseShader.setUniformf("u_UVScl", UVScl);
-
-        sb.draw(region, 0, 0);
-        sb.setShader(null);
-        sb.flush();
-    }
-
-    private static boolean shouldRenderPhaseShader(AbstractCard __instance) {
-        return PhasingFields.isPhasing.get(__instance);
-    }
-
-
-    @SpirePatch2(
-            clz = AbstractCard.class,
-            method = SpirePatch.CLASS
-    )
-    public static class RandomTimeField {
-        public static SpireField<Float> randomTime = new SpireField<>(() -> (float) Math.random() * 1000f);
-    }
-
     @SpirePatch2(
             clz = ExhaustCardEffect.class,
             method = "update"
@@ -134,15 +45,70 @@ public class PhaseShaderPatch {
         }
     }
 
+    @SpirePatch(clz = AbstractCard.class, method = "render", paramtypez = SpriteBatch.class)
+    public static class FoilCardsShine {
+        private static final ShaderProgram FOIL_SHINE = new ShaderProgram(SpriteBatch.createDefaultShader().getVertexShaderSource(), Gdx.files.internal(Researchers.imagePath("shaders/Phase.frag")).readString(String.valueOf(StandardCharsets.UTF_8)));
 
-    static {
-        phaseShader = new ShaderProgram(Gdx.files.internal(Researchers.imagePath("shaders/Phase.vs")), Gdx.files.internal(Researchers.imagePath("shaders/Phase.fs")));
-        if (!phaseShader.isCompiled()) {
-            logger.warning("Phase shader: " + phaseShader.getLog());
+        private static final FrameBuffer fbo = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, false);
+
+        private static int RUNNING_ON_STEAM_DECK = -1;
+
+        private static final String OS = System.getProperty("os.name").toLowerCase();
+        public static boolean IS_WINDOWS = (OS.indexOf("win") >= 0);
+
+        public static boolean isOnSteamDeck() {
+            if (RUNNING_ON_STEAM_DECK == -1) {
+                try {
+                    RUNNING_ON_STEAM_DECK = CardCrawlGame.clientUtils.isSteamRunningOnSteamDeck() ? 1 : 0;
+                } catch (IllegalAccessError e) {
+                    System.out.println("VEX OVERRIDE DETECTED: GOG PLAYER");
+                    RUNNING_ON_STEAM_DECK = 0;
+                }
+            }
+            return RUNNING_ON_STEAM_DECK == 1;
         }
-        phaseShader.begin();
 
+        @SpirePrefixPatch
+        public static SpireReturn<Void> Prefix(AbstractCard __instance, SpriteBatch spriteBatch) {
+            if (!Settings.hideCards) {
+                if (PhasingFields.isPhasing.get(__instance) && IS_WINDOWS && !isOnSteamDeck() && !(__instance instanceof ExperimentCard)) {
+                    TextureRegion t = cardToTextureRegion(__instance, spriteBatch);
+                    spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
+                    ShaderProgram oldShader = spriteBatch.getShader();
+                    spriteBatch.setShader(FOIL_SHINE);
+                    FOIL_SHINE.setUniformf("x_time", Researchers.time);
+                    spriteBatch.draw(t, -Settings.VERT_LETTERBOX_AMT, -Settings.HORIZ_LETTERBOX_AMT);
+                    spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+                    spriteBatch.setShader(oldShader);
+                    return SpireReturn.Return();
+                }
+            }
+            return SpireReturn.Continue();
+        }
 
-        fbo = new FrameBuffer(Pixmap.Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, false);
+        public static TextureRegion cardToTextureRegion(AbstractCard card, SpriteBatch sb) {
+            sb.end();
+            fbo.begin();
+            Gdx.gl.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+            sb.begin();
+            IntBuffer buf_rgb = BufferUtils.newIntBuffer(16);
+            IntBuffer buf_a = BufferUtils.newIntBuffer(16);
+            Gdx.gl.glGetIntegerv(GL30.GL_BLEND_EQUATION_RGB, buf_rgb);
+            Gdx.gl.glGetIntegerv(GL30.GL_BLEND_EQUATION_ALPHA, buf_a);
+
+            Gdx.gl.glBlendEquationSeparate(buf_rgb.get(0), GL30.GL_MAX);
+            Gdx.gl.glBlendEquationSeparate(GL30.GL_FUNC_ADD, GL30.GL_MAX);
+            card.render(sb, false);
+            Gdx.gl.glBlendEquationSeparate(GL30.GL_FUNC_ADD, GL30.GL_FUNC_ADD);
+            Gdx.gl.glBlendEquationSeparate(buf_rgb.get(0), buf_a.get(0));
+
+            sb.end();
+            fbo.end();
+            sb.begin();
+            TextureRegion texture = new TextureRegion(fbo.getColorBufferTexture());
+            texture.flip(false, true);
+            return texture;
+        }
     }
 }

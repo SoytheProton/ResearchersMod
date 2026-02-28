@@ -35,15 +35,6 @@ public class TeslaCoil extends BaseCard {
     }
 
     @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        if(ToolTip == null)
-        {
-            ToolTip = new ArrayList<>();
-            ToolTip.add(new TooltipInfo(Researchers.keywords.get("Etheric").PROPER_NAME, Researchers.keywords.get("Etheric").DESCRIPTION));
-        }
-        return ToolTip;
-    }
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new TeslaCoilPower(p, magicNumber));
     }

@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import researchersmod.cards.ExperimentCard;
@@ -29,6 +30,10 @@ public class NeutralyzerSerumAction extends AbstractGameAction {
 
 
         public void update() {
+            if(AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+                this.isDone = true;
+                return;
+            }
             int effect = EnergyPanel.totalCount;
             if (this.energyOnUse != -1) {
                 effect = this.energyOnUse;

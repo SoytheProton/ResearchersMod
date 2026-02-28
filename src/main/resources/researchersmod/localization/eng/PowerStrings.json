@@ -94,7 +94,7 @@
   "${modID}:SystemErrorPower": {
     "NAME": "System Error",
     "DESCRIPTIONS": [
-      "At the start of your turn, play #b%d #yShort #yCircuit%s+. NL Whenever a #yShort #yCircuit [researchersmod:DB]Completes[], gain #b%d #yStrength and #yDexterity."
+      "At the start of your turn, play #b%d #yShort #yCircuit%s+. NL Whenever a #yShort #yCircuit [researchersmod:DB]Completes[], apply #b%d #yDistortion to ALL enemies."
     ]
   },
   "${modID}:ManipulationPower": {
@@ -118,7 +118,7 @@
   "${modID}:HadalJetsuitPower": {
     "NAME": "Hadal Jetsuit",
     "DESCRIPTIONS": [
-      "When you #yPhase a card, gain #b%d temporary #yManipulation. NL Every 3 cards #yPhased, gain #b%d Manipulation."
+      "When you #yExhaust a card, ALL enemies lose #b%d HP for each #yDistortion they have."
     ]
   },
   "${modID}:O5CommandPower": {
@@ -161,25 +161,45 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "Every #b4 times you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[], gain #b%d #yStrength, #yDexterity, or #yArtifact randomly. NL ( [REMOVE_SPACE]#b%d [researchersmod:DB]Progression%s[] left.)"
+      "The first time you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[] each turn, apply #b%d #yDistortion to ALL enemies."
     ]
   },
   "${modID}:BlackBoxPower": {
     "NAME": "Black Box",
     "DESCRIPTIONS": [
-      "Whenever you #yPhase a card, gain #b%s #yMetallicize. NL At the start of your turn, lose half of your #yMetallicize."
+      "Whenever you #yExhaust a card, gain #b%s #yMetallicize. NL At the start of your turn, lose half of your #yMetallicize."
     ]
   },
   "${modID}:InstabilityPower": {
     "NAME": "Instability",
     "DESCRIPTIONS": [
-      "Draw #b%d less card%s. If you end a turn without playing a card, remove all #yInstability."
+      "At the start of your turn, draw #b%d less card%s. If you end a turn without playing a card, remove all #yInstability."
     ]
   },
   "${modID}:PurgeRecordsPower": {
     "NAME": "Purge Records",
     "DESCRIPTIONS": [
       "When you play a #yBurnt #yDocument this turn, gain #b%d Strength."
+    ]
+  },
+  "${modID}:DamageExpAttachment": {
+    "NAME": "FollowUpShot",
+    "DESCRIPTIONS": [
+      "Deal %d damage",
+      " %d times"
+    ]
+  },
+  "${modID}:DistortionPower": {
+    "NAME": "Distortion",
+    "DESCRIPTIONS": [
+      "When attacked, take #b%d0%% of that damage again.",
+      "Receive #b%d0%% more damage from #yAttacks."
+    ]
+  },
+  "${modID}:LetVandDocumentingPower": {
+    "NAME": "Let Vand Documenting",
+    "DESCRIPTIONS": [
+      "You can now play #yUnplayable #yStatuses. Whenever you play a #yStatus, draw #b%d card%s. At the start of your turn, add #b%d #yBurnt #yDocument%s to your hand."
     ]
   }
 }

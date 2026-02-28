@@ -22,12 +22,13 @@ public class ContactLight extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
-            2
+            1
     );
 
 
     public ContactLight() {
         super(ID, info);
+        setExhaust(true);
         this.cardsToPreview = new PlasmicEnergy();
         cardsToPreview.upgrade();
     }

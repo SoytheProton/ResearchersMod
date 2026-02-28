@@ -1,10 +1,10 @@
 package researchersmod.cards.uncommon;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import researchersmod.actions.common.AddPhaseModAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
 import researchersmod.util.CardStats;
@@ -14,25 +14,45 @@ public class Overwrite extends BaseCard {
     public static final String ID = makeID(Overwrite.class.getSimpleName());
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
-            CardType.SKILL,
+            CardType.ATTACK,
             CardRarity.UNCOMMON,
-            CardTarget.SELF,
-            0
+            CardTarget.ENEMY,
+            1
     );
+
+    int realBaseDamage = 0;
+
     public Overwrite() {
         super(ID, info);
-        setMagic(1,1);
+        setDamage(9,3);
+        this.magicNumber = this.baseMagicNumber = 0;
+        setCustomVar("scaling",3);
         // this card was originally called "Ink Blot" but I thought that was lame.
-        setExhaust(true);
+        // this card has also been entirely reworked.
+        // twice.
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(magicNumber,cardStrings.EXTENDED_DESCRIPTION[0],false,false,(c -> true),(cards) -> {
-            for (AbstractCard c : cards) {
-                Wiz.att(new AddPhaseModAction(c,true));
-            }
-        }));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.LIGHTNING));
+    }
+
+    public void applyPowers() {
+        this.realBaseDamage = this.baseDamage;
+        this.baseMagicNumber = Wiz.p().exhaustPile.size() * customVar("scaling");
+        this.baseDamage += baseMagicNumber;
+        super.applyPowers();
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
+    }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        this.realBaseDamage = this.baseDamage;
+        this.baseMagicNumber = Wiz.p().exhaustPile.size() * customVar("scaling");
+        this.baseDamage += baseMagicNumber;
+        super.applyPowers();
+        this.baseDamage = realBaseDamage;
+        this.isDamageModified = (this.damage != this.baseDamage);
     }
 }
 

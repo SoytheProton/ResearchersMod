@@ -22,7 +22,7 @@ public class Uplink extends BaseCard {
 
     public Uplink() {
         super(ID, info);
-        setBlock(4,3);
+        setBlock(3,3);
     }
 
     @Override

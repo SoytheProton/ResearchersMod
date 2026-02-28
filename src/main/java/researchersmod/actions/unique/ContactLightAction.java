@@ -27,7 +27,7 @@ public class ContactLightAction extends AbstractGameAction {
         }
         if(upgraded) for(AbstractCard c : p.discardPile.group) {
             if(c.type == AbstractCard.CardType.STATUS) {
-                Wiz.att(new ExhaustSpecificCardAction(c,p.drawPile));
+                Wiz.att(new ExhaustSpecificCardAction(c,p.discardPile));
                 y++;
             }
         }

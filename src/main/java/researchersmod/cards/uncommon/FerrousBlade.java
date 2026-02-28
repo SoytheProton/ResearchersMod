@@ -34,8 +34,7 @@ public class FerrousBlade extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         AbstractCard Blade = new FerrousBlade();
-        Blade.costForTurn = this.costForTurn + 1;
-        Blade.isCostModifiedForTurn = true;
+        Blade.setCostForTurn(this.costForTurn + 1);
         if(upgraded)
             Blade.upgrade();
         Wiz.atb(new MakeTempCardInHandAction(Blade));

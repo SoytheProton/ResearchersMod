@@ -24,7 +24,6 @@ public class SystemError extends BaseCard {
         setMagic(1);
         setCostUpgrade(0);
         this.cardsToPreview = new ShortCircuit();
-        this.cardsToPreview.upgrade();
     }
 
     @Override

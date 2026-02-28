@@ -23,7 +23,7 @@ public class ShuttleKick extends BaseCard {
     );
     public ShuttleKick() {
         super(ID, info);
-        setDamage(11,4);
+        setDamage(13,4);
         cardsToPreview = new ShortCircuit();
     }
 

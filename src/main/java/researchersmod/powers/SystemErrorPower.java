@@ -5,9 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import researchersmod.Researchers;
+import researchersmod.actions.common.ApplyDistortionPowerToAll;
 import researchersmod.actions.common.ManualExperimentAction;
 import researchersmod.cards.status.ShortCircuit;
 import researchersmod.powers.experiments.ShortCircuitExperiment;
@@ -30,7 +29,6 @@ public class SystemErrorPower extends BasePower implements ExperimentInterfaces.
         flash();
         for(int i = amount; i>0; i--) {
             AbstractCard card = new ShortCircuit();
-            card.upgrade();
             card.dontTriggerOnUseCard = true;
             card.use((AbstractPlayer) owner,(AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng));
             Wiz.atb(new ManualExperimentAction(card));
@@ -47,8 +45,7 @@ public class SystemErrorPower extends BasePower implements ExperimentInterfaces.
     public void onTerminate(AbstractPower power) {
         if(Objects.equals(power.ID, ShortCircuitExperiment.POWER_ID)) {
             flashWithoutSound();
-            Wiz.applyToSelf(new StrengthPower(owner,this.amount));
-            Wiz.applyToSelf(new DexterityPower(owner, this.amount));
+            Wiz.atb(new ApplyDistortionPowerToAll(amount));
         }
     }
 }

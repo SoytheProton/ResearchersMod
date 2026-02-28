@@ -20,6 +20,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.PenNibPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
@@ -34,6 +35,7 @@ import researchersmod.cards.BaseCard;
 import researchersmod.cards.common.EncryptData;
 import researchersmod.cards.common.Exploit;
 import researchersmod.cards.common.RagingBlade;
+import researchersmod.cards.rare.AccretionDisc;
 import researchersmod.cards.rare.Centrifuge;
 import researchersmod.cards.rare.O5Command;
 import researchersmod.cards.rare.OrbitalStrike;
@@ -69,7 +71,8 @@ public class Researchers implements
         OnPlayerTurnStartSubscriber,
         PostBattleSubscriber,
         SetUnlocksSubscriber,
-        StartGameSubscriber {
+        StartGameSubscriber,
+        PostUpdateSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
@@ -86,6 +89,13 @@ public class Researchers implements
     public static void initialize() {
         new Researchers();
         ResearchersCharacter.Meta.registerColor();
+
+    }
+
+    public static float time = 0f;
+    @Override
+    public void receivePostUpdate() {
+        time += Gdx.graphics.getDeltaTime();
     }
 
     public static int expsTerminatedThisTurn;
@@ -115,6 +125,9 @@ public class Researchers implements
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, new ModConfig());
         CustomTargeting.registerCustomTargeting(ExperimentTargeting.EXPERIMENT, new ExperimentTargeting());
         if(!ModConfig.enableUnlocks) unlockBundles();
+        if(ModConfig.enableCentrifuge) {
+            CardLibrary.add(new Centrifuge());
+        }
     }
 
     /*----------Localization----------*/
@@ -373,7 +386,7 @@ public class Researchers implements
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.RELIC, OccamsRazor.ID, MarketGardener.ID, TripleTechChambers.ID), ResearchersCharacter.Meta.RESEARCHERS, 1);
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, EncryptData.ID, Entropy.ID, O5Command.ID), ResearchersCharacter.Meta.RESEARCHERS, 2);
         BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.RELIC, ElectromagneticEqualizer.ID, HypnoticWatch.ID, BehaviorAdjustment.ID), ResearchersCharacter.Meta.RESEARCHERS, 3);
-        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, RagingBlade.ID, FerrousBlade.ID, Centrifuge.ID), ResearchersCharacter.Meta.RESEARCHERS, 4);
+        BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.CARD, RagingBlade.ID, FerrousBlade.ID, AccretionDisc.ID), ResearchersCharacter.Meta.RESEARCHERS, 4);
     }
 
     @Override
