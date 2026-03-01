@@ -1,4 +1,4 @@
-package researchersmod.cards.uncommon;
+package researchersmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,7 +15,7 @@ public class Overwrite extends BaseCard {
     private static final CardStats info = new CardStats(
             ResearchersCharacter.Meta.CARD_COLOR,
             CardType.ATTACK,
-            CardRarity.UNCOMMON,
+            CardRarity.RARE,
             CardTarget.ENEMY,
             1
     );
@@ -26,10 +26,10 @@ public class Overwrite extends BaseCard {
         super(ID, info);
         setDamage(9,3);
         this.magicNumber = this.baseMagicNumber = 0;
-        setCustomVar("scaling",3);
+        setCustomVar("scaling",3,1);
         // this card was originally called "Ink Blot" but I thought that was lame.
         // this card has also been entirely reworked.
-        // twice.
+        // thrice.
     }
 
     @Override

@@ -18,11 +18,11 @@ public class FollowUpShot extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             ExperimentTargeting.EXPERIMENT,
-            1
+            0
     );
     public FollowUpShot() {
         super(ID, info);
-        setMagic(7,3);
+        setMagic(5,2);
     }
 
     @Override

@@ -21,12 +21,12 @@ public class LetVandDocumenting extends BaseCard {
 
     public LetVandDocumenting() {
         super(ID, info);
-        setEthereal(true,false);
+        setMagic(1,1);
         this.cardsToPreview = new BurntDocument();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new LetVandDocumentingPower(p, 1));
+        Wiz.applyToSelf(new LetVandDocumentingPower(p, this.magicNumber, 1));
     }
 }

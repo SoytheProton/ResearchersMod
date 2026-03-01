@@ -29,7 +29,7 @@ public class LaserStrike extends BaseCard {
     }
 
     public void triggerOnGlowCheck() {
-        if(Researchers.expsTerminatedThisTurn > 0) {
+        if(Researchers.expsCompletedThisTurn > 0) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
@@ -38,6 +38,6 @@ public class LaserStrike extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
-        if(Researchers.expsTerminatedThisTurn > 0) addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        if(Researchers.expsCompletedThisTurn > 0) addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
     }
 }

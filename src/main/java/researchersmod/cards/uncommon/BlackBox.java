@@ -20,7 +20,8 @@ public class BlackBox extends BaseCard {
 
     public BlackBox() {
         super(ID, info);
-        setMagic(2,1);
+        setInnate(false, true);
+        setMagic(2);
     }
 
     @Override

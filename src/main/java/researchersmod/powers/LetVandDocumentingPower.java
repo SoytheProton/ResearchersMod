@@ -13,10 +13,15 @@ public class LetVandDocumentingPower extends BasePower {
     public static final String POWER_ID = Researchers.makeID(LetVandDocumentingPower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = true;
-
-    public LetVandDocumentingPower(AbstractCreature owner, int amount) {
+    public LetVandDocumentingPower(AbstractCreature owner, int amount, int amount2) {
         super(POWER_ID, TYPE, TURNBASED, owner, amount);
+        this.amount2 = amount2;
         updateDescription();
+    }
+
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        amount2++;
     }
 
     @Override
@@ -31,7 +36,7 @@ public class LetVandDocumentingPower extends BasePower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if(card.type == AbstractCard.CardType.STATUS) {
             flash();
-            Wiz.atb(new DrawCardAction(amount));
+            Wiz.atb(new DrawCardAction(amount2));
         }
     }
 
@@ -39,6 +44,9 @@ public class LetVandDocumentingPower extends BasePower {
         String plural = "s";
         if(this.amount == 1)
             plural = "";
-        this.description = String.format(DESCRIPTIONS[0],this.amount,plural,this.amount,plural);
+        String plural2 = "s";
+        if(this.amount2 == 1)
+            plural2 = "";
+        this.description = String.format(DESCRIPTIONS[0],this.amount2,plural2,this.amount,plural);
     }
 }

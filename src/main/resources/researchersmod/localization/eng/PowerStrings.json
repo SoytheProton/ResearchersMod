@@ -167,7 +167,7 @@
   "${modID}:BlackBoxPower": {
     "NAME": "Black Box",
     "DESCRIPTIONS": [
-      "Whenever you #yExhaust a card, gain #b%s #yMetallicize. NL At the start of your turn, lose half of your #yMetallicize."
+      "Whenever you #yExhaust a card, gain #b%s #yMetallicize, then lose that much in #b2 turns."
     ]
   },
   "${modID}:InstabilityPower": {
@@ -185,7 +185,7 @@
   "${modID}:DamageExpAttachment": {
     "NAME": "FollowUpShot",
     "DESCRIPTIONS": [
-      "Deal %d damage",
+      "An enemy takes %d damage",
       " %d times"
     ]
   },
@@ -199,7 +199,13 @@
   "${modID}:LetVandDocumentingPower": {
     "NAME": "Let Vand Documenting",
     "DESCRIPTIONS": [
-      "You can now play #yUnplayable #yStatuses. Whenever you play a #yStatus, draw #b%d card%s. At the start of your turn, add #b%d #yBurnt #yDocument%s to your hand."
+      "Whenever you play a #yStatus, draw #b%d card%s. At the start of your turn, add #b%d #yBurnt #yDocument%s to your hand."
+    ]
+  },
+  "${modID}:LoseMetallicizePower": {
+    "NAME": "Lose Metallicize",
+    "DESCRIPTIONS": [
+      "In the end of #b%d turn%s, lose #b%d #yMetallicize."
     ]
   }
 }

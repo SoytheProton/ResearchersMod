@@ -32,6 +32,8 @@ public class ShelvedProjectExperiment extends BasePower implements InvisiblePowe
     }
 
     public void completionEffect(){
+        expCard().applyPowers();
+        expCard().calculateCardDamage(null);
         Wiz.atb(new SFXAction("ATTACK_HEAVY"));
         Wiz.atb(new VFXAction(owner,new CleaveEffect(),0.0F));
         Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) this.owner,expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.NONE));

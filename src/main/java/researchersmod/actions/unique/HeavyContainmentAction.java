@@ -7,7 +7,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
+import researchersmod.Researchers;
+import researchersmod.cards.rare.HeavyContainment;
 import researchersmod.util.Wiz;
+
+import java.util.Objects;
 
 public class HeavyContainmentAction extends AbstractGameAction {
     private final AbstractPlayer p;
@@ -24,8 +28,12 @@ public class HeavyContainmentAction extends AbstractGameAction {
     public void update() {
         if (this.duration == this.startDuration) {
             for (AbstractCard c : p.hand.group) {
-                Wiz.atb(new ExhaustSpecificCardAction(c, p.hand));
-                temp.addToTop(c);
+                if(Objects.equals(c.cardID, HeavyContainment.ID) && c.costForTurn == 0) {
+                    Researchers.logger.info("Infinite Detected. Terminating...");
+                } else {
+                    Wiz.atb(new ExhaustSpecificCardAction(c, p.hand));
+                    temp.addToTop(c);
+                }
             }
         tickDuration();
         return;

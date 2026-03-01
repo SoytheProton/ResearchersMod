@@ -146,7 +146,7 @@
   },
   "${modID}:LaserStrike": {
     "NAME": "Laser Strike",
-    "DESCRIPTION": "Deal !D! damage. If you ${modID}:Completed an ${modID}:Experiment this turn, deal !D! damage again."
+    "DESCRIPTION": "Deal !D! damage. If you ${modID}:Progressed an ${modID}:Experiment this turn, deal !D! damage again."
   },
   "${modID}:ForceGuard": {
     "NAME": "Force Guard",
@@ -327,7 +327,7 @@
   },
   "${modID}:HadalJetsuit": {
     "NAME": "Hadal Jetsuit",
-    "DESCRIPTION": "Apply !M! ${modID}:Distortion to ALL enemies. When you Exhaust a card, enemies lose HP equal to their ${modID}:Distortion."
+    "DESCRIPTION": "Draw 1 card. NL If you draw a Status, draw !M! more cards."
   },
   "${modID}:SulfuricOxidation": {
     "NAME": "Sulfuric Oxidation",
@@ -349,8 +349,8 @@
   },
   "${modID}:LetVandDocumenting": {
     "NAME": "Let-Vand Documenting",
-    "DESCRIPTION": "Ethereal. NL When you play a *Status, draw 1 card. At the start of each turn, add a *Burnt *Document to your hand.",
-    "UPGRADE_DESCRIPTION": "When you play a *Status, draw 1 card. At the start of each turn, add a *Burnt *Document to your hand."
+    "DESCRIPTION": "When you play a Status, draw 1 card. At the start of your turn, add !M! *Burnt *Document to your hand.",
+    "UPGRADE_DESCRIPTION": "When you play a Status, draw 1 card. At the start of your turn, add !M! *Burnt *Documents to your hand."
   },
   "${modID}:Livewire": {
     "NAME": "Livewire",
@@ -401,8 +401,8 @@
   },
   "${modID}:ContactLight": {
     "NAME": "Contact Light",
-    "DESCRIPTION": "Exhaust ALL *Statuses in your draw pile. NL Add a *Plasmic *Energy+ into your discard pile for each card Exhausted. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Exhaust ALL *Statuses in your draw and discard pile. NL Add a *Plasmic *Energy+ into your discard pile for each card Exhausted. NL Exhaust."
+    "DESCRIPTION": "Exhaust ALL *Statuses in your discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted.",
+    "UPGRADE_DESCRIPTION": "Exhaust ALL *Statuses in your draw and discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted."
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
@@ -421,9 +421,9 @@
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",
-    "DESCRIPTION": "Deal !D! damage to a random enemy for each Status Exhausted this combat.",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for ALL *Statuses created this combat.",
     "EXTENDED_DESCRIPTION": [
-      " NL (Exhausted %d Status%s.)",
+      " NL (%d created Status%s.)",
       "es",
       ""
     ]
@@ -441,7 +441,8 @@
   },
   "${modID}:BlackBox": {
     "NAME": "Black Box",
-    "DESCRIPTION": "Whenever you Exhaust a card, gain !M! ${modID}:Metallicize. NL At the start of your turn, lose half of your ${modID}:Metallicize."
+    "DESCRIPTION": "Whenever you Exhaust a card, gain !M! ${modID}:Metallicize. NL Lose that much ${modID}:Metallicize in 2 turns.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you Exhaust a card, gain !M! ${modID}:Metallicize. NL Lose that much ${modID}:Metallicize in 2 turns."
   },
   "${modID}:DummyExperiment": {
     "NAME": "ERROR",
@@ -473,7 +474,7 @@
   },
   "${modID}:FollowUpShot": {
     "NAME": "Follow-Up Shot",
-    "DESCRIPTION": "Choose an active ${modID}:Experiment to gain \"Deal !M! damage to a random enemy.\" until ${modID}:Completion."
+    "DESCRIPTION": "Choose an active ${modID}:Experiment to gain \"A random enemy takes !M! damage.\" until ${modID}:Completion."
   },
   "${modID}:Preparations": {
     "NAME": "Preparations",
@@ -485,7 +486,7 @@
   },
   "${modID}:PlushieBreak": {
     "NAME": "Plushie Break",
-    "DESCRIPTION": "Gain !M! ${modID}:Plated *Armor. NL Add a *Sleep *Walk into your hand. Exhaust."
+    "DESCRIPTION": "Gain !M! ${modID}:Plated *Armor. NL Add a *Sleepwalk into your hand. Exhaust."
   },
   "${modID}:Sleepwalk": {
     "NAME": "Sleepwalk",

@@ -10,8 +10,11 @@ import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import researchersmod.actions.unique.CatalyticAfterburnerAction;
 import researchersmod.cards.BaseCard;
 import researchersmod.character.ResearchersCharacter;
+import researchersmod.ui.ExperimentCardManager;
 import researchersmod.util.CardStats;
 import researchersmod.util.Wiz;
+
+import java.util.ArrayList;
 
 public class CatalyticAfterburner extends BaseCard {
     public static final String ID = makeID(CatalyticAfterburner.class.getSimpleName());
@@ -32,10 +35,14 @@ public class CatalyticAfterburner extends BaseCard {
     public void applyPowers() {
         super.applyPowers();
         int i = 0;
-        for(AbstractCard c : Wiz.p().exhaustPile.group) {
-            if(c.type == CardType.STATUS)
-                i++;
-        }
+        for (AbstractCard c : new ArrayList<AbstractCard>() {{
+            addAll(AbstractDungeon.player.hand.group);
+            addAll(AbstractDungeon.player.discardPile.group);
+            addAll(AbstractDungeon.player.drawPile.group);
+            addAll(AbstractDungeon.player.exhaustPile.group);
+            addAll(ExperimentCardManager.experiments.group);
+        }}) if(c.type == CardType.STATUS) i++;
+
         String plural = cardStrings.EXTENDED_DESCRIPTION[1];
         if(i == 1)
             plural = cardStrings.EXTENDED_DESCRIPTION[2];
@@ -51,15 +58,19 @@ public class CatalyticAfterburner extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         boolean playedVFX = false;
-        for(AbstractCard c : p.exhaustPile.group) {
-            if(c.type == CardType.STATUS) {
-                if(!playedVFX) {
-                    playedVFX = true;
-                    CardCrawlGame.sound.play("GHOST_FLAMES");
-                    AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Color.FIREBRICK));
-                }
-                Wiz.atb(new CatalyticAfterburnerAction(this));
+        for (AbstractCard c : new ArrayList<AbstractCard>() {{
+            addAll(AbstractDungeon.player.hand.group);
+            addAll(AbstractDungeon.player.discardPile.group);
+            addAll(AbstractDungeon.player.drawPile.group);
+            addAll(AbstractDungeon.player.exhaustPile.group);
+            addAll(ExperimentCardManager.experiments.group);
+        }}) if(c.type == CardType.STATUS) {
+            if(!playedVFX) {
+                playedVFX = true;
+                CardCrawlGame.sound.play("GHOST_FLAMES");
+                AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Color.FIREBRICK));
             }
+            Wiz.atb(new CatalyticAfterburnerAction(this));
         }
     }
 }

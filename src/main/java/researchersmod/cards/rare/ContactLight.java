@@ -28,7 +28,6 @@ public class ContactLight extends BaseCard {
 
     public ContactLight() {
         super(ID, info);
-        setExhaust(true);
         this.cardsToPreview = new PlasmicEnergy();
         cardsToPreview.upgrade();
     }
