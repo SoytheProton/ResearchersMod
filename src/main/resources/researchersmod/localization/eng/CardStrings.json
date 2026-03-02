@@ -470,7 +470,7 @@
   },
   "${modID}:AccretionDisc": {
     "NAME": "Accretion Disc",
-    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 ${modID}:Experiment: Add a ${modID}:Trial to that Experiment. Gain !B! Block."
+    "DESCRIPTION": "${modID}:Experiment !${modID}:Trial! - Play 1 ${modID}:Experiment: Add a ${modID}:Trial to that ${modID}:Experiment. Gain !B! Block."
   },
   "${modID}:FollowUpShot": {
     "NAME": "Follow-Up Shot",

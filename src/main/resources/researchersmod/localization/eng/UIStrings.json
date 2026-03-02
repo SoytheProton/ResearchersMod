@@ -28,8 +28,8 @@
   },
   "${modID}:ExpDescriptionHelper": {
     "TEXT": [
-      "${modID}:Completion: ",
-      "${modID}:Terminate: "
+      "${modID}:Progression: ",
+      "${modID}:Completion: "
     ]
   },
   "${modID}:ModConfig": {
