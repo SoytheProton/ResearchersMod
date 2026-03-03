@@ -24,9 +24,9 @@ public class Overwrite extends BaseCard {
 
     public Overwrite() {
         super(ID, info);
-        setDamage(9,3);
+        setDamage(10,4);
         this.magicNumber = this.baseMagicNumber = 0;
-        setCustomVar("scaling",3,1);
+        setCustomVar("scaling",2,0);
         // this card was originally called "Ink Blot" but I thought that was lame.
         // this card has also been entirely reworked.
         // thrice.
@@ -50,7 +50,7 @@ public class Overwrite extends BaseCard {
         this.realBaseDamage = this.baseDamage;
         this.baseMagicNumber = Wiz.p().exhaustPile.size() * customVar("scaling");
         this.baseDamage += baseMagicNumber;
-        super.applyPowers();
+        super.calculateCardDamage(mo);
         this.baseDamage = realBaseDamage;
         this.isDamageModified = (this.damage != this.baseDamage);
     }

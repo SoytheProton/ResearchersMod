@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import researchersmod.actions.unique.NeutralyzerSerumAction;
 import researchersmod.cards.ExperimentCard;
 import researchersmod.character.ResearchersCharacter;
-import researchersmod.fields.ExperimentFields;
 import researchersmod.powers.experiments.NeutralyzerSerumExperiment;
 import researchersmod.util.CardStats;
 
@@ -23,13 +22,12 @@ public class NeutralyzerSerum extends ExperimentCard {
     public NeutralyzerSerum() {
         super(ID, info,0);
         setMagic(2);
-        setExhaust(true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if(this.energyOnUse == 0 && !upgraded) ExperimentFields.playExperiment.set(this,false);
-        else ExperimentFields.playExperiment.set(this,true);
+        //if(this.energyOnUse == 0 && !upgraded && !p.hasRelic(ChemicalX.ID)) ExperimentFields.playExperiment.set(this,false);
+        //else ExperimentFields.playExperiment.set(this,true);
         addToBot(new ApplyPowerAction(p, p, new NeutralyzerSerumExperiment(p, this.trial, this)));
         addToBot(new NeutralyzerSerumAction(p,this,this.freeToPlayOnce,this.energyOnUse));
     }

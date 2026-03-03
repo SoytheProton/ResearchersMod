@@ -3,7 +3,6 @@ package researchersmod.powers.attachments;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,12 +11,10 @@ import researchersmod.Researchers;
 import researchersmod.fields.ExperimentFields;
 import researchersmod.fields.ExperimentPowerFields;
 import researchersmod.powers.BasePower;
-import researchersmod.powers.EntropyPower;
 import researchersmod.powers.interfaces.DescriptionModifier;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 import researchersmod.powers.interfaces.ExperimentPower;
 import researchersmod.util.ExpDescriptionHelper;
-import researchersmod.util.Wiz;
 
 public class ExhaustExpAttachment extends BasePower implements InvisiblePower, NonStackablePower, ExperimentInterfaces.OnTerminateInterface, DescriptionModifier {
 
@@ -35,6 +32,8 @@ public class ExhaustExpAttachment extends BasePower implements InvisiblePower, N
                 }
             }
         }
+        ExperimentFields.exhaustingExperiment.set(card, true);
+        card.targetTransparency = 0.6F;
     }
 
     public boolean isStackable(AbstractPower po) {
@@ -47,7 +46,6 @@ public class ExhaustExpAttachment extends BasePower implements InvisiblePower, N
     @Override
     public void onTerminate(AbstractPower power) {
         if(power == ExperimentPowerFields.attachedPower.get(this)) {
-            ExperimentFields.exhaustingExperiment.set(ExperimentPowerFields.attachedCard.get(power),true);
             addToBot(new RemoveSpecificPowerAction(this.owner,this.owner,this));
         }
     }

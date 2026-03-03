@@ -26,7 +26,7 @@ public class NeutralyzerSerumExperiment extends BasePower implements InvisiblePo
     }
 
     public void terminateEffect(){
-        ExperimentCardManager.remExp(this);
+        ExperimentCardManager.remExp(this,true);
     }
 
     public void completionEffect(){

@@ -56,13 +56,20 @@ public class NeutralyzerSerumAction extends AbstractGameAction {
             }
 
             if(effect == 0) {
-                ExperimentCardManager.remExp(exp);
+                AbstractPower finalExp = exp;
+                Wiz.atb(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        ExperimentCardManager.remExp(finalExp);
+                        this.isDone = true;
+                    }
+                });
                 Wiz.atb(new RemoveSpecificPowerAction(p,p,exp));
             }
 
             if (effect > 0) {
-                ((ExperimentCard)c).trial += effect;
-                exp.amount += effect;
+                ((ExperimentCard)c).trial = effect;
+                exp.amount = effect;
                 if (!this.freeToPlayOnce) {
                     this.p.energy.use(EnergyPanel.totalCount);
                 }

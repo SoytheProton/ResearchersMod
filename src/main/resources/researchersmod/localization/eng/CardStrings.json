@@ -16,7 +16,7 @@
   "${modID}:Research": {
     "NAME": "Research",
     "DESCRIPTION": "Choose one: NL Gain !M! Strength or !M! Dexterity.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Strength and !M! Dexterity."
+    "UPGRADE_DESCRIPTION": "Gain !M! Strength. NL Gain !M! Dexterity."
   },
   "${modID}:gainstrength": {
     "NAME": "Increase Power",
@@ -172,7 +172,7 @@
   },
   "${modID}:Overwrite": {
     "NAME": "Overwrite",
-    "DESCRIPTION": "Deal !D! damage. Deals !${modID}:scaling! additional damage for each Exhausted card."
+    "DESCRIPTION": "Deal !D! damage. NL Deals !${modID}:scaling! additional damage for each Exhausted card."
   },
   "${modID}:RemnantResearch": {
     "NAME": "Remnant Research",
@@ -270,8 +270,8 @@
   },
   "${modID}:NeutralyzerSerum": {
     "NAME": "Neutralyzer Serum",
-    "DESCRIPTION": "${modID}:Experiment X - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy. Exhaust.",
-    "UPGRADE_DESCRIPTION": "${modID}:Experiment X+1 - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy. Exhaust."
+    "DESCRIPTION": "${modID}:Experiment X - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy. NL ${modID}:Complete: Exhaust.",
+    "UPGRADE_DESCRIPTION": "${modID}:Experiment X+1 - Play 1 Attack: Apply !M! Weak and !M! Vulnerable to a random enemy. NL ${modID}:Complete: Exhaust."
   },
   "${modID}:ParticleAccelerator": {
     "NAME": "Particle Accelerator",
@@ -293,8 +293,8 @@
   },
   "${modID}:ExtensiveTesting": {
     "NAME": "Extensive Testing",
-    "DESCRIPTION": "At the start of your turn, play 1 *Field *Test.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, play 1 *Field *Test+."
+    "DESCRIPTION": "At the start of NL your turn, play NL 1 *Field *Test.",
+    "UPGRADE_DESCRIPTION": "At the start of NL your turn, play NL 1 *Field *Test+."
   },
   "${modID}:ResonantHexagraph": {
     "NAME": "Resonant Hexagraph",
@@ -349,8 +349,8 @@
   },
   "${modID}:LetVandDocumenting": {
     "NAME": "Let-Vand Documenting",
-    "DESCRIPTION": "When you play a Status, draw 1 card. At the start of your turn, add !M! *Burnt *Document to your hand.",
-    "UPGRADE_DESCRIPTION": "When you play a Status, draw 1 card. At the start of your turn, add !M! *Burnt *Documents to your hand."
+    "DESCRIPTION": "When you play a Status, draw 1 card. NL At the start of your turn, add !M! *Burnt *Document to your hand.",
+    "UPGRADE_DESCRIPTION": "When you play a Status, draw 1 card. NL At the start of your turn, add !M! *Burnt *Documents to your hand."
   },
   "${modID}:Livewire": {
     "NAME": "Livewire",
@@ -392,8 +392,8 @@
   },
   "${modID}:OwnTempo": {
     "NAME": "Own Tempo",
-    "DESCRIPTION": "Choose a card in your discard pile. ${modID}:Phase the chosen card and Exhaust it.",
-    "UPGRADE_DESCRIPTION": "Choose 2 cards in your discard pile. ${modID}:Phase the chosen cards and Exhaust both.",
+    "DESCRIPTION": "Choose a card in your discard pile. NL ${modID}:Phase the chosen card and Exhaust it.",
+    "UPGRADE_DESCRIPTION": "Choose 2 cards in your discard pile. NL ${modID}:Phase the chosen cards and Exhaust both.",
     "EXTENDED_DESCRIPTION": [
       "Choose 1 card in your Discard pile to Phase and Exhaust.",
       "Choose 2 cards in your Discard pile to Phase and Exhaust."
@@ -401,8 +401,8 @@
   },
   "${modID}:ContactLight": {
     "NAME": "Contact Light",
-    "DESCRIPTION": "Exhaust ALL *Statuses in your discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted.",
-    "UPGRADE_DESCRIPTION": "Exhaust ALL *Statuses in your draw and discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted."
+    "DESCRIPTION": "Exhaust all *Statuses in your discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted.",
+    "UPGRADE_DESCRIPTION": "Exhaust all *Statuses in your draw and discard pile. NL Add a *Plasmic *Energy+ into your draw  pile for each card Exhausted."
   },
   "${modID}:BorealisProtocol": {
     "NAME": "Borealis Protocol",
@@ -432,7 +432,7 @@
     "NAME": "Altercated Blueprint",
     "DESCRIPTION": "Gain !B! Block. NL ${modID}:Phase the last card ${modID}:Phased this combat.",
     "EXTENDED_DESCRIPTION": [
-      " NL ([#efc851]%s[] was Phas  ed last.)"
+      " NL ([#efc851]%s[] was Phased last.)"
     ]
   },
   "${modID}:DataRequest": {
