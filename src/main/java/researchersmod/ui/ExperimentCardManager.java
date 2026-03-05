@@ -98,7 +98,10 @@ public class ExperimentCardManager {
         AbstractCard tmp = card.makeStatEquivalentCopy();
         card.targetAngle = 0f;
         if (ExperimentFields.exhaustingExperiment.get(card) || ExperimentFields.purgingExperiment.get(card)) {
-            if(PhasingFields.isPhasing.get(card)) card.glowColor = Color.BLUE.cpy();
+            if(PhasingFields.isPhasing.get(card)) {
+                card.glowColor = Color.BLUE.cpy();
+                ExperimentFields.purgingExperiment.set(card, true);
+            }
             tmp.current_x = Settings.WIDTH / 2.0F * Settings.xScale;
             tmp.current_y = Settings.HEIGHT / 2.0F;
             Wiz.att(new ShowCardAndPoofAction(tmp));

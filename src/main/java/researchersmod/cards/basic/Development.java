@@ -24,7 +24,7 @@ public class Development extends ExperimentCard {
 
     public Development() {
         super(ID, info,1);
-        setBlock(8, 3);
+        setBlock(12, 4);
         setMagic(1,1);
     }
 

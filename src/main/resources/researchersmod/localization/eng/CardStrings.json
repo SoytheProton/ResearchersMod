@@ -15,8 +15,7 @@
   },
   "${modID}:Research": {
     "NAME": "Research",
-    "DESCRIPTION": "Choose one: NL Gain !M! Strength or !M! Dexterity.",
-    "UPGRADE_DESCRIPTION": "Gain !M! Strength. NL Gain !M! Dexterity."
+    "DESCRIPTION": "Choose one: NL Gain !M! Strength or !M! Dexterity."
   },
   "${modID}:gainstrength": {
     "NAME": "Increase Power",
@@ -416,8 +415,8 @@
   },
   "${modID}:IonSurge": {
     "NAME": "Ion Surge",
-    "DESCRIPTION": "Ethereal. NL The first time you ${modID}:Progress an ${modID}:Experiment each turn, apply !M! ${modID}:Distortion to ALL enemies.",
-    "UPGRADE_DESCRIPTION": "The first time you ${modID}:Progress an ${modID}:Experiment each turn, apply !M! ${modID}:Distortion to ALL enemies."
+    "DESCRIPTION": "Ethereal. NL The first time you ${modID}:Complete an ${modID}:Experiment each turn, apply !M! ${modID}:Distortion to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "The first time you ${modID}:Complete an ${modID}:Experiment each turn, apply !M! ${modID}:Distortion to ALL enemies."
   },
   "${modID}:CatalyticAfterburner": {
     "NAME": "Catalytic Afterburner",
@@ -486,7 +485,7 @@
   },
   "${modID}:PlushieBreak": {
     "NAME": "Plushie Break",
-    "DESCRIPTION": "Gain !M! ${modID}:Plated *Armor. NL Add a *Sleepwalk into your hand. Exhaust."
+    "DESCRIPTION": "Gain !M! ${modID}:Plated *Armor. NL Add a *Sleepwalk into your hand. NL Exhaust."
   },
   "${modID}:Sleepwalk": {
     "NAME": "Sleepwalk",

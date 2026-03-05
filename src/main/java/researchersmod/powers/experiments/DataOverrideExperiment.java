@@ -39,6 +39,8 @@ public class DataOverrideExperiment extends BasePower implements InvisiblePower,
     }
 
     public void completionEffect(){
+        expCard().applyPowers();
+        expCard().calculateCardDamage(null);
         Wiz.atb(new GainBlockAction(owner,expCard().block));
         Wiz.atb(new SFXAction("BLUNT_FAST"));
         Wiz.atb(new DamageAllEnemiesAction((AbstractPlayer) owner,expCard().multiDamage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));

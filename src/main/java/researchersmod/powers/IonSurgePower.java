@@ -6,7 +6,7 @@ import researchersmod.Researchers;
 import researchersmod.actions.common.ApplyDistortionPowerToAll;
 import researchersmod.powers.interfaces.ExperimentInterfaces;
 
-public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnAnyCompletionInterface {
+public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnTerminateInterface {
     public static final String POWER_ID = Researchers.makeID(IonSurgePower.class.getSimpleName());
     public static final PowerType TYPE = PowerType.BUFF;
     private static final boolean TURNBASED = false;
@@ -24,7 +24,7 @@ public class IonSurgePower extends BasePower implements ExperimentInterfaces.OnA
     }
 
     @Override
-    public void onCompletion(AbstractPower power) {
+    public void onTerminate(AbstractPower power) {
         if(!triggeredThisTurn) {
             flash();
             triggeredThisTurn = true;

@@ -20,7 +20,7 @@ public class IonSurge extends BaseCard {
 
     public IonSurge() {
         super(ID, info);
-        setMagic(2);
+        setMagic(3);
         setEthereal(true, false);
     }
 

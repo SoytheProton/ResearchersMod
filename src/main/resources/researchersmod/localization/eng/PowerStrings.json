@@ -161,7 +161,7 @@
   "${modID}:IonSurgePower": {
     "NAME": "Ion Surge",
     "DESCRIPTIONS": [
-      "The first time you [researchersmod:DB]Progress an [researchersmod:DB]Experiment[] each turn, apply #b%d #yDistortion to ALL enemies."
+      "The first time you [researchersmod:DB]Complete an [researchersmod:DB]Experiment[] each turn, apply #b%d #yDistortion to ALL enemies."
     ]
   },
   "${modID}:BlackBoxPower": {

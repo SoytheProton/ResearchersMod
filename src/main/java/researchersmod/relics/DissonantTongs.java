@@ -8,7 +8,7 @@ import researchersmod.character.ResearchersCharacter;
 
 import static researchersmod.Researchers.makeID;
 
-public class DissonantTongs extends BaseRelic implements PhaseMod.WhilePhaseInterface {
+public class DissonantTongs extends BaseRelic implements PhaseMod.WhilePhaseInterface, PhaseMod.PhaseStatInterface {
     public static final String ID = makeID(DissonantTongs.class.getSimpleName());
 
     public DissonantTongs() {
@@ -19,6 +19,21 @@ public class DissonantTongs extends BaseRelic implements PhaseMod.WhilePhaseInte
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
+    }
+
+    @Override
+    public float alterPhaseStats(String valueType, float value) {
+        switch(valueType) {
+            case "BLOCK":
+                value += 3;
+                break;
+            case "DAMAGE":
+                value += 3;
+                break;
+            default:
+                Researchers.logger.warn("Unexpected value: " + valueType);
+        }
+        return value;
     }
 
     @Override

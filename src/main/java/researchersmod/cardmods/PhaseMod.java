@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import researchersmod.Researchers;
 import researchersmod.cards.uncommon.AltercatedBlueprint;
 import researchersmod.patches.occultpatchesthatliterallyexistonlyforphasetobeplayablewhileunplayable.PhasingFields;
@@ -126,6 +127,9 @@ public class PhaseMod extends AbstractCardModifier {
             for (AbstractPower p : AbstractDungeon.player.powers)
                 if (Objects.equals(p.ID, ManipulationPower.POWER_ID))
                     damage += p.amount;
+            for (AbstractRelic r : AbstractDungeon.player.relics)
+                if (r instanceof PhaseStatInterface)
+                    damage = ((PhaseStatInterface) r).alterPhaseStats("DAMAGE", damage);
         }
         return damage;
     }
@@ -137,6 +141,9 @@ public class PhaseMod extends AbstractCardModifier {
             for (AbstractPower p : AbstractDungeon.player.powers)
                 if (Objects.equals(p.ID, ManipulationPower.POWER_ID))
                     block += p.amount;
+            for (AbstractRelic r : AbstractDungeon.player.relics)
+                if (r instanceof PhaseStatInterface)
+                    block = ((PhaseStatInterface) r).alterPhaseStats("BLOCK", block);
         }
         return block;
     }

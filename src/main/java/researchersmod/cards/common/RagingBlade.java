@@ -25,8 +25,8 @@ public class RagingBlade extends BaseCard {
 
     public RagingBlade() {
         super(ID, info);
-        setDamage(10, 4);
-        setCustomVar("Subdamage",VariableType.DAMAGE,6,2);
+        setDamage(8, 3);
+        setCustomVar("Subdamage",VariableType.DAMAGE,10,4);
         cardsToPreview = new Burn();
     }
 

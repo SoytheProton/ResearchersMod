@@ -31,7 +31,7 @@
     "NAME": "Dissonant Tongs",
     "FLAVOR": "A little reality-bending, but should work just fine.",
     "DESCRIPTIONS": [
-      "Cards that are #yPhasing will be #yUpgraded."
+      "Cards that are #yPhasing will be #yUpgraded, deal 3 additional attack damage, and give 3 more #yBlock."
     ]
   },
   "${modID}:PhotonBattery": {
